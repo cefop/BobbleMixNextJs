@@ -22,12 +22,18 @@ export default NextAuth({
     // database: `postgres://process.env.POSTGRES_USER:process.env.POSTGRES_PASSWORD@process.env.PGSQL_HOST:5432/process.env.POSTGRES_DB`,
     database: {
         type: 'postgres',
-        host: 'localhost', // process.env.PGSQL_HOST,
+        host: process.env.PGSQL_HOST,
         port: 5432,
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
         // entityPrefix: 'nextauth_',
+        ssl: process.env.NODE_ENV !== 'development',
+        extra: {
+            ssl: {
+                rejectUnauthorized: false,
+            },
+        },
     },
 
     secret: process.env.SECRET,
