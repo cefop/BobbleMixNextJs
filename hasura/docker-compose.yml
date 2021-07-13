@@ -1,0 +1,39 @@
+version: '3.6'
+
+services:
+  postgres:
+    image: postgres:12
+    container_name: ${PGSQL_HOST}
+    ports:
+      - '${PGSQL_PORT}:5432'
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  graphql-engine:
+    image: hasura/graphql-engine:v2.0.1
+    container_name: app_hasura
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      # HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${PGSQL_HOST}:5432/${POSTGRES_DB}
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console
+      HASURA_GRAPHQL_DEV_MODE: 'true' #disable this in production
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: 'anonymous'
+      HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key": "${HASURA_GRAPHQL_JWT_SECRET}"}'
+      # ACTION_BASE_URL: 'http://host.docker.internal:3000'
+    # extra_hosts:
+    #   - 'host.docker.internal:host-gateway'
+
+volumes:
+  db_data:

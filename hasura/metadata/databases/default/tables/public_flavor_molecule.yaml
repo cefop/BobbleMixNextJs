@@ -1,0 +1,10 @@
+table:
+  name: flavor_molecule
+  schema: public
+object_relationships:
+- name: flavor
+  using:
+    foreign_key_constraint_on: flavor_id
+- name: molecule
+  using:
+    foreign_key_constraint_on: molecule_id

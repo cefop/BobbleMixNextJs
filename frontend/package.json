@@ -1,0 +1,57 @@
+{
+    "name": "bobblemix",
+    "version": "1.0.0",
+    "private": true,
+    "license": "ISC",
+    "description": "NextJs app to help you mix eliquide together",
+    "author": "rmsrob <remi@bobbleliquide.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cefop/bobblemix"
+    },
+    "bugs": {
+        "url": "https://github.com/cefop/bobblemix/issues"
+    },
+    "scripts": {
+        "analyze:lint": "eslint --ext .jsx --ext .js .",
+        "analyze:prettier": "prettier --list-different '**/*.{js,css,md}'",
+        "analyze": "yarn run analyze:lint && yarn run analyze:prettier",
+        "fix:lint": "eslint --ext .jsx --ext .js . --fix",
+        "fix:prettier": "prettier --write '**/*.{js,css,md}'",
+        "fix": "yarn run fix:lint && yarn run fix:prettier",
+        "build": "next build",
+        "dev": "next dev",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.3.21",
+        "@chakra-ui/icons": "^1.0.14",
+        "@chakra-ui/react": "^1.6.5",
+        "@emotion/react": "^11.4.0",
+        "@emotion/styled": "^11.3.0",
+        "framer-motion": "^4.1.17",
+        "graphql": "^15.5.1",
+        "jsonwebtoken": "^8.5.1",
+        "next": "^11.0.1",
+        "next-auth": "^3.27.3",
+        "pg": "^8.6.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-icons": "^4.2.0"
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.14.7",
+        "autoprefixer": "^10.3.0",
+        "eslint": "^7.30.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-config-standard": "^16.0.3",
+        "eslint-config-standard-react": "^11.0.1",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-promise": "^5.1.0",
+        "eslint-plugin-react": "^7.24.0",
+        "postcss": "^8.3.5",
+        "prettier": "^2.3.2"
+    }
+}

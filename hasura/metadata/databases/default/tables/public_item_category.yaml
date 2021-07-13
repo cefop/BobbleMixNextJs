@@ -1,0 +1,10 @@
+table:
+  name: item_category
+  schema: public
+object_relationships:
+- name: category
+  using:
+    foreign_key_constraint_on: category_id
+- name: item
+  using:
+    foreign_key_constraint_on: item_id

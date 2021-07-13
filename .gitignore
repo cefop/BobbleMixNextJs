@@ -1,0 +1,16 @@
+# Project dependencies
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+.cache
+cache_dir
+node_modules
+
+# Build directory
+.next
+
+
+# macOS
+.DS_Store
+
+# local env
+.env
+venv

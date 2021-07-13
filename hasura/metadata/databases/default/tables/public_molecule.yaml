@@ -1,0 +1,11 @@
+table:
+  name: molecule
+  schema: public
+array_relationships:
+- name: flavor_molecules
+  using:
+    foreign_key_constraint_on:
+      column: molecule_id
+      table:
+        name: flavor_molecule
+        schema: public
