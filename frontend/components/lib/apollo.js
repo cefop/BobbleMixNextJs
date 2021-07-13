@@ -6,7 +6,8 @@ const createApolloClient = () => {
         // ssrMode: true,
         link: createHttpLink({
             // uri: 'https://on-falcon-72.hasura.app/v1/graphql',
-            uri: 'http://localhost:8080/v1/graphql',
+            // uri: 'http://localhost:8080/v1/graphql',
+            uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
             credentials: 'same-origin',
             headers: {
                 'content-Type': 'application/json',

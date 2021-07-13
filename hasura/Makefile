@@ -7,5 +7,5 @@ console:
 #
 
 # hasura migration
-# npx hasura metadata apply --endpoint "https://hasura.mywebsite.com"  --admin-secret "hasuraadminpassword"
+# npx hasura metadata apply --endpoint "https://"  --admin-secret ""
 #

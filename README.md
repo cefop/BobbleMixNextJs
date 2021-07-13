@@ -64,7 +64,7 @@ pipeline: use github branch to push on vercel with updated .env
 
 ```sh
 cd frontend
-vercel
+vercel --prod
 ```
 
 ## Maintainers
