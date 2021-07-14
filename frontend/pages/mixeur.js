@@ -1,7 +1,9 @@
-import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-import styled from '@emotion/styled';
+import { useUser } from '../components/hooks/useUser';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 import Steps from '../components/Steps/index';
+import NotAuth from '../components/NotAuth';
 
 const FETCH_ITEMS = gql`
     query fetchItems {
@@ -18,21 +20,22 @@ const FETCH_ITEMS = gql`
     }
 `;
 
-const DisplayInfo = styled.div`
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    border: 1px solid yellow;
-`;
-
 export default function Mixeur() {
+    const { user } = useUser();
     const { loading, error, data } = useQuery(FETCH_ITEMS);
-    // console.log('Mixer: ', loading, error, data);
+    console.log('FETCH_ITEMS: ', loading, error, data);
+
     return (
         <>
-            {loading ? <DisplayInfo>loading</DisplayInfo> : null}
-            {error ? <DisplayInfo>ouppsss! error</DisplayInfo> : null}
-            {data && data.item ? <Steps items={data.item} /> : null}
+            {!user ? (
+                <NotAuth />
+            ) : (
+                <>
+                    {loading && <Loading />}
+                    {error && <Error tips="connection refusé" />}
+                    {data && data.item ? <Steps items={data.item} /> : null}
+                </>
+            )}
         </>
     );
 }

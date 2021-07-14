@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { Flex, Spacer, Box, HStack, VStack } from '@chakra-ui/layout';
 import { useDisclosure, Button, Collapse, Divider } from '@chakra-ui/react';
@@ -8,11 +8,10 @@ import { Menu, ItemLink, MenuBtn } from './StyledHeader';
 import Logo from './Logo';
 
 const Menubar = () => {
-    const router = useRouter();
+    // const router = useRouter();
     const { isOpen, onToggle } = useDisclosure();
     const [session] = useSession();
-
-    console.log(router.route);
+    // console.log(router.route);
 
     return (
         <Box width="100%">
@@ -45,7 +44,9 @@ const Menubar = () => {
                         {!session && <MenuBtn onClick={() => signIn()}>se connecter</MenuBtn>}
                         {session && (
                             <>
-                                <MenuBtn>{session.user.email ? session.user.email : session.user.name}</MenuBtn>
+                                <Link href="/profile">
+                                    <ItemLink>{session.user.email ? session.user.email : session.user.name}</ItemLink>
+                                </Link>
                                 <MenuBtn onClick={() => signOut()}>se déconnecter</MenuBtn>
                             </>
                         )}
