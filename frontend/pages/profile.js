@@ -7,7 +7,7 @@ export default function Profile() {
     console.log(user);
     return (
         <>
-            {user ? (
+            {!user ? (
                 <NotAuth />
             ) : (
                 <Box textAlign="center" marginTop="100px">
