@@ -1,4 +1,4 @@
-> Resilve postgres PID already in use
+> Resolve error postgres PID already in use
 
 ```sh
 docker stop $(docker ps -a -q)
