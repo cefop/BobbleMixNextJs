@@ -106,7 +106,7 @@ class Steps extends React.Component {
                             backgroundRepeat="no-repeat"
                         >
                             <Center paddingTop="10" fontFamily="Staatliches" fontSize="2xl">
-                                Arômes Yo!
+                                Arômes
                             </Center>
                             <Flex
                                 marginTop="2"

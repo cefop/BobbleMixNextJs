@@ -1,9 +1,5 @@
-import { Box } from '@chakra-ui/react';
+import PageLayout from '../components/styles/PageLayout';
 
 export default function HowTo() {
-    return (
-        <Box textAlign="center" marginTop="100px">
-            How To Page
-        </Box>
-    );
+    return <PageLayout title="Page d'info"></PageLayout>;
 }

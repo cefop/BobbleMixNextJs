@@ -20,7 +20,7 @@ To be able to launch the hasura backend on your local machine and build the meta
   - `/frontend` copie `.env.example` to `.env.development`
   - `/hasura` copie `.env.example` to `.env`
 
-To use Next-Auth get yours [Google credential](https://next-auth.js.org/providers/google)
+To use Next-Auth get yours [Github credential](https://next-auth.js.org/providers/github)
 
 ## Install
 
@@ -92,7 +92,6 @@ mutation INSERT_MANY_ITEM_CATEGORY {
   insert_item_category(objects[]){
     returning{
       id
-      created_at
     }
   }
 }

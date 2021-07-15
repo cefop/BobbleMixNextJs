@@ -1,10 +1,10 @@
+import { useMemo, useState } from 'react';
 import { Provider } from 'next-auth/client';
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider, Flex } from '@chakra-ui/react';
 import { customTheme } from '../components/styles/theme';
 import Head from '../components/Header/Head';
 import Menubar from '../components/Header/Menubar';
-import { useMemo, useState } from 'react';
 import { BobbleMixContext } from '../components/hooks/BobbleMixContext';
 import { useApollo } from '../components/lib/apollo';
 

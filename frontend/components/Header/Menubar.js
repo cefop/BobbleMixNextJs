@@ -2,7 +2,7 @@ import Link from 'next/link';
 // import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { Flex, Spacer, Box, HStack, VStack } from '@chakra-ui/layout';
-import { useDisclosure, Button, Collapse, Divider } from '@chakra-ui/react';
+import { useDisclosure, Button, Collapse, Divider, Tag, Avatar, TagLabel } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { Menu, ItemLink, MenuBtn } from './StyledHeader';
 import Logo from './Logo';
@@ -45,7 +45,20 @@ const Menubar = () => {
                         {session && (
                             <>
                                 <Link href="/profile">
-                                    <ItemLink>{session.user.email ? session.user.email : session.user.name}</ItemLink>
+                                    <ItemLink>
+                                        <Tag size="lg" colorScheme="white" borderRadius="full" variant="outline">
+                                            <Avatar
+                                                src={session.user.image}
+                                                size="xs"
+                                                name={session.user.email ? session.user.email : session.user.name}
+                                                ml={-1}
+                                                mr={2}
+                                            />
+                                            <TagLabel>
+                                                {session.user.email ? session.user.email : session.user.name}
+                                            </TagLabel>
+                                        </Tag>
+                                    </ItemLink>
                                 </Link>
                                 <MenuBtn onClick={() => signOut()}>se déconnecter</MenuBtn>
                             </>
