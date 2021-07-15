@@ -109,7 +109,6 @@ yarn dev
 **Uncomment this paragraph inside `frontend/pages/api/auth/[...nextauth].js` file**
 
 ```js
-        ssl: process.env.NODE_ENV !== 'development',
         extra: {
             ssl: {
                 rejectUnauthorized: false,
