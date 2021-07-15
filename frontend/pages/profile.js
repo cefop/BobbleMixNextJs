@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { format } from 'date-fns';
 import { FaFacebook, FaTwitter, FaSistrix, FaFileAlt } from 'react-icons/fa';
 import frenchLocale from 'date-fns/locale/fr';
@@ -43,14 +44,19 @@ export default function Profile() {
                                     </Td>
                                     <Td isNumeric>
                                         <HStack>
-                                            <Button
-                                                size="xs"
-                                                colorScheme="gray"
-                                                variant="outline"
-                                                leftIcon={<FaSistrix />}
-                                            >
-                                                Voir la recette
-                                            </Button>
+                                            <Link href="/recipe">
+                                                <a>
+                                                    <Button
+                                                        size="xs"
+                                                        colorScheme="gray"
+                                                        variant="outline"
+                                                        leftIcon={<FaSistrix />}
+                                                    >
+                                                        Voir la recette
+                                                    </Button>
+                                                </a>
+                                            </Link>
+
                                             <Button
                                                 size="xs"
                                                 colorScheme="facebook"
