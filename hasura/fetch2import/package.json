@@ -9,5 +9,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "graphql-request": "^3.4.0",
+    "node-fetch": "^2.6.1"
+  }
 }

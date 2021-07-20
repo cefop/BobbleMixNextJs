@@ -104,6 +104,10 @@ cd frontend
 yarn dev
 ```
 
+## 🚀 Deployment
+
+**pipeline: use github production branch to push on vercel with updated .env**
+
 > Update frontend to production
 
 **Uncomment this paragraph inside `frontend/pages/api/auth/[...nextauth].js` file**
@@ -121,7 +125,15 @@ cd frontend
 vercel --prod
 ```
 
-**pipeline: use github production branch to push on vercel with updated .env**
+## 👏🏽 Contributing Guidelines
+
+See CONTRIBUTING.md
+
+**Gatekeepers**:
+
+Only the following people have merge access for the master branch.
+
+- [rmsrob][me]
 
 ## Maintainers
 
