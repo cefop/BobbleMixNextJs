@@ -4,7 +4,6 @@ import UserRecipe from './UserRecipe';
 import { gql, useQuery } from '@apollo/client';
 import Loading from '../Loading';
 import Error from '../Error';
-import NicoLevel from './ChooseNicoLevel';
 
 const ContainerMix = (props) => {
     const FETCH_CATEGORIES = gql`
@@ -29,13 +28,12 @@ const ContainerMix = (props) => {
                     borderTop={['2px', 'solid', '#F5F5F5 ']}
                     display={['none', null, null, 'block']}
                 >
-                    <Flex height="100%" overflow="auto" overflowY="auto" m={2}>
+                    <Flex height="100%" overflow="auto" overflowY="auto">
                         <Box>
                             <h2>Faite votr erecette bobble mix!</h2>
                             <h3>étape 1: Choisisez vos arômes</h3>
                             <UserRecipe />
                             <h3>étape 2: Choisisez votre dosage de nicotine</h3>
-                            <NicoLevel />
                             <h3>étape 3: Sauvegarder votre recette</h3>
                         </Box>
                     </Flex>
