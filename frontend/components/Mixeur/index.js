@@ -4,6 +4,7 @@ import UserRecipe from './UserRecipe';
 import { gql, useQuery } from '@apollo/client';
 import Loading from '../Loading';
 import Error from '../Error';
+import NicoLevel from './NicoLevel';
 
 const ContainerMix = (props) => {
     const FETCH_CATEGORIES = gql`
@@ -34,6 +35,7 @@ const ContainerMix = (props) => {
                             <h3>étape 1: Choisisez vos arômes</h3>
                             <UserRecipe />
                             <h3>étape 2: Choisisez votre dosage de nicotine</h3>
+                            <NicoLevel />
                             <h3>étape 3: Sauvegarder votre recette</h3>
                         </Box>
                     </Flex>
