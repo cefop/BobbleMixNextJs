@@ -61,33 +61,23 @@ export const LabelBottle = styled.h3`
 `;
 
 export const RecipeContainer = styled.div`
-    display: grid;
+    width: 100%
     justify-items: center;
     align-items: center;
 `;
 
 export const MyRecipe = styled.div`
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 1px;
-    row-gap: 1rem;
-    justify-items: center;
-    align-items: top;
     padding: 1rem;
-    font-size: 1rem;
-    min-height: 164px;
-    button:hover {
-        background: rgba(255, 127, 0, 0.15);
-    }
-    button:focus {
-        box-shadow: 0 6px 16px rgba(255, 127, 0, 0.15);
-        color: orange;
-    }
-    span {
-        font-weight: 600;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 105px 105px 105px 105px 105px;
+    a {
+        &:hover {
+            text-decoration: none;
+            color: darkgrey;
+        }
     }
     @media (max-width: 945px) {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+        grid-template-columns: repeat(3, 1fr);
     }
 `;

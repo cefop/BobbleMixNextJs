@@ -1,10 +1,21 @@
 import { Box, Flex } from '@chakra-ui/react';
 import ChooseFlavor from './ChooseFlavor';
 import UserRecipe from './UserRecipe';
+import { gql, useQuery } from '@apollo/client';
+import Loading from '../Loading';
+import Error from '../Error';
 
 const ContainerMix = (props) => {
+    const FETCH_CATEGORIES = gql`
+        query fetchItems {
+            category {
+                id
+                name
+            }
+        }
+    `;
+    const { loading, error, data } = useQuery(FETCH_CATEGORIES);
     const { items } = props;
-    const category = 'gourmand';
     // console.log('USER MIXEUR PROPS: ', items);
     return (
         <Flex height="100%" background="#FEFEFE" width="100%">
@@ -34,9 +45,11 @@ const ContainerMix = (props) => {
                     position="relative"
                     background="#FEFEFE 0% 0% no-repeat padding-box"
                 >
+                    {loading && <Loading />}
+                    {error && <Error tips="erreur de changement des categories" />}
                     <Flex height="100%" overflow="auto" overflowY="auto">
                         <Box>
-                            <ChooseFlavor category={category} items={items} />
+                            {data && data.category ? <ChooseFlavor categories={data.category} items={items} /> : null}
                         </Box>
                     </Flex>
                 </Box>

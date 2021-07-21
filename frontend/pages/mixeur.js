@@ -27,7 +27,7 @@ export default function Mixeur() {
 
     return (
         <>
-            {user ? (
+            {!user ? (
                 <NotAuth />
             ) : (
                 <>
