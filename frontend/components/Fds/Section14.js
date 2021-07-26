@@ -1,6 +1,8 @@
+import { format } from 'date-fns';
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
 
 const Section14 = () => {
+    const now = new Date();
     return (
         <>
             <Heading as="h4" size="md" mt={5}>
@@ -22,7 +24,7 @@ const Section14 = () => {
                                 <Tbody>
                                     <Tr>
                                         <Td>1</Td>
-                                        <Td>00/00/0000</Td>
+                                        <Td>{format(now, 'dd/mm/yyyy', {})}</Td>
                                         <Td></Td>
                                     </Tr>
                                 </Tbody>
