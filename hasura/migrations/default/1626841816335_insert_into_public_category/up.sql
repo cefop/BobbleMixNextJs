@@ -1,0 +1,1 @@
+INSERT INTO "public"."category"("id", "name", "description", "images", "created_at", "updated_at") VALUES (2, 'fruité frais', null, null, '2021-07-21T04:30:15.956109+00:00', '2021-07-21T04:30:15.956109+00:00');
