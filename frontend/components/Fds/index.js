@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { Heading, Center, Container, VStack, Table, Thead, Tr, Th } from '@chakra-ui/react';
 import Section1 from './Section1';
 import Section2 from './Section2';
@@ -15,6 +16,7 @@ import Section13 from './Section13';
 import Section14 from './Section14';
 
 const FDSStack = (props) => {
+    const now = new Date();
     const { juice } = props;
     const j = juice[0];
 
@@ -30,7 +32,7 @@ const FDSStack = (props) => {
                         </Th>
                         <Th textAlign="left">
                             Version: 1<br />
-                            Date d'émission : 22.05.2019
+                            Date d'émission : {format(now, 'dd.mm.yyyy', {})}
                         </Th>
                     </Tr>
                 </Thead>
