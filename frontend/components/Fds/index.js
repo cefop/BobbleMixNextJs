@@ -19,6 +19,13 @@ const FDSStack = (props) => {
     const now = new Date();
     const { juice } = props;
     const j = juice[0];
+    const company = {
+        name: 'CEFOP',
+        address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE France',
+        tel: '0184690030',
+        web: 'www.bobbleliquide.com',
+        emergencytel: '+33 (0)1 45 42 59 59',
+    };
 
     return (
         <Container maxW={'7xl'} p="5" mt="15" backgroundColor="white" color="black">
@@ -44,7 +51,7 @@ const FDSStack = (props) => {
                 </Heading>
             </Center>
             <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-                <Section1 name={j.name} />
+                <Section1 name={j.name} company={company} />
                 <Section2 />
                 <Section3 />
                 <Section4 />

@@ -1,7 +1,7 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
 
 const Section2 = (props) => {
-    const { name } = props;
+    const { name, company } = props;
     return (
         <>
             <Heading as="h4" size="md">
@@ -71,11 +71,13 @@ const Section2 = (props) => {
                 <Tbody>
                     <Tr>
                         <Td colSpan={2}>
-                            CEFOP <br />
-                            8 avenue du bouton d’or 94370 SUCY-EN-BRIE France <br />
-                            Téléphone : 0184690030
+                            {company.name}
                             <br />
-                            Site web www.bobbleliquide.com
+                            Adresse: {company.address}
+                            <br />
+                            Téléphone : {company.tel}
+                            <br />
+                            Site web: {company.web}
                         </Td>
                     </Tr>
                 </Tbody>
@@ -88,7 +90,7 @@ const Section2 = (props) => {
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>
-                                <ListItem>ORFILA (INRS) + 33 (0)1 45 42 59 59</ListItem>
+                                <ListItem>ORFILA (INRS): {company.emergencytel}</ListItem>
                             </UnorderedList>
                         </Td>
                     </Tr>
