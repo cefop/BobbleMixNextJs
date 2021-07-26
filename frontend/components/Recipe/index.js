@@ -47,7 +47,7 @@ const UserRecipe = (props) => {
                 <SimpleGrid minChildWidth="120px" spacing="40px">
                     <Image boxSize="150px" objectFit="cover" src={clcali} alt="classic claifornian" />
                     <Box bg="" height="30px" marginBottom={3}>
-                        <CircularProgress size="100px" value={20} color="green.400">
+                        <CircularProgress size="100px" value={50} color="green.400">
                             <CircularProgressLabel>20ml</CircularProgressLabel>
                         </CircularProgress>
                     </Box>
@@ -62,7 +62,7 @@ const UserRecipe = (props) => {
                 <SimpleGrid minChildWidth="120px" spacing="40px">
                     <Image boxSize="150px" objectFit="cover" src={cara} alt="gourmand caramel" />
                     <Box bg="" height="30px" marginBottom={3}>
-                        <CircularProgress size="100px" value={20} color="green.400">
+                        <CircularProgress size="100px" value={50} color="green.400">
                             <CircularProgressLabel>20ml</CircularProgressLabel>
                         </CircularProgress>
                     </Box>

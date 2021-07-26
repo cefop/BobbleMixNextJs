@@ -26,7 +26,7 @@ const UserRecipe = () => {
                     })
                 ) : (
                     <Text color="brown" width="300px">
-                        Pour commencer votre recette <br /> Cliquer sur vos aromes
+                        Vous pouvez ajouter jusqu'a 5 aromes
                     </Text>
                 )}
             </MyRecipe>

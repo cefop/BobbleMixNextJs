@@ -31,12 +31,12 @@ const ContainerMix = (props) => {
                 >
                     <Flex height="100%" overflow="auto" overflowY="auto">
                         <Box>
-                            <h2>Faite votr erecette bobble mix!</h2>
+                            <h1>Faite votre recette bobble mix!</h1>
                             <h3>étape 1: Choisisez vos arômes</h3>
                             <UserRecipe />
                             <h3>étape 2: Choisisez votre dosage de nicotine</h3>
                             <NicoLevel />
-                            <h3>étape 3: Sauvegarder votre recette</h3>
+                            {/* Step 3: Save recipe is included inside NicoLevel  */}
                         </Box>
                     </Flex>
                 </Box>
