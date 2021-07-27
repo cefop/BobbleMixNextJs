@@ -1,6 +1,6 @@
 import FdsLayout from '../components/Fds/index';
 
-export default function About() {
+export default function Fds() {
     const juice = [
         {
             name: 'Mangue sans nicotine 1L',
