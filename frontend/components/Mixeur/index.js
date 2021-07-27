@@ -1,10 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
 import ChooseFlavor from './ChooseFlavor';
 import UserRecipe from './UserRecipe';
+import NicoLevel from './NicoLevel';
 import { gql, useQuery } from '@apollo/client';
 import Loading from '../Loading';
 import Error from '../Error';
-import NicoLevel from './NicoLevel';
 
 const ContainerMix = (props) => {
     const FETCH_CATEGORIES = gql`
