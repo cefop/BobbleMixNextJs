@@ -1,9 +1,9 @@
-import { extendTheme } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
-export const theme = extendTheme({
-    gray: {
-        700: '#2D3748',
-        600: '#4A5568',
-        300: '#CBD5E0',
-    },
-});
+export const HeadingBox = styled.div`
+    width: 100%;
+    padding: 2px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    background-color: #f7fafc;
+`;

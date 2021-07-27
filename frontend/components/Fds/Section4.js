@@ -1,12 +1,16 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
+import { HeadingBox } from './FDSStyle';
 
 const Section4 = () => {
     return (
         <>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 4: Premiers secours
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 4: Premiers secours
+                </Heading>
+            </HeadingBox>
+
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>4.1 - Description des premiers secours</Th>

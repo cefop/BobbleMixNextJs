@@ -1,12 +1,16 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
+import { HeadingBox } from './FDSStyle';
 
 const Section3 = () => {
     return (
         <>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 3: Composition / informations sur les composants
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 3: Composition / informations sur les composants
+                </Heading>
+            </HeadingBox>
+
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>3.1 - Substances</Th>
@@ -29,9 +33,9 @@ const Section3 = () => {
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
+                                        <Td></Td>
+                                        <Td></Td>
+                                        <Td></Td>
                                     </Tr>
                                 </Tbody>
                             </Table>

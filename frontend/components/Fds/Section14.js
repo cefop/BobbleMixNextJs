@@ -1,14 +1,17 @@
-import { format } from 'date-fns';
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
+import { format } from 'date-fns';
+import { HeadingBox } from './FDSStyle';
 
 const Section14 = () => {
     const now = new Date();
     return (
         <>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 16: Autres informations
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 16: Autres informations
+                </Heading>
+            </HeadingBox>
+            <Table variant="striped" bg="#F7FAFC">
                 <Tbody>
                     <Tr>
                         <Td>Versions de la FDS</Td>
@@ -37,8 +40,8 @@ const Section14 = () => {
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
+                                        <Td></Td>
+                                        <Td></Td>
                                     </Tr>
                                 </Tbody>
                             </Table>

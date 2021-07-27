@@ -1,13 +1,17 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
+import { HeadingBox } from './FDSStyle';
 
-const Section2 = (props) => {
+const Section1 = (props) => {
     const { name, company } = props;
+
     return (
         <>
-            <Heading as="h4" size="md">
-                RUBRIQUE 1: Identification de la substance/du mélange et de la société/l’entreprise
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 1: Identification de la substance/du mélange et de la société/l’entreprise
+                </Heading>
+            </HeadingBox>
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>1.1 - Identificateur de produit</Th>
@@ -100,4 +104,4 @@ const Section2 = (props) => {
     );
 };
 
-export default Section2;
+export default Section1;

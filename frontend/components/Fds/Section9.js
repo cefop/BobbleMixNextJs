@@ -1,12 +1,16 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
+import { HeadingBox } from './FDSStyle';
 
 const Section9 = () => {
     return (
         <>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 9: Propriétés physiques et chimiques
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 9: Propriétés physiques et chimiques
+                </Heading>
+            </HeadingBox>
+
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th>9.1 - Informations sur les propriétés physiques et chimiques essentielles</Th>

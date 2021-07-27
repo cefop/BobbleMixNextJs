@@ -1,12 +1,15 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
+import { HeadingBox } from './FDSStyle';
 
 const Section13 = () => {
     return (
         <>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 13: Considérations relatives à l’élimination
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 13: Considérations relatives à l’élimination
+                </Heading>
+            </HeadingBox>
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>13.1 - Méthodes de traitement des déchets</Th>
@@ -55,25 +58,30 @@ const Section13 = () => {
                     </Tr>
                 </Tbody>
             </Table>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 14: Informations relatives au transport
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 14: Informations relatives au transport
+                </Heading>
+            </HeadingBox>
+
+            <Table variant="striped" bg="#F7FAFC">
                 <Tbody>
                     <Tr>
                         <Td>
                             <UnorderedList>
-                                <ListItem>xyz</ListItem>
+                                <ListItem></ListItem>
                             </UnorderedList>
                         </Td>
                     </Tr>
                 </Tbody>
             </Table>
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 15: Informations réglementaires
+                </Heading>
+            </HeadingBox>
 
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 15: Informations réglementaires
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>

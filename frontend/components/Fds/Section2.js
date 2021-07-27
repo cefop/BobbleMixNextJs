@@ -1,12 +1,15 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, HStack, Image } from '@chakra-ui/react';
+import { HeadingBox } from './FDSStyle';
 
 const Section2 = () => {
     return (
         <>
-            <Heading as="h4" size="md" mt={5}>
-                RUBRIQUE 2: Identification des dangers
-            </Heading>
-            <Table variant="striped" colorScheme="gray">
+            <HeadingBox>
+                <Heading as="h4" size="md">
+                    RUBRIQUE 2: Identification des dangers
+                </Heading>
+            </HeadingBox>
+            <Table variant="striped" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>2.1 - Classification de la substance ou du mélange</Th>
@@ -19,8 +22,8 @@ const Section2 = () => {
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
+                                        <Td></Td>
+                                        <Td></Td>
                                     </Tr>
                                 </Tbody>
                             </Table>
@@ -47,9 +50,9 @@ const Section2 = () => {
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
+                                        <Td></Td>
+                                        <Td></Td>
+                                        <Td></Td>
                                     </Tr>
                                 </Tbody>
                             </Table>
@@ -84,8 +87,8 @@ const Section2 = () => {
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
+                                        <Td></Td>
+                                        <Td></Td>
                                     </Tr>
                                 </Tbody>
                             </Table>
@@ -130,8 +133,8 @@ const Section2 = () => {
                                 <Tbody>
                                     <Tr>
                                         <Td>EUH208</Td>
-                                        <Td>xyz</Td>
-                                        <Td>xyz</Td>
+                                        <Td></Td>
+                                        <Td></Td>
                                         <Td>Peut provoquer une réaction allergique</Td>
                                     </Tr>
                                 </Tbody>
