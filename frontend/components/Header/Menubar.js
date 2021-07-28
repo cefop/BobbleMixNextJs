@@ -27,11 +27,8 @@ const Menubar = () => {
                         <Link href="/mixeur">
                             <ItemLink>mixeur</ItemLink>
                         </Link>
-                        <Link href="/howto">
-                            <ItemLink>comment l'utiliser</ItemLink>
-                        </Link>
-                        <Link href="/about">
-                            <ItemLink>à propos</ItemLink>
+                        <Link href="/toprecipe">
+                            <ItemLink>top recettes</ItemLink>
                         </Link>
                     </HStack>
                 </Menu>
@@ -78,11 +75,8 @@ const Menubar = () => {
                             <Link href="/mixeur">
                                 <ItemLink>mixeur</ItemLink>
                             </Link>
-                            <Link href="/howto">
-                                <ItemLink>comment l'utiliser</ItemLink>
-                            </Link>
-                            <Link href="/about">
-                                <ItemLink>à propos</ItemLink>
+                            <Link href="/toprecipe">
+                                <ItemLink>top recettes</ItemLink>
                             </Link>
                         </VStack>
                         <Divider mb={3} />

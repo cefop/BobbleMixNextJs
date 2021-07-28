@@ -14,11 +14,12 @@ import Section11 from './Section11';
 import Section12 from './Section12';
 import Section13 from './Section13';
 import Section14 from './Section14';
+import { saveur_molecule } from './Risk/saveur_molecule';
+import { molecule_risk } from './Risk/molecule_risk';
 
 const FDSStack = (props) => {
     const now = new Date();
     const { juice } = props;
-    const j = juice[0];
     const company = {
         name: 'CEFOP',
         address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE France',
@@ -26,6 +27,31 @@ const FDSStack = (props) => {
         web: 'www.bobbleliquide.com',
         emergencytel: '+33 (0)1 45 42 59 59',
     };
+
+    // Join name of juice flavors
+    const getMixName = (arr) => {
+        const info = arr.map((i, j) => {
+            const nameArr = i.name;
+            return nameArr;
+        });
+        return info.join('-');
+    };
+    const name = `BobbleMix ${getMixName(juice)}`;
+
+    // Find all molecules of flavors inside Juice
+    const mixSaveurIds = juice.map((s) => s.id);
+    const mixMolecules = saveur_molecule.filter(({ Saveur_ID }) => mixSaveurIds.includes(Saveur_ID));
+    console.log('Mix Molecules', mixMolecules);
+
+    // Sum all retenu of molecule of juice
+    const arr = mixMolecules.map((x) => x.retenu);
+    const sumMol = arr.reduce((a, b) => a + b);
+    console.log('Sum of all mol retenu', sumMol);
+
+    // Find all Risk of molecules inside juice
+    const mixMoleculeIds = mixMolecules.map((m) => m.Molecule_ID);
+    const mixRisks = molecule_risk.filter(({ Molecule_ID }) => mixMoleculeIds.includes(Molecule_ID));
+    console.log('Mix Risks', mixRisks);
 
     return (
         <Container maxW={'7xl'} p="5" mt="15" backgroundColor="white" color="black">
@@ -47,11 +73,11 @@ const FDSStack = (props) => {
 
             <Center>
                 <Heading as="h2" mb={8} mt={5}>
-                    {j.name}
+                    {name}
                 </Heading>
             </Center>
             <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-                <Section1 name={j.name} company={company} />
+                <Section1 name={name} company={company} />
                 <Section2 />
                 <Section3 />
                 <Section4 />

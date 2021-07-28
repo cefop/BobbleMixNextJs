@@ -14,7 +14,9 @@ const customTheme = extendTheme({
         bbmSun: {
             100: '#ffc755',
         },
-        orange: '#D37230',
+        orange: {
+            200: '#ed9500',
+        },
         gray: '#0E161B40',
     },
     styles: {
