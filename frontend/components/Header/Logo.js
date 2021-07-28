@@ -22,7 +22,7 @@ const Logo = () => {
         <LogoImg>
             <Link href="/">
                 <a>
-                    <Image fontSize="md" src="/bobble-logo-black.png" alt="booble mix" />
+                    <Image src="/assets/bobble-logo-black.png" alt="booble mix" />
                 </a>
             </Link>
         </LogoImg>

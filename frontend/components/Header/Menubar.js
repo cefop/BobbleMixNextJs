@@ -19,9 +19,7 @@ const Menubar = () => {
                 display={['none', null, 'flex']}
                 width="100%"
                 justifyContent="space-between"
-                fontWeight="normal"
                 backgroundColor="#ffffff"
-                fontFamily="Staatliches"
             >
                 <Menu>
                     <HStack>
@@ -75,7 +73,7 @@ const Menubar = () => {
                 </Flex>
                 <Collapse in={isOpen} animateOpacity>
                     <Divider opacity="10" />
-                    <Box p="40px" color="black" bg="white" rounded="none" shadow="md" fontFamily="Staatliches">
+                    <Box p="40px" color="black" bg="white" rounded="none" shadow="md">
                         <VStack pr={5} alignItems="baseline">
                             <Link href="/mixeur">
                                 <ItemLink>mixeur</ItemLink>

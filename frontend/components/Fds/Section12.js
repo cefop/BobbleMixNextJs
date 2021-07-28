@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section12 = () => {
     return (
@@ -9,13 +9,16 @@ const Section12 = () => {
                     RUBRIQUE 12: Informations écologiques
                 </Heading>
             </HeadingBox>
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th>12.1 - Toxicité</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             Toxicité : Mélange
@@ -23,45 +26,42 @@ const Section12 = () => {
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>EC50 48 hr crustacea</Th>
-                                        <Th>Aucune donnée disponible</Th>
+                                        <ThData>EC50 48 hr crustacea</ThData>
+                                        <ThData>Aucune donnée disponible</ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>LC50 96 hr fish</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>LC50 96 hr fish</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>ErC50 algae</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>ErC50 algae</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>ErC50 other aquatic plants</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>ErC50 other aquatic plants</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>NOEC chronic fish</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>NOEC chronic fish</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>NOEC chronic crustacea</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>NOEC chronic crustacea</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>NOEC chronic algae</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>NOEC chronic algae</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>NOEC chronic other aquatic plants </Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>NOEC chronic other aquatic plants </TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                             <UnorderedList>
-                                <ListItem>
-                                    Nocif pour les organismes aquatiques, entraîne des effets à long terme.{' '}
-                                </ListItem>
                                 <ListItem>
                                     La substance/le mélange ne satisfont pas aux critères de toxicité aiguë pour le
                                     milieu aquatique selon l’annexe I du règlement (CE) N° 1272/2008 [CLP].
@@ -69,6 +69,9 @@ const Section12 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -76,23 +79,26 @@ const Section12 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>Demande biochimique en oxygène (DBO)</Th>
-                                        <Th>Aucune donnée disponible</Th>
+                                        <ThData>Demande biochimique en oxygène (DBO)</ThData>
+                                        <ThData>Aucune donnée disponible</ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>Demande chimique en oxygène (DCO)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Demande chimique en oxygène (DCO)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>% de biodégradation en 28 jours</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>% de biodégradation en 28 jours</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
@@ -101,6 +107,9 @@ const Section12 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -108,19 +117,22 @@ const Section12 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>Facteur de bioconcentration (FBC)</Th>
-                                        <Th>Aucune donnée disponible</Th>
+                                        <ThData>Facteur de bioconcentration (FBC)</ThData>
+                                        <ThData>Aucune donnée disponible</ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>Log KOW</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Log KOW</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
@@ -129,6 +141,9 @@ const Section12 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -136,6 +151,9 @@ const Section12 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -150,6 +168,9 @@ const Section12 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -160,6 +181,9 @@ const Section12 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -167,6 +191,9 @@ const Section12 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>

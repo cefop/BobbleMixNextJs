@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, HStack, Image } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section2 = () => {
     return (
@@ -9,26 +9,32 @@ const Section2 = () => {
                     RUBRIQUE 2: Identification des dangers
                 </Heading>
             </HeadingBox>
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>2.1 - Classification de la substance ou du mélange</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Classification selon règlement (CE) N° 1272/2008 [CLP]</Td>
                         <Td>
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td></Td>
-                                        <Td></Td>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData></TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -36,6 +42,9 @@ const Section2 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Étiquetage selon le règlement (CE) N° 1272/2008 [CLP]</Td>
                         <Td>
@@ -43,104 +52,114 @@ const Section2 = () => {
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>N°CAS</Th>
-                                        <Th>N°CE</Th>
-                                        <Th>Nom</Th>
+                                        <ThData>N°CAS</ThData>
+                                        <ThData>N°CE</ThData>
+                                        <ThData>Nom</ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td></Td>
-                                        <Td></Td>
-                                        <Td></Td>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData></TdData>
+                                        <TdData></TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Mention d’avertissement :</Td>
                         <Td>Attention!</Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Pictogrammes :</Td>
                         <Td>
                             <HStack>
-                                <Image
-                                    src="https://www.bobblemix.com/static/blender/images/GHS02-74x74.png"
-                                    width="74"
-                                    height="74"
-                                    alt=""
-                                />
-                                <Image
-                                    src="https://www.bobblemix.com/static/blender/images/GHS07-74x74.png"
-                                    width="74"
-                                    height="74"
-                                    alt=""
-                                />
+                                <Image src="/assets/picto/GHS02-74x74.png" alt="GHS02" width="74" height="74" />
+                                <Image src="/assets/picto/GHS07-74x74.png" alt="GHS07" width="74" height="74" />
                             </HStack>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Mentions de danger :</Td>
                         <Td>
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td></Td>
-                                        <Td></Td>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData></TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Conseils de prudence :</Td>
                         <Td>
                             <Table size="sm">
                                 <Tbody>
                                     <Tr className="header">
-                                        <Td>P102</Td>
-                                        <Td>Tenir hors de portée des enfants.</Td>
+                                        <TdData>P102</TdData>
+                                        <TdData>Tenir hors de portée des enfants.</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>P210</Td>
-                                        <Td>
+                                        <TdData>P210</TdData>
+                                        <TdData>
                                             Tenir à l’écart de la chaleur, des surfaces chaudes, des étincelles, des
                                             flammes nues et de toute auTre source d’inflammation. Ne pas fumer.
-                                        </Td>
+                                        </TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>P270</Td>
-                                        <Td>Ne pas manger, boire ou fumer en manipulant ce produit.</Td>
+                                        <TdData>P270</TdData>
+                                        <TdData>Ne pas manger, boire ou fumer en manipulant ce produit.</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>P302+P352</Td>
-                                        <Td>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</Td>
+                                        <TdData>P302+P352</TdData>
+                                        <TdData>
+                                            EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.
+                                        </TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>P501</Td>
-                                        <Td>Éliminer le contenu dans un cenTre de Traitement agréé.</Td>
+                                        <TdData>P501</TdData>
+                                        <TdData>Éliminer le contenu dans un cenTre de Traitement agréé.</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Phrases EUH :</Td>
                         <Td>
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>EUH208</Td>
-                                        <Td></Td>
-                                        <Td></Td>
-                                        <Td>Peut provoquer une réaction allergique</Td>
+                                        <TdData>EUH208</TdData>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData>Peut provoquer une réaction allergique</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -148,6 +167,9 @@ const Section2 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Substance PBT :</Td>
                         <Td>

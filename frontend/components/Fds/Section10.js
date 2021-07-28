@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate } from './FDSStyle';
 
 const Section10 = () => {
     return (
@@ -9,13 +9,16 @@ const Section10 = () => {
                     RUBRIQUE 10: Stabilité et réactivité
                 </Heading>
             </HeadingBox>
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th>10.1 - Réactivité</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -26,6 +29,9 @@ const Section10 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -33,6 +39,9 @@ const Section10 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -43,6 +52,9 @@ const Section10 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -50,6 +62,9 @@ const Section10 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -59,6 +74,9 @@ const Section10 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -66,6 +84,9 @@ const Section10 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -73,6 +94,9 @@ const Section10 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -80,6 +104,9 @@ const Section10 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>
@@ -87,6 +114,9 @@ const Section10 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -94,6 +124,9 @@ const Section10 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <UnorderedList>

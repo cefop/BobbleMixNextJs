@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section11 = () => {
     return (
@@ -9,13 +9,16 @@ const Section11 = () => {
                     RUBRIQUE 11: Informations toxicologiques
                 </Heading>
             </HeadingBox>
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>11.1 - Informations sur les effets toxicologiques</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Toxicité aiguë</Td>
                         <Td>
@@ -24,6 +27,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             Toxicité : Mélange
@@ -31,35 +37,38 @@ const Section11 = () => {
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>LD50 oral (rat)</Th>
-                                        <Th>Aucune donnée disponible</Th>
+                                        <ThData>LD50 oral (rat)</ThData>
+                                        <ThData>Aucune donnée disponible</ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>LD50 dermal (rat)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>LD50 dermal (rat)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>LD50 dermal (rabbit)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>LD50 dermal (rabbit)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>LC50 inhalation (rat)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>LC50 inhalation (rat)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>LC50 inhalation dusts and mists (rat)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>LC50 inhalation dusts and mists (rat)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>LC50 inhalation vapours (rat)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>LC50 inhalation vapours (rat)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             Toxicité : Substances
@@ -67,13 +76,16 @@ const Section11 = () => {
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td></Td>
-                                        <Td></Td>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData></TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Corrosion cutanée/irritation cutanée</Td>
                         <Td>
@@ -84,6 +96,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Sensibilisation respiratoire ou cutanée</Td>
                         <Td>
@@ -92,6 +107,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Mutagénicité sur les cellules germinales</Td>
                         <Td>
@@ -100,6 +118,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Cancerogénité</Td>
                         <Td>
@@ -108,6 +129,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Toxicité pour la reproduction</Td>
                         <Td>
@@ -116,6 +140,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Toxicité spécifique pour certains organes cibles — exposition unique</Td>
                         <Td>
@@ -124,6 +151,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Toxicité spécifique pour certains organes cibles – exposition répétée</Td>
                         <Td>
@@ -132,6 +162,9 @@ const Section11 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Danger par aspiration</Td>
                         <Td>

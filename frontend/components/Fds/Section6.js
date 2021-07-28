@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate } from './FDSStyle';
 
 const Section6 = () => {
     return (
@@ -10,7 +10,7 @@ const Section6 = () => {
                 </Heading>
             </HeadingBox>
 
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>
@@ -19,6 +19,9 @@ const Section6 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Pour les non-secouristes</Td>
                         <Td>
@@ -29,6 +32,9 @@ const Section6 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Pour les secouristes</Td>
                         <Td>
@@ -37,6 +43,9 @@ const Section6 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -44,6 +53,9 @@ const Section6 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>
@@ -53,6 +65,9 @@ const Section6 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -60,6 +75,9 @@ const Section6 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Méthodes et matériel de confinement</Td>
                         <Td>
@@ -71,6 +89,9 @@ const Section6 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Méthodes et matériel de nettoyage</Td>
                         <Td>
@@ -88,6 +109,9 @@ const Section6 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Recueillir mécaniquement.</Td>
                         <Td>
@@ -96,6 +120,9 @@ const Section6 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -103,6 +130,9 @@ const Section6 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>

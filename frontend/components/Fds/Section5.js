@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate } from './FDSStyle';
 
 const Section5 = () => {
     return (
@@ -10,13 +10,16 @@ const Section5 = () => {
                 </Heading>
             </HeadingBox>
 
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>5.1 - Moyen d’extinction</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Moyens d’extinction appropriés</Td>
                         <Td>
@@ -27,6 +30,9 @@ const Section5 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Moyens d’extinction inappropriés</Td>
                         <Td>
@@ -35,6 +41,9 @@ const Section5 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -42,6 +51,9 @@ const Section5 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Dangers particuliers résultant de la substance ou du mélange</Td>
                         <Td>
@@ -50,6 +62,9 @@ const Section5 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Produits de décomposition dangereux</Td>
                         <Td>
@@ -59,6 +74,9 @@ const Section5 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -66,6 +84,9 @@ const Section5 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>

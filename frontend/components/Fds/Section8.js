@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, Image } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate, TdData } from './FDSStyle';
 
 const Section8 = () => {
     return (
@@ -10,30 +10,36 @@ const Section8 = () => {
                 </Heading>
             </HeadingBox>
 
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>8.1 - Paramètres de contrôle</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <Table size="sm">
-                                <Thead>
+                                <Thead bg="#eeeeee">
                                     <Tr>
                                         <Th colSpan={2}>glycerol (56-81-5)</Th>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>VME mg/m3 (FR)</Td>
-                                        <Td>10 mg/m3</Td>
+                                        <TdData>VME mg/m3 (FR)</TdData>
+                                        <TdData>10 mg/m3</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -41,6 +47,9 @@ const Section8 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Contrôles techniques appropriés</Td>
                         <Td>
@@ -49,6 +58,9 @@ const Section8 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             Mesures de protection individuelle, telles que les équipements de protection individuelle
@@ -62,11 +74,12 @@ const Section8 = () => {
                                 </ListItem>
                                 <ListItem>Porter les gants de protection homologués</ListItem>
                                 <ListItem>
-                                    <Image
+                                    <Image src="/assets/picto/gloves-74x74.png" alt="gloves" width="74" height="74" />
+                                    {/* <Image
                                         src="https://www.bobblemix.com/static/blender/images/gloves.png"
                                         width="114"
                                         height="112"
-                                    />
+                                    /> */}
                                 </ListItem>
                                 <ListItem>Caoutchouc butyle</ListItem>
                                 <ListItem>
@@ -79,6 +92,9 @@ const Section8 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Contrôles d’exposition liés à la protection de l’environnement</Td>
                         <Td>

@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate } from './FDSStyle';
 
 const Section4 = () => {
     return (
@@ -10,13 +10,16 @@ const Section4 = () => {
                 </Heading>
             </HeadingBox>
 
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>4.1 - Description des premiers secours</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>En cas d’inhalation</Td>
                         <Td>
@@ -25,6 +28,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Après contact avec la peau</Td>
                         <Td>
@@ -35,6 +41,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Après contact avec les yeux</Td>
                         <Td>
@@ -45,6 +54,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>En cas d’ingestion</Td>
                         <Td>
@@ -54,6 +66,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -61,6 +76,9 @@ const Section4 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Symptômes et effets - En cas d’inhalation</Td>
                         <Td>
@@ -69,6 +87,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Symptômes et effets - Après contact avec la peau</Td>
                         <Td>
@@ -77,6 +98,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Symptômes et effets - Après contact avec les yeux</Td>
                         <Td>
@@ -85,6 +109,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Symptômes et effets - En cas d’ingestion</Td>
                         <Td>
@@ -93,6 +120,9 @@ const Section4 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -103,6 +133,9 @@ const Section4 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>

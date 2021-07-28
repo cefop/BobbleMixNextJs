@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate } from './FDSStyle';
 
 const Section7 = () => {
     return (
@@ -10,13 +10,16 @@ const Section7 = () => {
                 </Heading>
             </HeadingBox>
 
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th colSpan={2}>7.1 - Précautions à prendre pour une manipulation sans danger</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Recommandation</Td>
                         <Td>
@@ -32,6 +35,9 @@ const Section7 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Notice explicative sur l'hygiène industrielle générale</Td>
                         <Td>
@@ -47,17 +53,24 @@ const Section7 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
-                        <Th colSpan={2}> Conditions d’un stockage sûr, y compris d’éventuelles incompatibilités</Th>
+                        <Th colSpan={2}>7.2 Conditions d’un stockage sûr, y compris d’éventuelles incompatibilités</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>
-                                <ListItem>Température de stockage recommandée + 15°C à +25°C</ListItem>
+                                <ListItem>Température de stockage recommandée</ListItem>
+                                <ListItem>+ 15°C à +25°C</ListItem>
                                 <ListItem>Conserver le récipient bien fermé.</ListItem>
                                 <ListItem>Conserver/stocker uniquement dans le récipient d'origine.</ListItem>
                                 <ListItem>Eloigner toute source d'ignition.</ListItem>
@@ -65,6 +78,9 @@ const Section7 = () => {
                             </UnorderedList>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -72,6 +88,9 @@ const Section7 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td colSpan={2}>
                             <UnorderedList>

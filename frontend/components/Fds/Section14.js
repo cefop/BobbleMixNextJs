@@ -1,6 +1,6 @@
-import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Td, Heading } from '@chakra-ui/react';
 import { format } from 'date-fns';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section14 = () => {
     const now = new Date();
@@ -11,7 +11,7 @@ const Section14 = () => {
                     RUBRIQUE 16: Autres informations
                 </Heading>
             </HeadingBox>
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Tbody>
                     <Tr>
                         <Td>Versions de la FDS</Td>
@@ -19,29 +19,32 @@ const Section14 = () => {
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>Version</Th>
-                                        <Th>Date d’émission</Th>
-                                        <Th>Description des modifications</Th>
+                                        <ThData>Version</ThData>
+                                        <ThData>Date d’émission</ThData>
+                                        <ThData>Description des modifications</ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>1</Td>
-                                        <Td>{format(now, 'dd/mm/yyyy', {})}</Td>
-                                        <Td></Td>
+                                        <TdData>1</TdData>
+                                        <TdData>{format(now, 'dd/mm/yyyy', {})}</TdData>
+                                        <TdData></TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>Textes des phrases réglementaires</Td>
                         <Td>
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td></Td>
-                                        <Td></Td>
+                                        <TdData>&nbsp;</TdData>
+                                        <TdData></TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>

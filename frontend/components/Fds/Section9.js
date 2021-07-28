@@ -1,5 +1,5 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
-import { HeadingBox } from './FDSStyle';
+import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section9 = () => {
     return (
@@ -10,38 +10,41 @@ const Section9 = () => {
                 </Heading>
             </HeadingBox>
 
-            <Table variant="striped" bg="#F7FAFC">
+            <Table variant="unstyled" bg="#F7FAFC">
                 <Thead>
                     <Tr>
                         <Th>9.1 - Informations sur les propriétés physiques et chimiques essentielles</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <Table size="sm">
                                 <Thead>
                                     <Tr>
-                                        <Th>
+                                        <ThData>
                                             <u>État</u>
-                                        </Th>
-                                        <Th>
+                                        </ThData>
+                                        <ThData>
                                             <u>Couleur</u>
-                                        </Th>
-                                        <Th>
+                                        </ThData>
+                                        <ThData>
                                             <u>Aspect</u>
-                                        </Th>
-                                        <Th>
+                                        </ThData>
+                                        <ThData>
                                             <u>Odeur</u>
-                                        </Th>
+                                        </ThData>
                                     </Tr>
                                 </Thead>
                                 <Tbody>
                                     <Tr>
-                                        <Td>Liquide</Td>
-                                        <Td>Claire</Td>
-                                        <Td>Fluide</Td>
-                                        <Td>Légère</Td>
+                                        <TdData>Liquide</TdData>
+                                        <TdData>Claire</TdData>
+                                        <TdData>Fluide</TdData>
+                                        <TdData>Légère</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
@@ -49,101 +52,104 @@ const Section9 = () => {
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>Seuil olfactif</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Seuil olfactif</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>pH</Td>
-                                        <Td>non applicable</Td>
+                                        <TdData>pH</TdData>
+                                        <TdData>non applicable</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Point de fusion</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Point de fusion</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Point de congélation</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Point de congélation</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Point d’ébullition</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Point d’ébullition</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Point éclair</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Point éclair</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Taux d’évaporation</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Taux d’évaporation</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Inflammabilité</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Inflammabilité</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Limite inférieure d’explosivité</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Limite inférieure d’explosivité</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Limite supérieure d’explosivité</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Limite supérieure d’explosivité</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Pression de la vapeur</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Pression de la vapeur</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Densité de la vapeur</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Densité de la vapeur</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Densité relative</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Densité relative</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Densité</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Densité</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Solubilité (Eau)</Td>
-                                        <Td>Soluble</Td>
+                                        <TdData>Solubilité (Eau)</TdData>
+                                        <TdData>Soluble</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Solubilité (Ethanol)</Td>
-                                        <Td>Soluble</Td>
+                                        <TdData>Solubilité (Ethanol)</TdData>
+                                        <TdData>Soluble</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Solubilité (Acétone)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Solubilité (Acétone)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Solubilité (Solvants organiques)</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Solubilité (Solvants organiques)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Log KOW</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Log KOW</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Température d’auto-inflammabilité</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Température d’auto-inflammabilité</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Température de décomposition</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Température de décomposition</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Viscosité, cinématique</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Viscosité, cinématique</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Viscosité, dynamique</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Viscosité, dynamique</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
                         </Td>
                     </Tr>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                 </Tbody>
                 <Thead>
                     <Tr>
@@ -151,21 +157,24 @@ const Section9 = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
                     <Tr>
                         <Td>
                             <Table size="sm">
                                 <Tbody>
                                     <Tr>
-                                        <Td>Teneur en COV</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Teneur en COV</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Énergie minimale d’ignition</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Énergie minimale d’ignition</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                     <Tr>
-                                        <Td>Conductivité</Td>
-                                        <Td>Aucune donnée disponible</Td>
+                                        <TdData>Conductivité</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
                                     </Tr>
                                 </Tbody>
                             </Table>
