@@ -65,7 +65,7 @@ const FDSStack = (props) => {
                         </Th>
                         <Th textAlign="left">
                             Version: 1<br />
-                            Date d'émission : {format(now, 'dd.mm.yyyy', {})}
+                            Date d'émission : {format(now, 'dd.MM.yyyy', {})}
                         </Th>
                     </Tr>
                 </Thead>

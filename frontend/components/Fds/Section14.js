@@ -27,7 +27,7 @@ const Section14 = () => {
                                 <Tbody>
                                     <Tr>
                                         <TdData>1</TdData>
-                                        <TdData>{format(now, 'dd/mm/yyyy', {})}</TdData>
+                                        <TdData>{format(now, 'dd/MM/yyyy', {})}</TdData>
                                         <TdData></TdData>
                                     </Tr>
                                 </Tbody>
