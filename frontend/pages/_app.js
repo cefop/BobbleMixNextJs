@@ -6,33 +6,38 @@ import { customTheme } from '../components/styles/theme';
 import Head from '../components/Header/Head';
 import Menubar from '../components/Header/Menubar';
 import { BobbleMixContext } from '../components/hooks/BobbleMixContext';
+import { NicoContext } from '../components/hooks/NicoContext';
 import { useApollo } from '../components/lib/apollo';
 
 export default function App({ Component, pageProps }) {
     const client = useApollo(pageProps.initialApolloProps);
     const [bobbleMix, setBobbleMix] = useState([]);
     const providerBobbleMix = useMemo(() => ({ bobbleMix, setBobbleMix }), [bobbleMix, setBobbleMix]);
+    const [nicoMix, setNicoMix] = useState(null);
+    const providerNicoMix = useMemo(() => ({ nicoMix, setNicoMix }), [nicoMix, setNicoMix]);
 
     return (
         <Provider session={pageProps.session}>
             <ApolloProvider client={client}>
                 <ChakraProvider theme={customTheme} width="100vw">
                     <BobbleMixContext.Provider value={providerBobbleMix}>
-                        <Flex
-                            flexDirection="column"
-                            width="100vw"
-                            padding="0"
-                            overflow="auto"
-                            bgGradient={['linear(to-b, bbmNavy.300, bbmNavy.200, bbmNavy.100)']}
-                        >
-                            <Flex width="100%" style={{ height: '75px' }}>
-                                <Head />
-                                <Menubar />
+                        <NicoContext.Provider value={providerNicoMix}>
+                            <Flex
+                                flexDirection="column"
+                                width="100vw"
+                                padding="0"
+                                overflow="auto"
+                                bgGradient={['linear(to-b, bbmNavy.300, bbmNavy.200, bbmNavy.100)']}
+                            >
+                                <Flex width="100%" style={{ height: '75px' }}>
+                                    <Head />
+                                    <Menubar />
+                                </Flex>
+                                <div style={{ height: 'calc(100vh - 75px)' }} width="100%" margin="0">
+                                    <Component {...pageProps} />
+                                </div>
                             </Flex>
-                            <div style={{ height: 'calc(100vh - 75px)' }} width="100%" margin="0">
-                                <Component {...pageProps} />
-                            </div>
-                        </Flex>
+                        </NicoContext.Provider>
                     </BobbleMixContext.Provider>
                 </ChakraProvider>
             </ApolloProvider>

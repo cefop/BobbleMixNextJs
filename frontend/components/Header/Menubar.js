@@ -19,7 +19,8 @@ const Menubar = () => {
                 display={['none', null, 'flex']}
                 width="100%"
                 justifyContent="space-between"
-                backgroundColor="#ffffff"
+                backgroundColor="#FEFEFE"
+                borderBottom="5px solid #ed9500"
             >
                 <Menu>
                     <HStack>
@@ -50,7 +51,9 @@ const Menubar = () => {
                                                 mr={2}
                                             />
                                             <TagLabel>
-                                                {session.user.email ? session.user.email : session.user.name}
+                                                {session.user.email
+                                                    ? session.user.email.toLowerCase()
+                                                    : session.user.name.toLowerCase()}
                                             </TagLabel>
                                         </Tag>
                                     </ItemLink>

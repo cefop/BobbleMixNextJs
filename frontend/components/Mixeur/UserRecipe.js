@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
 import CustomReduceFilter from '../lib/CustomReduceFilter';
 import GetSortOrder from '../lib/SortOder';
@@ -10,35 +10,30 @@ const UserRecipe = () => {
     const { bobbleMix } = useContext(BobbleMixContext);
     const results = CustomReduceFilter(bobbleMix);
     const gso = results.sort(GetSortOrder('id'));
-    const MaxMix = 5;
 
-    return gso.length >= 0 ? (
+    return (
         <RecipeContainer>
             <MyRecipe>
                 {gso.length >= 1 ? (
                     gso.map((r, i) => {
                         // console.log(r);
                         return (
-                            <Box key={i}>
+                            <Box key={i} my={7}>
                                 <UserRecipeRender list={r} />
                             </Box>
                         );
                     })
                 ) : (
-                    <Text color="brown" width="300px">
-                        Vous pouvez ajouter jusqu'a 5 aromes
-                    </Text>
+                    <RecipeContainer>
+                        <MyRecipe>
+                            {/* TODO : Create a dummy component Box  */}
+                            <Box my={7}></Box>
+                        </MyRecipe>
+                    </RecipeContainer>
                 )}
             </MyRecipe>
-            {bobbleMix.length >= 3 && bobbleMix.length <= 4 && (
-                <Text color="brown" width="300px">
-                    Possibilité d'ajouter {MaxMix - bobbleMix.length} quantité
-                    {bobbleMix.length <= 3 ? 's' : ''} ou arome
-                    {bobbleMix.length <= 3 ? 's' : ''}
-                </Text>
-            )}
         </RecipeContainer>
-    ) : null;
+    );
 };
 
 export default UserRecipe;

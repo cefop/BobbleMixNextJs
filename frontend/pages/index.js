@@ -40,7 +40,6 @@ export default function Home() {
                         border="2px"
                         borderColor="orange.200"
                         variant="outline"
-                        size="lg"
                         mt={18}
                     >
                         Lancer le mixeur

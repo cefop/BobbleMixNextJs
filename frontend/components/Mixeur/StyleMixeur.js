@@ -1,5 +1,21 @@
 import styled from '@emotion/styled';
 
+export const StepHeader = styled.h2`
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+`;
+
+export const StepTitle = styled.div`
+    font-size: 1.25rem;
+    text-align: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-top: 1px solid #ed9500;
+    border-bottom: 1px solid #ed9500;
+`;
+
 export const FlavorGrid = styled.div`
     padding: 1rem;
     display: grid;
@@ -61,7 +77,7 @@ export const LabelBottle = styled.h3`
 `;
 
 export const RecipeContainer = styled.div`
-    width: 100%
+    width: 100%;
     justify-items: center;
     align-items: center;
 `;

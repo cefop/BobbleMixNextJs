@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { useRadioGroup, HStack, Text } from '@chakra-ui/react';
+import React, { useContext } from 'react';
+import { useRadioGroup, HStack, Center } from '@chakra-ui/react';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
+import { NicoContext } from '../hooks/NicoContext';
 import NicoLevelCard from './NicoLevelCard';
-import SaveRecipe from './SaveRecipe';
 
 const NicoLevel = () => {
-    const [nicotine, setNicotine] = useState(null);
     const { bobbleMix } = useContext(BobbleMixContext);
+    const { setNicoMix } = useContext(NicoContext);
 
     const options = [
         { id: 1, nicotine: '0mg' },
@@ -18,15 +18,14 @@ const NicoLevel = () => {
 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'nicoLevel',
-        // defaultValue: '0mg',
-        onChange: setNicotine,
+        onChange: setNicoMix,
     });
 
     const group = getRootProps();
 
     return (
-        <>
-            <HStack {...group}>
+        <Center>
+            <HStack {...group} my={7}>
                 {options.map((value) => {
                     const radio = getRadioProps({ value: value.nicotine });
                     return (
@@ -36,18 +35,7 @@ const NicoLevel = () => {
                     );
                 })}
             </HStack>
-            {nicotine && (
-                <Text p={2} color="brown">
-                    vous avez sélectionné {nicotine} de nicotine
-                </Text>
-            )}
-            {nicotine && (
-                <>
-                    <h3>étape 3: Sauvegarder votre recette</h3>
-                    <SaveRecipe niclevel={nicotine} />
-                </>
-            )}
-        </>
+        </Center>
     );
 };
 

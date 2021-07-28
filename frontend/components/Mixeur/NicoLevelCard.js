@@ -19,15 +19,16 @@ const NicoLevelCard = (props) => {
                 borderRadius="md"
                 boxShadow="md"
                 _disabled={{
-                    bg: 'gray',
+                    bg: 'lightgray',
                     color: 'black',
-                    borderColor: 'gray',
+                    borderColor: 'withe',
                     cursor: 'not-allowed',
                 }}
                 _checked={{
-                    bg: 'orange',
-                    color: 'brown',
-                    borderColor: 'orange',
+                    bg: '#ed9500',
+                    color: 'white',
+                    fontWeight: 600,
+                    borderColor: '#ed9500',
                 }}
                 _focus={{
                     boxShadow: 'outline',

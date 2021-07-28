@@ -1,40 +1,43 @@
 import React, { useContext, useState } from 'react';
-import { Button, Code, Stack } from '@chakra-ui/react';
+import { Button, Center, Code, Stack } from '@chakra-ui/react';
+import { FaCloudDownloadAlt, FaRegUserCircle } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
+import { NicoContext } from '../hooks/NicoContext';
 
-const SaveRecipe = (props) => {
-    const { niclevel } = props;
+const SaveRecipe = () => {
     const { user } = useUser();
-    const { bobbleMix, setBobbleMix } = useContext(BobbleMixContext);
+    const { bobbleMix } = useContext(BobbleMixContext);
+    const { nicoMix } = useContext(NicoContext);
     const [showRecipe, setShowRecipe] = useState(false);
 
-    const reset = () => {
-        setBobbleMix([]);
-        setShowRecipe(false);
-    };
-
     return (
-        <>
-            <Stack spacing={4} direction="row" align="center">
+        <Center>
+            <Stack spacing={4} direction="row" align="center" my={7}>
                 {user ? (
                     <Button
-                        colorScheme="pink"
+                        leftIcon={<FaCloudDownloadAlt />}
+                        size="md"
+                        colorScheme="green"
                         variant="solid"
-                        isDisabled={bobbleMix.length < 2}
+                        isDisabled={!nicoMix}
                         onClick={() => setShowRecipe(true)}
                     >
                         Enregistrer votre recette
                     </Button>
                 ) : (
-                    <span>hello</span>
+                    <Button
+                        leftIcon={<FaRegUserCircle />}
+                        colorScheme="red"
+                        variant="solid"
+                        onClick={() => console.log('redirect')}
+                    >
+                        connectez-vous pour enregister votre recette
+                    </Button>
                 )}
-                <Button colorScheme="red" isDisabled={bobbleMix.length < 2} onClick={() => reset()}>
-                    recommencer la recette
-                </Button>
             </Stack>
-            {!!showRecipe && <Code children={JSON.stringify([{ bobbleMix }, { nicotine: niclevel }], null, 2)} />}
-        </>
+            {!!showRecipe && <Code children={JSON.stringify([{ bobbleMix }, { nicotine: nicoMix }], null, 2)} />}
+        </Center>
     );
 };
 export default SaveRecipe;

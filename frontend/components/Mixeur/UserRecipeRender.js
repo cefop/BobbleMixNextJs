@@ -15,34 +15,33 @@ const UserRecipeRender = (props) => {
     const VolMax = 40;
 
     return (
-        <>
-            <Tooltip label={getObjectByValue(bobbleMix, 'id', list.id)[0].name} fontSize="md" bg="white" color="black">
-                <Bobble1L>
-                    <ImageBox>
-                        <ImageBottle
-                            src={getObjectByValue(bobbleMix, 'id', list.id)[0].image}
-                            alt={getObjectByValue(bobbleMix, 'id', list.id)[0].name}
-                        />
-                    </ImageBox>
-                    <LabelBottle>
-                        <Icon as={MdOpacity} color="orange.100" />
-                        {gso.length !== 2 && bobbleMix.length === 2
-                            ? `${new Intl.NumberFormat('fr-FR', {
-                                  maximumFractionDigits: 2,
-                              }).format(list.volume)} ml`
-                            : `${new Intl.NumberFormat('fr-FR', {
-                                  maximumFractionDigits: 2,
-                              }).format(((VolMax / bobbleMix.length) * list.volume) / 10)}  ml`}
-                        <Text isTruncated>{getObjectByValue(bobbleMix, 'id', list.id)[0].name}</Text>
-                    </LabelBottle>
-                </Bobble1L>
-            </Tooltip>
-            {gso.length === 1 && (
-                <Text color="brown" width="300px">
-                    Ajouter au minimum un arome
-                </Text>
-            )}
-        </>
+        <Tooltip
+            label={getObjectByValue(bobbleMix, 'id', list.id)[0].name}
+            placement="top"
+            fontSize="md"
+            bg="white"
+            color="black"
+        >
+            <Bobble1L>
+                <ImageBox>
+                    <ImageBottle
+                        src={getObjectByValue(bobbleMix, 'id', list.id)[0].image}
+                        alt={getObjectByValue(bobbleMix, 'id', list.id)[0].name}
+                    />
+                </ImageBox>
+                <LabelBottle>
+                    <Icon as={MdOpacity} color="orange.100" />
+                    {gso.length !== 2 && bobbleMix.length === 2
+                        ? `${new Intl.NumberFormat('fr-FR', {
+                              maximumFractionDigits: 2,
+                          }).format(list.volume)} ml`
+                        : `${new Intl.NumberFormat('fr-FR', {
+                              maximumFractionDigits: 2,
+                          }).format(((VolMax / bobbleMix.length) * list.volume) / 10)}  ml`}
+                    <Text isTruncated>{getObjectByValue(bobbleMix, 'id', list.id)[0].name}</Text>
+                </LabelBottle>
+            </Bobble1L>
+        </Tooltip>
     );
 };
 export default UserRecipeRender;
