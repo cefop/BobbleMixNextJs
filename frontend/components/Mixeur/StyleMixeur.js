@@ -32,6 +32,15 @@ export const FlavorGrid = styled.div`
     }
 `;
 
+export const CateTitle = styled.div`
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: grey;
+    border-bottom: 1px solid orange;
+`;
+
 export const Bobble1L = styled.div`
     max-width: 395px;
     border: 1px solid orange;

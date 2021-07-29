@@ -1,47 +1,60 @@
 import { useContext } from 'react';
-import { Heading } from '@chakra-ui/react';
+import { gql, useQuery } from '@apollo/client';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
 import SortByCategory from '../lib/SortByCategory';
 import getKeyByValue from '../lib/GetKeyByValue';
-import { FlavorGrid, Bobble1L, ImageBox, ImageBottle, LabelBottle } from './StyleMixeur';
+import { FlavorGrid, CateTitle, Bobble1L, ImageBox, ImageBottle, LabelBottle } from './StyleMixeur';
+import Loading from '../Loading';
+import Error from '../Error';
+
+const FETCH_CATEGORIES = gql`
+    query fetchItems {
+        category {
+            id
+            name
+        }
+    }
+`;
 
 const ChooseFlavor = (props) => {
-    const { categories, items } = props;
+    const { items } = props;
+    const { loading, error, data } = useQuery(FETCH_CATEGORIES);
     const { bobbleMix, setBobbleMix } = useContext(BobbleMixContext);
+    const MaxMix = 5;
     const bbmAdd = (bottle) => {
         setBobbleMix((currentState) => [...currentState, bottle]);
     };
-    const MaxMix = 5;
-    const filterCat = SortByCategory(categories, items);
 
-    return filterCat.map((category) => {
-        return (
-            <div key={category.id + '-category-heading'}>
-                <Heading as="h4" size="md" ml={4} key={category.id + '-category-heading'}>
-                    category {category.name}
-                </Heading>
-                <FlavorGrid key={category.id + '-category-block'}>
-                    {items.map((i) => {
-                        // console.log('USER MIXEUR PROPS: ', i);
-                        return (
-                            getKeyByValue(i, category.name) && (
-                                <Bobble1L
-                                    key={i.id}
-                                    onClick={() => {
-                                        bobbleMix.length < MaxMix ? bbmAdd(i) : console.log('nope');
-                                    }}
-                                >
-                                    <ImageBox>
-                                        <ImageBottle src={i.image} alt={i.name} />
-                                    </ImageBox>
-                                    <LabelBottle>{i.name}</LabelBottle>
-                                </Bobble1L>
-                            )
-                        );
-                    })}
-                </FlavorGrid>
-            </div>
-        );
-    });
+    return (
+        <>
+            {loading && <Loading />}
+            {error && <Error tips="erreur de changement des categories" />}
+            {data &&
+                data.category &&
+                SortByCategory(data.category, items).map((c) => (
+                    <div key={`${c.id}-category-heading`}>
+                        <CateTitle>category {c.name}</CateTitle>
+                        <FlavorGrid>
+                            {items.map(
+                                (i) =>
+                                    getKeyByValue(i, c.name) && (
+                                        <Bobble1L
+                                            key={i.id}
+                                            onClick={() => {
+                                                bobbleMix.length < MaxMix ? bbmAdd(i) : console.log('nope');
+                                            }}
+                                        >
+                                            <ImageBox>
+                                                <ImageBottle src={i.image} alt={i.name} />
+                                            </ImageBox>
+                                            <LabelBottle>{i.name}</LabelBottle>
+                                        </Bobble1L>
+                                    )
+                            )}
+                        </FlavorGrid>
+                    </div>
+                ))}
+        </>
+    );
 };
 export default ChooseFlavor;

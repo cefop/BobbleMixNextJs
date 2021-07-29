@@ -13,25 +13,20 @@ const UserRecipe = () => {
 
     return (
         <RecipeContainer>
-            <MyRecipe>
-                {gso.length >= 1 ? (
-                    gso.map((r, i) => {
-                        // console.log(r);
-                        return (
-                            <Box key={i} my={7}>
-                                <UserRecipeRender list={r} />
-                            </Box>
-                        );
-                    })
-                ) : (
-                    <RecipeContainer>
-                        <MyRecipe>
-                            {/* TODO : Create a dummy component Box  */}
-                            <Box my={7}></Box>
-                        </MyRecipe>
-                    </RecipeContainer>
-                )}
-            </MyRecipe>
+            {gso.length >= 1 ? (
+                // Filter item by ID to stack items quantites
+                <MyRecipe>
+                    {gso.map((r, i) => (
+                        <Box key={i} my={7}>
+                            <UserRecipeRender list={r} />
+                        </Box>
+                    ))}
+                </MyRecipe>
+            ) : (
+                <MyRecipe>
+                    <Box my={7}>Free aera to design</Box>
+                </MyRecipe>
+            )}
         </RecipeContainer>
     );
 };
