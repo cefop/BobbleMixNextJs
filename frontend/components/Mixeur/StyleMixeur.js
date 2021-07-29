@@ -74,6 +74,9 @@ export const LabelBottle = styled.h3`
     font-size: 0.92rem;
     text-align: center;
     text-transform: capitalize;
+    span {
+        text-transform: lowercase;
+    }
 `;
 
 export const RecipeContainer = styled.div`

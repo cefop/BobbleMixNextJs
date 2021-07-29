@@ -10,6 +10,10 @@ const MixInfo = styled.p`
     font-size: 1rem;
     text-align: center;
     padding-bottom: 1.5rem;
+    span {
+        color: orange;
+        font-weight: 600;
+    }
 `;
 
 export default function TipsMix() {
@@ -25,7 +29,11 @@ export default function TipsMix() {
     return (
         <>
             <MixInfo>
-                Vous pouvez ajouter jusqu'à {MaxMix - bobbleMix.length} arôme{bobbleMix.length <= 3 ? 's' : ''}
+                {bobbleMix.length !== 5 ? (
+                    `Vous pouvez ajouter jusqu'à ${MaxMix - bobbleMix.length} arôme${bobbleMix.length <= 3 ? 's' : ''}`
+                ) : (
+                    <span>Vous avez atteint le maximum d'arômes possible</span>
+                )}
                 <Tooltip label="recommencer votre recette" bg="red" color="withe">
                     <IconButton
                         variant="ghost"

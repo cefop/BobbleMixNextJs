@@ -30,14 +30,16 @@ const UserRecipeRender = (props) => {
                     />
                 </ImageBox>
                 <LabelBottle>
-                    <Icon as={MdOpacity} color="orange.100" />
-                    {gso.length !== 2 && bobbleMix.length === 2
-                        ? `${new Intl.NumberFormat('fr-FR', {
-                              maximumFractionDigits: 2,
-                          }).format(list.volume)} ml`
-                        : `${new Intl.NumberFormat('fr-FR', {
-                              maximumFractionDigits: 2,
-                          }).format(((VolMax / bobbleMix.length) * list.volume) / 10)}  ml`}
+                    <Icon as={MdOpacity} color="orange.200" />
+                    <span>
+                        {gso.length !== 2 && bobbleMix.length === 2
+                            ? `${new Intl.NumberFormat('fr-FR', {
+                                  maximumFractionDigits: 2,
+                              }).format(list.volume)} ml`
+                            : `${new Intl.NumberFormat('fr-FR', {
+                                  maximumFractionDigits: 2,
+                              }).format(((VolMax / bobbleMix.length) * list.volume) / 10)}  ml`}
+                    </span>
                     <Text isTruncated>{getObjectByValue(bobbleMix, 'id', list.id)[0].name}</Text>
                 </LabelBottle>
             </Bobble1L>
