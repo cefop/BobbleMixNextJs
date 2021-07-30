@@ -14,6 +14,8 @@ import Section11 from './Section11';
 import Section12 from './Section12';
 import Section13 from './Section13';
 import Section14 from './Section14';
+import sumMol from '../lib/SumMol';
+// kepp it here to test deeper math! Must remove after
 import { saveur_molecule } from './Risk/saveur_molecule';
 import { molecule_risk } from './Risk/molecule_risk';
 
@@ -44,9 +46,7 @@ const FDSStack = (props) => {
     console.log('Mix Molecules', mixMolecules);
 
     // Sum all retenu of molecule of juice
-    const arr = mixMolecules.map((x) => x.retenu);
-    const sumMol = arr.reduce((a, b) => a + b);
-    console.log('Sum of all mol retenu', sumMol);
+    console.log('Sum of all mol retenu', sumMol(mixMolecules));
 
     // Find all Risk of molecules inside juice
     const mixMoleculeIds = mixMolecules.map((m) => m.Molecule_ID);

@@ -2,18 +2,22 @@ import React, { useContext, useState } from 'react';
 import { Button, Center, Stack } from '@chakra-ui/react';
 import { FaCloudDownloadAlt, FaRegUserCircle } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
+import { signIn } from 'next-auth/client';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
 import { NicoContext } from '../hooks/NicoContext';
 import CustomReduceFilter from '../lib/CustomReduceFilter';
 import SortOrder from '../lib/SortOder';
 import getObjectByValue from '../lib/ObjectByValue';
 import { encodeb64 } from '../lib/base64';
+import sumMol from '../lib/SumMol';
+import { saveur_molecule } from '../lib/saveur_molecule';
+import { molecule_risk } from '../lib/molecule_risk';
 
 const SaveRecipe = () => {
     const { user } = useUser();
     const { bobbleMix } = useContext(BobbleMixContext);
     const { nicoMix } = useContext(NicoContext);
-    const [showRecipe, setShowRecipe] = useState(false);
+    const [posting, setPosting] = useState(false);
 
     // build the MIX NAME: quantity% name per items
     // name: 33.33% Fruit-du-Dragon / 33.33% Litchi / 33.33% Abricot
@@ -29,6 +33,12 @@ const SaveRecipe = () => {
         });
         return x.join(' / ');
     };
+    // Find all molecules of flavors inside Juice
+    const mixMolecules = saveur_molecule.filter(({ Saveur_ID }) => bobbleMix.map((s) => s.id).includes(Saveur_ID));
+    // Find all Risk of molecules inside juice
+    const mixRisks = molecule_risk.filter(({ Molecule_ID }) =>
+        mixMolecules.map((m) => m.Molecule_ID).includes(Molecule_ID)
+    );
 
     // Build saved recipe
     const makeRecipe = (mix) => {
@@ -49,10 +59,21 @@ const SaveRecipe = () => {
                 nicotine: nicoMix && Number(nicoMix.replace('mg', '')),
                 volume: 40,
                 aromes,
-                // add molecules per aromes
-                // add risks per molecules of all aromes
+                molecules: mixMolecules,
+                molsum: sumMol(mixMolecules),
+                risks: mixRisks,
             },
         ];
+    };
+
+    const sendRecipe = () => {
+        setTimeout(function () {
+            console.log('The recipe saved', makeRecipe(bobbleMix));
+            setPosting(false);
+            console.log('finished!');
+        }, 3000);
+        setPosting(true);
+        console.log('pending...');
     };
 
     return (
@@ -64,23 +85,19 @@ const SaveRecipe = () => {
                         size="md"
                         colorScheme="green"
                         variant="solid"
+                        isLoading={posting}
+                        loadingText="enregistrement de votre mix"
                         isDisabled={!nicoMix}
-                        onClick={() => setShowRecipe(true)}
+                        onClick={() => sendRecipe()}
                     >
                         Enregistrer votre recette
                     </Button>
                 ) : (
-                    <Button
-                        leftIcon={<FaRegUserCircle />}
-                        colorScheme="red"
-                        variant="solid"
-                        onClick={() => console.log('redirect')}
-                    >
+                    <Button leftIcon={<FaRegUserCircle />} colorScheme="red" variant="solid" onClick={() => signIn()}>
                         connectez-vous pour enregister votre recette
                     </Button>
                 )}
             </Stack>
-            {!!showRecipe && console.log('The recipe saved', makeRecipe(bobbleMix))}
         </Center>
     );
 };

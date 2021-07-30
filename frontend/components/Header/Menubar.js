@@ -42,7 +42,7 @@ const Menubar = () => {
                             <>
                                 <Link href="/profile">
                                     <ItemLink>
-                                        <Tag size="lg" colorScheme="white" borderRadius="full" variant="outline">
+                                        <Tag colorScheme="white" borderRadius="full" variant="outline">
                                             <Avatar
                                                 src={session.user.image}
                                                 size="xs"

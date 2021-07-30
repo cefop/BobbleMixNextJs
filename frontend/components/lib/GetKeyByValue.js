@@ -3,5 +3,4 @@ const getKeyByValue = (object, value) => {
         return true;
     }
 };
-
 export default getKeyByValue;
