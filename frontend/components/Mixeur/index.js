@@ -7,19 +7,21 @@ import NicoLevel from './NicoLevel';
 import TipsMix from './TipsMix';
 
 const MixerLayout = styled.div`
-    background: white;
-    color: black;
+    /* border: 2px solid orange; */
     margin-top: 4px;
-    width: 100%;
-    height: 100vh;
     display: grid;
     grid-template-columns: 4fr 7fr;
+    width: 100%;
+    height: calc(100vh - 85px);
+    background: white;
+    color: black;
 `;
 
 const RecipePanel = styled.div`
-    /* display: grid; */
+    /* border: 5px solid red; */
+    display: grid;
     width: 100%;
-    height: calc(100% - 85px);
+    /* height: calc(100% - 85px); */
     overflow-y: auto;
     ::-webkit-scrollbar {
         width: 1px;
@@ -33,13 +35,14 @@ const RecipePanel = styled.div`
 `;
 
 const FlavorPanel = styled.div`
+    /* border: 5px solid green; */
     display: grid;
     width: 100%;
+    /* height: calc(100% - 85px); */
     overflow: auto;
-    height: calc(100% - 85px);
     position: relative;
     ::-webkit-scrollbar {
-        width: 1px;
+        width: 2px;
     }
     ::-webkit-scrollbar-track {
         background: transparent;

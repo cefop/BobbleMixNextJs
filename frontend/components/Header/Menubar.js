@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 import { Flex, Spacer, Box, HStack, VStack } from '@chakra-ui/layout';
 import { useDisclosure, Button, Collapse, Divider, Tag, Avatar, TagLabel } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { Menu, ItemLink, MenuBtn } from './StyledHeader';
+import { MenubarContainer, Menu, ItemLink, MenuBtn } from './StyledHeader';
 import Logo from './Logo';
 
 const Menubar = () => {
@@ -14,7 +14,7 @@ const Menubar = () => {
     // console.log(router.route);
 
     return (
-        <Box width="100%">
+        <MenubarContainer>
             <Flex
                 display={['none', null, 'flex']}
                 width="100%"
@@ -93,7 +93,7 @@ const Menubar = () => {
                     </Box>
                 </Collapse>
             </Box>
-        </Box>
+        </MenubarContainer>
     );
 };
 export default Menubar;

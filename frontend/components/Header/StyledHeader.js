@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+export const MenubarContainer = styled.div`
+    width: 100%;
+`;
+
 export const Menu = styled.div`
     display: grid;
     align-items: center;

@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
-import { useRadioGroup, HStack, Center } from '@chakra-ui/react';
+import { Center, Button, ButtonGroup } from '@chakra-ui/react';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
 import { NicoContext } from '../hooks/NicoContext';
-import NicoLevelCard from './NicoLevelCard';
 
 const NicoLevel = () => {
     const { bobbleMix } = useContext(BobbleMixContext);
-    const { setNicoMix } = useContext(NicoContext);
+    const { nicoMix, setNicoMix } = useContext(NicoContext);
 
     const options = [
         { id: 1, nicotine: '0mg' },
@@ -16,27 +15,30 @@ const NicoLevel = () => {
         { id: 5, nicotine: '12mg' },
     ];
 
-    const { getRootProps, getRadioProps } = useRadioGroup({
-        name: 'nicoLevel',
-        onChange: setNicoMix,
-    });
-
-    const group = getRootProps();
-
     return (
         <Center>
-            <HStack {...group} my={7}>
-                {options.map((value) => {
-                    const radio = getRadioProps({ value: value.nicotine });
-                    return (
-                        <NicoLevelCard key={value.nicotine} {...radio} isDisabled={bobbleMix.length < 2}>
-                            {value.nicotine}
-                        </NicoLevelCard>
-                    );
-                })}
-            </HStack>
+            <ButtonGroup my={7} spacing="6">
+                {options.map((value) => (
+                    <Button
+                        key={value.nicotine}
+                        isDisabled={bobbleMix.length < 2}
+                        variant={nicoMix === value.nicotine ? 'solid' : 'outline'}
+                        colorScheme={nicoMix === value.nicotine ? 'orange' : 'red'}
+                        style={{ boxShadow: 'none' }}
+                        py={'1.5em'}
+                        px={'1.88em'}
+                        w={'2.5em'}
+                        h={'1.5em'}
+                        fontSize={'1em'}
+                        onClick={() => {
+                            setNicoMix(value.nicotine);
+                        }}
+                    >
+                        {value.nicotine.replace('mg', ' mg')}
+                    </Button>
+                ))}
+            </ButtonGroup>
         </Center>
     );
 };
-
 export default NicoLevel;
