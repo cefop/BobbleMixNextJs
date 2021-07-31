@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { Image } from '@chakra-ui/image';
 import { Button, Center } from '@chakra-ui/react';
@@ -33,17 +34,18 @@ export default function Home() {
                     culpa qui officia deserunt mollit anim id est laborum.
                 </div>
                 <Center>
-                    <Button
-                        size="lg"
-                        height="48px"
-                        width="200px"
-                        border="2px"
-                        borderColor="orange.200"
-                        variant="outline"
-                        mt={18}
-                    >
-                        Lancer le mixeur
-                    </Button>
+                    <Link href="/mixeur">
+                        <Button
+                            size="lg"
+                            border="2px"
+                            variant="outline"
+                            colorScheme="orange"
+                            style={{ boxShadow: 'none' }}
+                            mt={18}
+                        >
+                            Crée votre recette maintenant
+                        </Button>
+                    </Link>
                 </Center>
             </TextIntro>
         </PageLayout>
