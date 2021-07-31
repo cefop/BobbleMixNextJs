@@ -3,13 +3,12 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 const LogoImg = styled.div`
-    z-index: 10;
-    padding: 1rem;
+    padding-left: 0.75rem;
     display: grid;
     align-items: center;
     justify-content: center;
     img {
-        height: 42px;
+        height: 64px;
         width: auto;
     }
     a:focus {

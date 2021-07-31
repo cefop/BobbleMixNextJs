@@ -18,9 +18,6 @@ const BobbleMixHead = (props) => {
             <meta property="og:image" content={props.ogImage || ''} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            {/* <link rel="preconnect" href="https://fonts.gstatic.com" /> */}
-            {/* <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet" /> */}
-            {/* <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_o5hd5vvqpoqiwwmi.css" /> */}
         </Head>
     );
 };
