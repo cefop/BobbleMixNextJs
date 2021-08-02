@@ -1,5 +1,10 @@
 import PageLayout from '../components/styles/PageLayout';
+import { TopRecipeList } from '../components/TopRecipe';
 
 export default function TopRecipe() {
-    return <PageLayout title="nos meilleurs recettes"></PageLayout>;
+    return (
+        <PageLayout title="top recette">
+            <TopRecipeList />
+        </PageLayout>
+    );
 }
