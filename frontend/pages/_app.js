@@ -1,13 +1,19 @@
 import { useMemo, useState } from 'react';
 import { Provider } from 'next-auth/client';
+import styled from '@emotion/styled';
 import { ApolloProvider } from '@apollo/client';
-import { ChakraProvider, Flex } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { customTheme } from '../components/styles/theme';
-import Head from '../components/Header/Head';
-import Menubar from '../components/Header/Menubar';
+import AppHeader from '../components/Header';
 import { BobbleMixContext } from '../components/hooks/BobbleMixContext';
 import { NicoContext } from '../components/hooks/NicoContext';
 import { useApollo } from '../components/lib/apollo';
+
+export const AppGrid = styled.div`
+    display: grid;
+    grid-template-rows: 75px 1fr;
+    height: 100vh;
+`;
 
 export default function App({ Component, pageProps }) {
     const client = useApollo(pageProps.initialApolloProps);
@@ -19,24 +25,13 @@ export default function App({ Component, pageProps }) {
     return (
         <Provider session={pageProps.session}>
             <ApolloProvider client={client}>
-                <ChakraProvider theme={customTheme} width="100vw">
+                <ChakraProvider theme={customTheme}>
                     <BobbleMixContext.Provider value={providerBobbleMix}>
                         <NicoContext.Provider value={providerNicoMix}>
-                            <Flex
-                                flexDirection="column"
-                                width="100vw"
-                                padding="0"
-                                overflow="auto"
-                                bgGradient={['linear(to-b, bbmNavy.300, bbmNavy.200, bbmNavy.100)']}
-                            >
-                                <Flex width="100%" style={{ height: '75px' }}>
-                                    <Head />
-                                    <Menubar />
-                                </Flex>
-                                <div style={{ height: 'calc(100vh - 75px)' }} width="100%" margin="0">
-                                    <Component {...pageProps} />
-                                </div>
-                            </Flex>
+                            <AppGrid>
+                                <AppHeader />
+                                <Component {...pageProps} />
+                            </AppGrid>
                         </NicoContext.Provider>
                     </BobbleMixContext.Provider>
                 </ChakraProvider>
