@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Image } from '@chakra-ui/react';
 import { boosterNico, base } from '../lib/ProductsDIY';
-// import { MdOpacity } from 'react-icons/md';
 
 const RecipeContainer = styled.div`
     display: grid;
@@ -41,6 +40,29 @@ const MixLists = styled.div`
     color: gray;
     padding-bottom: 2rem;
     /* border: 1px solid royalblue; */
+`;
+
+const OptionContainer = styled.div`
+    display: grid;
+    justify-items: center;
+    align-items: center;
+`;
+
+const Fieldset = styled.fieldset`
+    border-top: 1px solid gray;
+    width: 100%;
+    padding: 1rem;
+    legend {
+        padding: 0 1rem;
+        font-size: 1.22rem;
+        color: darkorange;
+        font-style: italic;
+    }
+`;
+
+const OptionsList = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 `;
 
 const UserRecipe = () => {
@@ -121,21 +143,30 @@ const UserRecipe = () => {
                             })}
                         </Tbody>
                     </Table>
-                    <div style={{ paddingTop: '1rem' }}>
-                        <p>Votre base PGVG en 50/50 à mélanger au mix</p>
-                        <Image boxSize="100px" objectFit="cover" alt={base[0].name} src={base[0].image} />
-                    </div>
-                    {tm.nicotine !== 0 && (
-                        <div>
-                            <p>Pour avoir un taux de nicotine de {tm.nicotine}mg, mélanger ce booster</p>
-                            <Image
-                                boxSize="100px"
-                                objectFit="cover"
-                                alt={boosterNico[tm.nicotine].name}
-                                src={boosterNico[tm.nicotine].image}
-                            />
-                        </div>
-                    )}
+                    <OptionContainer>
+                        <Fieldset>
+                            <legend>Vos options</legend>
+                            <OptionsList>
+                                <div style={{ paddingTop: '1rem' }}>
+                                    <Image boxSize="100px" objectFit="cover" alt={base[0].name} src={base[0].image} />
+                                    <p>{base[0].name}</p>
+                                </div>
+                                <div>
+                                    {tm.nicotine !== 0 && (
+                                        <div>
+                                            <Image
+                                                boxSize="110px"
+                                                objectFit="cover"
+                                                alt={boosterNico[tm.nicotine].name}
+                                                src={boosterNico[tm.nicotine].image}
+                                            />
+                                            <p>{boosterNico[tm.nicotine].name}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </OptionsList>
+                        </Fieldset>
+                    </OptionContainer>
                 </MixLists>
             </MixContainer>
         </RecipeContainer>

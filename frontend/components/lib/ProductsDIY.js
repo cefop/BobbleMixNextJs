@@ -36,7 +36,7 @@ export const boosterNico = [
         image: '',
     },
     {
-        name: 'Booster de nicotine',
+        name: "Booster Nico'Boost",
         image: '/assets/diy/Booster-NicoBoost.jpeg',
     },
 ];
