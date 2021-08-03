@@ -17,7 +17,7 @@ export const AppGrid = styled.div`
 `;
 
 export default function App({ Component, pageProps }) {
-    const isProduction = process.env.NODE_ENV === 'production';
+    const isProduction = process.env.NODE_ENV === 'pproduction';
     const client = useApollo(pageProps.initialApolloProps);
     const [bobbleMix, setBobbleMix] = useState([]);
     const providerBobbleMix = useMemo(() => ({ bobbleMix, setBobbleMix }), [bobbleMix, setBobbleMix]);

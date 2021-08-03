@@ -4,7 +4,7 @@ import { GA_TRACKING_ID } from '../components/lib/analytics';
 
 export default class MyDocument extends Document {
     render() {
-        const isProduction = process.env.NODE_ENV === 'production';
+        const isProduction = process.env.NODE_ENV === 'pproduction';
         return (
             <Html>
                 <Head>
