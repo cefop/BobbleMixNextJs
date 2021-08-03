@@ -4,7 +4,7 @@ export default function PageLayout(props) {
     const Title = styled.div`
         text-align: center;
         font-size: 2rem;
-        padding-bottom: 2rem; ;
+        padding-bottom: 2rem;
     `;
 
     const UserLayout = styled.div`

@@ -1,79 +1,144 @@
 import styled from '@emotion/styled';
-import {
-    CircularProgress,
-    CircularProgressLabel,
-    Box,
-    SimpleGrid,
-    Image,
-    HStack,
-    Tag,
-    TagLabel,
-    TagLeftIcon,
-} from '@chakra-ui/react';
-import { MdOpacity } from 'react-icons/md';
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Image } from '@chakra-ui/react';
+import { boosterNico, base } from '../lib/ProductsDIY';
+// import { MdOpacity } from 'react-icons/md';
 
-const ItemContainer = styled.div`
+const RecipeContainer = styled.div`
     display: grid;
-    width: 600px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 1rem 2rem;
-    margin-bottom: 1rem;
+    justify-content: center;
+    align-content: top;
+    color: black;
 `;
 
-const UserRecipe = (props) => {
-    const cara =
-        'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624654/eliquide/bobble-1L/bobble-1l-caramel_ki7nta.jpg';
-    const clcali =
-        'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624652/eliquide/bobble-1L/b1l-clascal-bobble-1l-classic-californian_gzqgdc.jpg';
+const MixContainer = styled.div`
+    width: 600px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    /* border: 1px solid cyan; */
+`;
+
+const MixInfos = styled.div`
+    text-align: center;
+    h3 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        padding-top: 1rem;
+        padding-bottom: 2.2rem;
+        /* border: 1px solid pink; */
+    }
+    ul {
+        color: gray;
+        padding-top: 1rem;
+        padding-bottom: 2.2rem;
+        list-style: none;
+        border-bottom: 1px solid black;
+        margin-bottom: 2rem;
+        /* border: 1px solid plum; */
+    }
+`;
+
+const MixLists = styled.div`
+    color: gray;
+    padding-bottom: 2rem;
+    /* border: 1px solid royalblue; */
+`;
+
+const UserRecipe = () => {
+    const TempMix = [
+        {
+            fingerprint: 'NTAuMDAlIE1hbmd1ZSAvIDUwLjAwJSBBYnJpY290',
+            name: '25.00% Mangue / 25.00% Abricot / 25.00% Cercise / 25.00% Framboise',
+            nicotine: 9,
+            volume: 40,
+            aromes: [
+                {
+                    categories: [{ category: [{ name: 'fruité' }] }],
+                    id: 9,
+                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624653/eliquide/bobble-1L/bobble-1l-abricot_ppphjo.jpg',
+                    name: 'Abricot',
+                },
+                {
+                    categories: [{ category: [{ name: 'fruité' }] }],
+                    id: 20,
+                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624655/eliquide/bobble-1L/bobble-1l-mangue_kt7fkn.jpg',
+                    name: 'Mangue',
+                },
+                {
+                    categories: [{ category: [{ name: 'fruité' }] }],
+                    id: 9,
+                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624653/eliquide/bobble-1L/bobble-1l-abricot_ppphjo.jpg',
+                    name: 'Abricot',
+                },
+                {
+                    categories: [{ category: [{ name: 'fruité' }] }],
+                    id: 20,
+                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624655/eliquide/bobble-1L/bobble-1l-mangue_kt7fkn.jpg',
+                    name: 'Mangue',
+                },
+                {
+                    categories: [{ category: [{ name: 'fruité' }] }],
+                    id: 20,
+                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624655/eliquide/bobble-1L/bobble-1l-mangue_kt7fkn.jpg',
+                    name: 'Mangue',
+                },
+            ],
+        },
+    ];
+    const tm = TempMix[0];
+    const tma = TempMix[0].aromes;
+
     return (
-        <>
-            <HStack spacing={4} marginBottom={2}>
-                <Tag size="md" variant="outline" colorScheme="blackAlpha">
-                    <TagLeftIcon as={MdOpacity} />
-                    <TagLabel>Arômes bobble 40ml</TagLabel>
-                </Tag>
-                <Tag size="md" variant="outline" colorScheme="red">
-                    <TagLeftIcon as={MdOpacity} />
-                    <TagLabel>Nicotine 10ml</TagLabel>
-                </Tag>
-                <Tag size="md" variant="outline" colorScheme="blue">
-                    <TagLeftIcon as={MdOpacity} />
-                    <TagLabel>PGVG 50/50 10ml</TagLabel>
-                </Tag>
-            </HStack>
-            <Box marginBottom={2}>Volume total: 60ml Dosage nicotine: 3mg Ratio PGVG: 50/50</Box>
-            <ItemContainer>
-                <SimpleGrid minChildWidth="120px" spacing="40px">
-                    <Image boxSize="150px" objectFit="cover" src={clcali} alt="classic claifornian" />
-                    <Box bg="" height="30px" marginBottom={3}>
-                        <CircularProgress size="100px" value={50} color="green.400">
-                            <CircularProgressLabel>20ml</CircularProgressLabel>
-                        </CircularProgress>
-                    </Box>
-                    <Box bg="" height="30px">
-                        <p>
-                            <b>Classic claifornian</b>, une saveur classic avec une note vanillé.
-                        </p>
-                    </Box>
-                </SimpleGrid>
-            </ItemContainer>
-            <ItemContainer>
-                <SimpleGrid minChildWidth="120px" spacing="40px">
-                    <Image boxSize="150px" objectFit="cover" src={cara} alt="gourmand caramel" />
-                    <Box bg="" height="30px" marginBottom={3}>
-                        <CircularProgress size="100px" value={50} color="green.400">
-                            <CircularProgressLabel>20ml</CircularProgressLabel>
-                        </CircularProgress>
-                    </Box>
-                    <Box bg="" height="30px">
-                        <p>
-                            <b>Gourmand caramel</b>, Notre caramel de Bretagne.
-                        </p>
-                    </Box>
-                </SimpleGrid>
-            </ItemContainer>
-        </>
+        <RecipeContainer>
+            <MixContainer>
+                <MixInfos>
+                    <h3 id={tm.fingerprint}>{tm.name}</h3>
+                    <ul>
+                        <li>Volume arômes: {tm.volume}ml</li>
+                        <li>Nicotine: {tm.nicotine}mg</li>
+                        <li>PGVG 50/50: 20ml</li>
+                        <li>Volume total: {tm.volume + 20}ml</li>
+                    </ul>
+                </MixInfos>
+                <MixLists>
+                    <Table size="sm" colorScheme="orange" variant="striped">
+                        <TableCaption>calulé à partir du volume total d'arôme qui est de 40ml</TableCaption>
+                        <Thead>
+                            <Tr>
+                                <Th>Arômes</Th>
+                                <Th>Millilitres</Th>
+                                <Th isNumeric>Pourcentages</Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            {tma.map((m) => {
+                                return (
+                                    <Tr key={m.id}>
+                                        <Td>{m.name}</Td>
+                                        <Td>10 ml</Td>
+                                        <Td isNumeric>{((20 * 100) / 40).toFixed(2)} %</Td>
+                                    </Tr>
+                                );
+                            })}
+                        </Tbody>
+                    </Table>
+                    <div style={{ paddingTop: '1rem' }}>
+                        <p>Votre base PGVG en 50/50 à mélanger au mix</p>
+                        <Image boxSize="100px" objectFit="cover" alt={base[0].name} src={base[0].image} />
+                    </div>
+                    {tm.nicotine !== 0 && (
+                        <div>
+                            <p>Pour avoir un taux de nicotine de {tm.nicotine}mg, mélanger ce booster</p>
+                            <Image
+                                boxSize="100px"
+                                objectFit="cover"
+                                alt={boosterNico[tm.nicotine].name}
+                                src={boosterNico[tm.nicotine].image}
+                            />
+                        </div>
+                    )}
+                </MixLists>
+            </MixContainer>
+        </RecipeContainer>
     );
 };
 export default UserRecipe;
