@@ -1,12 +1,22 @@
 import { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { DataTable } from './DataTable';
-import { Local, Rating, Share } from './Widgets';
+import { Local, Rating, Reviews, Share } from './Widgets';
 import { DateRangeColumnFilter, SelectColumnFilter } from './Filters';
 
 export const TopRecipeList = () => {
     function DateCell({ value }) {
         return <Local date={value} />;
+    }
+    function NotationCell({ value }) {
+        return <Rating rating={value} />;
+    }
+
+    function Review({ value }) {
+        return <Reviews review={value} />;
+    }
+    function ShareCell() {
+        return <Share />;
     }
 
     const columns = useMemo(() => [
@@ -16,29 +26,44 @@ export const TopRecipeList = () => {
             Filter: DateRangeColumnFilter,
             filter: 'dateBetween',
             Cell: DateCell,
-            getProps: () => ({}),
+            disableSortBy: true,
         },
         {
             Header: 'Nom du Mix',
             accessor: 'mixName',
             Filter: false,
             filter: false,
+            disableSortBy: true,
         },
         {
             Header: 'Arome',
             accessor: 'flavour',
             Filter: SelectColumnFilter,
             filter: 'includes',
+            disableSortBy: true,
         },
         {
             Header: 'Liens',
             accessor: 'link',
+            Cell: ShareCell,
             Filter: false,
             filter: false,
+            isNumeric: true,
+            disableSortBy: true,
+        },
+        {
+            Header: '',
+            accessor: 'rating',
+            Cell: NotationCell,
+            Filter: false,
+            filter: false,
+            isNumeric: true,
+            disableSortBy: true,
         },
         {
             Header: 'Notations',
             accessor: 'reviews',
+            Cell: Review,
             Filter: false,
             filter: false,
         },
@@ -49,45 +74,49 @@ export const TopRecipeList = () => {
             date: '2021-07-12T21:15:35.753865+00:00',
             mixName: 'Mangue_Fraise',
             flavour: 'fraise',
-            link: <Share />,
-            reviews: <Rating reviewCount={1345} rating={5} />,
+            link: {},
+            reviews: 1240,
+            rating: 3,
         },
         {
             date: '2021-07-12T21:15:35.753865+00:00',
             mixName: 'Mangue_Fraise',
             flavour: 'fraise',
-            link: <Share />,
-            reviews: <Rating reviewCount={1345} rating={5} />,
+            link: {},
+            reviews: 436,
+            rating: 3,
         },
         {
             date: '2021-07-10T22:15:35.753865+00:00',
             mixName: 'Bonbon',
             flavour: 'bonbon',
-            link: <Share />,
-            reviews: <Rating reviewCount={345} rating={3} />,
+            link: {},
+            reviews: 845,
+            rating: 3,
         },
         {
             date: '2021-06-10T22:15:35.753865+00:00',
             mixName: 'Bonbon_Fraise',
             flavour: 'fraise',
-            link: <Share />,
-            reviews: <Rating reviewCount={123} rating={2} />,
+            link: {},
+            reviews: 1345,
+            rating: 4,
         },
         {
             date: '2021-07-17T22:15:35.753865+00:00',
             mixName: 'Fraise_Classic',
             flavour: 'fraise',
-            link: <Share />,
-            reviews: <Rating reviewCount={678} rating={4} />,
-            isNumeric: true,
+            link: {},
+            reviews: 645,
+            rating: 2,
         },
         {
             date: '2021-06-03T22:15:35.753865+00:00',
             mixName: 'Mangue_Bonbon',
             flavour: 'bonbon',
-            link: <Share />,
-            reviews: <Rating reviewCount={345} rating={3} />,
-            isNumeric: true,
+            link: {},
+            reviews: 345,
+            rating: 3,
         },
     ]);
 

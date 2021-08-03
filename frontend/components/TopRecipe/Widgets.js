@@ -5,7 +5,7 @@ import { FaFacebook, FaSistrix, FaTwitter } from 'react-icons/fa';
 import { format } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
 
-export const Rating = ({ reviewCount, rating }) => {
+export const Rating = ({ rating }) => {
     return (
         <Box d="flex" mt="2" alignItems="center">
             {Array(5)
@@ -13,9 +13,14 @@ export const Rating = ({ reviewCount, rating }) => {
                 .map((_, i) => (
                     <StarIcon key={i} color={i < rating ? 'orange.500' : 'gray.300'} />
                 ))}
-            <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {reviewCount} reviews
-            </Box>
+        </Box>
+    );
+};
+
+export const Reviews = ({ review }) => {
+    return (
+        <Box as="span" ml="2" color="gray.600" fontSize="sm">
+            {review} reviews
         </Box>
     );
 };
