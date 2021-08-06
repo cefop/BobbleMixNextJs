@@ -1,11 +1,12 @@
+import Link from 'next/link';
+// import { format } from 'date-fns';
+// import frenchLocale from 'date-fns/locale/fr';
+import { FaFacebook, FaSistrix, FaTwitter } from 'react-icons/fa';
 import { Box, Button, HStack } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
-import Link from 'next/link';
-import { FaFacebook, FaSistrix, FaTwitter } from 'react-icons/fa';
-import { format } from 'date-fns';
-import frenchLocale from 'date-fns/locale/fr';
 
 export const Rating = ({ rating }) => {
+    // console.log({ rating });
     return (
         <Box d="flex" mt="2" alignItems="center">
             {Array(5)
@@ -17,13 +18,13 @@ export const Rating = ({ rating }) => {
     );
 };
 
-export const Reviews = ({ review }) => {
-    return (
-        <Box as="span" ml="2" color="gray.600" fontSize="sm">
-            {review} reviews
-        </Box>
-    );
-};
+// export const Reviews = ({ review }) => {
+//     return (
+//         <Box as="span" ml="2" color="gray.600" fontSize="sm">
+//             {review} reviews
+//         </Box>
+//     );
+// };
 
 export const Share = () => {
     return (
@@ -46,10 +47,13 @@ export const Share = () => {
     );
 };
 
-export const Local = ({ date }) => {
-    const createdAt = new Date(date);
+export const Local = (date) => {
+    // console.log('date: ', date);
+    // const createdAt = new Date(date);
+    // console.log('date: ', createdAt);
 
-    return format(createdAt, 'dd MMMM yyyy', {
-        locale: frenchLocale,
-    });
+    // return format(date, 'dd MMMM yyyy', {
+    //     locale: frenchLocale,
+    // });
+    return 'lol';
 };

@@ -39,7 +39,7 @@ export const DateRangeColumnFilter = ({ column: { filterValue = [], preFilteredR
         });
         return [min, max];
     }, [id, preFilteredRows]);
-    console.log(min, max);
+    // console.log(min, max);
     return (
         <div
             style={{

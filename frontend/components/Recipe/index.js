@@ -43,6 +43,7 @@ const MixLists = styled.div`
 `;
 
 const OptionContainer = styled.div`
+    margin-top: 2rem;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -120,10 +121,13 @@ const UserRecipe = () => {
                         <li>PGVG 50/50: 20ml</li>
                         <li>Volume total: {tm.volume + 20}ml</li>
                     </ul>
+                    voire la Fiche De Sécurité | voire l'étiquette
                 </MixInfos>
                 <MixLists>
                     <Table size="sm" colorScheme="orange" variant="striped">
-                        <TableCaption>calulé à partir du volume total d'arôme qui est de 40ml</TableCaption>
+                        <TableCaption placement="top">
+                            calulé à partir du volume total d'arôme qui est de 40ml
+                        </TableCaption>
                         <Thead>
                             <Tr>
                                 <Th>Arômes</Th>
