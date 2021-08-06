@@ -38,10 +38,13 @@ export function MixCategories({ value }) {
         });
         return ogg;
     });
-    // console.log(og);
-    return og.map((cs, i) => (
-        <Tag key={i} size={'sm'} variant="outline" colorScheme="blue">
-            <TagLabel>{cs[0].category.name}</TagLabel>
-        </Tag>
-    ));
+    return og
+        .reduce((ucat, item) => {
+            return ucat.includes(item[0].category.name) ? ucat : [...ucat, item[0].category.name];
+        }, [])
+        .map((cs, i) => (
+            <Tag key={i} size={'sm'} variant="outline" colorScheme="blue">
+                <TagLabel>{cs}</TagLabel>
+            </Tag>
+        ));
 }
