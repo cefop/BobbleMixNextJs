@@ -40,7 +40,7 @@ export function MixCategories({ value }) {
     });
     return og
         .reduce((ucat, item) => {
-            return ucat.includes(item[0].category.name) ? ucat : [...ucat, item[0].category.name];
+            return ucat.includes(item[0].name) ? ucat : [...ucat, item[0].name];
         }, [])
         .map((cs, i) => (
             <Tag key={i} size={'sm'} variant="outline" colorScheme="blue">

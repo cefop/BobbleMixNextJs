@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Image } from '@chakra-ui/react';
 import { boosterNico, base } from '../lib/ProductsDIY';
-import { mdata } from '../TopRecipe/data';
 
 const RecipeContainer = styled.div`
     display: grid;
@@ -72,14 +70,8 @@ const UserRecipe = (props) => {
     const { recipe } = props;
     console.log('THE RECIPE!: ', recipe);
 
-    const router = useRouter();
-    const { fingerprint } = router.query;
-
-    const TempMix = mdata.filter(function (entry) {
-        return entry.fingerprint === fingerprint;
-    });
-    const tm = TempMix[0];
-    const tma = TempMix[0].aromes;
+    const tm = recipe[0];
+    const tma = recipe[0].aromes;
 
     return (
         <RecipeContainer>

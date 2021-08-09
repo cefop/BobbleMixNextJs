@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
-import { mdata } from './data';
 import { FrenchDate, NotationCell, MixCategories } from './CellFunctions';
 import TopRecipeTb from './TopRecipeTb';
+// import { mdata } from './data';
 // import { RDate } from './rdate';
 
 export const TopRecipeList = (props) => {
@@ -29,7 +29,7 @@ export const TopRecipeList = (props) => {
             } else {
                 const a = {};
                 a[key] = x[key];
-                a.createdAt = x.createdAt;
+                a.created_at = x.created_at;
                 a.name = x.name;
                 a.aromes = x.aromes;
                 a.rating = 1;
@@ -39,12 +39,12 @@ export const TopRecipeList = (props) => {
         return occurenceArray;
     };
 
-    const data = useMemo(() => GroupByOccurence(mdata, 'fingerprint'), []);
+    const data = useMemo(() => GroupByOccurence(recipes, 'fingerprint'), []);
     const columns = useMemo(
         () => [
             {
                 Header: 'Date',
-                accessor: 'createdAt',
+                accessor: 'created_at',
                 Cell: FrenchDate,
             },
             {
