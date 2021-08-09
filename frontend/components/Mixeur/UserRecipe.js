@@ -24,7 +24,7 @@ const UserRecipe = () => {
                 </MyRecipe>
             ) : (
                 <MyRecipe>
-                    <Box my={7}>Free aera to design</Box>
+                    <Box my={7}>TODO Design</Box>
                 </MyRecipe>
             )}
         </RecipeContainer>

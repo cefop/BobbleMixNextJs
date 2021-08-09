@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { Button, Center, Stack } from '@chakra-ui/react';
 import { FaCloudDownloadAlt, FaRegUserCircle } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
@@ -13,34 +13,7 @@ import { encodeb64 } from '../lib/base64';
 import sumMol from '../lib/SumMol';
 import { saveur_molecule } from '../lib/saveur_molecule';
 import { molecule_risk } from '../lib/molecule_risk';
-
-const MUTATION_INSERT_ONE_RECIPE = gql`
-    mutation INSERT_ONE_RECIPE(
-        $fingerprint: String
-        $name: String
-        $nicotine: numeric
-        $volume: numeric
-        $aromes: jsonb
-        $molecules: jsonb
-        $risks: jsonb
-        $molsum: numeric
-    ) {
-        insert_recipes_one(
-            object: {
-                fingerprint: $fingerprint
-                name: $name
-                nicotine: $nicotine
-                volume: $volume
-                aromes: $aromes
-                molecules: $molecules
-                risks: $risks
-                molsum: $molsum
-            }
-        ) {
-            created_at
-        }
-    }
-`;
+import { MUTATION_INSERT_ONE_RECIPE } from '../gql/graphql';
 
 const SaveRecipe = () => {
     const { user } = useUser();

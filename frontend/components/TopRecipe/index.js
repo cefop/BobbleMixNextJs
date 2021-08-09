@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { FrenchDate, NotationCell, MixCategories } from './CellFunctions';
 import TopRecipeTb from './TopRecipeTb';
-// import { mdata } from './data';
 // import { RDate } from './rdate';
 
 export const TopRecipeList = (props) => {

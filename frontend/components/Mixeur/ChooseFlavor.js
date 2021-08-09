@@ -1,24 +1,16 @@
 import { useContext } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
 import SortByCategory from '../lib/SortByCategory';
 import getKeyByValue from '../lib/GetKeyByValue';
 import { FlavorGrid, CateTitle, Bobble1L, ImageBox, ImageBottle, LabelBottle } from './StyleMixeur';
 import Loading from '../Loading';
 import Error from '../Error';
-
-const FETCH_CATEGORIES = gql`
-    query fetchItems {
-        category {
-            id
-            name
-        }
-    }
-`;
+import { QUERY_ITEM_CATEGORIES } from '../gql/graphql';
 
 const ChooseFlavor = (props) => {
     const { items } = props;
-    const { loading, error, data } = useQuery(FETCH_CATEGORIES);
+    const { loading, error, data } = useQuery(QUERY_ITEM_CATEGORIES);
     const { bobbleMix, setBobbleMix } = useContext(BobbleMixContext);
     const MaxMix = 5;
     const bbmAdd = (bottle) => {

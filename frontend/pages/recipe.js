@@ -1,25 +1,9 @@
 import { useRouter } from 'next/router';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import UserRecipe from '../components/Recipe/index';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
-
-const QUERY_FINGERPRINT = gql`
-    query fetchRecipeFingerprint($fingerprint: String) {
-        recipes(where: { fingerprint: { _eq: $fingerprint } }) {
-            id
-            fingerprint
-            name
-            nicotine
-            volume
-            molsum
-            aromes
-            molecules
-            risks
-            created_at
-        }
-    }
-`;
+import { QUERY_FINGERPRINT } from '../components/gql/graphql';
 
 export default function Recipe() {
     const router = useRouter();

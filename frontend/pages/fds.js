@@ -1,25 +1,9 @@
 import { useRouter } from 'next/router';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import FdsLayout from '../components/Fds/index';
-
-const QUERY_FINGERPRINT = gql`
-    query fetchRecipeFingerprint($fingerprint: String) {
-        recipes(where: { fingerprint: { _eq: $fingerprint } }) {
-            id
-            fingerprint
-            name
-            nicotine
-            volume
-            molsum
-            aromes
-            molecules
-            risks
-            created_at
-        }
-    }
-`;
+import { QUERY_FINGERPRINT } from '../components/gql/graphql';
 
 export default function Fds() {
     const router = useRouter();
@@ -30,7 +14,7 @@ export default function Fds() {
     return (
         <>
             {loading && <Loading />}
-            {error && <Error tips="erreur de changement de la recette" />}
+            {error && <Error tips="erreur de changement de la FDS" />}
             {data && data.recipes ? <FdsLayout recipe={data.recipes} /> : null}
         </>
     );

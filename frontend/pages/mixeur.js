@@ -1,22 +1,8 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import ContainerMix from '../components/Mixeur';
-
-const FETCH_ITEMS = gql`
-    query fetchItems {
-        item {
-            id
-            name
-            image
-            item_categories {
-                category {
-                    name
-                }
-            }
-        }
-    }
-`;
+import { FETCH_ITEMS } from '../components/gql/graphql';
 
 export default function Mixeur() {
     const { loading, error, data } = useQuery(FETCH_ITEMS);

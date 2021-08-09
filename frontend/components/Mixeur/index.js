@@ -54,11 +54,11 @@ const ContainerMix = (props) => {
             <RecipePanel>
                 <StepHeader>votre recette bobblemix</StepHeader>
                 <TipsMix />
-                <StepTitle>#1: Choisisez vos arômes</StepTitle>
+                <StepTitle>Choisisez vos arômes</StepTitle>
                 <UserRecipe />
-                <StepTitle>#2: Choisisez votre dosage de nicotine</StepTitle>
+                <StepTitle>Choisisez votre dosage de nicotine</StepTitle>
                 <NicoLevel />
-                <StepTitle>#3: Sauvegarder votre recette</StepTitle>
+                <StepTitle>Sauvegarder votre recette</StepTitle>
                 <SaveRecipe />
             </RecipePanel>
             <FlavorPanel>
