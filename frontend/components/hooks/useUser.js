@@ -7,5 +7,5 @@ export const useUser = () => {
     const user = useMemo(() => session?.user, [session]);
     const token = useMemo(() => session?.token, [session]);
 
-    return { user, token };
+    return { user, token, session };
 };

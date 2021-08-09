@@ -60,6 +60,19 @@ const SaveRecipe = () => {
                     }),
                 };
             });
+            // check if fingerprint already exist!
+            // query checkIfRecipe {
+            //     recipes(where: {fingerprint: {_eq: "MzMuMzMlIEZydWl0LWR1LURyYWdvbiAvIDY2LjY3JSBBYnJpY290"}}) {
+            //       id
+            //     }
+            //   }
+            // IF recipe already exist then add this recipe to the user
+            // mutation MyMutation {
+            //     insert_users_recipes_one(object: {recipe_id: "8f37a37a-f519-45da-9980-61af8fa2caa9", user_id: 2}) {
+            //       recipe_id
+            //     }
+            //   }
+            // ELES create the recipe on the table
             // Send mutation
             addREcipe({
                 variables: {
@@ -73,6 +86,12 @@ const SaveRecipe = () => {
                     molsum: sumMol(mixMolecules),
                 },
             });
+            // add the new recipe to the user
+            // mutation MyMutation {
+            //     insert_users_recipes_one(object: {recipe_id: "8f37a37a-f519-45da-9980-61af8fa2caa9", user_id: 2}) {
+            //       recipe_id
+            //     }
+            //   }
             // clean old data from user
             setPosting(false);
             setBobbleMix([]);

@@ -1,3 +1,11 @@
 table:
   name: recipes
   schema: public
+array_relationships:
+- name: users_recipes
+  using:
+    foreign_key_constraint_on:
+      column: recipe_id
+      table:
+        name: users_recipes
+        schema: public

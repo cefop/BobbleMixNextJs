@@ -5,4 +5,5 @@
 - "!include public_recipes.yaml"
 - "!include public_sessions.yaml"
 - "!include public_users.yaml"
+- "!include public_users_recipes.yaml"
 - "!include public_verification_requests.yaml"

@@ -80,43 +80,62 @@ export const QUERY_ALL_RECIPES = gql`
             id
             fingerprint
             name
-            nicotine
-            volume
-            molsum
             aromes
-            molecules
-            risks
             created_at
         }
     }
 `;
 
-// WIP page/profile.js
-export const QUERY_USER_RECIPES = gql`
-    query fetchUserRecipes {
-        recipes(order_by: { updated_at: desc }, limit: 4) {
+// WIP page/toprecipes.js
+export const QUERY_ALL_RECIPE_RATINGS = gql`
+    query fetchAllRecipeRatings {
+        recipes(order_by: { updated_at: desc }) {
             id
             fingerprint
             name
-            nicotine
-            volume
-            molsum
             aromes
-            molecules
-            risks
             created_at
+            users_recipes_aggregate {
+                aggregate {
+                    count(columns: user_id, distinct: true)
+                }
+            }
+            users_recipes(order_by: { user: { updated_at: desc } }, limit: 5) {
+                user {
+                    id
+                    name
+                    image
+                }
+            }
         }
     }
 `;
 
-// WIP toprecipe + profile
+// page/profile.js
+export const QUERY_USER_RECIPES = gql`
+    query fetchUserRecipes($uid: Int) {
+        users_recipes(where: { user_id: { _eq: $uid } }, order_by: { recipe: { updated_at: desc } }) {
+            recipe {
+                id
+                name
+                fingerprint
+                aromes
+                created_at
+                updated_at
+            }
+        }
+    }
+`;
+
+// WIP toprecipe
 export const SEARCH_RECIPE_BY_FLAVOR = gql`
     query searchRecipeAromes($search: String) {
         recipes(where: { name: { _ilike: "%$search%" } }, order_by: { updated_at: desc }) {
             id
             fingerprint
             name
-            nicotine
+            aromes
+            created_at
         }
     }
 `;

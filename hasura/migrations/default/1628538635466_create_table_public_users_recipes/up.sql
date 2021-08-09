@@ -1,0 +1,1 @@
+CREATE TABLE "public"."users_recipes" ("user_id" integer NOT NULL, "recipe_id" uuid NOT NULL, PRIMARY KEY ("user_id","recipe_id") , FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("recipe_id") REFERENCES "public"."recipes"("id") ON UPDATE restrict ON DELETE restrict);
