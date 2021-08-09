@@ -39,6 +39,18 @@ export const boosterNico = [
         name: "Booster Nico'Boost",
         image: '/assets/diy/Booster-NicoBoost.jpeg',
     },
+    {
+        name: '',
+        image: '',
+    },
+    {
+        name: '',
+        image: '',
+    },
+    {
+        name: "Booster Nico'Boost",
+        image: '/assets/diy/Booster-NicoBoost.jpeg',
+    },
 ];
 
 export const base = [
