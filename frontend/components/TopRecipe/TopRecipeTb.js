@@ -27,7 +27,10 @@ const TopRecipeTb = ({ columns, data }) => {
                     {firstPageRows.map((row) => {
                         prepareRow(row);
                         return (
-                            <Tr onClick={() => router.push('/recipe')} {...row.getRowProps()}>
+                            <Tr
+                                onClick={() => router.push(`/recipe?fingerprint=${row.original.fingerprint}`)}
+                                {...row.getRowProps()}
+                            >
                                 {row.cells.map((cell) => {
                                     return <Td {...cell.getCellProps()}>{cell.render('Cell')}</Td>;
                                 })}

@@ -9,10 +9,3 @@ array_relationships:
       table:
         name: item_category
         schema: public
-- name: item_flavors
-  using:
-    foreign_key_constraint_on:
-      column: item_id
-      table:
-        name: item_flavor
-        schema: public

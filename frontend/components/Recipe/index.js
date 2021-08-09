@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Image } from '@chakra-ui/react';
 import { boosterNico, base } from '../lib/ProductsDIY';
+import { mdata } from '../TopRecipe/data';
 
 const RecipeContainer = styled.div`
     display: grid;
@@ -67,46 +69,12 @@ const OptionsList = styled.div`
 `;
 
 const UserRecipe = () => {
-    const TempMix = [
-        {
-            fingerprint: 'NTAuMDAlIE1hbmd1ZSAvIDUwLjAwJSBBYnJpY290',
-            name: '25.00% Mangue / 25.00% Abricot / 25.00% Cercise / 25.00% Framboise',
-            nicotine: 9,
-            volume: 40,
-            aromes: [
-                {
-                    categories: [{ category: [{ name: 'fruité' }] }],
-                    id: 9,
-                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624653/eliquide/bobble-1L/bobble-1l-abricot_ppphjo.jpg',
-                    name: 'Abricot',
-                },
-                {
-                    categories: [{ category: [{ name: 'fruité' }] }],
-                    id: 20,
-                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624655/eliquide/bobble-1L/bobble-1l-mangue_kt7fkn.jpg',
-                    name: 'Mangue',
-                },
-                {
-                    categories: [{ category: [{ name: 'fruité' }] }],
-                    id: 9,
-                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624653/eliquide/bobble-1L/bobble-1l-abricot_ppphjo.jpg',
-                    name: 'Abricot',
-                },
-                {
-                    categories: [{ category: [{ name: 'fruité' }] }],
-                    id: 20,
-                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624655/eliquide/bobble-1L/bobble-1l-mangue_kt7fkn.jpg',
-                    name: 'Mangue',
-                },
-                {
-                    categories: [{ category: [{ name: 'fruité' }] }],
-                    id: 20,
-                    image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1600624655/eliquide/bobble-1L/bobble-1l-mangue_kt7fkn.jpg',
-                    name: 'Mangue',
-                },
-            ],
-        },
-    ];
+    const router = useRouter();
+    const { fingerprint } = router.query;
+
+    const TempMix = mdata.filter(function (entry) {
+        return entry.fingerprint === fingerprint;
+    });
     const tm = TempMix[0];
     const tma = TempMix[0].aromes;
 
@@ -126,7 +94,7 @@ const UserRecipe = () => {
                 <MixLists>
                     <Table size="sm" colorScheme="orange" variant="striped">
                         <TableCaption placement="top">
-                            calulé à partir du volume total d'arôme qui est de 40ml
+                            calculé à partir du volume total d'arôme qui est de 40ml
                         </TableCaption>
                         <Thead>
                             <Tr>
@@ -140,8 +108,8 @@ const UserRecipe = () => {
                                 return (
                                     <Tr key={m.id}>
                                         <Td>{m.name}</Td>
-                                        <Td>10 ml</Td>
-                                        <Td isNumeric>{((20 * 100) / 40).toFixed(2)} %</Td>
+                                        <Td>{(40 / tma.length).toFixed(2)} ml</Td>
+                                        <Td isNumeric>{(((40 / tma.length) * 100) / 40).toFixed(2)} %</Td>
                                     </Tr>
                                 );
                             })}
@@ -155,11 +123,11 @@ const UserRecipe = () => {
                                     <Image boxSize="100px" objectFit="cover" alt={base[0].name} src={base[0].image} />
                                     <p>{base[0].name}</p>
                                 </div>
-                                <div>
+                                <div style={{ paddingTop: '1rem' }}>
                                     {tm.nicotine !== 0 && (
                                         <div>
                                             <Image
-                                                boxSize="110px"
+                                                boxSize="100px"
                                                 objectFit="cover"
                                                 alt={boosterNico[tm.nicotine].name}
                                                 src={boosterNico[tm.nicotine].image}
