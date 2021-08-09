@@ -68,7 +68,10 @@ const OptionsList = styled.div`
     grid-template-columns: 1fr 1fr;
 `;
 
-const UserRecipe = () => {
+const UserRecipe = (props) => {
+    const { recipe } = props;
+    console.log('THE RECIPE!: ', recipe);
+
     const router = useRouter();
     const { fingerprint } = router.query;
 

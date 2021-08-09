@@ -5,7 +5,10 @@ import { FrenchDate, NotationCell, MixCategories } from './CellFunctions';
 import TopRecipeTb from './TopRecipeTb';
 // import { RDate } from './rdate';
 
-export const TopRecipeList = () => {
+export const TopRecipeList = (props) => {
+    const { recipes } = props;
+    console.log('All recipes: ', recipes);
+
     function StarsCell({ value }) {
         return NotationCell(data, value);
     }

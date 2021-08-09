@@ -22,7 +22,7 @@ const ProfileContainer = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <Tr onClick={() => router.push('/recipe')}>
+                    <Tr onClick={() => router.push(`/recipe?fingerprint=${tmix.fingerprint}`)}>
                         <Td>
                             {format(recipeDate, 'dd MMM yy', {
                                 locale: frenchLocale,
