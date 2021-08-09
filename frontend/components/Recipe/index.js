@@ -1,5 +1,6 @@
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Image } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Image, Button } from '@chakra-ui/react';
 import { boosterNico, base } from '../lib/ProductsDIY';
 
 const RecipeContainer = styled.div`
@@ -69,6 +70,7 @@ const OptionsList = styled.div`
 const UserRecipe = (props) => {
     const { recipe } = props;
     console.log('THE RECIPE!: ', recipe);
+    const router = useRouter();
 
     const tm = recipe[0];
     const tma = recipe[0].aromes;
@@ -84,7 +86,10 @@ const UserRecipe = (props) => {
                         <li>PGVG 50/50: 20ml</li>
                         <li>Volume total: {tm.volume + 20}ml</li>
                     </ul>
-                    voire la Fiche De Sécurité | voire l'étiquette
+                    <Button onClick={() => router.push(`/fds?fingerprint=${tm.fingerprint}`)}>
+                        voire la Fiche De Sécurité
+                    </Button>
+                    | <Button>voire l'étiquette</Button>
                 </MixInfos>
                 <MixLists>
                     <Table size="sm" colorScheme="orange" variant="striped">

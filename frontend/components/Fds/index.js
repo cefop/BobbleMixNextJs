@@ -14,14 +14,11 @@ import Section11 from './Section11';
 import Section12 from './Section12';
 import Section13 from './Section13';
 import Section14 from './Section14';
-import sumMol from '../lib/SumMol';
-// kepp it here to test deeper math! Must remove after
-import { saveur_molecule } from './Risk/saveur_molecule';
-import { molecule_risk } from './Risk/molecule_risk';
 
 const FDSStack = (props) => {
+    const { recipe } = props;
+
     const now = new Date();
-    const { juice } = props;
     const company = {
         name: 'CEFOP',
         address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE France',
@@ -30,28 +27,12 @@ const FDSStack = (props) => {
         emergencytel: '+33 (0)1 45 42 59 59',
     };
 
-    // Join name of juice flavors
-    const getMixName = (arr) => {
-        const info = arr.map((i, j) => {
-            const nameArr = i.name;
-            return nameArr;
-        });
-        return info.join('-');
-    };
-    const name = `BobbleMix ${getMixName(juice)}`;
-
     // Find all molecules of flavors inside Juice
-    const mixSaveurIds = juice.map((s) => s.id);
-    const mixMolecules = saveur_molecule.filter(({ Saveur_ID }) => mixSaveurIds.includes(Saveur_ID));
-    console.log('Mix Molecules', mixMolecules);
-
+    console.log('Mix Molecules', recipe[0].molecules);
     // Sum all retenu of molecule of juice
-    console.log('Sum of all mol retenu', sumMol(mixMolecules));
-
+    console.log('Sum of all mol retenu', recipe[0].molsum);
     // Find all Risk of molecules inside juice
-    const mixMoleculeIds = mixMolecules.map((m) => m.Molecule_ID);
-    const mixRisks = molecule_risk.filter(({ Molecule_ID }) => mixMoleculeIds.includes(Molecule_ID));
-    console.log('Mix Risks', mixRisks);
+    console.log('Mix Risks', recipe[0].risks);
 
     return (
         <Container maxW={'7xl'} p="5" mt="15" backgroundColor="white" color="black">
@@ -73,11 +54,11 @@ const FDSStack = (props) => {
 
             <Center>
                 <Heading as="h2" mb={8} mt={5}>
-                    {name}
+                    {recipe[0].name}
                 </Heading>
             </Center>
             <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-                <Section1 name={name} company={company} />
+                <Section1 name={recipe[0].name} company={company} />
                 <Section2 />
                 <Section3 />
                 <Section4 />
