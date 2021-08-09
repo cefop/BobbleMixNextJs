@@ -22,18 +22,6 @@ const QUERY_FINGERPRINT = gql`
 `;
 
 export default function Fds() {
-    // const juice = [
-    //     {
-    //         id: 20,
-    //         name: 'Mangue',
-    //         vol: 20,
-    //     },
-    //     {
-    //         id: 30,
-    //         name: 'Fraise',
-    //         vol: 20,
-    //     },
-    // ];
     const router = useRouter();
     const { fingerprint } = router.query;
     const { loading, error, data } = useQuery(QUERY_FINGERPRINT, { variables: { fingerprint: fingerprint } });
