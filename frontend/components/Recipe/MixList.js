@@ -1,8 +1,7 @@
-import { Image, Table, TableCaption, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Table, TableCaption, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { base, boosterNico } from '../lib/ProductsDIY';
 import { Fieldset, MixLists, OptionContainer, OptionsList } from './StyleRecipe';
-import getKeyByValue from '../lib/GetKeyByValue';
-import { Bobble1L, FlavorGrid, ImageBottle, ImageBox, LabelBottle } from '../Mixeur/StyleMixeur';
+import { Bobble1L, ImageBottle, ImageBox, LabelBottle } from '../Mixeur/StyleMixeur';
 
 const MixList = (props) => {
     const { tma, tm } = props;
