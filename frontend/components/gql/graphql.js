@@ -73,10 +73,23 @@ export const QUERY_FINGERPRINT = gql`
     }
 `;
 
+// WIP delete a recipe on user
+export const MUTATION_DELET_USER_RECIPE = gql`
+    mutation deleteUsersRecipes {
+        delete_users_recipes(
+            where: { recipe_id: { _eq: "936002d8-ee1e-4544-915d-6fff2108f153" }, user_id: { _eq: 2 } }
+        ) {
+            returning {
+                user_id
+            }
+        }
+    }
+`;
+
 // page/toprecipes.js
 export const QUERY_ALL_RECIPES = gql`
     query fetchAllRecipe {
-        recipes(order_by: { updated_at: desc }) {
+        recipes(order_by: { users_recipes_aggregate: { count: desc }, created_at: desc }) {
             id
             fingerprint
             name
@@ -89,12 +102,13 @@ export const QUERY_ALL_RECIPES = gql`
 // WIP page/toprecipes.js
 export const QUERY_ALL_RECIPE_RATINGS = gql`
     query fetchAllRecipeRatings {
-        recipes(order_by: { updated_at: desc }) {
+        recipes(order_by: { users_recipes_aggregate: { count: desc }, created_at: desc }) {
             id
             fingerprint
             name
             aromes
             created_at
+            updated_at
             users_recipes_aggregate {
                 aggregate {
                     count(columns: user_id, distinct: true)
