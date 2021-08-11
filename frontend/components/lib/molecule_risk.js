@@ -452,12 +452,6 @@ export const molecule_risk = [
     {
         Molecule_ID: '78-70-6',
         Molecule: 'linalool',
-        Clas_ID: 'H317-1B',
-        Clas: 'Skin Sens. 1B',
-    },
-    {
-        Molecule_ID: '78-70-6',
-        Molecule: 'linalool',
         Clas_ID: 'H319',
         Clas: 'Eye Irrit. 2',
     },

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useApolloClient } from '@apollo/client';
 import { Button, Center, Stack } from '@chakra-ui/react';
 import { FaCloudDownloadAlt, FaRegUserCircle } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
@@ -13,15 +13,18 @@ import { encodeb64 } from '../lib/base64';
 import sumMol from '../lib/SumMol';
 import { saveur_molecule } from '../lib/saveur_molecule';
 import { molecule_risk } from '../lib/molecule_risk';
-import { MUTATION_INSERT_ONE_RECIPE } from '../gql/graphql';
+import { MUTATION_INSERT_ONE_RECIPE, QUERY_FINGERPRINT, MUTATION_ADD_USER_RECIPE } from '../gql/graphql';
 
 const SaveRecipe = () => {
-    const { user } = useUser();
+    const client = useApolloClient();
+    const { user, session } = useUser();
+    const uid = session && session.id ? parseInt(session.id) : null;
     const { bobbleMix, setBobbleMix } = useContext(BobbleMixContext);
     const { nicoMix, setNicoMix } = useContext(NicoContext);
     const [posting, setPosting] = useState(false);
 
-    const [addREcipe] = useMutation(MUTATION_INSERT_ONE_RECIPE);
+    const [addRecipe] = useMutation(MUTATION_INSERT_ONE_RECIPE);
+    const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE);
 
     // build the MIX NAME: quantity% name per items
     // name: 33.33% Fruit-du-Dragon / 33.33% Litchi / 33.33% Abricot
@@ -43,68 +46,67 @@ const SaveRecipe = () => {
         mixMolecules.map((m) => m.Molecule_ID).includes(Molecule_ID)
     );
 
-    // Build and call the mutation
-    const sendRecipe = () => {
-        console.log('pending...');
-        setTimeout(function () {
-            console.log('computing....');
-            // build mutation variables
-            const aromes = bobbleMix.map((a, i) => {
-                const ic = a.item_categories;
-                return {
-                    id: a.id,
-                    name: a.name,
-                    image: a.image,
-                    categories: ic.map((i, k) => {
-                        return { name: i.category.name };
-                    }),
-                };
-            });
-            // check if fingerprint already exist!
-            // query checkIfRecipe {
-            //     recipes(where: {fingerprint: {_eq: "MzMuMzMlIEZydWl0LWR1LURyYWdvbiAvIDY2LjY3JSBBYnJpY290"}}) {
-            //       id
-            //     }
-            //   }
-            // IF recipe already exist then add this recipe to the user
-            // mutation MyMutation {
-            //     insert_users_recipes_one(object: {recipe_id: "8f37a37a-f519-45da-9980-61af8fa2caa9", user_id: 2}) {
-            //       recipe_id
-            //     }
-            //   }
-            // ELES create the recipe on the table
-            // Send mutation
-            addREcipe({
-                variables: {
-                    fingerprint: encodeb64(MixName(gso)),
-                    name: MixName(gso),
-                    nicotine: nicoMix && Number(nicoMix.replace('mg', '')),
-                    volume: 40,
-                    aromes,
-                    molecules: mixMolecules,
-                    risks: mixRisks,
-                    molsum: sumMol(mixMolecules),
-                },
-            });
-            // add the new recipe to the user
-            // mutation MyMutation {
-            //     insert_users_recipes_one(object: {recipe_id: "8f37a37a-f519-45da-9980-61af8fa2caa9", user_id: 2}) {
-            //       recipe_id
-            //     }
-            //   }
-            // clean old data from user
-            setPosting(false);
-            setBobbleMix([]);
-            setNicoMix(null);
-            console.log('finished!');
-        }, 3000);
-        setPosting(true);
+    const writeRecipe = async (rid) => {
+        console.log('writing the recipe....', rid);
+        // build the feature of the recipe
+        const aromes = bobbleMix.map((a, i) => {
+            const ic = a.item_categories;
+            return {
+                id: a.id,
+                name: a.name,
+                image: a.image,
+                categories: ic.map((i, k) => {
+                    return { name: i.category.name };
+                }),
+            };
+        });
+        // write the recipe
+        await addRecipe({
+            update: (proxy, mutationResult) => {
+                // console.log('mutationResult: ', mutationResult);
+                // console.log(mutationResult.data.insert_recipes_one.id);
+                rid = mutationResult.data.insert_recipes_one.id;
+            },
+            variables: {
+                fingerprint: encodeb64(MixName(gso)),
+                name: MixName(gso),
+                nicotine: nicoMix && Number(nicoMix.replace('mg', '')),
+                volume: 40,
+                aromes,
+                molecules: mixMolecules,
+                risks: mixRisks,
+                molsum: sumMol(mixMolecules),
+            },
+        });
+        console.log('recipe is done!');
+        // attache the recipe
+        await fixRecipe({ variables: { rid: rid, uid: uid } });
+        console.log('recipe attached!...');
+        // cleaning
+        setPosting(false);
+        setBobbleMix([]);
+        setNicoMix(null);
+    };
+
+    const attacheRecipe = async (rid) => {
+        console.log('get rid and uid.... computing');
+        // TODO CHECK if user has not already this recipe attached!
+        await fixRecipe({ variables: { rid: rid, uid: uid } });
+        console.log('recipe attached!...');
+        // cleaning
+        setPosting(false);
+        setBobbleMix([]);
+        setNicoMix(null);
     };
 
     return (
         <Center>
             <Stack spacing={4} direction="row" align="center" my={7}>
-                {user ? (
+                {!user ? (
+                    <Button leftIcon={<FaRegUserCircle />} colorScheme="red" variant="solid" onClick={() => signIn()}>
+                        connectez-vous pour enregister votre recette
+                    </Button>
+                ) : (
                     <Button
                         leftIcon={<FaCloudDownloadAlt />}
                         size="md"
@@ -113,13 +115,19 @@ const SaveRecipe = () => {
                         isLoading={posting}
                         loadingText="enregistrement de votre mix"
                         isDisabled={!nicoMix}
-                        onClick={() => sendRecipe()}
+                        onClick={async (e) => {
+                            setPosting(true);
+                            const { data } = await client.query({
+                                query: QUERY_FINGERPRINT,
+                                variables: { fingerprint: encodeb64(MixName(gso)) },
+                            });
+                            // if the recipe already existe
+                            data.recipes.length > 0 && attacheRecipe(data.recipes[0].id);
+                            // if the recipe not already existe
+                            data.recipes.length === 0 && writeRecipe(encodeb64(MixName(gso)));
+                        }}
                     >
-                        Enregistrer votre recette
-                    </Button>
-                ) : (
-                    <Button leftIcon={<FaRegUserCircle />} colorScheme="red" variant="solid" onClick={() => signIn()}>
-                        connectez-vous pour enregister votre recette
+                        enregister votre recette
                     </Button>
                 )}
             </Stack>

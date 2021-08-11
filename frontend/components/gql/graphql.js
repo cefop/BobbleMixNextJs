@@ -50,6 +50,7 @@ export const MUTATION_INSERT_ONE_RECIPE = gql`
                 molsum: $molsum
             }
         ) {
+            id
             created_at
         }
     }
@@ -69,6 +70,14 @@ export const QUERY_FINGERPRINT = gql`
             molecules
             risks
             created_at
+        }
+    }
+`;
+
+export const MUTATION_ADD_USER_RECIPE = gql`
+    mutation addUserREcipe($rid: uuid, $uid: Int) {
+        insert_users_recipes_one(object: { recipe_id: $rid, user_id: $uid }) {
+            recipe_id
         }
     }
 `;
