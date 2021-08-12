@@ -56,6 +56,15 @@ export const MUTATION_INSERT_ONE_RECIPE = gql`
     }
 `;
 
+// components/mixeur
+export const MUTATION_ADD_USER_RECIPE = gql`
+    mutation addUserREcipe($rid: uuid, $uid: Int) {
+        insert_users_recipes_one(object: { recipe_id: $rid, user_id: $uid }) {
+            recipe_id
+        }
+    }
+`;
+
 // page/recipe.js + page/fds.js
 export const QUERY_FINGERPRINT = gql`
     query fetchRecipeFingerprint($fingerprint: String) {
@@ -74,20 +83,10 @@ export const QUERY_FINGERPRINT = gql`
     }
 `;
 
-export const MUTATION_ADD_USER_RECIPE = gql`
-    mutation addUserREcipe($rid: uuid, $uid: Int) {
-        insert_users_recipes_one(object: { recipe_id: $rid, user_id: $uid }) {
-            recipe_id
-        }
-    }
-`;
-
 // WIP delete a recipe on user
 export const MUTATION_DELET_USER_RECIPE = gql`
-    mutation deleteUsersRecipes {
-        delete_users_recipes(
-            where: { recipe_id: { _eq: "936002d8-ee1e-4544-915d-6fff2108f153" }, user_id: { _eq: 2 } }
-        ) {
+    mutation deleteUsersRecipes($rid: uuid, $uid: Int) {
+        delete_users_recipes(where: { recipe_id: { _eq: $rid }, user_id: { _eq: $uid } }) {
             returning {
                 user_id
             }

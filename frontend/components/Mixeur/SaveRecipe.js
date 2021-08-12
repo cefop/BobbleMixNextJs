@@ -90,13 +90,22 @@ const SaveRecipe = () => {
 
     const attacheRecipe = async (rid) => {
         console.log('get rid and uid.... computing');
+        // const [data, setData] = useState()
+        // const [error, setError] = useState()
         // TODO CHECK if user has not already this recipe attached!
-        await fixRecipe({ variables: { rid: rid, uid: uid } });
-        console.log('recipe attached!...');
-        // cleaning
-        setPosting(false);
-        setBobbleMix([]);
-        setNicoMix(null);
+        try {
+            const { data } = await fixRecipe({ variables: { rid: rid, uid: uid } });
+            console.log('recipe attached!...', data);
+            // cleaning
+            setPosting(false);
+            setBobbleMix([]);
+            setNicoMix(null);
+        } catch (e) {
+            console.log('dude!... nope!!');
+            console.log('error', e);
+            // cleaning
+            setPosting(false);
+        }
     };
 
     return (
