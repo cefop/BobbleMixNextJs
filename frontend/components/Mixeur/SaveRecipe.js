@@ -18,6 +18,10 @@ import { MUTATION_INSERT_ONE_RECIPE, QUERY_FINGERPRINT, MUTATION_ADD_USER_RECIPE
 const SaveRecipe = () => {
     const client = useApolloClient();
     const { user, session } = useUser();
+
+    // const [toastMessage, setToastMessage] = useState(undefined);
+    // const toast = useToast();
+
     const uid = session && session.id ? parseInt(session.id) : null;
     const { bobbleMix, setBobbleMix } = useContext(BobbleMixContext);
     const { nicoMix, setNicoMix } = useContext(NicoContext);
@@ -25,6 +29,20 @@ const SaveRecipe = () => {
 
     const [addRecipe] = useMutation(MUTATION_INSERT_ONE_RECIPE);
     const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE);
+
+    // useEffect(() => {
+    //     if (toastMessage) {
+    //         // const { title } = toastMessage;
+    //         console.log('toast', toastMessage);
+    //         toast({
+    //             title: 'hello',
+    //             // description: body,
+    //             status: 'warning',
+    //             duration: 9000,
+    //             isClosable: true,
+    //         });
+    //     }
+    // }, [toastMessage, toast]);
 
     // build the MIX NAME: quantity% name per items
     // name: 33.33% Fruit-du-Dragon / 33.33% Litchi / 33.33% Abricot
@@ -90,9 +108,6 @@ const SaveRecipe = () => {
 
     const attacheRecipe = async (rid) => {
         console.log('get rid and uid.... computing');
-        // const [data, setData] = useState()
-        // const [error, setError] = useState()
-        // TODO CHECK if user has not already this recipe attached!
         try {
             const { data } = await fixRecipe({ variables: { rid: rid, uid: uid } });
             console.log('recipe attached!...', data);
@@ -103,6 +118,15 @@ const SaveRecipe = () => {
         } catch (e) {
             console.log('dude!... nope!!');
             console.log('error', e);
+            // TODO better feedback
+            // eslint-disable-next-line no-undef
+            alert('vous avez deja cette recette');
+            // toast({
+            //     title: 'hello',
+            //     status: 'warning',
+            //     duration: 9000,
+            //     isClosable: true,
+            // });
             // cleaning
             setPosting(false);
         }

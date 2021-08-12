@@ -68,12 +68,6 @@ export const molecule_risk = [
     {
         Molecule_ID: '106-24-1',
         Molecule: 'geraniol',
-        Clas_ID: 'H317',
-        Clas: 'Skin Sens. 1',
-    },
-    {
-        Molecule_ID: '106-24-1',
-        Molecule: 'geraniol',
         Clas_ID: 'H317-1',
         Clas: 'Skin Sens. 1',
     },
@@ -446,8 +440,8 @@ export const molecule_risk = [
     {
         Molecule_ID: '78-70-6',
         Molecule: 'linalool',
-        Clas_ID: 'H317-1',
-        Clas: 'Skin Sens. 1',
+        Clas_ID: 'H317-1B',
+        Clas: 'Skin Sens. 1B',
     },
     {
         Molecule_ID: '78-70-6',
@@ -560,12 +554,6 @@ export const molecule_risk = [
     {
         Molecule_ID: '8008-56-8',
         Molecule: 'Lemon Oil',
-        Clas_ID: 'H225',
-        Clas: 'Flam. Liq. 2',
-    },
-    {
-        Molecule_ID: '8008-56-8',
-        Molecule: 'Lemon Oil',
         Clas_ID: 'H226',
         Clas: 'Flam. Liq. 3',
     },
@@ -604,12 +592,6 @@ export const molecule_risk = [
         Molecule: 'Lemon Oil',
         Clas_ID: 'H410',
         Clas: 'Aquatic Chronic 1',
-    },
-    {
-        Molecule_ID: '8008-56-8',
-        Molecule: 'Lemon Oil',
-        Clas_ID: 'H411',
-        Clas: 'Aquatic Chronic 2',
     },
     {
         Molecule_ID: '84961-46-6',

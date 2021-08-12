@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/client';
 import { Button, Modal, useDisclosure } from '@chakra-ui/react';
-
-import MixList from './MixList';
+import { useUser } from '../hooks/useUser';
+import { QUERY_USER_RECIPES } from '../gql/graphql';
 import { MixContainer, MixInfos, RecipeContainer } from './StyleRecipe';
+import MixList from './MixList';
 import ModalFrame from './ModalFrame';
-// import UserAddRmRecipe from './userAddRmRecipe';
+import UserAddRmRecipe from './userAddRmRecipe';
 
 const UserRecipe = (props) => {
     const { recipe } = props;
@@ -15,6 +17,10 @@ const UserRecipe = (props) => {
 
     const tm = recipe[0];
     const tma = recipe[0].aromes;
+
+    const { user, session } = useUser();
+    const uid = session && session.id ? parseInt(session.id) : null;
+    const { data } = useQuery(QUERY_USER_RECIPES, { variables: { uid: uid } });
 
     return (
         <RecipeContainer>
@@ -38,7 +44,11 @@ const UserRecipe = (props) => {
                     <Button onClick={onOpen} colorScheme="orange" style={{ boxShadow: 'none' }} variant="outline">
                         étiquette
                     </Button>
-                    {/* <UserAddRmRecipe recipe={recipe[0]} /> */}
+                    {user && data ? (
+                        <UserAddRmRecipe recipe={recipe[0]} ownRecipe={data} uid={uid} />
+                    ) : (
+                        'connectez vous pour enregistrer cette recette'
+                    )}
                     <Modal
                         size="3xl"
                         isOpen={isOpen}

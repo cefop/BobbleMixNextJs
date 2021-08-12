@@ -16,7 +16,7 @@ import Section13 from './Section13';
 import Section14 from './Section14';
 
 const FDSStack = (props) => {
-    const { recipe } = props;
+    const { recipe, aromesRatio } = props;
 
     const now = new Date();
     const company = {
@@ -27,8 +27,14 @@ const FDSStack = (props) => {
         emergencytel: '+33 (0)1 45 42 59 59',
     };
 
-    // Find all molecules of flavors inside Juice
-    console.log('Mix Molecules', recipe[0].molecules);
+    // Find all molecules of flavors inside Juice with their retenu ratio
+    const molList = recipe[0].molecules;
+    const adjustedRetenue = molList.map((m) => {
+        const finder = aromesRatio.find((v) => v.arome === m.Saveur);
+        const res = Object.assign({ mod_retenu: (m.retenu * finder.percent) / 100 }, m);
+        return res;
+    });
+    console.log('Mix Molecules adjusted', adjustedRetenue);
     // Sum all retenu of molecule of juice
     console.log('Sum of all mol retenu', recipe[0].molsum);
     // Find all Risk of molecules inside juice
