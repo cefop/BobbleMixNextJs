@@ -34,7 +34,12 @@ const UserRecipe = (props) => {
                         <li>Volume total: {tm.volume + 20}ml</li>
                     </ul>
                     <Button
-                        onClick={() => router.push(`/fds?fingerprint=${tm.fingerprint}`)}
+                        onClick={() =>
+                            router.push({
+                                pathname: '/fds',
+                                query: { fingerprint: tm.fingerprint },
+                            })
+                        }
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         variant="outline"

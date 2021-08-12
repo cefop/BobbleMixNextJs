@@ -28,7 +28,12 @@ const TopRecipeTb = ({ columns, data }) => {
                         prepareRow(row);
                         return (
                             <Tr
-                                onClick={() => router.push(`/recipe?fingerprint=${row.original.fingerprint}`)}
+                                onClick={() => {
+                                    router.push({
+                                        pathname: '/recipe',
+                                        query: { fingerprint: row.original.fingerprint },
+                                    });
+                                }}
                                 {...row.getRowProps()}
                             >
                                 {row.cells.map((cell) => {
