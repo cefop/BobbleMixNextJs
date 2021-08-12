@@ -5,6 +5,7 @@ export const encodeb64 = (string) => {
 };
 
 export const decodeb64 = (base64) => {
+    console.log('BUFFER: ', base64);
     const binaryBuff = Buffer.from(base64, 'base64');
     const string = binaryBuff.toString('utf8');
     return string;
