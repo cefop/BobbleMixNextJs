@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { Center, Button, HStack } from '@chakra-ui/react';
-import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+// import * as ExportComponent from 'react-component-export-image';
+// import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 import { FaRegFileImage, FaRegFilePdf } from 'react-icons/fa';
 
 const LabelContainer = styled.div`
@@ -18,7 +19,7 @@ const LabelContainer = styled.div`
 // https://github.com/im-salman/react-component-export-image/issues/42
 
 // component to print
-const ComponentToPrint = React.forwardRef((props, ref) => {
+const ComponentToPrint = forwardRef((props, ref) => {
     const { name } = props;
     return (
         <LabelContainer ref={ref}>
@@ -29,8 +30,15 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
 
 const ModalLabel = (props) => {
     const { name } = props;
-
     const componentRef = useRef();
+
+    useEffect(() => {
+        // eslint-disable-next-line valid-typeof
+        if (typeof window !== undefined) {
+            import('react-component-export-image').then((module) => (componentRef.current = module));
+        }
+    }, []);
+
     const params = {
         fileName: `BobbleMix ${name.replace('/', '-')}`,
         pdfOptions: {
@@ -62,7 +70,7 @@ const ModalLabel = (props) => {
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         leftIcon={<FaRegFileImage />}
-                        onClick={() => exportComponentAsJPEG(componentRef, params)}
+                        onClick={() => componentRef.current?.exportComponentAsJPEG(componentRef, params)}
                     >
                         image JPG
                     </Button>
@@ -70,7 +78,7 @@ const ModalLabel = (props) => {
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         leftIcon={<FaRegFileImage />}
-                        onClick={() => exportComponentAsPNG(componentRef, params)}
+                        onClick={() => componentRef.current?.exportComponentAsPNG(componentRef, params)}
                     >
                         image PNG
                     </Button>
@@ -78,7 +86,7 @@ const ModalLabel = (props) => {
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         leftIcon={<FaRegFilePdf />}
-                        onClick={() => exportComponentAsPDF(componentRef, params)}
+                        onClick={() => componentRef.current?.exportComponentAsPDF(componentRef, params)}
                     >
                         format PDF
                     </Button>
