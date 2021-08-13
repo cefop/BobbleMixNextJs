@@ -1,9 +1,25 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData } from './FDSStyle';
+import _ from 'lodash';
 
 const Section3 = (props) => {
     const { listMol, mixRisk } = props;
+    // trier par ordre decroissant la list
+    listMol.sort((a, b) => (a.mod_retenu > b.mod_retenu && -1) || 1);
 
+    // remove duplicate from molecule name
+    const result = _.groupBy(listMol, 'Molecule_ID');
+    const res = _.values(result).map((group) => ({ ...group[0], times: group.length }));
+    const cleanedList = res.map((i, k) => {
+        // find the sum of retenu when duplicate
+        const times = i.mod_retenu * result[i.Molecule_ID].length;
+        // add result of times into grouped listMol
+        const newArr = Object.assign({ mod_retenuAdd: times }, [i][0]);
+        return newArr;
+    });
+    console.log('THE LIST', cleanedList);
+
+    // help to find mol risk
     const FilterFromMolID = (arrOG, arrLook, objKey) => {
         const arr = arrOG.map((i, k) => {
             const filtered = arrLook.filter((mol) => mol[objKey] === i[objKey]);
@@ -49,27 +65,30 @@ const Section3 = (props) => {
                     </Separate>
                     <Tr>
                         <Td colSpan={2}>
-                            <Table size="sm" style={{ color: 'orange' }}>
+                            <Table size="sm" style={{ color: 'cyan' }}>
                                 <Tbody>
                                     <Tr>
                                         <TdData>Nom chimique</TdData>
                                         <TdData>N°CAS</TdData>
-                                        <TdData> % (trier par ordre decroissant)</TdData>
+                                        <TdData>%</TdData>
                                         <TdData>Class</TdData>
                                         <TdData>Spec.concentration</TdData>
                                     </Tr>
-                                    {listMol.map((i, k) => {
+                                    {cleanedList.map((i, k) => {
                                         const RiskClass = FilterFromMolID([i], mixRisk, 'Molecule_ID');
                                         return (
                                             <Tr>
                                                 <TdData>{i.Molecule}</TdData>
                                                 <TdData>{i.Molecule_ID}</TdData>
-                                                <TdData>inf. et eg. {i.mod_retenu}%</TdData>
+                                                <TdData>&#x2264; {i.mod_retenuAdd}%</TdData>
                                                 <TdData>
                                                     {RiskClass[0].map((i) => {
                                                         return (
                                                             <ul style={{ listStyle: 'none' }}>
-                                                                <li>{i.Clas}</li>
+                                                                <li>
+                                                                    {`${i.Clas} `}
+                                                                    {i.Clas_ID !== '(vide)' && `- ${i.Clas_ID}`}
+                                                                </li>
                                                             </ul>
                                                         );
                                                     })}
