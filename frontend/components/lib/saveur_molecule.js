@@ -346,14 +346,14 @@ export const saveur_molecule = [
         Saveur: 'Framboise',
         Molecule_ID: '123-51-3',
         Molecule: '3-methylbutan-1-ol',
-        retenu: 15,
+        retenu: 0.015,
     },
     {
         Saveur_ID: 31,
         Saveur: 'Framboise',
         Molecule_ID: '123-92-2',
         Molecule: "acétate d'isopentyle",
-        retenu: 15,
+        retenu: 0.015,
     },
     {
         Saveur_ID: 31,
@@ -367,7 +367,7 @@ export const saveur_molecule = [
         Saveur: 'Framboise',
         Molecule_ID: '23696-85-7',
         Molecule: '1-(2,6,6-trimethyl-1,3-cyclohe xadien-1-yl)-2-buten-1-one',
-        retenu: 15,
+        retenu: 0.015,
     },
     {
         Saveur_ID: 31,

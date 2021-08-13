@@ -12,12 +12,19 @@ const Section3 = (props) => {
     const res = _.values(result).map((group) => ({ ...group[0], times: group.length }));
     const cleanedList = res.map((i, k) => {
         // find the sum of retenu when duplicate
-        const times = i.mod_retenu * result[i.Molecule_ID].length;
-        // add result of times into grouped listMol
-        const newArr = Object.assign({ mod_retenuAdd: times }, [i][0]);
+        let newArr = [];
+        if (result[i.Molecule_ID].length > 1) {
+            // If more that 1 duplacate iterate and sum all mod_retenu together
+            const somValues = result[i.Molecule_ID].reduce((a, b) => a.mod_retenu + b.mod_retenu);
+            // reforme the array
+            newArr = Object.assign({ mod_retenuAdd: somValues.toFixed(4) }, [i][0]);
+        } else {
+            // nothing special take old value
+            newArr = Object.assign({ mod_retenuAdd: i.mod_retenu.toFixed(4) }, [i][0]);
+        }
         return newArr;
     });
-    console.log('THE LIST', cleanedList);
+    // console.log('THE LIST', cleanedList);
 
     // help to find mol risk
     const FilterFromMolID = (arrOG, arrLook, objKey) => {
