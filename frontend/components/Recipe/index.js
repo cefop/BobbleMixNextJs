@@ -10,7 +10,7 @@ import UserAddRmRecipe from './userAddRmRecipe';
 
 const UserRecipe = (props) => {
     const { recipe } = props;
-    console.log('THE RECIPE!: ', recipe);
+    // console.log('THE RECIPE!: ', recipe);
     const router = useRouter();
 
     const { isOpen, onOpen, onClose } = useDisclosure();

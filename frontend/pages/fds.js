@@ -21,7 +21,7 @@ export default function Fds() {
         return obj;
     });
 
-    console.log('RECIPE: ', loading, error, data);
+    // console.log('RECIPE: ', loading, error, data);
     // console.log('AROMES: ', aromesRatio);
 
     return (

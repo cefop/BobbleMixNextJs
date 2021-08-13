@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 // page/mixeur.js
 export const FETCH_ITEMS = gql`
     query fetchItems {
-        item(order_by: { name: asc }) {
+        item(order_by: { name: asc }, where: { active: { _eq: true } }) {
             id
             name
             image

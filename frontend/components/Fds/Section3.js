@@ -1,7 +1,18 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData } from './FDSStyle';
 
-const Section3 = () => {
+const Section3 = (props) => {
+    const { listMol, mixRisk } = props;
+
+    const FilterFromMolID = (arrOG, arrLook, objKey) => {
+        const arr = arrOG.map((i, k) => {
+            const filtered = arrLook.filter((mol) => mol[objKey] === i[objKey]);
+            return filtered;
+        });
+        return arr;
+    };
+    // FilterFromMolID(listMol, mixRisk, 'Molecule_ID');
+
     return (
         <>
             <HeadingBox>
@@ -38,70 +49,35 @@ const Section3 = () => {
                     </Separate>
                     <Tr>
                         <Td colSpan={2}>
-                            <Table size="sm">
+                            <Table size="sm" style={{ color: 'orange' }}>
                                 <Tbody>
                                     <Tr>
                                         <TdData>Nom chimique</TdData>
-                                        <TdData>No</TdData>
-                                        <TdData>%</TdData>
+                                        <TdData>N°CAS</TdData>
+                                        <TdData> % (trier par ordre decroissant)</TdData>
                                         <TdData>Class</TdData>
                                         <TdData>Spec.concentration</TdData>
                                     </Tr>
-                                    <Tr>
-                                        <TdData>glycerol</TdData>
-                                        <TdData>
-                                            N°CAS: 56-81-5
-                                            <br />
-                                            Numéro d'identification UE: <br />
-                                            N°CE: 200-2895
-                                        </TdData>
-                                        <TdData>40 - 50</TdData>
-                                        <TdData>Not Classified -</TdData>
-                                        <TdData>Non applicable</TdData>
-                                    </Tr>
-                                    <Tr>
-                                        <TdData>4-hydroxy-2,5-dimethylfuran-2(3H)-one</TdData>
-                                        <TdData>
-                                            N°CAS: 3658-77-3
-                                            <br />
-                                            Numéro d'identification UE: <br />
-                                            N°CE: 222-908-8
-                                        </TdData>
-                                        <TdData>&#60;1.1</TdData>
-                                        <TdData>
-                                            Eye Irri. 2 H319 <br />
-                                            Skin Sens.1A H317
-                                        </TdData>
-                                        <TdData>Non applicable</TdData>
-                                    </Tr>
-                                    <Tr>
-                                        <TdData>para-mentha-8-thiolone</TdData>
-                                        <TdData>
-                                            N°CAS: 38462-22-5
-                                            <br />
-                                            Numéro d'identification UE: <br />
-                                            N°CE: 253-953-1
-                                        </TdData>
-                                        <TdData>&#60;1</TdData>
-                                        <TdData>Skin Sens.1 H317</TdData>
-                                        <TdData>Non applicable</TdData>
-                                    </Tr>
-                                    <Tr>
-                                        <TdData>Linalool</TdData>
-                                        <TdData>
-                                            N°CAS: 78-70-6
-                                            <br />
-                                            Numéro d'identification UE: <br />
-                                            N°CE: 201-134-4
-                                        </TdData>
-                                        <TdData>&#60;1</TdData>
-                                        <TdData>
-                                            Skin Sens.1 H317 <br />
-                                            Eye Irrit. 2 H319 <br />
-                                            Eye Irrit.2 H315
-                                        </TdData>
-                                        <TdData>Non applicable</TdData>
-                                    </Tr>
+                                    {listMol.map((i, k) => {
+                                        const RiskClass = FilterFromMolID([i], mixRisk, 'Molecule_ID');
+                                        return (
+                                            <Tr>
+                                                <TdData>{i.Molecule}</TdData>
+                                                <TdData>{i.Molecule_ID}</TdData>
+                                                <TdData>inf. et eg. {i.mod_retenu}%</TdData>
+                                                <TdData>
+                                                    {RiskClass[0].map((i) => {
+                                                        return (
+                                                            <ul style={{ listStyle: 'none' }}>
+                                                                <li>{i.Clas}</li>
+                                                            </ul>
+                                                        );
+                                                    })}
+                                                </TdData>
+                                                <TdData>Non applicable</TdData>
+                                            </Tr>
+                                        );
+                                    })}
                                 </Tbody>
                             </Table>
                         </Td>

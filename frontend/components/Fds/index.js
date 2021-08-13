@@ -66,7 +66,7 @@ const FDSStack = (props) => {
             <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
                 <Section1 name={recipe[0].name} company={company} />
                 <Section2 />
-                <Section3 />
+                <Section3 listMol={adjustedRetenue} mixRisk={recipe[0].risks} />
                 <Section4 />
                 <Section5 />
                 <Section6 />
