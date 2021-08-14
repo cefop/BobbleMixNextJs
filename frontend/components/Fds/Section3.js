@@ -4,29 +4,28 @@ import _ from 'lodash';
 
 const Section3 = (props) => {
     const { listMol, mixRisk } = props;
-    // trier par ordre decroissant la list
+    // sort the list in descending order
     listMol.sort((a, b) => (a.mod_retenu > b.mod_retenu && -1) || 1);
 
     // remove duplicate from molecule name
     const result = _.groupBy(listMol, 'Molecule_ID');
     const res = _.values(result).map((group) => ({ ...group[0], times: group.length }));
-    const cleanedList = res.map((i, k) => {
-        // find the sum of retenu when duplicate
+    const sanitizeList = res.map((i, k) => {
+        // find the sum of retenu when any duplicate
         let newArr = [];
         if (result[i.Molecule_ID].length > 1) {
             // If more that 1 duplacate iterate and sum all mod_retenu together
-            const somValues = result[i.Molecule_ID].reduce((a, b) => a.mod_retenu + b.mod_retenu);
+            const sumValues = result[i.Molecule_ID].reduce((a, b) => a.mod_retenu + b.mod_retenu);
             // reforme the array
-            newArr = Object.assign({ mod_retenuAdd: somValues.toFixed(4) }, [i][0]);
+            newArr = Object.assign({ mod_retenuAdd: sumValues.toFixed(4) }, [i][0]);
         } else {
-            // nothing special take old value
+            // nothing special.. keep old values
             newArr = Object.assign({ mod_retenuAdd: i.mod_retenu.toFixed(4) }, [i][0]);
         }
         return newArr;
     });
-    // console.log('THE LIST', cleanedList);
 
-    // help to find mol risk
+    // helper to find mol risks
     const FilterFromMolID = (arrOG, arrLook, objKey) => {
         const arr = arrOG.map((i, k) => {
             const filtered = arrLook.filter((mol) => mol[objKey] === i[objKey]);
@@ -72,7 +71,7 @@ const Section3 = (props) => {
                     </Separate>
                     <Tr>
                         <Td colSpan={2}>
-                            <Table size="sm" style={{ color: 'cyan' }}>
+                            <Table size="sm" style={{ color: 'green' }}>
                                 <Tbody>
                                     <Tr>
                                         <TdData>Nom chimique</TdData>
@@ -81,7 +80,7 @@ const Section3 = (props) => {
                                         <TdData>Class</TdData>
                                         <TdData>Spec.concentration</TdData>
                                     </Tr>
-                                    {cleanedList.map((i, k) => {
+                                    {sanitizeList.map((i, k) => {
                                         const RiskClass = FilterFromMolID([i], mixRisk, 'Molecule_ID');
                                         return (
                                             <Tr>

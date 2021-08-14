@@ -27,7 +27,7 @@ const FDSStack = (props) => {
         emergencytel: '+33 (0)1 45 42 59 59',
     };
 
-    // Find all molecules of flavors inside Juice with their retenu ratio
+    // Find all molecules of flavors inside the mix with their retenu ratio
     const molList = recipe[0].molecules;
     const adjustedRetenue = molList.map((m) => {
         const finder = aromesRatio.find((v) => v.arome === m.Saveur);
@@ -35,9 +35,9 @@ const FDSStack = (props) => {
         return res;
     });
     console.log('Mix Molecules adjusted', adjustedRetenue);
-    // Sum all retenu of molecule of juice
+    // Sum all retenu of molecule of the mix
     console.log('Sum of all mol retenu', recipe[0].molsum);
-    // Find all Risk of molecules inside juice
+    // Find all Risk of molecules of the mix
     console.log('Mix Risks', recipe[0].risks);
 
     return (

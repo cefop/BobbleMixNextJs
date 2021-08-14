@@ -10,6 +10,7 @@ export default function Fds() {
     const router = useRouter();
     const { fingerprint } = router.query;
     const { loading, error, data } = useQuery(QUERY_FINGERPRINT, { variables: { fingerprint: fingerprint } });
+
     // get an arr of all arome and their ratio in the mix
     const fullName = decodeb64(String(fingerprint)).split('/');
     const aromesRatio = fullName.map((a) => {
