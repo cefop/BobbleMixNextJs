@@ -17,7 +17,7 @@ export default function Fds() {
         const ar = String(a.split('%')[1]);
         const obj = {
             percent: Number(a.split('%')[0].trim()),
-            arome: ar.trim().replace(/[-]/g, ' '),
+            arome: ar.trim().replace(/-/g, ' '),
         };
         return obj;
     });

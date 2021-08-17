@@ -130,7 +130,7 @@ const ContainerSection = (props) => {
             (result) => {
                 setIsH412({
                     arr: result.allmol,
-                    b: false,
+                    b: '',
                     sum: result.sum,
                 });
             },
@@ -143,7 +143,7 @@ const ContainerSection = (props) => {
             (result) => {
                 setIsH413({
                     arr: result.allmol,
-                    b: false,
+                    b: '',
                     sum: result.sum,
                 });
             },
@@ -189,29 +189,29 @@ const ContainerSection = (props) => {
             });
     }, [isH317_1A, isH317_1B]);
 
-    useEffect(() => {
+    useEffect(async () => {
         // final check for is H412
-        const res = isH410.sum * 100 + isH411.sum * 10 + isH412.sum;
+        const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum);
         setIsH412({
-            arr: null,
-            b: res >= 25,
+            arr: isH412.arr,
+            b: (await res) >= 25,
             sum: res,
         });
-        // console.log('H410', isH410, 'H411', isH411, 'H412', isH412, 'H413', isH413);
-    }, []);
+    }, [isH411.sum]);
 
-    useEffect(() => {
+    useEffect(async () => {
         // final check for is H413
         if (isH412.b === false) {
-            const res = isH410.sum * 100 + isH411.sum * 10 + isH412.sum + isH413.sum;
+            const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum) + (await isH413.sum);
+            console.log('for 413 retenu', res);
             setIsH413({
-                arr: null,
-                b: res >= 25,
+                arr: isH413.arr,
+                b: (await res) >= 25,
                 sum: res,
             });
-            // console.log('H410', isH410, 'H411', isH411, 'H412', isH412, 'H413', isH413);
+            console.log('H413', isH413);
         }
-    }, []);
+    }, [isH412.sum]);
 
     useEffect(() => {
         isH317_1A.b >= 0.01 &&

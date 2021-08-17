@@ -3,6 +3,7 @@ import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section2 = (props) => {
     const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;
+    // console.log('MIX is H412', isH412, 'MIX is H413', isH413);
 
     return (
         <>
