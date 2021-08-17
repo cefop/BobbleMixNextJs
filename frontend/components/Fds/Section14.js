@@ -2,7 +2,8 @@ import { Table, Thead, Tbody, Tr, Td, Heading } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
-const Section14 = () => {
+const Section14 = (props) => {
+    const { isH317_1A, isH317_1B, isH226, isH319 } = props;
     const now = new Date();
     return (
         <>
@@ -41,11 +42,25 @@ const Section14 = () => {
                         <Td>Textes des phrases réglementaires</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody>
-                                    <Tr>
-                                        <TdData>&nbsp;</TdData>
-                                        <TdData></TdData>
-                                    </Tr>
+                                <Tbody style={{ color: 'cyan' }}>
+                                    {(isH317_1A.arr.length > 0 || isH317_1B.b.arr.length > 0) && (
+                                        <Tr>
+                                            <TdData>H317</TdData>
+                                            <TdData>Peut provoquer une allergie cutanée</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH226.arr.length > 0 && (
+                                        <Tr>
+                                            <TdData>H226 </TdData>
+                                            <TdData>Liquide et vapeurs inflammables</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH319.arr.length > 0 && (
+                                        <Tr>
+                                            <TdData>H319</TdData>
+                                            <TdData>Provoque une sévère irritation des yeux</TdData>
+                                        </Tr>
+                                    )}
                                 </Tbody>
                             </Table>
                         </Td>

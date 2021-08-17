@@ -1,31 +1,10 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData } from './FDSStyle';
-import _ from 'lodash';
 
 const Section3 = (props) => {
-    const { listMol, mixRisk } = props;
-    // sort the list in descending order
-    listMol.sort((a, b) => (a.mod_retenu > b.mod_retenu && -1) || 1);
+    const { mixRisk, sanitizeList } = props;
 
-    // remove duplicate from molecule name
-    const result = _.groupBy(listMol, 'Molecule_ID');
-    const res = _.values(result).map((group) => ({ ...group[0], times: group.length }));
-    const sanitizeList = res.map((i, k) => {
-        // find the sum of retenu when any duplicate
-        let newArr = [];
-        if (result[i.Molecule_ID].length > 1) {
-            // If more that 1 duplacate iterate and sum all mod_retenu together
-            const sumValues = result[i.Molecule_ID].reduce((a, b) => a.mod_retenu + b.mod_retenu);
-            // reforme the array
-            newArr = Object.assign({ mod_retenuAdd: sumValues.toFixed(4) }, [i][0]);
-        } else {
-            // nothing special.. keep old values
-            newArr = Object.assign({ mod_retenuAdd: i.mod_retenu.toFixed(4) }, [i][0]);
-        }
-        return newArr;
-    });
-
-    // helper to find mol risks
+    // find all risks per mol
     const FilterFromMolID = (arrOG, arrLook, objKey) => {
         const arr = arrOG.map((i, k) => {
             const filtered = arrLook.filter((mol) => mol[objKey] === i[objKey]);
@@ -33,7 +12,7 @@ const Section3 = (props) => {
         });
         return arr;
     };
-    // FilterFromMolID(listMol, mixRisk, 'Molecule_ID');
+    // FilterFromMolID(sanitizeList, mixRisk, 'Molecule_ID');
 
     return (
         <>
@@ -83,14 +62,14 @@ const Section3 = (props) => {
                                     {sanitizeList.map((i, k) => {
                                         const RiskClass = FilterFromMolID([i], mixRisk, 'Molecule_ID');
                                         return (
-                                            <Tr>
+                                            <Tr key={k}>
                                                 <TdData>{i.Molecule}</TdData>
                                                 <TdData>{i.Molecule_ID}</TdData>
-                                                <TdData>&#x2264; {i.mod_retenuAdd}%</TdData>
+                                                <TdData>&#x2264; {i.mod_retenuAdd.toFixed(4)}%</TdData>
                                                 <TdData>
-                                                    {RiskClass[0].map((i) => {
+                                                    {RiskClass[0].map((i, k) => {
                                                         return (
-                                                            <ul style={{ listStyle: 'none' }}>
+                                                            <ul style={{ listStyle: 'none' }} key={k}>
                                                                 <li>
                                                                     {`${i.Clas} `}
                                                                     {i.Clas_ID !== '(vide)' && `- ${i.Clas_ID}`}
@@ -112,5 +91,4 @@ const Section3 = (props) => {
         </>
     );
 };
-
 export default Section3;

@@ -39,7 +39,7 @@ H319
 H334
 -- non existant
 
-H317 -1 | H317-1b
+H317 -1 et H317-1b
 calculé just la retenue de mol avc ce risk avec sont ratio dans le mix (ex: mangue/fraise = retenu/2)
 
 calculé la recette (concentration dans le mix) en molécule => (Res)concentration comparé avec le risk SI H317

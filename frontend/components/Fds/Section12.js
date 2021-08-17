@@ -1,7 +1,8 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
-const Section12 = () => {
+const Section12 = (props) => {
+    const { isH412, isH413 } = props;
     return (
         <>
             <HeadingBox>
@@ -61,10 +62,22 @@ const Section12 = () => {
                                     </Tr>
                                 </Tbody>
                             </Table>
-                            <UnorderedList>
+                            <UnorderedList style={{ color: 'cyan' }}>
                                 <ListItem>
-                                    La substance/le mélange ne satisfont pas aux critères de toxicité aiguë pour le
-                                    milieu aquatique selon l’annexe I du règlement (CE) N° 1272/2008 [CLP].
+                                    {(!isH412 || !isH413) && (
+                                        <span>
+                                            La substance/le mélange ne satisfont pas aux critères de toxicité aiguë pour
+                                            le milieu aquatique selon l’annexe I du règlement (CE) N° 1272/2008 [CLP].
+                                        </span>
+                                    )}
+                                    {isH412 && (
+                                        <span>
+                                            Nocif pour les organismes aquatiques, entraîne des effets à long terme.
+                                        </span>
+                                    )}
+                                    {isH413 && (
+                                        <span> Peut être nocif à long terme pour les organismes aquatiques.</span>
+                                    )}
                                 </ListItem>
                             </UnorderedList>
                         </Td>

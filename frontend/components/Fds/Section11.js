@@ -1,7 +1,8 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
-const Section11 = () => {
+const Section11 = (props) => {
+    const { isH317 } = props;
     return (
         <>
             <HeadingBox>
@@ -102,8 +103,14 @@ const Section11 = () => {
                     <Tr>
                         <Td>Sensibilisation respiratoire ou cutanée</Td>
                         <Td>
-                            <UnorderedList>
-                                <ListItem>Peut provoquer une allergie cutanée</ListItem>
+                            <UnorderedList style={{ color: 'cyan' }}>
+                                {isH317 ? (
+                                    <ListItem>
+                                        Sensibilisation cutanée - Catégorie 1 - Peut provoquer une allergie cutanée
+                                    </ListItem>
+                                ) : (
+                                    <ListItem>non classé</ListItem>
+                                )}
                             </UnorderedList>
                         </Td>
                     </Tr>
@@ -178,5 +185,4 @@ const Section11 = () => {
         </>
     );
 };
-
 export default Section11;

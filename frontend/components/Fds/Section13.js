@@ -175,7 +175,7 @@ const Section13 = () => {
                             <UnorderedList>
                                 <ListItem>
                                     Une nouvelle évaluation de la sécurité chimique a été réalisée pour les substances
-                                    de ce mélange : - Nicotine
+                                    de ce mélange : - Ethanol - Nicotine
                                 </ListItem>
                             </UnorderedList>
                         </Td>

@@ -17,19 +17,19 @@ export default function Fds() {
         const ar = String(a.split('%')[1]);
         const obj = {
             percent: Number(a.split('%')[0].trim()),
-            arome: ar.trim().replace('-', ' '),
+            arome: ar.trim().replace(/[-]/g, ' '),
         };
         return obj;
     });
 
     // console.log('RECIPE: ', loading, error, data);
-    // console.log('AROMES: ', aromesRatio);
+    console.log('AROMES: ', aromesRatio);
 
     return (
         <>
             {loading && <Loading />}
             {error && <Error tips="erreur de changement de la FDS" />}
-            {data && data.recipes ? <FdsLayout recipe={data.recipes} aromesRatio={aromesRatio} /> : null}
+            {data && data.recipes ? <FdsLayout recipe={data.recipes[0]} aromesRatio={aromesRatio} /> : null}
         </>
     );
 }

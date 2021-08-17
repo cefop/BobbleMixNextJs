@@ -1,23 +1,10 @@
 import { format } from 'date-fns';
-import { Heading, Center, Container, VStack, Table, Thead, Tr, Th } from '@chakra-ui/react';
-import Section1 from './Section1';
-import Section2 from './Section2';
-import Section3 from './Section3';
-import Section4 from './Section4';
-import Section5 from './Section5';
-import Section6 from './Section6';
-import Section7 from './Section7';
-import Section8 from './Section8';
-import Section9 from './Section9';
-import Section10 from './Section10';
-import Section11 from './Section11';
-import Section12 from './Section12';
-import Section13 from './Section13';
-import Section14 from './Section14';
+import _ from 'lodash';
+import { Heading, Center, Container, Table, Thead, Tr, Th } from '@chakra-ui/react';
+import ContainerSection from './ContainerSection';
 
 const FDSStack = (props) => {
     const { recipe, aromesRatio } = props;
-
     const now = new Date();
     const company = {
         name: 'CEFOP',
@@ -28,17 +15,34 @@ const FDSStack = (props) => {
     };
 
     // Find all molecules of flavors inside the mix with their retenu ratio
-    const molList = recipe[0].molecules;
-    const adjustedRetenue = molList.map((m) => {
+    const molList = recipe.molecules;
+    const adjustedRetenu = molList.map((m) => {
         const finder = aromesRatio.find((v) => v.arome === m.Saveur);
         const res = Object.assign({ mod_retenu: (m.retenu * finder.percent) / 100 }, m);
         return res;
     });
-    console.log('Mix Molecules adjusted', adjustedRetenue);
-    // Sum all retenu of molecule of the mix
-    console.log('Sum of all mol retenu', recipe[0].molsum);
-    // Find all Risk of molecules of the mix
-    console.log('Mix Risks', recipe[0].risks);
+    // sort the list in descending order
+    adjustedRetenu.sort((a, b) => (a.mod_retenu > b.mod_retenu && -1) || 1);
+    // remove duplicate from molecule name
+    const result = _.groupBy(adjustedRetenu, 'Molecule_ID');
+    const res = _.values(result).map((group) => ({ ...group[0], times: group.length }));
+    const sanitizeList = res.map((i, k) => {
+        // find the sum of retenu when any duplicate
+        let newArr = [];
+        if (result[i.Molecule_ID].length > 1) {
+            // If more that 1 duplacate iterate and sum all mod_retenu together
+            const sumValues = result[i.Molecule_ID].reduce((a, b) => a.mod_retenu + b.mod_retenu);
+            // reforme the array
+            newArr = Object.assign({ mod_retenuAdd: sumValues }, [i][0]);
+        } else {
+            // nothing special.. keep old values
+            newArr = Object.assign({ mod_retenuAdd: i.mod_retenu }, [i][0]);
+        }
+        return newArr;
+    });
+    console.log('sanitizeList', sanitizeList);
+    console.log('Mix Risks', recipe.risks);
+    // console.log('Sum of all mol retenu', recipe.molsum);
 
     return (
         <Container maxW={'7xl'} p="5" mt="15" backgroundColor="white" color="black">
@@ -60,27 +64,11 @@ const FDSStack = (props) => {
 
             <Center>
                 <Heading as="h2" mb={8} mt={5}>
-                    {recipe[0].name}
+                    {recipe.name}
                 </Heading>
             </Center>
-            <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-                <Section1 name={recipe[0].name} company={company} />
-                <Section2 />
-                <Section3 listMol={adjustedRetenue} mixRisk={recipe[0].risks} />
-                <Section4 />
-                <Section5 />
-                <Section6 />
-                <Section7 />
-                <Section8 />
-                <Section9 />
-                <Section10 />
-                <Section11 />
-                <Section12 />
-                <Section13 />
-                <Section14 />
-            </VStack>
+            <ContainerSection sanitizeList={sanitizeList} mixRisk={recipe.risks} company={company} name={recipe.name} />
         </Container>
     );
 };
-
 export default FDSStack;
