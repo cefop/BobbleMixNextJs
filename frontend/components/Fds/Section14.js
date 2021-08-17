@@ -43,7 +43,7 @@ const Section14 = (props) => {
                         <Td>
                             <Table size="sm">
                                 <Tbody style={{ color: 'cyan' }}>
-                                    {(isH317_1A.arr.length > 0 || isH317_1B.b.arr.length > 0) && (
+                                    {(isH317_1A.arr.length > 0 || isH317_1B.arr.length > 0) && (
                                         <Tr>
                                             <TdData>H317</TdData>
                                             <TdData>Peut provoquer une allergie cutanée</TdData>

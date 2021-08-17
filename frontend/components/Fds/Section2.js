@@ -123,32 +123,35 @@ const Section2 = (props) => {
                                         </Thead>
                                         <Tbody style={{ color: 'cyan' }}>
                                             {isH317_1A.arr.length > 0 &&
-                                                isH317_1A.arr.map((i, k) => {
-                                                    return (
-                                                        <Tr key={k}>
-                                                            <TdData>{i.Molecule}</TdData>
-                                                            <TdData>{i.Molecule_ID}</TdData>
-                                                        </Tr>
-                                                    );
-                                                })}
+                                                isH317_1A.arr.map(
+                                                    (i, k) =>
+                                                        i.mod_retenuAdd >= 0.1 && (
+                                                            <Tr key={k}>
+                                                                <TdData>{i.Molecule}</TdData>
+                                                                <TdData>{i.Molecule_ID}</TdData>
+                                                            </Tr>
+                                                        )
+                                                )}
                                             {isH317_1B.arr.length > 0 &&
-                                                isH317_1B.arr.map((i, k) => {
-                                                    return (
-                                                        <Tr key={k}>
-                                                            <TdData>{i.Molecule}</TdData>
-                                                            <TdData>{i.Molecule_ID}</TdData>
-                                                        </Tr>
-                                                    );
-                                                })}
+                                                isH317_1B.arr.map(
+                                                    (i, k) =>
+                                                        i.mod_retenuAdd >= 1 && (
+                                                            <Tr key={k}>
+                                                                <TdData>{i.Molecule}</TdData>
+                                                                <TdData>{i.Molecule_ID}</TdData>
+                                                            </Tr>
+                                                        )
+                                                )}
                                             {isH317_1.arr.length > 0 &&
-                                                isH317_1.arr.map((i, k) => {
-                                                    return (
-                                                        <Tr key={k}>
-                                                            <TdData>{i.Molecule}</TdData>
-                                                            <TdData>{i.Molecule_ID}</TdData>
-                                                        </Tr>
-                                                    );
-                                                })}
+                                                isH317_1.arr.map(
+                                                    (i, k) =>
+                                                        i.mod_retenuAdd >= 1 && (
+                                                            <Tr key={k}>
+                                                                <TdData>{i.Molecule}</TdData>
+                                                                <TdData>{i.Molecule_ID}</TdData>
+                                                            </Tr>
+                                                        )
+                                                )}
                                         </Tbody>
                                     </>
                                 ) : (
