@@ -2,7 +2,7 @@ import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, HSta
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section2 = (props) => {
-    const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B } = props;
+    const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;
 
     return (
         <>
@@ -115,6 +115,7 @@ const Section2 = (props) => {
                             <Table size="sm">
                                 {isH317.b ? (
                                     <>
+                                        {/* // TODO add Contient:  */}
                                         <Thead>
                                             <Tr>
                                                 <ThData>Nom</ThData>
@@ -268,7 +269,7 @@ const Section2 = (props) => {
                                     {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
                                         <>
                                             <Tr>
-                                                <TdData>P201</TdData>
+                                                <TdData>P101</TdData>
                                                 <TdData>
                                                     En cas de consultation d'un médecin, garder à disposition le
                                                     récipient ou l'étiquette
@@ -283,7 +284,7 @@ const Section2 = (props) => {
                                     {isH317.b && (
                                         <>
                                             <Tr>
-                                                <TdData>P201</TdData>
+                                                <TdData>P101</TdData>
                                                 <TdData>
                                                     En cas de consultation d'un médecin, garder à disposition le
                                                     récipient ou l'étiquette
@@ -332,12 +333,12 @@ const Section2 = (props) => {
                                             <TdData>Éviter le rejet dans l'environnement.</TdData>
                                         </Tr>
                                     )}
-                                    {!isH226.b && (isH412 || isH413) && (
+                                    {/* {!isH226.b && (isH412 || isH413) && (
                                         <Tr>
                                             <TdData>P264</TdData>
                                             <TdData>Se laver les mains soigneusement après manipulation</TdData>
                                         </Tr>
-                                    )}
+                                    )} */}
                                 </Tbody>
                             </Table>
                         </Td>
@@ -350,7 +351,7 @@ const Section2 = (props) => {
                         <Td>
                             <Table size="sm">
                                 <Tbody style={{ color: 'cyan' }}>
-                                    {isEUH208A.b || isEUH208B.b ? (
+                                    {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                         <Tr>
                                             <TdData>EUH208</TdData>
                                             <TdData>Peut provoquer une réaction allergique</TdData>
@@ -371,7 +372,7 @@ const Section2 = (props) => {
                         <Td>EUH208 :</Td>
                         <Td>
                             <Table size="sm">
-                                {isEUH208A.b ? (
+                                {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                     <>
                                         <Thead>
                                             <Tr>
@@ -394,6 +395,17 @@ const Section2 = (props) => {
                                                 })}
                                             {isEUH208B.arr.length > 0 &&
                                                 isEUH208B.arr.map((i, k) => {
+                                                    // console.log(i);
+                                                    return (
+                                                        <Tr style={{ color: 'cyan' }} key={k}>
+                                                            <TdData>{i.Molecule}</TdData>
+                                                            <TdData>{i.Molecule_ID}</TdData>
+                                                            <TdData>Peut produire une réaction allergique</TdData>
+                                                        </Tr>
+                                                    );
+                                                })}
+                                            {isEUH208C.arr.length > 0 &&
+                                                isEUH208C.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
                                                         <Tr style={{ color: 'cyan' }} key={k}>

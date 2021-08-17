@@ -96,7 +96,7 @@ const Section4 = (props) => {
                         <Td style={{ color: 'cyan' }}>
                             <UnorderedList>
                                 {isH317 ? (
-                                    <ListItem>peut prvoquer une iritation cutané</ListItem>
+                                    <ListItem>peut provoquer une irritation cutanée</ListItem>
                                 ) : (
                                     <ListItem>aucune information disponible</ListItem>
                                 )}

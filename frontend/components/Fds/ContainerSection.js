@@ -31,6 +31,7 @@ const ContainerSection = (props) => {
     const [isH319, setIsH319] = useState({ arr: '', sum: null, b: false });
     const [isEUH208A, setIsEUH208A] = useState({ arr: '', sum: null, b: false });
     const [isEUH208B, setIsEUH208B] = useState({ arr: '', sum: null, b: false });
+    const [isEUH208C, setIsEUH208C] = useState({ arr: '', sum: null, b: false });
 
     // function to filter by risks the mol of the recipe
     const FilterByMolRisk = (risk) => {
@@ -180,7 +181,7 @@ const ContainerSection = (props) => {
 
     useEffect(() => {
         // final check for is H317
-        (isH317_1A.b === true || isH317_1B.b === true) &&
+        (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
             setIsH317({
                 arr: null,
                 b: true,
@@ -213,9 +214,6 @@ const ContainerSection = (props) => {
     }, []);
 
     useEffect(() => {
-        // final check for is EUH208
-        // EUH208: result.sum >= 0.01, H317-1A
-        // lister les molecules EUH208 ave une retenue sup egal a 0.01
         isH317_1A.b >= 0.01 &&
             setIsEUH208A({
                 arr: isH317_1A.arr,
@@ -225,9 +223,6 @@ const ContainerSection = (props) => {
     }, [isH317_1A]);
 
     useEffect(() => {
-        // final check for is EUH208
-        // EUH208: result.sum >= 0.1, H317-1B
-        // lister les molecules EUH208 ave une retenue sup egal a 0.1
         isH317_1B.b >= 0.1 &&
             setIsEUH208B({
                 arr: isH317_1B.arr,
@@ -235,6 +230,15 @@ const ContainerSection = (props) => {
                 sum: isH317_1B,
             });
     }, [isH317_1B]);
+
+    useEffect(() => {
+        isH317_1.b >= 0.1 &&
+            setIsEUH208C({
+                arr: isH317_1.arr,
+                b: true,
+                sum: isH317_1,
+            });
+    }, [isH317_1]);
 
     return (
         <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
@@ -249,6 +253,7 @@ const ContainerSection = (props) => {
                 isH226={isH226}
                 isEUH208A={isEUH208A}
                 isEUH208B={isEUH208B}
+                isEUH208C={isEUH208C}
             />
             <Section3 sanitizeList={sanitizeList} mixRisk={mixRisk} />
             <Section4 isH317={isH317} />
@@ -261,7 +266,13 @@ const ContainerSection = (props) => {
             <Section11 isH317={isH317} />
             <Section12 isH412={isH412} isH413={isH413} />
             <Section13 />
-            <Section14 isH317_1A={isH317_1A} isH317_1B={isH317_1B} isH226={isH226} isH319={isH319} />
+            <Section14
+                isH317_1A={isH317_1A}
+                isH317_1B={isH317_1B}
+                isH317_1={isH317_1}
+                isH226={isH226}
+                isH319={isH319}
+            />
         </VStack>
     );
 };

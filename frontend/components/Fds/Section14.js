@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section14 = (props) => {
-    const { isH317_1A, isH317_1B, isH226, isH319 } = props;
+    const { isH317_1A, isH317_1B, isH317_1, isH226, isH319 } = props;
     const now = new Date();
     return (
         <>
@@ -43,7 +43,9 @@ const Section14 = (props) => {
                         <Td>
                             <Table size="sm">
                                 <Tbody style={{ color: 'cyan' }}>
-                                    {(isH317_1A.arr.length > 0 || isH317_1B.arr.length > 0) && (
+                                    {(isH317_1A.arr.length > 0 ||
+                                        isH317_1B.arr.length > 0 ||
+                                        isH317_1.Date.arr.length > 0) && (
                                         <Tr>
                                             <TdData>H317</TdData>
                                             <TdData>Peut provoquer une allergie cutanée</TdData>
