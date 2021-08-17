@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import swal from '@sweetalert/with-react';
 import { Button, Text, Box, Link } from '@chakra-ui/react';
 import { DownloadIcon, DeleteIcon, ArrowForwardIcon } from '@chakra-ui/icons';
+import { useEffect, useState } from 'react';
+import swal from '@sweetalert/with-react';
 
 function UserAddRmRecipe(props) {
     const { recipe, ownRecipe, uid } = props;
@@ -48,11 +48,25 @@ function UserAddRmRecipe(props) {
             rightIcon={<DeleteIcon />}
             colorScheme="orange"
             variant="outline"
-            onClick={() => {
-                deleteHandler(recipe);
-                setToastMessage({
-                    body: 'La recette a été supprimer avec succès.',
-                    icon: 'error',
+            onClick={async () => {
+                await swal({
+                    text: 'Confirmez vous la suppression de recette de votre inventaire ?',
+                    icon: 'warning',
+                    buttons: ['Non', 'Oui'],
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        deleteHandler(recipe);
+                        setToastMessage({
+                            body: 'La recette a été supprimer avec succès.',
+                            icon: 'success',
+                        });
+                    } else {
+                        setToastMessage({
+                            body: 'Vous avez decidé de garder cette recette.',
+                            icon: 'info',
+                        });
+                    }
                 });
             }}
         >
