@@ -1,11 +1,13 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, HStack, Image } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
-import MentionDangerDefault from './MentionDangerDefault';
-import MentionDangerH226 from './MentionDangerH226';
-import MentionDangerH317 from './MentionDangerH317';
-import MentionDangerH317_H412_413 from './MentionDangerH317_412_413';
-import MentionDangerH317_H226 from './MentionDangerH317_H226';
-import MentionDangerH317_H412_413_H226 from './MentionDangerH317_H412_413_226';
+import MentionDangerDefault from './Mentions/DangerDefault';
+import MentionDangerH226 from './Mentions/DangerH226';
+import MentionDangerH226_H412_H413 from './Mentions/DangerH226_412_413';
+import MentionDangerH317_H412_413 from './Mentions/DangerH317_412_413';
+import MentionDangerH317_H226 from './Mentions/DangerH317_H226';
+import MentionDangerH317_H412_413_H226 from './Mentions/DangerH317_H412_413_226';
+import MentionDangerH317 from './Mentions/DangerH317';
+import MentionDangerH412_413 from './Mentions/DangerH412_413';
 
 const Section2 = (props) => {
     const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;

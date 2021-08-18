@@ -1,13 +1,14 @@
-// H317
+// H412 ou H413
 // P 101	En cas de consultation d'un médecin, garder à disposition le récipient ou l'étiquette
 // P 102	Tenir hors de portée des enfants
 // P 270	Ne pas manger, boire, ou fumer en manipulant ce produit
-// P 302 + P 352	EN CAS DE CONTACT AVEC LA PEAU : laver abondamment à l'eau et au savon
+// P264	Se laver les mains soigneusement après manipulation
+// P273	Éviter le rejet dans l'environnement.
 // P 501	Eliminer le contenu dans un centre de traitement agréé
 import { Tr } from '@chakra-ui/react';
-import { TdData } from './FDSStyle';
+import { TdData } from '../FDSStyle';
 
-const MentionDangerH317 = () => {
+const MentionDangerH412_413 = () => {
     return (
         <>
             <Tr>
@@ -23,8 +24,12 @@ const MentionDangerH317 = () => {
                 <TdData>Ne pas manger, boire ou fumer en manipulant ce produit.</TdData>
             </Tr>
             <Tr>
-                <TdData>P302+P352</TdData>
-                <TdData>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</TdData>
+                <TdData>P264</TdData>
+                <TdData>Se laver les mains soigneusement après manipulation</TdData>
+            </Tr>
+            <Tr>
+                <TdData>P273</TdData>
+                <TdData>Éviter le rejet dans l'environnement.</TdData>
             </Tr>
             <Tr>
                 <TdData>P501</TdData>
@@ -33,4 +38,4 @@ const MentionDangerH317 = () => {
         </>
     );
 };
-export default MentionDangerH317;
+export default MentionDangerH412_413;

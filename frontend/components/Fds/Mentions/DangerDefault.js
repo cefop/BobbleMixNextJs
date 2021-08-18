@@ -3,7 +3,7 @@
 // P 102	Tenir hors de portée des enfants
 // P 264	Se laver les mains soigneusement après manipulation
 import { Tr } from '@chakra-ui/react';
-import { TdData } from './FDSStyle';
+import { TdData } from '../FDSStyle';
 
 const MentionDangerDefault = () => {
     return (

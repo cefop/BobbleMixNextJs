@@ -1,14 +1,14 @@
-// H412 ou H413
+// H317  et  H226
 // P 101	En cas de consultation d'un médecin, garder à disposition le récipient ou l'étiquette
 // P 102	Tenir hors de portée des enfants
+// P 210	Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes nues et de toute autre source d'inflammation. Ne pas fumer.
 // P 270	Ne pas manger, boire, ou fumer en manipulant ce produit
-// P264	Se laver les mains soigneusement après manipulation
-// P273	Éviter le rejet dans l'environnement.
+// P 302 + P 352	EN CAS DE CONTACT AVEC LA PEAU : laver abondamment à l'eau et au savon
 // P 501	Eliminer le contenu dans un centre de traitement agréé
 import { Tr } from '@chakra-ui/react';
-import { TdData } from './FDSStyle';
+import { TdData } from '../FDSStyle';
 
-const MentionDangerH412_413 = () => {
+const MentionDangerH317_H226 = () => {
     return (
         <>
             <Tr>
@@ -20,16 +20,19 @@ const MentionDangerH412_413 = () => {
                 <TdData>Tenir hors de portée des enfants.</TdData>
             </Tr>
             <Tr>
+                <TdData>P210</TdData>
+                <TdData>
+                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes nues et de toute
+                    autre source d'inflammation. Ne pas fumer.
+                </TdData>
+            </Tr>
+            <Tr>
                 <TdData>P270</TdData>
                 <TdData>Ne pas manger, boire ou fumer en manipulant ce produit.</TdData>
             </Tr>
             <Tr>
-                <TdData>P264</TdData>
-                <TdData>Se laver les mains soigneusement après manipulation</TdData>
-            </Tr>
-            <Tr>
-                <TdData>P273</TdData>
-                <TdData>Éviter le rejet dans l'environnement.</TdData>
+                <TdData>P302+P352</TdData>
+                <TdData>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</TdData>
             </Tr>
             <Tr>
                 <TdData>P501</TdData>
@@ -38,4 +41,4 @@ const MentionDangerH412_413 = () => {
         </>
     );
 };
-export default MentionDangerH412_413;
+export default MentionDangerH317_H226;

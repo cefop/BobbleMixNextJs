@@ -7,7 +7,7 @@
 // P273	Éviter le rejet dans l'environnement.
 // P 501	Eliminer le contenu dans un centre de traitement agréé
 import { Tr } from '@chakra-ui/react';
-import { TdData } from './FDSStyle';
+import { TdData } from '../FDSStyle';
 
 const MentionDangerH226_H412_H413 = () => {
     return (
