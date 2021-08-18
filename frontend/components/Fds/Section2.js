@@ -1,5 +1,11 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, HStack, Image } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
+import MentionDangerDefault from './MentionDangerDefault';
+import MentionDangerH226 from './MentionDangerH226';
+import MentionDangerH317 from './MentionDangerH317';
+import MentionDangerH317_H412_413 from './MentionDangerH317_412_413';
+import MentionDangerH317_H226 from './MentionDangerH317_H226';
+import MentionDangerH317_H412_413_H226 from './MentionDangerH317_H412_413_226';
 
 const Section2 = (props) => {
     const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;
@@ -267,79 +273,24 @@ const Section2 = (props) => {
                         <Td>
                             <Table size="sm">
                                 <Tbody style={{ color: 'cyan' }}>
-                                    {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
-                                        <>
-                                            <Tr>
-                                                <TdData>P101</TdData>
-                                                <TdData>
-                                                    En cas de consultation d'un médecin, garder à disposition le
-                                                    récipient ou l'étiquette
-                                                </TdData>
-                                            </Tr>
-                                            <Tr>
-                                                <TdData>P102</TdData>
-                                                <TdData>Tenir hors de portée des enfants.</TdData>
-                                            </Tr>
-                                        </>
+                                    {/* Only if H317 */}
+                                    {isH317.b && !isH226.b && !isH412.b && !isH413.b && <MentionDangerH317 />}
+                                    {/* Only if H317 and H226  */}
+                                    {isH317.b && isH226.b && !isH412.b && !isH413.b && <MentionDangerH317_H226 />}
+                                    {/* Only if H317 and H142 or H413  */}
+                                    {isH317.b && !isH226.b && (isH412.b || isH413.b) && <MentionDangerH317_H412_413 />}
+                                    {/* Only if H317 and H412 or H413 and H226  */}
+                                    {isH317.b && isH226.b && (isH412.b || isH413.b) && (
+                                        <MentionDangerH317_H412_413_H226 />
                                     )}
-                                    {isH317.b && (
-                                        <>
-                                            <Tr>
-                                                <TdData>P101</TdData>
-                                                <TdData>
-                                                    En cas de consultation d'un médecin, garder à disposition le
-                                                    récipient ou l'étiquette
-                                                </TdData>
-                                            </Tr>
-                                            <Tr>
-                                                <TdData>P102</TdData>
-                                                <TdData>Tenir hors de portée des enfants.</TdData>
-                                            </Tr>
-                                            <Tr>
-                                                <TdData>P270</TdData>
-                                                <TdData>Ne pas manger, boire ou fumer en manipulant ce produit.</TdData>
-                                            </Tr>
-                                            <Tr>
-                                                <TdData>P302+P352</TdData>
-                                                <TdData>
-                                                    EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au
-                                                    savon.
-                                                </TdData>
-                                            </Tr>
-                                            <Tr>
-                                                <TdData>P501</TdData>
-                                                <TdData>Éliminer le contenu dans un cenTre de Traitement agréé.</TdData>
-                                            </Tr>
-                                        </>
-                                    )}
-                                    {isH226.b && (
-                                        <>
-                                            <Tr>
-                                                <TdData>P210</TdData>
-                                                <TdData>
-                                                    Tenir à l’écart de la chaleur, des surfaces chaudes, des étincelles,
-                                                    des flammes nues et de toute auTre source d’inflammation. Ne pas
-                                                    fumer.
-                                                </TdData>
-                                            </Tr>
-                                            <Tr>
-                                                <TdData>P264</TdData>
-                                                <TdData>Se laver les mains soigneusement après manipulation</TdData>
-                                            </Tr>
-                                        </>
-                                    )}
-                                    {(isH412.b || isH413.b) && (
-                                        <Tr>
-                                            <TdData>P264</TdData>
-                                            <TdData>Éviter le rejet dans l'environnement.</TdData>
-                                        </Tr>
-                                    )}
-                                    {/* {!isH226.b && (isH412 || isH413) && (
-                                        <Tr>
-                                            <TdData>P264</TdData>
-                                            <TdData>Se laver les mains soigneusement après manipulation</TdData>
-                                        </Tr>
-                                    )} */}
+                                    {/* Only if H226  */}
+                                    {!isH317.b && isH226.b && !isH412.b && !isH413.b && <MentionDangerH226 />}
+                                    {/* Only if H226 and H412 or H413  */}
+                                    {!isH317.b && isH226.b && (isH412.b || isH413.b) && <MentionDangerH226_H412_H413 />}
+                                    {/* Only if H412 or H413  */}
+                                    {!isH317.b && !isH226.b && (isH412.b || isH413.b) && <MentionDangerH412_413 />}
+                                    {/* Only if everything is false  */}
+                                    {!isH317.b && !isH226.b && !isH412.b && !isH413.b && <MentionDangerDefault />}
                                 </Tbody>
                             </Table>
                         </Td>
