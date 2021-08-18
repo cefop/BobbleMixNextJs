@@ -23,7 +23,7 @@ export default function Fds() {
     });
 
     // console.log('RECIPE: ', loading, error, data);
-    console.log('AROMES: ', aromesRatio);
+    // console.log('AROMES: ', aromesRatio);
 
     return (
         <>

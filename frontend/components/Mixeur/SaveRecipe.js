@@ -14,6 +14,7 @@ import sumMol from '../lib/SumMol';
 import { saveur_molecule } from '../lib/saveur_molecule';
 import { molecule_risk } from '../lib/molecule_risk';
 import { MUTATION_INSERT_ONE_RECIPE, QUERY_FINGERPRINT, MUTATION_ADD_USER_RECIPE } from '../gql/graphql';
+import swal from '@sweetalert/with-react';
 
 const SaveRecipe = () => {
     const client = useApolloClient();
@@ -25,6 +26,11 @@ const SaveRecipe = () => {
 
     const [addRecipe] = useMutation(MUTATION_INSERT_ONE_RECIPE);
     const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE);
+
+    const reset = () => {
+        setBobbleMix([]);
+        setNicoMix(null);
+    };
 
     // build the MIX NAME: quantity% name per items
     // name: 33.33% Fruit-du-Dragon / 33.33% Litchi / 33.33% Abricot
@@ -100,9 +106,19 @@ const SaveRecipe = () => {
         } catch (e) {
             console.log('dude!... nope!!');
             console.log('error', e);
-            // TODO better feedback
-            // eslint-disable-next-line no-undef
-            alert('vous avez deja cette recette');
+            swal({
+                text: 'vous avez deja cette recette',
+                icon: 'info',
+                button: {
+                    text: 'Faire une nouvelle recette',
+                    className: '',
+                },
+                dangerMode: false,
+            }).then((willReset) => {
+                if (willReset) {
+                    reset();
+                }
+            });
             setPosting(false);
         }
     };

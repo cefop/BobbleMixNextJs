@@ -189,27 +189,46 @@ const ContainerSection = (props) => {
             });
     }, [isH317_1A, isH317_1B]);
 
+    // H410 = somme H410
+    // H411= (10 * somme H410) + somme H411
+    // H412 = (100 * somme H410) + (10 * somme H411) + somme H412
+    // H413 = somme H410 + somme H 411 + somme H412 + Somme H413
+    // (Sans mettre de multiple 100 ou 10 comme pour H411 ou H412)
+
+    // Dans l'exemple 50% orange/ 50% fraise on a :
+    // H410 = 0,125 + 0,1 = 0,225%
+    // H411 = (0,125+0,1)*10 + 0 = 2.25 %
+    // H412 = (0,125+0,1)*100 +  0 + 0 = 22,5%
+    // H413 = (0,125+ 0,1) + 0 + 0 + 0 = 0,225%
+
+    // SUM H413: 0.225 + 0 ou 2.25+ 22.5 + 0
+
     useEffect(async () => {
-        // final check for is H412
-        const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum);
+        // ? final check for is H412 !OK
+        const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum); // isH412.sum is null !!!
+        // console.log('H412 retenu', isH411.sum);
         setIsH412({
             arr: isH412.arr,
             b: (await res) >= 25,
             sum: res,
         });
-    }, [isH411.sum]);
+        // console.log('H412', isH412);
+        // console.log(` SUM H412: ${isH410.sum}*100 + ${isH411.sum}*10 + ${isH412.sum}`);
+    }, [isH411, isH410]);
 
     useEffect(async () => {
         // final check for is H413
         if (isH412.b === false) {
-            const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum) + (await isH413.sum);
-            console.log('for 413 retenu', res);
+            // const sumh411 = (await isH410.sum) * 10 + (await isH411.sum);
+            const res = (await isH410.sum) + (await isH411.sum) + (await isH412.sum) + (await isH413.sum);
+            // console.log('for 413 retenu', res);
+            // console.log(` SUM H413: ${isH410.sum} + ${isH411.sum} ou ${sumh411}+ ${isH412.sum} + ${isH413.sum}`);
             setIsH413({
                 arr: isH413.arr,
                 b: (await res) >= 25,
                 sum: res,
             });
-            console.log('H413', isH413);
+            // console.log('H413', isH413);
         }
     }, [isH412.sum]);
 
@@ -239,6 +258,9 @@ const ContainerSection = (props) => {
                 sum: isH317_1,
             });
     }, [isH317_1]);
+
+    // console.log('MIX is H412', isH412);
+    // console.log('MIX is H413', isH413);
 
     return (
         <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
