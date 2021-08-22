@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, forwardRef } from 'react';
+import React, { useRef, forwardRef } from 'react';
 import styled from '@emotion/styled';
 import { Center, Button, HStack } from '@chakra-ui/react';
-// import * as ExportComponent from 'react-component-export-image';
 // import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 import { FaRegFileImage, FaRegFilePdf } from 'react-icons/fa';
 
@@ -32,15 +31,8 @@ const ModalLabel = (props) => {
     const { name } = props;
     const componentRef = useRef();
 
-    useEffect(() => {
-        // eslint-disable-next-line valid-typeof
-        if (typeof window !== undefined) {
-            import('react-component-export-image').then((module) => (componentRef.current = module));
-        }
-    }, []);
-
     const params = {
-        fileName: `BobbleMix ${name.replace('/', '-')}`,
+        fileName: `BobbleMix ${name.replace('/', '-')}.pdf`,
         pdfOptions: {
             w: 650,
             h: 250,
@@ -70,7 +62,13 @@ const ModalLabel = (props) => {
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         leftIcon={<FaRegFileImage />}
-                        onClick={() => componentRef.current?.exportComponentAsJPEG(componentRef, params)}
+                        onClick={async () => {
+                            await import('react-component-export-image').then((module) => {
+                                module.exportComponentAsJPEG(componentRef, {
+                                    fileName: `BobbleMix ${name.replace('/', '-')}.jpg`,
+                                });
+                            });
+                        }}
                     >
                         image JPG
                     </Button>
@@ -78,7 +76,13 @@ const ModalLabel = (props) => {
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         leftIcon={<FaRegFileImage />}
-                        onClick={() => componentRef.current?.exportComponentAsPNG(componentRef, params)}
+                        onClick={async () => {
+                            await import('react-component-export-image').then((module) => {
+                                module.exportComponentAsPNG(componentRef, {
+                                    fileName: `BobbleMix ${name.replace('/', '-')}.png`,
+                                });
+                            });
+                        }}
                     >
                         image PNG
                     </Button>
@@ -86,7 +90,11 @@ const ModalLabel = (props) => {
                         colorScheme="orange"
                         style={{ boxShadow: 'none' }}
                         leftIcon={<FaRegFilePdf />}
-                        onClick={() => componentRef.current?.exportComponentAsPDF(componentRef, params)}
+                        onClick={async () => {
+                            await import('react-component-export-image').then((module) => {
+                                module.exportComponentAsPDF(componentRef, params);
+                            });
+                        }}
                     >
                         format PDF
                     </Button>

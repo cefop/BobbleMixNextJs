@@ -3,8 +3,19 @@ import { format } from 'date-fns';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section14 = (props) => {
-    const { isH317_1A, isH317_1B, isH317_1, isH226, isH319 } = props;
+    const { sanitizeList, mixRisk } = props;
     const now = new Date();
+
+    // find all risks per mol
+    const FilterFromMolID = (arrOG, arrLook, objKey) => {
+        const arr = arrOG.map((i, k) => {
+            const filtered = arrLook.filter((mol) => mol[objKey] === i[objKey]);
+            return filtered;
+        });
+        return arr;
+    };
+    // FilterFromMolID(sanitizeList, mixRisk, 'Molecule_ID');
+
     return (
         <>
             <HeadingBox>
@@ -43,26 +54,29 @@ const Section14 = (props) => {
                         <Td>
                             <Table size="sm">
                                 <Tbody style={{ color: 'cyan' }}>
-                                    {(isH317_1A.arr.length > 0 ||
-                                        isH317_1B.arr.length > 0 ||
-                                        isH317_1.arr.length > 0) && (
-                                        <Tr>
-                                            <TdData>H317</TdData>
-                                            <TdData>Peut provoquer une allergie cutanée</TdData>
-                                        </Tr>
-                                    )}
-                                    {isH226.arr.length > 0 && (
-                                        <Tr>
-                                            <TdData>H226 </TdData>
-                                            <TdData>Liquide et vapeurs inflammables</TdData>
-                                        </Tr>
-                                    )}
-                                    {isH319.arr.length > 0 && (
-                                        <Tr>
-                                            <TdData>H319</TdData>
-                                            <TdData>Provoque une sévère irritation des yeux</TdData>
-                                        </Tr>
-                                    )}
+                                    {sanitizeList.map((i, k) => {
+                                        const RiskClass = FilterFromMolID([i], mixRisk, 'Molecule_ID');
+                                        return (
+                                            <Tr key={k}>
+                                                {/* <TdData>{i.Molecule}</TdData> */}
+                                                {/* <TdData>{i.Molecule_ID}</TdData> */}
+                                                {/* <TdData>&#x2264; {i.mod_retenuAdd.toFixed(4)}%</TdData> */}
+                                                <TdData>
+                                                    {RiskClass[0].map((i, k) => {
+                                                        return (
+                                                            <ul style={{ listStyle: 'none' }} key={k}>
+                                                                <li>
+                                                                    {`${i.Clas} `}
+                                                                    {i.Clas_ID !== '(vide)' && `- ${i.Clas_ID}`}
+                                                                </li>
+                                                            </ul>
+                                                        );
+                                                    })}
+                                                </TdData>
+                                                {/* <TdData>Non applicable</TdData> */}
+                                            </Tr>
+                                        );
+                                    })}
                                 </Tbody>
                             </Table>
                         </Td>
