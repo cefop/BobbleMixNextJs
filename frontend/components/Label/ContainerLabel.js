@@ -39,7 +39,7 @@ const ContainerLabel = (props) => {
     const [isH412, setIsH412] = useState({ arr: '', sum: null, sum2: null, b: false });
     const [isH413, setIsH413] = useState({ arr: '', sum: null, b: false });
     const [isH226, setIsH226] = useState({ arr: '', sum: null, b: false });
-    const [setIsH319] = useState({ arr: '', sum: null, b: false });
+    const [isH319, setIsH319] = useState({ arr: '', sum: null, b: false });
     const [isEUH208A, setIsEUH208A] = useState({ arr: '', sum: null, b: false });
     const [isEUH208B, setIsEUH208B] = useState({ arr: '', sum: null, b: false });
     const [isEUH208C, setIsEUH208C] = useState({ arr: '', sum: null, b: false });
