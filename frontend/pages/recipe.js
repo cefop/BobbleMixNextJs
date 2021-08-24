@@ -9,12 +9,13 @@ export default function Recipe() {
     const router = useRouter();
     const { fingerprint } = router.query;
     const { loading, error, data } = useQuery(QUERY_FINGERPRINT, { variables: { fingerprint: fingerprint } });
-    console.log('RECIPE: ', loading, error, data);
+    // console.log('RECIPE: ', loading, error, data);
+
     return (
         <>
             {loading && <Loading />}
             {error && <Error tips="erreur de changement de la recette" />}
-            {data && data.recipes ? <UserRecipe recipe={data.recipes} /> : null}
+            {data && data.recipes ? <UserRecipe recipe={data.recipes[0]} /> : null}
         </>
     );
 }

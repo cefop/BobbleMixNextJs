@@ -1,27 +1,42 @@
+import { useMutation } from '@apollo/client';
 import { Button, Text, Box, Link } from '@chakra-ui/react';
 import { DownloadIcon, DeleteIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { useEffect, useState } from 'react';
 import swal from '@sweetalert/with-react';
+import { MUTATION_ADD_USER_RECIPE, MUTATION_DELET_USER_RECIPE } from '../gql/graphql';
 
 function UserAddRmRecipe(props) {
     const { recipe, ownRecipe, uid } = props;
-    console.log('recipe: ', recipe);
-    console.log('own: ', ownRecipe);
-    console.log('user: ', uid);
+    const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE);
+    const [delRecipe] = useMutation(MUTATION_DELET_USER_RECIPE);
+
     const [toastMessage, setToastMessage] = useState(undefined);
+
     // verify if user have current recipe saved
     const ifHaveRecipe = (array, key, value) => {
         if (array.find((object) => object.recipe[key] === value)) {
             return true;
         }
     };
+
     // delete recipe in user recipe list
-    const deleteHandler = (recipe) => {
-        return true;
+    const deleteHandler = async () => {
+        try {
+            const { data } = await delRecipe({ variables: { rid: recipe.id, uid: uid } });
+            console.log('recipe attached!...', data);
+        } catch (e) {
+            console.log('error', e);
+        }
     };
+
     // add new recipe in user recipe list
-    const addHandler = (recipe) => {
-        return true;
+    const addHandler = async () => {
+        try {
+            const { data } = await fixRecipe({ variables: { rid: recipe.id, uid: uid } });
+            console.log('recipe attached!...', data);
+        } catch (e) {
+            console.log('error', e);
+        }
     };
 
     useEffect(() => {
@@ -47,7 +62,7 @@ function UserAddRmRecipe(props) {
         <Button
             rightIcon={<DeleteIcon />}
             colorScheme="orange"
-            variant="outline"
+            variant="link"
             onClick={async () => {
                 await swal({
                     text: 'Confirmez vous la suppression de recette de votre inventaire ?',
@@ -56,7 +71,7 @@ function UserAddRmRecipe(props) {
                     dangerMode: true,
                 }).then((willDelete) => {
                     if (willDelete) {
-                        deleteHandler(recipe);
+                        deleteHandler();
                         setToastMessage({
                             body: 'La recette a été supprimer avec succès.',
                             icon: 'success',
@@ -70,15 +85,15 @@ function UserAddRmRecipe(props) {
                 });
             }}
         >
-            vous avez deja cette recette
+            vous detenez cette recette
         </Button>
     ) : (
         <Button
             rightIcon={<DownloadIcon />}
             colorScheme="green"
-            variant="outline"
+            variant="link"
             onClick={() => {
-                addHandler(recipe);
+                addHandler();
                 setToastMessage({
                     body: 'La recette a été ajouté avec succès.',
                     icon: 'success',
@@ -89,5 +104,4 @@ function UserAddRmRecipe(props) {
         </Button>
     );
 }
-
 export default UserAddRmRecipe;

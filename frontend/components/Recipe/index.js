@@ -1,70 +1,70 @@
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
-import { Button, Modal, useDisclosure } from '@chakra-ui/react';
+// import { Modal, useDisclosure } from '@chakra-ui/react';
 import { useUser } from '../hooks/useUser';
 import { QUERY_USER_RECIPES } from '../gql/graphql';
-import { MixContainer, MixInfos, RecipeContainer } from './StyleRecipe';
+import { MixContainer, MixInfos, RecipeContainer, ActionCard } from './StyleRecipe';
 import MixList from './MixList';
-import ModalFrame from './ModalFrame';
+// import ModalFrame from './ModalFrame';
 import UserAddRmRecipe from './userAddRmRecipe';
 
 const UserRecipe = (props) => {
     const { recipe } = props;
-    // console.log('THE RECIPE!: ', recipe);
     const router = useRouter();
-
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
-    const tm = recipe[0];
-    const tma = recipe[0].aromes;
-
     const { user, session } = useUser();
     const uid = session && session.id ? parseInt(session.id) : null;
+    // console.log('THE RECIPE!: ', recipe);
+    // const { isOpen, onOpen, onClose } = useDisclosure();
+
     const { data } = useQuery(QUERY_USER_RECIPES, { variables: { uid: uid } });
 
     return (
         <RecipeContainer>
             <MixContainer>
                 <MixInfos>
-                    <h3 id={tm.fingerprint}>{tm.name}</h3>
-                    <ul>
-                        <li>Volume arômes: {tm.volume}ml</li>
-                        <li>Nicotine: {tm.nicotine}mg</li>
-                        <li>PGVG 50/50: 20ml</li>
-                        <li>Volume total: {tm.volume + 20}ml</li>
-                    </ul>
-                    <Button
+                    <h3>{recipe.name}</h3>
+                    {user && data ? (
+                        <div className="isConnected">
+                            <UserAddRmRecipe recipe={recipe} ownRecipe={data} uid={uid} />
+                        </div>
+                    ) : (
+                        <div className="isConnected">connectez vous pour enregistrer cette recette</div>
+                    )}
+                    <ActionCard
+                        onClick={() =>
+                            router.push({
+                                pathname: '/label',
+                                query: { fingerprint: recipe.fingerprint },
+                            })
+                        }
+                    >
+                        voire l'etiquette de cette recette
+                    </ActionCard>
+
+                    <ActionCard
                         onClick={() =>
                             router.push({
                                 pathname: '/fds',
-                                query: { fingerprint: tm.fingerprint },
+                                query: { fingerprint: recipe.fingerprint },
                             })
                         }
-                        colorScheme="orange"
-                        style={{ boxShadow: 'none' }}
-                        variant="outline"
                     >
-                        fiche de sécurité
-                    </Button>{' '}
-                    <Button onClick={onOpen} colorScheme="orange" style={{ boxShadow: 'none' }} variant="outline">
-                        étiquette
-                    </Button>
-                    {user && data ? (
-                        <UserAddRmRecipe recipe={recipe[0]} ownRecipe={data} uid={uid} />
-                    ) : (
-                        'connectez vous pour enregistrer cette recette'
-                    )}
-                    <Modal
+                        voire la fiche de securité de la recette
+                    </ActionCard>
+
+                    {/* <ActionCard onClick={onOpen}>voire l'etiquette de cette recette</ActionCard> */}
+                    {/* <Modal
                         size="3xl"
                         isOpen={isOpen}
                         onClose={onClose}
                         motionPreset="slideInBottom"
                         scrollBehavior="inside"
                     >
-                        <ModalFrame name={tm.name} fingerprint={tm.id} />
-                    </Modal>
+                        <ModalFrame name={recipe.name} fingerprint={recipe.id} />
+                    </Modal> */}
                 </MixInfos>
-                <MixList tma={tma} tm={tm} />
+
+                <MixList tma={recipe.aromes} tm={recipe} />
             </MixContainer>
         </RecipeContainer>
     );
