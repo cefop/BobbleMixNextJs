@@ -1,6 +1,6 @@
 {
     "extends": ["standard", "standard-react", "prettier"],
-    "plugins": ["prettier", "react"],
+    "plugins": ["prettier", "react", "@next/next/recommended"],
     "rules": {
       "camelcase": "off",
       "react/prop-types": "off",
