@@ -1,18 +1,23 @@
-import { useEffect, useState } from 'react';
-import { useUser } from '../hooks/useUser';
+import { useEffect, useState, useRef, forwardRef } from 'react';
 import _ from 'lodash';
+import styled from '@emotion/styled';
 import { add, format } from 'date-fns';
-import { Image, Stack, Table, Tbody } from '@chakra-ui/react';
-import MentionDangerH317 from '../Fds/Mentions/DangerH317';
-import MentionDangerH317_H226 from '../Fds/Mentions/DangerH317_H226';
-import MentionDangerH317_H412_413 from '../Fds/Mentions/DangerH317_412_413';
-import MentionDangerH317_H412_413_H226 from '../Fds/Mentions/DangerH317_H412_413_226';
-import MentionDangerH226 from '../Fds/Mentions/DangerH226';
-import MentionDangerH226_H412_H413 from '../Fds/Mentions/DangerH226_412_413';
-import MentionDangerH412_413 from '../Fds/Mentions/DangerH412_413';
-import MentionDangerDefault from '../Fds/Mentions/DangerDefault';
+import { Button, Image, Center, Grid, GridItem, Text } from '@chakra-ui/react';
+import { FaRegFilePdf } from 'react-icons/fa';
+import { useUser } from '../hooks/useUser';
 
-const ContainerLabel = (props) => {
+const LabelContainer = styled.div`
+    padding: 0;
+    margin: 0;
+    /* height: 234.4px; */
+    /* width: 340px; */
+    color: #000;
+    border: 1px dashed lightgray;
+    /* text-align: center; */
+`;
+
+// component to print
+const ComponentToPrint = forwardRef((props, ref) => {
     const { mixRisk, sanitizeList, name, rid } = props;
     const now = new Date();
     const nowadd6month = add(new Date(), {
@@ -21,7 +26,7 @@ const ContainerLabel = (props) => {
 
     const company = {
         name: 'CEFOP',
-        address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE France',
+        address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE',
         tel: '0184690030',
         web: 'www.bobbleliquide.com',
         emergencytel: '+33 (0)1 45 42 59 59',
@@ -264,99 +269,244 @@ const ContainerLabel = (props) => {
             });
     }, [isH317_1]);
 
+    return (
+        <LabelContainer ref={ref}>
+            <Center>
+                <Image src="/assets/bobble-logo-black.png" alt="booble mix" w="150px" />
+            </Center>
+            <ul style={{ listStyle: 'none' }}>
+                <li style={{ color: 'black' }}>Nom mélange: {name}</li>
+                <li style={{ color: 'black' }}>Ratio PG/VG: 50/50 Volume: 40ml</li>
+                <li>
+                    <Grid h="" w="" templateColumns="repeat(6, 1fr)" gap={1}>
+                        <GridItem colSpan={5}>
+                            <p>
+                                <span style={{ fontWeight: '600' }}>Ingrédients: </span>Propylène Glycol, Glycérine
+                                Végétale, Arômes alimentaires
+                            </p>
+                            {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
+                                <>
+                                    <span>Peut produire une réaction allergique.</span>
+                                    {isEUH208A.arr.length > 0 &&
+                                        isEUH208A.arr.map((i, k) => {
+                                            return (
+                                                <div key={k}>
+                                                    <span>{i.Molecule} | </span>
+                                                    <span>{i.Molecule_ID}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    {isEUH208B.arr.length > 0 &&
+                                        isEUH208B.arr.map((i, k) => {
+                                            return (
+                                                <div key={k}>
+                                                    <span>{i.Molecule} | </span>
+                                                    <span>{i.Molecule_ID}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    {isEUH208C.arr.length > 0 &&
+                                        isEUH208C.arr.map((i, k) => {
+                                            return (
+                                                <div key={k}>
+                                                    <span>{i.Molecule} | </span>
+                                                    <span>{i.Molecule_ID}</span>
+                                                </div>
+                                            );
+                                        })}
+                                </>
+                            ) : null}
+                            <p>
+                                <span style={{ fontWeight: '600' }}>DDM: </span>
+                                {format(nowadd6month, 'dd.MM.yyyy', {})}
+                            </p>
+                            <p>
+                                <span style={{ fontWeight: '600' }}>N° de lot: </span>
+                                {format(now, 'yyyyMMddHHmmss', {})}_{uid}
+                            </p>
+                        </GridItem>
+                        <GridItem colSpan={1}>
+                            <Image src="/assets/picto/mineur.png" alt="pregnant" width="27" height="27" />
+                            <Image src="/assets/picto/pregnant.png" alt="pregnant" width="23" height="23" />
+                            <Image src="/assets/picto/recycling.jpeg" alt="recycling" width="23" height="23" />
+                            {isH317.b && (
+                                <>
+                                    <Image src="/assets/picto/GHS07-74x74.png" alt="attention" width="38" height="38" />
+                                    <Text fontSize="xs">ATTENTION</Text>
+                                </>
+                            )}
+                        </GridItem>
+                    </Grid>
+                </li>
+
+                <li>
+                    <div style={{ fontSize: '12px' }}>
+                        <p style={{ fontSize: '1rem', fontWeight: '600' }}>Précautions d'emploi:</p>
+                        {isH317.b && !isH226.b && !isH412.b && !isH413.b && (
+                            <div>
+                                <span>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette.
+                                </span>
+                                <span> Tenir hors de portée des enfants.</span>
+                                <span> Se laver les mains soigneusement après manipulation.</span>
+                            </div>
+                        )}
+                        {isH317.b && isH226.b && !isH412.b && !isH413.b && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants</p>
+                                <p>
+                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
+                                    nues et de toute autre source d'inflammation. Ne pas fumer.
+                                </p>
+                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
+                                <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
+                                <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
+                            </div>
+                        )}
+                        {isH317.b && !isH226.b && (isH412.b || isH413.b) && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants</p>
+                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
+                                <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
+                                <p>Éviter le rejet dans l'environnement.</p>
+                            </div>
+                        )}
+                        {isH317.b && isH226.b && (isH412.b || isH413.b) && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants</p>
+                                <p>
+                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
+                                    nues et de toute autre source d'inflammation. Ne pas fumer.
+                                </p>
+                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
+                                <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
+                                <p>Éviter le rejet dans l'environnement.</p>
+                                <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
+                            </div>
+                        )}
+                        {!isH317.b && isH226.b && !isH412.b && !isH413.b && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants</p>
+                                <p>
+                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
+                                    nues et de toute autre source d'inflammation. Ne pas fumer.
+                                </p>
+                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
+                                <p>Se laver les mains soigneusement après manipulation</p>
+                                <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
+                            </div>
+                        )}
+                        {!isH317.b && isH226.b && (isH412.b || isH413.b) && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants</p>
+                                <p>
+                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
+                                    nues et de toute autre source d'inflammation. Ne pas fumer.
+                                </p>
+                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
+                                <p>Se laver les mains soigneusement après manipulation</p>
+                                <p>Éviter le rejet dans l'environnement.</p>
+                                <p>Éliminer le contenu dans un cenTre de Traitement agréé.</p>
+                            </div>
+                        )}
+                        {!isH317.b && !isH226.b && (isH412.b || isH413.b) && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants.</p>
+                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
+                                <p>Se laver les mains soigneusement après manipulation</p>
+                                <p>Éviter le rejet dans l'environnement.</p>
+                                <p>Éliminer le contenu dans un cenTre de Traitement agréé.</p>
+                            </div>
+                        )}
+                        {!isH317.b && !isH226.b && !isH412.b && !isH413.b && (
+                            <div>
+                                <p>
+                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
+                                    l'étiquette
+                                </p>
+                                <p>Tenir hors de portée des enfants.</p>
+                                <p>Se laver les mains soigneusement après manipulation</p>
+                            </div>
+                        )}
+                    </div>
+                </li>
+                <div style={{ textAlign: 'center', paddingTop: '10px' }}>
+                    Fabriqué en France par {company.name} {company.address} Tel : {company.tel} {company.web}
+                </div>
+            </ul>
+        </LabelContainer>
+    );
+});
+
+const ContainerLabel = (props) => {
+    const { mixRisk, sanitizeList, name, rid } = props;
+
     // console.log('MIX is H412', isH412);
     // console.log('MIX is H413', isH413);
+    // dimension 62mmx90hmm || 234.4x340.2
+    // 234.33070866X340.15748031 pixel
+
+    const componentRef = useRef();
+    const params = {
+        fileName: `BobbleMix ${name.replace('/', '-')}.pdf`,
+        pdfOptions: {
+            w: 62,
+            h: 90,
+            x: 0,
+            y: 0,
+            unit: 'mm',
+            orientation: 'p',
+            // pdfFormat: 'c9',
+        },
+        html2CanvasOptions: {
+            scrollX: -window.scrollX,
+            scrollY: -window.scrollY,
+            windowWidth: document.documentElement.offsetWidth,
+            windowHeight: document.documentElement.offsetHeight,
+        },
+    };
 
     return (
-        <div>
-            <ul style={{ listStyle: 'none' }}>
-                <li style={{ color: 'green' }}>Nom mélange: {name}</li>
-                <li style={{ color: 'green' }}>Ratio PG/VG: 50/50 Volume: 40ml</li>
-                {/* <li style={{ color: 'green' }}></li> */}
-                <li>
-                    <Stack direction="row">
-                        <Image src="/assets/picto/mineur.png" alt="pregnant" width="33" height="33" />
-                        <Image src="/assets/picto/pregnant.png" alt="pregnant" width="33" height="33" />
-                        <Image src="/assets/picto/recycling.jpeg" alt="recycling" width="33" height="33" />
-                        {isH317.b && (
-                            <>
-                                <Image src="/assets/picto/GHS07-74x74.png" alt="attention" width="33" height="33" />
-                                <span>ATTENTION</span>
-                            </>
-                        )}
-                    </Stack>
-                </li>
-                <li style={{ color: 'green' }}>
-                    Liste ingrédients: Ingrédients: Propylène Glycol, Glycérine Végétale, Arômes alimentaires
-                </li>
-                <li style={{ color: 'green' }}>
-                    {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
-                        <>
-                            <span>Peut produire une réaction allergique.</span>
-                            {isEUH208A.arr.length > 0 &&
-                                isEUH208A.arr.map((i, k) => {
-                                    // console.log(i);
-                                    return (
-                                        <div key={k}>
-                                            <span>{i.Molecule} | </span>
-                                            <span>{i.Molecule_ID}</span>
-                                        </div>
-                                    );
-                                })}
-                            {isEUH208B.arr.length > 0 &&
-                                isEUH208B.arr.map((i, k) => {
-                                    // console.log(i);
-                                    return (
-                                        <div key={k}>
-                                            <span>{i.Molecule} | </span>
-                                            <span>{i.Molecule_ID}</span>
-                                        </div>
-                                    );
-                                })}
-                            {isEUH208C.arr.length > 0 &&
-                                isEUH208C.arr.map((i, k) => {
-                                    // console.log(i);
-                                    return (
-                                        <div key={k}>
-                                            <span>{i.Molecule} | </span>
-                                            <span>{i.Molecule_ID}</span>
-                                        </div>
-                                    );
-                                })}
-                        </>
-                    ) : null}
-                </li>
-                <li style={{ color: 'green' }}>DDM: {format(nowadd6month, 'dd.MM.yyyy', {})}</li>
-                <li style={{ color: 'green' }}>
-                    N° de lot: {format(now, 'yyyyMMddHHmmss', {})}_{rid}_{uid}
-                </li>
-                <li style={{ color: 'green' }}>
-                    Fabriqué en France par {company.name} {company.address} Tel : {company.tel} {company.web}
-                </li>
-                <li>
-                    <Table size="sm">
-                        <Tbody style={{ color: 'green' }}>
-                            {/* Only if H317 */}
-                            {isH317.b && !isH226.b && !isH412.b && !isH413.b && <MentionDangerH317 />}
-                            {/* Only if H317 and H226  */}
-                            {isH317.b && isH226.b && !isH412.b && !isH413.b && <MentionDangerH317_H226 />}
-                            {/* Only if H317 and H142 or H413  */}
-                            {isH317.b && !isH226.b && (isH412.b || isH413.b) && <MentionDangerH317_H412_413 />}
-                            {/* Only if H317 and H412 or H413 and H226  */}
-                            {isH317.b && isH226.b && (isH412.b || isH413.b) && <MentionDangerH317_H412_413_H226 />}
-                            {/* Only if H226  */}
-                            {!isH317.b && isH226.b && !isH412.b && !isH413.b && <MentionDangerH226 />}
-                            {/* Only if H226 and H412 or H413  */}
-                            {!isH317.b && isH226.b && (isH412.b || isH413.b) && <MentionDangerH226_H412_H413 />}
-                            {/* Only if H412 or H413  */}
-                            {!isH317.b && !isH226.b && (isH412.b || isH413.b) && <MentionDangerH412_413 />}
-                            {/* Only if everything is false  */}
-                            {!isH317.b && !isH226.b && !isH412.b && !isH413.b && <MentionDangerDefault />}
-                        </Tbody>
-                    </Table>
-                </li>
-            </ul>
-        </div>
+        <>
+            <ComponentToPrint ref={componentRef} name={name} mixRisk={mixRisk} sanitizeList={sanitizeList} rid={rid} />
+            <Button
+                colorScheme="orange"
+                style={{ boxShadow: 'none' }}
+                leftIcon={<FaRegFilePdf />}
+                onClick={async () => {
+                    await import('react-component-export-image').then((module) => {
+                        module.exportComponentAsPDF(componentRef, params);
+                    });
+                }}
+            >
+                format PDF
+            </Button>
+        </>
     );
 };
 export default ContainerLabel;

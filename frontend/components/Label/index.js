@@ -44,9 +44,9 @@ const LabelStack = (props) => {
     `;
 
     const InnerContainer = styled.div`
-        width: 600px;
+        width: 470px;
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-rows: auto auto;
         /* border: 1px solid cyan; */
     `;
 

@@ -36,7 +36,7 @@ const MentionDangerH226 = () => {
             </Tr>
             <Tr>
                 <TdData>P501</TdData>
-                <TdData>Éliminer le contenu dans un cenTre de Traitement agréé.</TdData>
+                <TdData>Éliminer le contenu dans un centre de Traitement agréé.</TdData>
             </Tr>
         </>
     );
