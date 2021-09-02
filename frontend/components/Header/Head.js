@@ -18,6 +18,7 @@ const BobbleMixHead = (props) => {
             <meta property="og:image" content={props.ogImage || ''} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
+            <meta name="google-site-verification" content="2q8vyCQU6A_jfatOUJpbW0nX00L1OHAYp76SeTMyHDg" />
         </Head>
     );
 };
