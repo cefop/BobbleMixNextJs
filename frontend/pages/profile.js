@@ -22,9 +22,10 @@ export default function Profile() {
                     {error && <Error tips="erreur de changement de vos recettes" />}
                     {data && data.users_recipes.length !== 0 ? (
                         <ProfileContainer recipes={data.users_recipes.map((i) => i.recipe)} />
-                    ) : (
+                    ) : null}
+                    {!loading && data && data.users_recipes.length === 0 ? (
                         <PageLayout title="vous n'avez aucune recette de sauvegardé" />
-                    )}
+                    ) : null}
                 </>
             )}
         </>

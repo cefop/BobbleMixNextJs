@@ -12,11 +12,10 @@ export default function TopRecipe() {
         <>
             {loading && <Loading />}
             {error && <Error tips="erreur de changement des recettes" />}
-            {data && data.recipes.length !== 0 ? (
-                <TopRecipeList recipes={data.recipes} />
-            ) : (
+            {data && data.recipes.length !== 0 ? <TopRecipeList recipes={data.recipes} /> : null}
+            {!loading && data && data.recipes.length === 0 ? (
                 <PageLayout title="il n'y a pas encore de recette de sauvegardé" />
-            )}
+            ) : null}
         </>
     );
 }
