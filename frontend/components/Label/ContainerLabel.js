@@ -286,7 +286,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
                             </p>
                             {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                 <>
-                                    <span>Peut produire une réaction allergique.</span>
+                                    <span>Contient: </span>
                                     {isEUH208A.arr.length > 0 &&
                                         isEUH208A.arr.map((i, k) => {
                                             return (
@@ -314,6 +314,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                                 </div>
                                             );
                                         })}
+                                    <span>Peut produire une réaction allergique.</span>
                                 </>
                             ) : null}
                             <p>

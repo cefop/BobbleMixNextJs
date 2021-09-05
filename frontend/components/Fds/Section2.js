@@ -164,9 +164,7 @@ const Section2 = (props) => {
                                                 )}
                                         </Tbody>
                                     </>
-                                ) : (
-                                    <ThData style={{ color: 'cyan' }}>Contient: ...</ThData>
-                                )}
+                                ) : null}
                             </Table>
                         </Td>
                     </Tr>
@@ -192,6 +190,7 @@ const Section2 = (props) => {
                                 {isH226.b && (
                                     <Image src="/assets/picto/GHS02-74x74.png" alt="GHS02" width="74" height="74" />
                                 )}
+                                {!isH317.b && !isH226.b && <TdData style={{ color: 'cyan' }}>Aucun</TdData>}
                             </HStack>
                         </Td>
                     </Tr>
@@ -307,8 +306,9 @@ const Section2 = (props) => {
                                 <Tbody style={{ color: 'cyan' }}>
                                     {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                         <Tr>
-                                            <TdData>EUH208</TdData>
-                                            <TdData>Peut provoquer une réaction allergique</TdData>
+                                            <span>Contient: </span>
+                                            {/* <TdData>EUH208</TdData>
+                                            <TdData>Peut provoquer une réaction allergique</TdData> */}
                                         </Tr>
                                     ) : (
                                         <Tr>

@@ -1,8 +1,7 @@
 import { useContext } from 'react';
+import _ from 'lodash';
 import { useQuery } from '@apollo/client';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
-import SortByCategory from '../lib/SortByCategory';
-import getKeyByValue from '../lib/GetKeyByValue';
 import { FlavorGrid, CateTitle, Bobble1L, ImageBox, ImageBottle, LabelBottle } from './StyleMixeur';
 import Loading from '../Loading';
 import Error from '../Error';
@@ -17,6 +16,14 @@ const ChooseFlavor = (props) => {
         setBobbleMix((currentState) => [...currentState, bottle]);
     };
 
+    // sort the categories by their items numbers
+    const SortByCategory = (c, i) => {
+        const items = i.map((item) => {
+            return item.item_categories[0].category.name;
+        });
+        return c.filter((category) => items.includes(category.name));
+    };
+
     return (
         <>
             {loading && <Loading />}
@@ -25,11 +32,11 @@ const ChooseFlavor = (props) => {
                 data.category &&
                 SortByCategory(data.category, items).map((c) => (
                     <div key={`${c.id}-category-heading`}>
-                        <CateTitle>category {c.name}</CateTitle>
+                        <CateTitle>{c.name}</CateTitle>
                         <FlavorGrid>
                             {items.map(
                                 (i) =>
-                                    getKeyByValue(i, c.name) && (
+                                    _.some(i.item_categories, { category: { name: c.name } }) && (
                                         <Bobble1L
                                             key={i.id}
                                             onClick={() => {

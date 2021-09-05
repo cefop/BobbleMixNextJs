@@ -3,6 +3,7 @@ import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section12 = (props) => {
     const { isH412, isH413 } = props;
+    console.log(isH412, isH413);
     return (
         <>
             <HeadingBox>
@@ -22,16 +23,13 @@ const Section12 = (props) => {
                     </Separate>
                     <Tr>
                         <Td>
-                            Toxicité : Mélange
-                            <br />
                             <Table size="sm">
-                                <Thead>
-                                    <Tr>
-                                        <ThData>EC50 48 hr crustacea</ThData>
-                                        <ThData>Aucune donnée disponible</ThData>
-                                    </Tr>
-                                </Thead>
+                                <Thead>Toxicité : Mélange</Thead>
                                 <Tbody>
+                                    <Tr>
+                                        <TdData>EC50 48 hr crustacea</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
+                                    </Tr>
                                     <Tr>
                                         <TdData>LC50 96 hr fish</TdData>
                                         <TdData>Aucune donnée disponible</TdData>
@@ -64,7 +62,7 @@ const Section12 = (props) => {
                             </Table>
                             <UnorderedList style={{ color: 'cyan' }}>
                                 <ListItem>
-                                    {(!isH412.b || !isH413.b) && (
+                                    {!isH412.b && !isH413.b && (
                                         <span>
                                             La substance/le mélange ne satisfont pas aux critères de toxicité aiguë pour
                                             le milieu aquatique selon l’annexe I du règlement (CE) N° 1272/2008 [CLP].
@@ -98,13 +96,12 @@ const Section12 = (props) => {
                     <Tr>
                         <Td>
                             <Table size="sm">
-                                <Thead>
-                                    <Tr>
-                                        <ThData>Demande biochimique en oxygène (DBO)</ThData>
-                                        <ThData>Aucune donnée disponible</ThData>
-                                    </Tr>
-                                </Thead>
+                                <Thead></Thead>
                                 <Tbody>
+                                    <Tr>
+                                        <TdData>Demande biochimique en oxygène (DBO)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
+                                    </Tr>
                                     <Tr>
                                         <TdData>Demande chimique en oxygène (DCO)</TdData>
                                         <TdData>Aucune donnée disponible</TdData>
@@ -136,13 +133,12 @@ const Section12 = (props) => {
                     <Tr>
                         <Td>
                             <Table size="sm">
-                                <Thead>
-                                    <Tr>
-                                        <ThData>Facteur de bioconcentration (FBC)</ThData>
-                                        <ThData>Aucune donnée disponible</ThData>
-                                    </Tr>
-                                </Thead>
+                                <Thead></Thead>
                                 <Tbody>
+                                    <Tr>
+                                        <TdData>Facteur de bioconcentration (FBC)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
+                                    </Tr>
                                     <Tr>
                                         <TdData>Log KOW</TdData>
                                         <TdData>Aucune donnée disponible</TdData>
@@ -200,7 +196,24 @@ const Section12 = (props) => {
                 </Tbody>
                 <Thead>
                     <Tr>
-                        <Th>12.6 - Autres effets nocifs</Th>
+                        <Th>12.6 - Propriétés perturbant le système endocrinien</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    <Separate>
+                        <td colSpan="2"></td>
+                    </Separate>
+                    <Tr>
+                        <Td>
+                            <UnorderedList>
+                                <ListItem>Aucune information disponible.</ListItem>
+                            </UnorderedList>
+                        </Td>
+                    </Tr>
+                </Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>12.7 - Autres effets nocifs</Th>
                     </Tr>
                 </Thead>
                 <Tbody>

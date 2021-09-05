@@ -45,6 +45,7 @@ const Section14 = (props) => {
     // Get the mention of a Clas_ID (lib hasard_mention)
     const fhm = (hazard) => {
         const arr = _.find(hasard_mention, { hazard });
+        console.log('test', arr);
         const zarr = [arr].map((i, k) => {
             return arr.mentions;
         });

@@ -6,9 +6,10 @@
 
 ## Highlights
 
-- GraphQl with [Hasura](https://hasura.io/docs)
-- Theming with [Chakra-UI](https://github.com/chakra-ui/chakra-ui)
-- Authentication with [next-auth](https://github.com/nextauthjs/next-auth)
+- Make some eliquide recipe with many aroma and see yours on your profile
+- See all recipe of all users
+- Eatch recipe got its generated MSDS (FDS french formated)
+- Eatch recipe got its generated label to stick on the bottle (french formated)
 
 ## Prerequisite
 
@@ -55,16 +56,14 @@ cd hasura
 npx hasura metadata apply --endpoint "https://hasura.mywebsite.com"  --admin-secret "hasuraadminpassword"
 ```
 
-> hasura insert data to table `item` see `.json` files inside `/db/export_public_item_*.json`
-
 **TODO: build a script to auto import all data to tables with an option to fetch new data from website** `/fetch2import/index.js`
 
-#### Example for Item and Category with MANY 2 MANY relationship
+> hasura mutation INSERT_MANY_ITEM
 
 ```gql
-mutation INSERT_MANY_ITEM {
-  insert_item(objects[]){
-    returning{
+mutation INSERT_MANY_ITEM($items: [item_insert_input!]!) {
+  insert_item(objects: $items) {
+    returning {
       id
       created_at
     }
@@ -72,12 +71,19 @@ mutation INSERT_MANY_ITEM {
 }
 ```
 
-> hasura insert data to table `category` see `.json` files inside `/db/export_public_category_*.json`
+variables: `items` see `.json` files inside `/db/export_public_item_*.json`
+
+```json
+{ "items": [{}] }
+```
+
+> hasura mutation INSERT_MANY_CATEGORY
 
 ```gql
-mutation INSERT_MANY_CATEGORY {
-  insert_category(objects[]){
-    returning{
+mutation INSERT_MANY_CATEGORY($categories: [category_insert_input!]!) {
+  insert_category(objects: $categories) {
+    affected_rows
+    returning {
       id
       created_at
     }
@@ -85,16 +91,28 @@ mutation INSERT_MANY_CATEGORY {
 }
 ```
 
-> hasura insert data to table `item_category` see `.json` files inside `/db/export_public_item_category_*.json`
+variables: `categories` see `.json` files inside `/db/export_public_category_*.json`
+
+```json
+{ "categories": [{}] }
+```
+
+> hasura INSERT_MANY_ITEM_CATEGORY
 
 ```gql
-mutation INSERT_MANY_ITEM_CATEGORY {
-  insert_item_category(objects[]){
-    returning{
-      id
+mutation INSERT_MANY_ITEM_CATEGORY($items_cat: [item_category_insert_input!]!) {
+  insert_item_category(objects: $items_cat) {
+    returning {
+      item_id
     }
   }
 }
+```
+
+variables: `items_cat` see `.json` files inside `/db/export_public_item_category_*.json`
+
+```json
+{ "items_cat": [{}] }
 ```
 
 > Launch the frontend

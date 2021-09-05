@@ -33,16 +33,13 @@ const Section11 = (props) => {
                     </Separate>
                     <Tr>
                         <Td colSpan={2}>
-                            Toxicité : Mélange
-                            <br />
                             <Table size="sm">
-                                <Thead>
-                                    <Tr>
-                                        <ThData>LD50 oral (rat)</ThData>
-                                        <ThData>Aucune donnée disponible</ThData>
-                                    </Tr>
-                                </Thead>
+                                <Thead>Toxicité : Mélange</Thead>
                                 <Tbody>
+                                    <Tr>
+                                        <TdData>LD50 oral (rat)</TdData>
+                                        <TdData>Aucune donnée disponible</TdData>
+                                    </Tr>
                                     <Tr>
                                         <TdData>LD50 dermal (rat)</TdData>
                                         <TdData>Aucune donnée disponible</TdData>
@@ -104,7 +101,7 @@ const Section11 = (props) => {
                         <Td>Sensibilisation respiratoire ou cutanée</Td>
                         <Td>
                             <UnorderedList style={{ color: 'cyan' }}>
-                                {isH317 ? (
+                                {isH317.b ? (
                                     <ListItem>
                                         Sensibilisation cutanée - Catégorie 1 - Peut provoquer une allergie cutanée
                                     </ListItem>

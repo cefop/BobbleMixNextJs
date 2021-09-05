@@ -221,24 +221,24 @@ export const molecule_risk = [
         Clas_ID: 'H411',
         Clas: 'Aquatic Chronic 2',
     },
-    {
-        Molecule_ID: '16409-43-1',
-        Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
-        Clas_ID: 'H315',
-        Clas: 'Skin Irrit. 2',
-    },
-    {
-        Molecule_ID: '16409-43-1',
-        Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
-        Clas_ID: 'H319',
-        Clas: 'Eye Irrit. 2',
-    },
-    {
-        Molecule_ID: '16409-43-1',
-        Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
-        Clas_ID: 'H361',
-        Clas: 'Repr. 2',
-    },
+    // {
+    //     Molecule_ID: '16409-43-1',
+    //     Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
+    //     Clas_ID: 'H315',
+    //     Clas: 'Skin Irrit. 2',
+    // },
+    // {
+    //     Molecule_ID: '16409-43-1',
+    //     Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
+    //     Clas_ID: 'H319',
+    //     Clas: 'Eye Irrit. 2',
+    // },
+    // {
+    //     Molecule_ID: '16409-43-1',
+    //     Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
+    //     Clas_ID: 'H361',
+    //     Clas: 'Repr. 2',
+    // },
     {
         Molecule_ID: '21834-92-4',
         Molecule: '5-methyl-2-phenylhex-2-enal',

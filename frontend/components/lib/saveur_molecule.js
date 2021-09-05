@@ -396,13 +396,13 @@ export const saveur_molecule = [
         Molecule: '4-(2,6,6-trimethylcyclohex-1-ene-1-yl)-but-3-ene-2-one',
         retenu: 0.15,
     },
-    {
-        Saveur_ID: 16,
-        Saveur: 'Fruit de la Passion',
-        Molecule_ID: '16409-43-1',
-        Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
-        retenu: 0.15,
-    },
+    // {
+    //     Saveur_ID: 16,
+    //     Saveur: 'Fruit de la Passion',
+    //     Molecule_ID: '16409-43-1',
+    //     Molecule: 'tetrahydro-4-methyl-2-(2-methylprop-1-enyl)pyran',
+    //     retenu: 0.15,
+    // },
     {
         Saveur_ID: 16,
         Saveur: 'Fruit de la Passion',

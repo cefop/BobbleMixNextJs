@@ -106,6 +106,8 @@ const Section1 = (props) => {
                             Téléphone : {company.tel}
                             <br />
                             Site web: {company.web}
+                            <br />
+                            Email: {company.email}
                         </Td>
                     </Tr>
                     <Separate>

@@ -4,6 +4,7 @@
 cache_dir
 node_modules
 .vercel
+note.md
 
 # Build directory
 .next

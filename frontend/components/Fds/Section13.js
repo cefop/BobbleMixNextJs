@@ -80,6 +80,11 @@ const Section13 = () => {
             </HeadingBox>
 
             <Table variant="unstyled" bg="#F7FAFC">
+                <Thead>
+                    <Tr>
+                        <Th>14.1 - Numéro ONU</Th>
+                    </Tr>
+                </Thead>
                 <Tbody>
                     <Separate>
                         <td colSpan="2"></td>
@@ -87,15 +92,52 @@ const Section13 = () => {
                     <Tr>
                         <Td>
                             <UnorderedList>
-                                <ListItem></ListItem>
+                                <ListItem>Non applicable.</ListItem>
                             </UnorderedList>
                         </Td>
                     </Tr>
-                    <Separate>
-                        <td colSpan="2"></td>
-                    </Separate>
                 </Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>14.2 - Nom d’expédition des Nations unies</Th>
+                    </Tr>
+                </Thead>
+                <Tbody></Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>14.3 - Classe(s) de danger pour le transport</Th>
+                    </Tr>
+                </Thead>
+                <Tbody></Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>14.4 - Groupe d'emballage</Th>
+                    </Tr>
+                </Thead>
+                <Tbody></Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>14.5 - Dangers pour l’environnement</Th>
+                    </Tr>
+                </Thead>
+                <Tbody></Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>14.6 - Précautions particulières à prendre par l’utilisateur</Th>
+                    </Tr>
+                </Thead>
+                <Tbody></Tbody>
+                <Thead>
+                    <Tr>
+                        <Th>
+                            14.7 - Transport en vrac conformément à l’annexe II de la convention Marpol 73/78 et au
+                            recueil IBC
+                        </Th>
+                    </Tr>
+                </Thead>
+                <Tbody></Tbody>
             </Table>
+
             <HeadingBox>
                 <Heading as="h4" size="md">
                     RUBRIQUE 15: Informations réglementaires

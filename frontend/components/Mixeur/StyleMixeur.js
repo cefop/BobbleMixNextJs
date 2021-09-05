@@ -69,6 +69,7 @@ export const ImageBox = styled.div`
 
 export const ImageBottle = styled.img`
     height: 110px;
+    padding-top: 10px;
     align-self: center;
     justify-self: center;
     transform: scale(1);

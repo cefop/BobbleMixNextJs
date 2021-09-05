@@ -11,6 +11,7 @@ const FDSStack = (props) => {
         address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE France',
         tel: '0184690030',
         web: 'www.bobbleliquide.com',
+        email: 'contact@bobbleliquide.com',
         emergencytel: '+33 (0)1 45 42 59 59',
     };
 
@@ -19,6 +20,7 @@ const FDSStack = (props) => {
     const adjustedRetenu = molList.map((m) => {
         const finder = aromesRatio.find((v) => v.arome === m.Saveur);
         const res = Object.assign({ mod_retenu: (m.retenu * finder.percent) / 100 }, m);
+        console.log('res adj ret', res);
         return res;
     });
     // sort the list in descending order
@@ -30,10 +32,18 @@ const FDSStack = (props) => {
         // find the sum of retenu when any duplicate
         let newArr = [];
         if (result[i.Molecule_ID].length > 1) {
+            console.log('result', result);
             // If more that 1 duplacate iterate and sum all mod_retenu together
-            const sumValues = result[i.Molecule_ID].reduce((a, b) => a.mod_retenu + b.mod_retenu);
+            const sumValues = result[i.Molecule_ID].reduce((a, b) => {
+                console.log('a', a);
+                console.log('b', b);
+                const res = Number(a.mod_retenu) + Number(b.mod_retenu);
+                return res;
+            });
+            console.log('sum values', sumValues);
             // reforme the array
             newArr = Object.assign({ mod_retenuAdd: sumValues }, [i][0]);
+            console.log('new arr mod', newArr);
         } else {
             // nothing special.. keep old values
             newArr = Object.assign({ mod_retenuAdd: i.mod_retenu }, [i][0]);
