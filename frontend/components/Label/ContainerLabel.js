@@ -7,13 +7,20 @@ import { FaRegFilePdf } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
 
 const LabelContainer = styled.div`
-    padding: 0;
+    padding: 0 10px;
     margin: 0;
     /* height: 234.4px; */
     /* width: 340px; */
     color: #000;
     border: 1px dashed lightgray;
     /* text-align: center; */
+`;
+
+const RecipeName = styled.div`
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
 `;
 
 // component to print
@@ -274,9 +281,13 @@ const ComponentToPrint = forwardRef((props, ref) => {
             <Center>
                 <Image src="/assets/bobble-logo-black.png" alt="booble mix" w="150px" />
             </Center>
+            <Center>
+                <RecipeName> {name}</RecipeName>
+            </Center>
             <ul style={{ listStyle: 'none' }}>
-                <li style={{ color: 'black' }}>Nom mélange: {name}</li>
-                <li style={{ color: 'black' }}>Ratio PG/VG: 50/50 Volume: 40ml</li>
+                <li style={{ color: 'black' }}>
+                    <b>Ratio PG/VG:</b> 50/50 Volume: 40ml
+                </li>
                 <li>
                     <Grid h="" w="" templateColumns="repeat(6, 1fr)" gap={1}>
                         <GridItem colSpan={5}>
@@ -286,7 +297,9 @@ const ComponentToPrint = forwardRef((props, ref) => {
                             </p>
                             {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                 <>
-                                    <span>Contient: </span>
+                                    <span>
+                                        <b>Contient: </b>
+                                    </span>
                                     {isEUH208A.arr.length > 0 &&
                                         isEUH208A.arr.map((i, k) => {
                                             return (
@@ -343,7 +356,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
                 <li>
                     <div style={{ fontSize: '12px' }}>
                         <p style={{ fontSize: '1rem', fontWeight: '600' }}>Précautions d'emploi:</p>
-                        {isH317.b && !isH226.b && !isH412.b && !isH413.b && (
+                        {/* {isH317.b && !isH226.b && !isH412.b && !isH413.b && (
                             <div>
                                 <span>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -352,8 +365,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <span> Tenir hors de portée des enfants.</span>
                                 <span> Se laver les mains soigneusement après manipulation.</span>
                             </div>
-                        )}
-                        {isH317.b && isH226.b && !isH412.b && !isH413.b && (
+                        )} */}
+                        {/* {isH317.b && isH226.b && !isH412.b && !isH413.b && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -368,8 +381,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
                                 <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
                             </div>
-                        )}
-                        {isH317.b && !isH226.b && (isH412.b || isH413.b) && (
+                        )} */}
+                        {/* {isH317.b && !isH226.b && (isH412.b || isH413.b) && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -380,8 +393,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
                                 <p>Éviter le rejet dans l'environnement.</p>
                             </div>
-                        )}
-                        {isH317.b && isH226.b && (isH412.b || isH413.b) && (
+                        )} */}
+                        {/* {isH317.b && isH226.b && (isH412.b || isH413.b) && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -397,8 +410,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <p>Éviter le rejet dans l'environnement.</p>
                                 <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
                             </div>
-                        )}
-                        {!isH317.b && isH226.b && !isH412.b && !isH413.b && (
+                        )} */}
+                        {/* {!isH317.b && isH226.b && !isH412.b && !isH413.b && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -413,8 +426,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <p>Se laver les mains soigneusement après manipulation</p>
                                 <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
                             </div>
-                        )}
-                        {!isH317.b && isH226.b && (isH412.b || isH413.b) && (
+                        )} */}
+                        {/* {!isH317.b && isH226.b && (isH412.b || isH413.b) && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -430,8 +443,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <p>Éviter le rejet dans l'environnement.</p>
                                 <p>Éliminer le contenu dans un cenTre de Traitement agréé.</p>
                             </div>
-                        )}
-                        {!isH317.b && !isH226.b && (isH412.b || isH413.b) && (
+                        )} */}
+                        {/* {!isH317.b && !isH226.b && (isH412.b || isH413.b) && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
@@ -443,17 +456,79 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 <p>Éviter le rejet dans l'environnement.</p>
                                 <p>Éliminer le contenu dans un cenTre de Traitement agréé.</p>
                             </div>
-                        )}
+                        )} */}
+                        {/* Cas1, mélange non classé: */}
                         {!isH317.b && !isH226.b && !isH412.b && !isH413.b && (
                             <div>
                                 <p>
                                     En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
+                                    l'étiquette Tenir hors de portée des enfants. Se laver les mains soigneusement après
+                                    manipulation
                                 </p>
-                                <p>Tenir hors de portée des enfants.</p>
-                                <p>Se laver les mains soigneusement après manipulation</p>
                             </div>
                         )}
+                        {/* Cas2, mélange classé H317 ou H317: */}
+                        {(isH317_1A.b || isH317_1B) && (
+                            <div>
+                                <p>
+                                    Peut provoquer une allergie cutanée. En cas de consultation d’un médecin, garder à
+                                    disposition le récipient ou l’étiquette. Tenir hors de portée des enfants. Ne pas
+                                    manger, boire ou fumer en manipulant ce produit. En cas de contact avec la peau :
+                                    laver abondamment à l’eau et au savon. Éliminer le contenu dans un centre de
+                                    traitement agréé.
+                                </p>
+                            </div>
+                        )}
+                        {/* Cas4, mélange classé H412 ou H412: */}
+                        {(isH412.b || isH413.b) && (
+                            <div>
+                                <p>
+                                    Nocif pour les organismes aquatiques. entraîne des effets néfastes à long terme. En
+                                    cas de consultation d’un médecin, garder à disposition le récipient ou l’étiquette.
+                                    Tenir hors de portée des enfants. Ne pas manger, boire, ou fumer en manipulant ce
+                                    produit. Se laver les mains soigneusement après manipulation. Éliminer le contenu
+                                    dans un centre de traitement agréé.
+                                </p>
+                            </div>
+                        )}
+                        {/* Cas5, mélange classé H413 ou H413: */}
+                        {(isH412.b || isH413.b) && (
+                            <div>
+                                <p>
+                                    Peut être nocif à long terme pour les organismes aquatiques. En cas de consultation
+                                    d’un médecin, garder à disposition le récipient ou l’étiquette. Tenir hors de portée
+                                    des enfants. Ne pas manger, boire, ou fumer en manipulant ce produit. Se laver les
+                                    mains soigneusement après manipulation.
+                                </p>
+                            </div>
+                        )}
+                        {/* Cas6, mélange classé H317 + H412 ou H317 + H412: */}
+                        {(isH317.b && isH412.b) ||
+                            (isH317.b && isH413.b && (
+                                <div>
+                                    <p>
+                                        Peut provoquer une allergie cutanée. Nocif pour les organismes aquatiques. En
+                                        cas de consultation d’un médecin, garder à disposition le récipient ou
+                                        l’étiquette. Tenir hors de portée des enfants. Ne pas manger, boire ou fumer en
+                                        manipulant ce produit. En cas de contact avec la peau : laver abondamment à
+                                        l’eau et au savon. Éliminer le contenu dans un centre de traitement agréé.
+                                    </p>
+                                </div>
+                            ))}
+                        {/* Cas7, mélange classé H317 + H413 ou H317 + H413 : */}
+                        {(isH317.b && isH412.b) ||
+                            (isH317.b && isH413.b && (
+                                <div>
+                                    <p>
+                                        Peut provoquer une allergie cutanée. Peut être nocif à long terme pour les
+                                        organismes aquatiques. En cas de consultation d’un médecin, garder à disposition
+                                        le récipient ou l’étiquette. Tenir hors de portée des enfants. Ne pas manger,
+                                        boire ou fumer en manipulant ce produit. En cas de contact avec la peau : laver
+                                        abondamment à l’eau et au savon. Éliminer le contenu dans un centre de
+                                        traitement agréé.
+                                    </p>
+                                </div>
+                            ))}
                     </div>
                 </li>
                 <div style={{ textAlign: 'center', paddingTop: '10px' }}>
