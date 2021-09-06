@@ -71,7 +71,7 @@ mutation INSERT_MANY_ITEM($items: [item_insert_input!]!) {
 }
 ```
 
-variables: `items` see `.json` files inside `/db/export_public_item_*.json`
+variables: `items` see `.json` files inside `hasura/fetch2import/src/data/export_public_item_*.json`
 
 ```json
 { "items": [{}] }
@@ -91,7 +91,7 @@ mutation INSERT_MANY_CATEGORY($categories: [category_insert_input!]!) {
 }
 ```
 
-variables: `categories` see `.json` files inside `/db/export_public_category_*.json`
+variables: `categories` see `.json` files inside `hasura/fetch2import/src/data/export_public_category_*.json`
 
 ```json
 { "categories": [{}] }
@@ -109,7 +109,7 @@ mutation INSERT_MANY_ITEM_CATEGORY($items_cat: [item_category_insert_input!]!) {
 }
 ```
 
-variables: `items_cat` see `.json` files inside `/db/export_public_item_category_*.json`
+variables: `items_cat` see `.json` files inside `/hasura/fetch2import/src/data/export_public_item_category_*.json`
 
 ```json
 { "items_cat": [{}] }
