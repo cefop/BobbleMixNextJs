@@ -282,7 +282,7 @@ const ContainerSection = (props) => {
             <Section11 isH317={isH317} />
             <Section12 isH412={isH412} isH413={isH413} />
             <Section13 />
-            {/* <Section14 sanitizeList={sanitizeList} mixRisk={mixRisk} isH319={isH319} /> */}
+            <Section14 sanitizeList={sanitizeList} mixRisk={mixRisk} isH319={isH319} />
         </VStack>
     );
 };

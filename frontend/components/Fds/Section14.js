@@ -13,7 +13,6 @@ const Section14 = (props) => {
     const FilterFromMolID = (arrOG, arrLook, objKey) => {
         const arr = arrOG.map((i, k) => {
             const filtered = arrLook.filter((mol) => mol[objKey] === i[objKey]);
-            // console.log('filtered', filtered);
             const az = filtered.map((i, k) => {
                 recapArr.push(i);
                 return az;
@@ -22,8 +21,8 @@ const Section14 = (props) => {
         });
         return arr;
     };
-    // FilterFromMolID(sanitizeList, mixRisk, 'Molecule_ID');
 
+    // FilterFromMolID(sanitizeList, mixRisk, 'Molecule_ID');
     const findlist = sanitizeList.map((i, k) => {
         const RiskClass = FilterFromMolID([i], mixRisk, 'Molecule_ID');
         return RiskClass;
@@ -45,7 +44,6 @@ const Section14 = (props) => {
     // Get the mention of a Clas_ID (lib hasard_mention)
     const fhm = (hazard) => {
         const arr = _.find(hasard_mention, { hazard });
-        console.log('test', arr);
         const zarr = [arr].map((i, k) => {
             return arr.mentions;
         });

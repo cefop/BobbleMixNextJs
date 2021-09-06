@@ -19,7 +19,6 @@ export default function Fds() {
             percent: Number(a.split('%')[0].trim()),
             arome: ar.trim().replace(/-/g, ' '),
         };
-        console.log('obj', obj);
         return obj;
     });
 

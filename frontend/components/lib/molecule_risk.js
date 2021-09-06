@@ -374,7 +374,7 @@ export const molecule_risk = [
     {
         Molecule_ID: '628-63-7',
         Molecule: 'Amyl acetate common',
-        Clas_ID: 'H226,',
+        Clas_ID: 'H226',
         Clas: 'Flam. Liq. 3',
     },
     {

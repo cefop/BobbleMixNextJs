@@ -1,9 +1,9 @@
 import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem } from '@chakra-ui/react';
-import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
+import { HeadingBox, Separate, TdData } from './FDSStyle';
 
 const Section12 = (props) => {
     const { isH412, isH413 } = props;
-    console.log(isH412, isH413);
+
     return (
         <>
             <HeadingBox>
