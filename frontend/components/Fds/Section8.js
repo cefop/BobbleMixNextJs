@@ -74,12 +74,12 @@ const Section8 = () => {
                                 </ListItem>
                                 <ListItem>Porter les gants de protection homologués</ListItem>
                                 <ListItem>
-                                    <Image src="/assets/picto/gloves-74x74.png" alt="gloves" width="74" height="74" />
-                                    {/* <Image
-                                        src="https://www.bobblemix.com/static/blender/images/gloves.png"
-                                        width="114"
-                                        height="112"
-                                    /> */}
+                                    <Image
+                                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630935424/icone_bobble_mix/gants_secu_ohhhgo.png"
+                                        alt="gloves"
+                                        width="74"
+                                        height="74"
+                                    />
                                 </ListItem>
                                 <ListItem>Caoutchouc butyle</ListItem>
                                 <ListItem>

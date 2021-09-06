@@ -20,7 +20,10 @@ const Menubar = () => {
             <MenuLogo>
                 <Link href="/">
                     <a>
-                        <Image src="/assets/bobble-logo-black.png" alt="booble mix" />
+                        <Image
+                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630931038/BobbleMix_Logos/logo_header_h75px_qnfipg.png"
+                            alt="booble mix"
+                        />
                     </a>
                 </Link>
             </MenuLogo>

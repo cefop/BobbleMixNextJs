@@ -340,13 +340,32 @@ const ComponentToPrint = forwardRef((props, ref) => {
                             </p>
                         </GridItem>
                         <GridItem colSpan={1}>
-                            <Image src="/assets/picto/mineur.png" alt="pregnant" width="27" height="27" />
-                            <Image src="/assets/picto/pregnant.png" alt="pregnant" width="23" height="23" />
-                            <Image src="/assets/picto/recycling.jpeg" alt="recycling" width="23" height="23" />
+                            <Image
+                                src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630925429/icone_bobble_mix/-18_xt2qpo.png"
+                                alt="pregnant"
+                                width="27"
+                                height="27"
+                            />
+                            <Image
+                                src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630925429/icone_bobble_mix/femme_enceinte_d9a5iy.png"
+                                alt="pregnant"
+                                width="27"
+                                height="27"
+                            />
+                            <Image
+                                src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630925429/icone_bobble_mix/recycle_f617gc.png"
+                                alt="recycling"
+                                width="27"
+                                height="27"
+                            />
                             {isH317.b && (
                                 <>
-                                    <Image src="/assets/picto/GHS07-74x74.png" alt="attention" width="38" height="38" />
-                                    <Text fontSize="xs">ATTENTION</Text>
+                                    <Image
+                                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630926475/icone_bobble_mix/attention_hyp4mu.png"
+                                        alt="attention"
+                                        width="42"
+                                        height="42"
+                                    />
                                 </>
                             )}
                         </GridItem>
@@ -467,8 +486,9 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 </p>
                             </div>
                         )}
-                        {/* Cas2, mélange classé H317 ou H317: */}
-                        {(isH317_1A.b || isH317_1B) && (
+                        {/* ci dessous on suprime la conditon `|| (Hxxx et H226):` */}
+                        {/* Cas2, mélange classé que H317  */}
+                        {isH317.b && !isH412.b && !isH413.b && (
                             <div>
                                 <p>
                                     Peut provoquer une allergie cutanée. En cas de consultation d’un médecin, garder à
@@ -479,8 +499,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 </p>
                             </div>
                         )}
-                        {/* Cas4, mélange classé H412 ou H412: */}
-                        {(isH412.b || isH413.b) && (
+                        {/* Cas4, mélange classé que H412: */}
+                        {isH412.b && !isH317.b && (
                             <div>
                                 <p>
                                     Nocif pour les organismes aquatiques. entraîne des effets néfastes à long terme. En
@@ -491,8 +511,8 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 </p>
                             </div>
                         )}
-                        {/* Cas5, mélange classé H413 ou H413: */}
-                        {(isH412.b || isH413.b) && (
+                        {/* Cas5, mélange classé H413: */}
+                        {isH413.b && !isH317 && (
                             <div>
                                 <p>
                                     Peut être nocif à long terme pour les organismes aquatiques. En cas de consultation
@@ -502,33 +522,30 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 </p>
                             </div>
                         )}
-                        {/* Cas6, mélange classé H317 + H412 ou H317 + H412: */}
-                        {(isH317.b && isH412.b) ||
-                            (isH317.b && isH413.b && (
-                                <div>
-                                    <p>
-                                        Peut provoquer une allergie cutanée. Nocif pour les organismes aquatiques. En
-                                        cas de consultation d’un médecin, garder à disposition le récipient ou
-                                        l’étiquette. Tenir hors de portée des enfants. Ne pas manger, boire ou fumer en
-                                        manipulant ce produit. En cas de contact avec la peau : laver abondamment à
-                                        l’eau et au savon. Éliminer le contenu dans un centre de traitement agréé.
-                                    </p>
-                                </div>
-                            ))}
-                        {/* Cas7, mélange classé H317 + H413 ou H317 + H413 : */}
-                        {(isH317.b && isH412.b) ||
-                            (isH317.b && isH413.b && (
-                                <div>
-                                    <p>
-                                        Peut provoquer une allergie cutanée. Peut être nocif à long terme pour les
-                                        organismes aquatiques. En cas de consultation d’un médecin, garder à disposition
-                                        le récipient ou l’étiquette. Tenir hors de portée des enfants. Ne pas manger,
-                                        boire ou fumer en manipulant ce produit. En cas de contact avec la peau : laver
-                                        abondamment à l’eau et au savon. Éliminer le contenu dans un centre de
-                                        traitement agréé.
-                                    </p>
-                                </div>
-                            ))}
+                        {/* Cas6, mélange classé H317 + H412: */}
+                        {isH317.b && isH412.b && (
+                            <div>
+                                <p>
+                                    Peut provoquer une allergie cutanée. Nocif pour les organismes aquatiques. En cas de
+                                    consultation d’un médecin, garder à disposition le récipient ou l’étiquette. Tenir
+                                    hors de portée des enfants. Ne pas manger, boire ou fumer en manipulant ce produit.
+                                    En cas de contact avec la peau : laver abondamment à l’eau et au savon. Éliminer le
+                                    contenu dans un centre de traitement agréé.
+                                </p>
+                            </div>
+                        )}
+                        {/* Cas7, mélange classé H317 + H413 : */}
+                        {isH317.b && isH413.b && (
+                            <div>
+                                <p>
+                                    Peut provoquer une allergie cutanée. Peut être nocif à long terme pour les
+                                    organismes aquatiques. En cas de consultation d’un médecin, garder à disposition le
+                                    récipient ou l’étiquette. Tenir hors de portée des enfants. Ne pas manger, boire ou
+                                    fumer en manipulant ce produit. En cas de contact avec la peau : laver abondamment à
+                                    l’eau et au savon. Éliminer le contenu dans un centre de traitement agréé.
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </li>
                 <div style={{ textAlign: 'center', paddingTop: '10px' }}>

@@ -24,6 +24,8 @@ const ChooseFlavor = (props) => {
         return c.filter((category) => items.includes(category.name));
     };
 
+    // TODO make a search filter
+
     return (
         <>
             {loading && <Loading />}

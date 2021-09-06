@@ -30,6 +30,7 @@ export const MenuLogo = styled.div`
     img {
         height: 64px;
         width: auto;
+        padding: 8px;
     }
 `;
 

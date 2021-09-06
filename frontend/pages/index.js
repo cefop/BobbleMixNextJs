@@ -22,16 +22,17 @@ const TextIntro = styled.div`
 `;
 
 export default function Home() {
+    // TODO get the actual number of activated item to render the number
     return (
         <PageLayout title="">
             <TextIntro>
-                <Image src="/assets/intro.png" alt="booble mix" />
+                <Image
+                    src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630931407/BobbleMix_Logos/logo_home_h300px_xb1om1.png"
+                    alt="booble mix"
+                />
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    51 liquides, une infinité de possibilités. Laissez parler votre créativité et mixez jusqu'à 5 de nos
+                    arômes afin de créer une recette unique selon vos envies!
                 </div>
                 <Center>
                     <Link href="/mixeur">
@@ -43,7 +44,7 @@ export default function Home() {
                             style={{ boxShadow: 'none' }}
                             mt={18}
                         >
-                            Crée votre recette maintenant
+                            Mixer
                         </Button>
                     </Link>
                 </Center>

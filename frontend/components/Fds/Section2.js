@@ -13,6 +13,8 @@ const Section2 = (props) => {
     const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;
     // console.log('MIX is H412', isH412, 'MIX is H413', isH413);
 
+    // console.log('H317_1A', isH317_1A, 'H317_1B', isH317_1B, 'H317_1', isH317_1);
+
     return (
         <>
             <HeadingBox>
@@ -124,7 +126,6 @@ const Section2 = (props) => {
                             <Table size="sm">
                                 {isH317.b ? (
                                     <>
-                                        {/* // TODO add Contient:  */}
                                         <Thead>
                                             <Tr>
                                                 <ThData>Nom</ThData>
@@ -185,10 +186,20 @@ const Section2 = (props) => {
                         <Td>
                             <HStack>
                                 {isH317.b && (
-                                    <Image src="/assets/picto/GHS07-74x74.png" alt="GHS07" width="74" height="74" />
+                                    <Image
+                                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630926475/icone_bobble_mix/attention_hyp4mu.png"
+                                        alt="GHS07"
+                                        width="74"
+                                        height="74"
+                                    />
                                 )}
                                 {isH226.b && (
-                                    <Image src="/assets/picto/GHS02-74x74.png" alt="GHS02" width="74" height="74" />
+                                    <Image
+                                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630930563/icone_bobble_mix/inflammable_cc3wqr.png"
+                                        alt="GHS02"
+                                        width="74"
+                                        height="74"
+                                    />
                                 )}
                                 {!isH317.b && !isH226.b && <TdData style={{ color: 'cyan' }}>Aucun</TdData>}
                             </HStack>
@@ -306,7 +317,7 @@ const Section2 = (props) => {
                                 <Tbody style={{ color: 'cyan' }}>
                                     {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                         <Tr>
-                                            <span>Contient: </span>
+                                            {/* <span>Contient: </span> */}
                                             {/* <TdData>EUH208</TdData>
                                             <TdData>Peut provoquer une réaction allergique</TdData> */}
                                         </Tr>
@@ -329,6 +340,7 @@ const Section2 = (props) => {
                                 {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                     <>
                                         <Thead>
+                                            <span>Contient: </span>
                                             <Tr>
                                                 <ThData>Nom</ThData>
                                                 <ThData>N°CAS</ThData>
