@@ -60,22 +60,18 @@ const Section12 = (props) => {
                                     </Tr>
                                 </Tbody>
                             </Table>
-                            <UnorderedList style={{ color: 'cyan' }}>
+                            <UnorderedList style={{ color: 'green' }}>
                                 <ListItem>
                                     {!isH412.b && !isH413.b && (
-                                        <span>
+                                        <>
                                             La substance/le mélange ne satisfont pas aux critères de toxicité aiguë pour
                                             le milieu aquatique selon l’annexe I du règlement (CE) N° 1272/2008 [CLP].
-                                        </span>
+                                        </>
                                     )}
                                     {isH412.b && (
-                                        <span>
-                                            Nocif pour les organismes aquatiques, entraîne des effets à long terme.
-                                        </span>
+                                        <>Nocif pour les organismes aquatiques, entraîne des effets à long terme.</>
                                     )}
-                                    {isH413.b && (
-                                        <span> Peut être nocif à long terme pour les organismes aquatiques.</span>
-                                    )}
+                                    {isH413.b && <> Peut être nocif à long terme pour les organismes aquatiques.</>}
                                 </ListItem>
                             </UnorderedList>
                         </Td>

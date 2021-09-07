@@ -88,7 +88,7 @@ const Section14 = (props) => {
                         <Td>Textes des phrases réglementaires</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'cyan' }}>
+                                <Tbody style={{ color: 'green' }}>
                                     {getUniqueArray(recapArr, ['Clas']).map((i, k) => {
                                         return (
                                             <Tr key={k}>

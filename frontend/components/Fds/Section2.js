@@ -1,4 +1,4 @@
-import { Table, Thead, Tbody, Tr, Th, Td, Heading, UnorderedList, ListItem, HStack, Image } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, Heading, HStack, Image } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 import MentionDangerDefault from './Mentions/DangerDefault';
 import MentionDangerH226 from './Mentions/DangerH226';
@@ -40,69 +40,38 @@ const Section2 = (props) => {
                                 <Thead>
                                     <Tr></Tr>
                                 </Thead>
-                                <Tbody>
-                                    <Tr style={{ color: 'cyan' }}>
-                                        <TdData>
-                                            {isH317.b && (
-                                                <>
-                                                    <span>Skin Sens. 1</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH412.b && (
-                                                <>
-                                                    <span>Aquatic chronic 3</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH413.b && (
-                                                <>
-                                                    <span>Aquatic chronic 4</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH226.b && (
-                                                <>
-                                                    <span>Flam. Liq. 3</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
-                                                <span>Not classified</span>
-                                            )}
-                                        </TdData>
-                                        <TdData>
-                                            {isH317.b && (
-                                                <>
-                                                    <span>Sensibilisation cutanée - Catégorie 1</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH412.b && (
-                                                <>
-                                                    <span>
-                                                        Danger pour l’environnement aquatique – Aquatic Chronic 3
-                                                    </span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH413.b && (
-                                                <>
-                                                    <span>
-                                                        Danger pour l’environnement aquatique – Aquatic Chronic 4
-                                                    </span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH226.b && (
-                                                <>
-                                                    <span>Liquide et vapeurs inflammables. – Catégorie 3</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {!isH317.b && !isH412.b && !isH413.b && !isH226.b && ''}
-                                        </TdData>
-                                    </Tr>
+                                <Tbody style={{ color: 'green' }}>
+                                    {isH317.b && (
+                                        <Tr>
+                                            <TdData>Skin Sens. 1</TdData>
+                                            <TdData>Sensibilisation cutanée - Catégorie 1</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH412.b && (
+                                        <Tr>
+                                            <TdData>Aquatic chronic 3</TdData>
+                                            <TdData>Danger pour l’environnement aquatique – Aquatic Chronic 3</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH413.b && (
+                                        <Tr>
+                                            <TdData>Aquatic chronic 4</TdData>
+                                            <TdData>Danger pour l’environnement aquatique – Aquatic Chronic 4</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH226.b && (
+                                        <Tr>
+                                            <TdData>Flam. Liq. 3</TdData>
+                                            <TdData>Liquide et vapeurs inflammables. – Catégorie 3</TdData>
+                                        </Tr>
+                                    )}
+                                    {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
+                                        <Tr>
+                                            <ul>
+                                                <li>Not classified</li>
+                                            </ul>
+                                        </Tr>
+                                    )}
                                 </Tbody>
                             </Table>
                         </Td>
@@ -132,7 +101,7 @@ const Section2 = (props) => {
                                                 <ThData>N°CAS</ThData>
                                             </Tr>
                                         </Thead>
-                                        <Tbody style={{ color: 'cyan' }}>
+                                        <Tbody style={{ color: 'red' }}>
                                             {isH317_1A.arr.length > 0 &&
                                                 isH317_1A.arr.map(
                                                     (i, k) =>
@@ -174,9 +143,20 @@ const Section2 = (props) => {
                     </Separate>
                     <Tr>
                         <Td>Mention d’avertissement :</Td>
-                        <Td style={{ color: 'cyan' }}>
-                            <TdData>{isH317.b === true || isH226.b === true ? 'Attention' : 'Aucun'}</TdData>
-                        </Td>
+
+                        {isH317.b === true || isH226.b === true ? (
+                            <Td style={{ color: 'green' }}>
+                                <ul>
+                                    <li>Attention</li>
+                                </ul>
+                            </Td>
+                        ) : (
+                            <Td style={{ color: 'green' }}>
+                                <ul>
+                                    <li>Aucun</li>
+                                </ul>
+                            </Td>
+                        )}
                     </Tr>
                     <Separate>
                         <td colSpan="2"></td>
@@ -201,8 +181,12 @@ const Section2 = (props) => {
                                         height="74"
                                     />
                                 )}
-                                {!isH317.b && !isH226.b && <TdData style={{ color: 'cyan' }}>Aucun</TdData>}
                             </HStack>
+                            {!isH317.b && !isH226.b && (
+                                <ul style={{ color: 'green' }}>
+                                    <li>Aucun</li>
+                                </ul>
+                            )}
                         </Td>
                     </Tr>
                     <Separate>
@@ -212,67 +196,39 @@ const Section2 = (props) => {
                         <Td>Mentions de danger :</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody>
-                                    <Tr style={{ color: 'cyan' }}>
-                                        <TdData>
-                                            {isH317.b && (
-                                                <>
-                                                    <span>H317</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH412.b && (
-                                                <>
-                                                    <span>H412</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH413.b && (
-                                                <>
-                                                    <span>H413</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH226.b && (
-                                                <>
-                                                    <span>H266</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {!isH317.b && !isH412.b && !isH413.b && !isH226.b && <span>Aucun</span>}
-                                        </TdData>
-                                        <TdData>
-                                            {isH317.b && (
-                                                <>
-                                                    <span>Peut provoquer une allergie cutanée</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH412.b && (
-                                                <>
-                                                    <span>
-                                                        Nocif pour les organismes aquatiques, entraîne des effets
-                                                        néfastes à long terme.
-                                                    </span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH413.b && (
-                                                <>
-                                                    <span>
-                                                        Peut être nocif à long terme pour les organismes aquatiques
-                                                    </span>
-                                                    <br />
-                                                </>
-                                            )}
-                                            {isH226.b && (
-                                                <>
-                                                    <span>Liquide et vapeurs inflammables</span>
-                                                    <br />
-                                                </>
-                                            )}
-                                        </TdData>
-                                    </Tr>
+                                <Tbody style={{ color: 'green' }}>
+                                    {isH317.b && (
+                                        <Tr>
+                                            <TdData>H317</TdData>
+                                            <TdData>Peut provoquer une allergie cutanée</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH412.b && (
+                                        <Tr>
+                                            <TdData>H412</TdData>
+                                            <TdData>
+                                                Nocif pour les organismes aquatiques, entraîne des effets néfastes à
+                                                long terme.
+                                            </TdData>
+                                        </Tr>
+                                    )}
+                                    {isH413.b && (
+                                        <Tr>
+                                            <TdData>H413</TdData>
+                                            <TdData>Peut être nocif à long terme pour les organismes aquatiques</TdData>
+                                        </Tr>
+                                    )}
+                                    {isH226.b && (
+                                        <Tr>
+                                            <TdData>H266</TdData>
+                                            <TdData>Liquide et vapeurs inflammables</TdData>
+                                        </Tr>
+                                    )}
+                                    {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
+                                        <ul>
+                                            <li>Aucun</li>
+                                        </ul>
+                                    )}
                                 </Tbody>
                             </Table>
                         </Td>
@@ -284,7 +240,7 @@ const Section2 = (props) => {
                         <Td>Conseils de prudence :</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'cyan' }}>
+                                <Tbody style={{ color: 'green' }}>
                                     {/* Only if H317 */}
                                     {isH317.b && !isH226.b && !isH412.b && !isH413.b && <MentionDangerH317 />}
                                     {/* Only if H317 and H226  */}
@@ -314,7 +270,7 @@ const Section2 = (props) => {
                         <Td>Phrases EUH :</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'cyan' }}>
+                                <Tbody style={{ color: 'green' }}>
                                     {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                         <Tr>
                                             {/* <span>Contient: </span> */}
@@ -323,7 +279,9 @@ const Section2 = (props) => {
                                         </Tr>
                                     ) : (
                                         <Tr>
-                                            <TdData>Aucun</TdData>
+                                            <ul>
+                                                <li>Aucun</li>
+                                            </ul>
                                         </Tr>
                                     )}
                                 </Tbody>
@@ -340,7 +298,7 @@ const Section2 = (props) => {
                                 {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                     <>
                                         <Thead>
-                                            <span>Contient: </span>
+                                            Contient:
                                             <Tr>
                                                 <ThData>Nom</ThData>
                                                 <ThData>N°CAS</ThData>
@@ -352,7 +310,7 @@ const Section2 = (props) => {
                                                 isEUH208A.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
-                                                        <Tr style={{ color: 'cyan' }} key={k}>
+                                                        <Tr style={{ color: 'green' }} key={k}>
                                                             <TdData>{i.Molecule}</TdData>
                                                             <TdData>{i.Molecule_ID}</TdData>
                                                             <TdData>Peut produire une réaction allergique</TdData>
@@ -363,7 +321,7 @@ const Section2 = (props) => {
                                                 isEUH208B.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
-                                                        <Tr style={{ color: 'cyan' }} key={k}>
+                                                        <Tr style={{ color: 'green' }} key={k}>
                                                             <TdData>{i.Molecule}</TdData>
                                                             <TdData>{i.Molecule_ID}</TdData>
                                                             <TdData>Peut produire une réaction allergique</TdData>
@@ -374,7 +332,7 @@ const Section2 = (props) => {
                                                 isEUH208C.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
-                                                        <Tr style={{ color: 'cyan' }} key={k}>
+                                                        <Tr style={{ color: 'green' }} key={k}>
                                                             <TdData>{i.Molecule}</TdData>
                                                             <TdData>{i.Molecule_ID}</TdData>
                                                             <TdData>Peut produire une réaction allergique</TdData>
@@ -385,7 +343,7 @@ const Section2 = (props) => {
                                     </>
                                 ) : (
                                     <>
-                                        <Thead style={{ color: 'cyan' }}>
+                                        <Thead style={{ color: 'green' }}>
                                             <Tr></Tr>
                                         </Thead>
                                         <Tbody></Tbody>
@@ -410,12 +368,12 @@ const Section2 = (props) => {
                     <Tr>
                         <Td>Substance PBT :</Td>
                         <Td>
-                            <UnorderedList>
-                                <ListItem>
+                            <ul>
+                                <li>
                                     Les susbtances de ce mélange ne remplissent pas les critères PBT/vPvB de REACH
                                     annexe XIII
-                                </ListItem>
-                            </UnorderedList>
+                                </li>
+                            </ul>
                         </Td>
                     </Tr>
                 </Tbody>

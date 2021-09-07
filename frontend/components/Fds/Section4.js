@@ -93,7 +93,7 @@ const Section4 = (props) => {
                     </Separate>
                     <Tr>
                         <Td>Symptômes et effets - Après contact avec la peau</Td>
-                        <Td style={{ color: 'cyan' }}>
+                        <Td style={{ color: 'green' }}>
                             <UnorderedList>
                                 {isH317.b ? (
                                     <ListItem>peut provoquer une irritation cutanée</ListItem>

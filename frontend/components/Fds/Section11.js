@@ -100,7 +100,7 @@ const Section11 = (props) => {
                     <Tr>
                         <Td>Sensibilisation respiratoire ou cutanée</Td>
                         <Td>
-                            <UnorderedList style={{ color: 'cyan' }}>
+                            <UnorderedList style={{ color: 'green' }}>
                                 {isH317.b ? (
                                     <ListItem>
                                         Sensibilisation cutanée - Catégorie 1 - Peut provoquer une allergie cutanée

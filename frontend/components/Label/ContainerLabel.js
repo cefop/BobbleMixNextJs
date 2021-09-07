@@ -286,7 +286,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
             </Center>
             <ul style={{ listStyle: 'none' }}>
                 <li style={{ color: 'black' }}>
-                    <b>Ratio PG/VG:</b> 50/50 Volume: 40ml
+                    <b>Ratio PG/VG:</b> 50/50 <b>Volume:</b> 40ml
                 </li>
                 <li>
                     <Grid h="" w="" templateColumns="repeat(6, 1fr)" gap={1}>
