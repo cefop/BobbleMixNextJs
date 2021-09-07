@@ -59,7 +59,7 @@ const ContainerSection = (props) => {
         return { allmol, sum };
     };
 
-    //  find if the risk is real
+    //  ! FIND ALL RISKS OF MOLECULES
     useEffect(() => {
         findRisk('H317-1A').then(
             (result) => {
@@ -180,51 +180,7 @@ const ContainerSection = (props) => {
         );
     }, []);
 
-    useEffect(() => {
-        // final check for is H317
-        (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
-            setIsH317({
-                arr: null,
-                b: true,
-                sum: null,
-            });
-    }, [isH317_1A, isH317_1B]);
-
-    // H410 = somme H410
-    // H411= (10 * somme H410) + somme H411
-    // H412 = (100 * somme H410) + (10 * somme H411) + somme H412
-    // H413 = somme H410 + somme H 411 + somme H412 + Somme H413
-    // (Sans mettre de multiple 100 ou 10 comme pour H411 ou H412)
-
-    // Dans l'exemple 50% orange/ 50% fraise on a :
-    // H410 = 0,125 + 0,1 = 0,225%
-    // H411 = (0,125+0,1)*10 + 0 = 2.25 %
-    // H412 = (0,125+0,1)*100 +  0 + 0 = 22,5%
-    // H413 = (0,125+ 0,1) + 0 + 0 + 0 = 0,225%
-    // SUM H413: 0.225 + 0 ou 2.25+ 22.5 + 0
-
-    useEffect(async () => {
-        // ? final check for is H412 !OK
-        const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum);
-        // console.log(` SUM H412: ${await isH410.sum}*100 + ${await isH411.sum}*10 + ${await isH412.sum}`);
-        setIsH412({ ...isH412, arr: isH412.arr, b: (await res) >= 25, sum: await res });
-    }, [isH411, isH410]);
-
-    useEffect(async () => {
-        // final check for is H413
-        if (isH412.b === false) {
-            // const sumh411 = (await isH410.sum) * 10 + (await isH411.sum);
-            const res = (await isH410.sum) + (await isH411.sum) + (await isH412.sum2) + (await isH413.sum);
-            // console.log(
-            //     ` SUM H413: ${await isH410.sum} + ${await isH411.sum} + ${await isH412.sum2} + ${await isH413.sum}`
-            // );
-            setIsH413({
-                arr: isH413.arr,
-                b: (await res) >= 25,
-                sum: await res,
-            });
-        }
-    }, [isH412.sum]);
+    // ! ALL FINAL CHECK IF GROUPS GOT HAZARDS
 
     useEffect(() => {
         isH317_1A.b >= 0.01 &&
@@ -252,6 +208,39 @@ const ContainerSection = (props) => {
                 sum: isH317_1,
             });
     }, [isH317_1]);
+
+    // * final check for is H317
+    useEffect(() => {
+        (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
+            setIsH317({
+                arr: null,
+                b: true,
+                sum: null,
+            });
+    }, [isH317_1A, isH317_1B, isH317_1]);
+
+    //  * final check for is H412
+    useEffect(async () => {
+        const res = (await isH410.sum) * 100 + (await isH411.sum) * 10 + (await isH412.sum);
+        // console.log(` SUM H412: ${await isH410.sum}*100 + ${await isH411.sum}*10 + ${await isH412.sum}`);
+        setIsH412({ ...isH412, arr: isH412.arr, b: (await res) >= 25, sum: await res });
+    }, [isH411, isH410]);
+
+    // * final check for is H413
+    useEffect(async () => {
+        if (isH412.b === false) {
+            // const sumh411 = (await isH410.sum) * 10 + (await isH411.sum);
+            const res = (await isH410.sum) + (await isH411.sum) + (await isH412.sum2) + (await isH413.sum);
+            // console.log(
+            //     ` SUM H413: ${await isH410.sum} + ${await isH411.sum} + ${await isH412.sum2} + ${await isH413.sum}`
+            // );
+            setIsH413({
+                arr: isH413.arr,
+                b: (await res) >= 25,
+                sum: await res,
+            });
+        }
+    }, [isH412.sum]);
 
     // console.log('MIX is H412', isH412);
     // console.log('MIX is H413', isH413);

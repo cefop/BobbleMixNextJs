@@ -211,20 +211,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
                 b: true,
                 sum: null,
             });
-    }, [isH317_1A, isH317_1B]);
-
-    // H410 = somme H410
-    // H411= (10 * somme H410) + somme H411
-    // H412 = (100 * somme H410) + (10 * somme H411) + somme H412
-    // H413 = somme H410 + somme H 411 + somme H412 + Somme H413
-    // (Sans mettre de multiple 100 ou 10 comme pour H411 ou H412)
-
-    // Dans l'exemple 50% orange/ 50% fraise on a :
-    // H410 = 0,125 + 0,1 = 0,225%
-    // H411 = (0,125+0,1)*10 + 0 = 2.25 %
-    // H412 = (0,125+0,1)*100 +  0 + 0 = 22,5%
-    // H413 = (0,125+ 0,1) + 0 + 0 + 0 = 0,225%
-    // SUM H413: 0.225 + 0 ou 2.25+ 22.5 + 0
+    }, [isH317_1A, isH317_1B, isH317_1]);
 
     useEffect(async () => {
         // ? final check for is H412 !OK
@@ -375,107 +362,6 @@ const ComponentToPrint = forwardRef((props, ref) => {
                 <li>
                     <div style={{ fontSize: '12px' }}>
                         <p style={{ fontSize: '1rem', fontWeight: '600' }}>Précautions d'emploi:</p>
-                        {/* {isH317.b && !isH226.b && !isH412.b && !isH413.b && (
-                            <div>
-                                <span>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette.
-                                </span>
-                                <span> Tenir hors de portée des enfants.</span>
-                                <span> Se laver les mains soigneusement après manipulation.</span>
-                            </div>
-                        )} */}
-                        {/* {isH317.b && isH226.b && !isH412.b && !isH413.b && (
-                            <div>
-                                <p>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
-                                </p>
-                                <p>Tenir hors de portée des enfants</p>
-                                <p>
-                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
-                                    nues et de toute autre source d'inflammation. Ne pas fumer.
-                                </p>
-                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
-                                <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
-                                <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
-                            </div>
-                        )} */}
-                        {/* {isH317.b && !isH226.b && (isH412.b || isH413.b) && (
-                            <div>
-                                <p>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
-                                </p>
-                                <p>Tenir hors de portée des enfants</p>
-                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
-                                <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
-                                <p>Éviter le rejet dans l'environnement.</p>
-                            </div>
-                        )} */}
-                        {/* {isH317.b && isH226.b && (isH412.b || isH413.b) && (
-                            <div>
-                                <p>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
-                                </p>
-                                <p>Tenir hors de portée des enfants</p>
-                                <p>
-                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
-                                    nues et de toute autre source d'inflammation. Ne pas fumer.
-                                </p>
-                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
-                                <p>EN CAS DE CONTACT AVEC LA PEAU: laver abondamment à l’eau et au savon.</p>
-                                <p>Éviter le rejet dans l'environnement.</p>
-                                <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
-                            </div>
-                        )} */}
-                        {/* {!isH317.b && isH226.b && !isH412.b && !isH413.b && (
-                            <div>
-                                <p>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
-                                </p>
-                                <p>Tenir hors de portée des enfants</p>
-                                <p>
-                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
-                                    nues et de toute autre source d'inflammation. Ne pas fumer.
-                                </p>
-                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
-                                <p>Se laver les mains soigneusement après manipulation</p>
-                                <p>Éliminer le contenu dans un centre de Traitement agréé.</p>
-                            </div>
-                        )} */}
-                        {/* {!isH317.b && isH226.b && (isH412.b || isH413.b) && (
-                            <div>
-                                <p>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
-                                </p>
-                                <p>Tenir hors de portée des enfants</p>
-                                <p>
-                                    Tenir à l'écart de la chaleur, des surfaces chaudes, des étincelles, des flammes
-                                    nues et de toute autre source d'inflammation. Ne pas fumer.
-                                </p>
-                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
-                                <p>Se laver les mains soigneusement après manipulation</p>
-                                <p>Éviter le rejet dans l'environnement.</p>
-                                <p>Éliminer le contenu dans un cenTre de Traitement agréé.</p>
-                            </div>
-                        )} */}
-                        {/* {!isH317.b && !isH226.b && (isH412.b || isH413.b) && (
-                            <div>
-                                <p>
-                                    En cas de consultation d'un médecin, garder à disposition le récipient ou
-                                    l'étiquette
-                                </p>
-                                <p>Tenir hors de portée des enfants.</p>
-                                <p>Ne pas manger, boire ou fumer en manipulant ce produit.</p>
-                                <p>Se laver les mains soigneusement après manipulation</p>
-                                <p>Éviter le rejet dans l'environnement.</p>
-                                <p>Éliminer le contenu dans un cenTre de Traitement agréé.</p>
-                            </div>
-                        )} */}
                         {/* Cas1, mélange non classé: */}
                         {!isH317.b && !isH226.b && !isH412.b && !isH413.b && (
                             <div>
