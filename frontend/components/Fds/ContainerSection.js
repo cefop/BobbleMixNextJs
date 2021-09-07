@@ -59,7 +59,7 @@ const ContainerSection = (props) => {
         return { allmol, sum };
     };
 
-    //  ! FIND ALL RISKS OF MOLECULES
+    //  ! FIND ALL RISKS OF MOLECULES MUST BE SYNC WITH CONTAINLABEL OF LABEL FOLDER
     useEffect(() => {
         findRisk('H317-1A').then(
             (result) => {
@@ -180,7 +180,7 @@ const ContainerSection = (props) => {
         );
     }, []);
 
-    // ! ALL FINAL CHECK IF GROUPS GOT HAZARDS
+    // ! ALL FINAL CHECK IF GROUPS GOT HAZARDS MUST BE SYNC WITH CONTAINLABEL OF LABEL FOLDER
 
     useEffect(() => {
         isH317_1A.b >= 0.01 &&
@@ -210,6 +210,7 @@ const ContainerSection = (props) => {
     }, [isH317_1]);
 
     // * final check for is H317
+    //  TODO condiion de H317 si une molecule H317_1A a une retenue sup a x idem H317_1B et H317_1 (et non pas la somme de celles-ci)
     useEffect(() => {
         (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
             setIsH317({

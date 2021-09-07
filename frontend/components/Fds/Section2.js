@@ -1,4 +1,4 @@
-import { Table, Thead, Tbody, Tr, Th, Td, Heading, HStack, Image } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, Heading, HStack, Image, ListItem, UnorderedList } from '@chakra-ui/react';
 import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 import MentionDangerDefault from './Mentions/DangerDefault';
 import MentionDangerH226 from './Mentions/DangerH226';
@@ -67,9 +67,9 @@ const Section2 = (props) => {
                                     )}
                                     {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
                                         <Tr>
-                                            <ul>
-                                                <li>Not classified</li>
-                                            </ul>
+                                            <UnorderedList>
+                                                <ListItem>Not classified</ListItem>
+                                            </UnorderedList>
                                         </Tr>
                                     )}
                                 </Tbody>
@@ -146,15 +146,15 @@ const Section2 = (props) => {
 
                         {isH317.b === true || isH226.b === true ? (
                             <Td style={{ color: 'green' }}>
-                                <ul>
-                                    <li>Attention</li>
-                                </ul>
+                                <UnorderedList>
+                                    <ListItem>Attention</ListItem>
+                                </UnorderedList>
                             </Td>
                         ) : (
                             <Td style={{ color: 'green' }}>
-                                <ul>
-                                    <li>Aucun</li>
-                                </ul>
+                                <UnorderedList>
+                                    <ListItem>Aucun</ListItem>
+                                </UnorderedList>
                             </Td>
                         )}
                     </Tr>
@@ -183,9 +183,9 @@ const Section2 = (props) => {
                                 )}
                             </HStack>
                             {!isH317.b && !isH226.b && (
-                                <ul style={{ color: 'green' }}>
-                                    <li>Aucun</li>
-                                </ul>
+                                <UnorderedList style={{ color: 'green' }}>
+                                    <ListItem>Aucun</ListItem>
+                                </UnorderedList>
                             )}
                         </Td>
                     </Tr>
@@ -225,9 +225,9 @@ const Section2 = (props) => {
                                         </Tr>
                                     )}
                                     {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
-                                        <ul>
-                                            <li>Aucun</li>
-                                        </ul>
+                                        <UnorderedList>
+                                            <ListItem>Aucun</ListItem>
+                                        </UnorderedList>
                                     )}
                                 </Tbody>
                             </Table>
@@ -279,9 +279,9 @@ const Section2 = (props) => {
                                         </Tr>
                                     ) : (
                                         <Tr>
-                                            <ul>
-                                                <li>Aucun</li>
-                                            </ul>
+                                            <UnorderedList>
+                                                <ListItem>Aucun</ListItem>
+                                            </UnorderedList>
                                         </Tr>
                                     )}
                                 </Tbody>
@@ -368,12 +368,12 @@ const Section2 = (props) => {
                     <Tr>
                         <Td>Substance PBT :</Td>
                         <Td>
-                            <ul>
-                                <li>
+                            <UnorderedList>
+                                <ListItem>
                                     Les susbtances de ce mélange ne remplissent pas les critères PBT/vPvB de REACH
                                     annexe XIII
-                                </li>
-                            </ul>
+                                </ListItem>
+                            </UnorderedList>
                         </Td>
                     </Tr>
                 </Tbody>
