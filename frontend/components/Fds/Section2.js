@@ -12,8 +12,8 @@ import MentionDangerH412_413 from './Mentions/DangerH412_413';
 const Section2 = (props) => {
     const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;
     // console.log('MIX is H412', isH412, 'MIX is H413', isH413);
-
     // console.log('H317_1A', isH317_1A, 'H317_1B', isH317_1B, 'H317_1', isH317_1);
+    // console.log('H317', isH317);
 
     return (
         <>
@@ -101,7 +101,7 @@ const Section2 = (props) => {
                                                 <ThData>N°CAS</ThData>
                                             </Tr>
                                         </Thead>
-                                        <Tbody style={{ color: 'red' }}>
+                                        <Tbody style={{ color: 'green' }}>
                                             {isH317_1A.arr.length > 0 &&
                                                 isH317_1A.arr.map(
                                                     (i, k) =>
@@ -370,7 +370,7 @@ const Section2 = (props) => {
                         <Td>
                             <UnorderedList>
                                 <ListItem>
-                                    Les susbtances de ce mélange ne remplissent pas les critères PBT/vPvB de REACH
+                                    Les substances de ce mélange ne remplissent pas les critères PBT/vPvB de REACH
                                     annexe XIII
                                 </ListItem>
                             </UnorderedList>

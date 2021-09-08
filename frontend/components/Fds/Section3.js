@@ -65,7 +65,13 @@ const Section3 = (props) => {
                                             <Tr key={k}>
                                                 <TdData>{i.Molecule}</TdData>
                                                 <TdData>{i.Molecule_ID}</TdData>
-                                                <TdData>&#x2264; {i.mod_retenuAdd.toFixed(4)}%</TdData>
+                                                <TdData>
+                                                    {i.Molecule_ID === '56-81-5' ? (
+                                                        <span>40-50%</span>
+                                                    ) : (
+                                                        <span>&#x2264; ${i.mod_retenuAdd.toFixed(4)}%</span>
+                                                    )}
+                                                </TdData>
                                                 <TdData>
                                                     {RiskClass[0].map((i, k) => {
                                                         return (

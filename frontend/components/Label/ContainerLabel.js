@@ -44,7 +44,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
 
     const [isH317, setIsH317] = useState({ arr: '', sum: null, b: false });
     const [isH317_1, setIsH317_1] = useState({ arr: '', sum: null, b: false });
-    const [isH317_1A, setIsH317_1A] = useState({ arr: '', sum: null, b: false });
+    const [isH317_1A, setIsH317_1A] = useState({ arr: [], sum: null, b: false });
     const [isH317_1B, setIsH317_1B] = useState({ arr: '', sum: null, b: false });
     const [isH410, setIsH410] = useState({ arr: '', sum: null, b: false });
     const [isH411, setIsH411] = useState({ arr: '', sum: null, b: false });
@@ -235,12 +235,35 @@ const ComponentToPrint = forwardRef((props, ref) => {
 
     // * final check for is H317
     useEffect(() => {
-        (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
-            setIsH317({
-                arr: null,
-                b: true,
-                sum: null,
-            });
+        //  condion H317 si une molecule H317_1A a une retenu sup a 0.1%  (0.001)
+        const h3171A = isH317_1A.arr.map((i, k) => (i.mod_retenuAdd > 0.1 ? true : false)).includes(true);
+        //  condion H317 si une molecule H317_1B et H317_1 a une retenu sup a 1% (0.01)
+        // H317_1B and H317_1 have same condition so merged the arr
+        const mergedArrs = [...new Set([isH317_1B.arr, isH317_1.arr].flat())];
+        const h317_1B_h317_1 = mergedArrs.map((i, k) => (i.mod_retenuAdd > 1 ? true : false)).includes(true);
+
+        console.log('ARR H317 1A', isH317_1A.arr);
+        console.log('ARR H317 1B et 1', mergedArrs);
+        console.log('h317 1A', h3171A);
+        console.log('h317 1B or 1', h317_1B_h317_1);
+
+        h3171A === true || h317_1B_h317_1 === true
+            ? setIsH317({
+                  arr: null,
+                  b: true,
+                  sum: null,
+              })
+            : setIsH317({
+                  arr: null,
+                  b: false,
+                  sum: null,
+              });
+        // (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
+        //     setIsH317({
+        //         arr: null,
+        //         b: true,
+        //         sum: null,
+        //     });
     }, [isH317_1A, isH317_1B, isH317_1]);
 
     //  * final check for is H412
