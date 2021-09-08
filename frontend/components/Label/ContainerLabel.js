@@ -5,6 +5,7 @@ import { add, format } from 'date-fns';
 import { Button, Image, Center, Grid, GridItem, Text } from '@chakra-ui/react';
 import { FaRegFilePdf } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
+import GotMol from './GotMol';
 
 const LabelContainer = styled.div`
     padding: 0 10px;
@@ -42,9 +43,9 @@ const ComponentToPrint = forwardRef((props, ref) => {
     const { session } = useUser();
     const uid = session && session.id ? parseInt(session.id) : null;
 
-    const [isH317, setIsH317] = useState({ arr: '', sum: null, b: false });
+    const [isH317, setIsH317] = useState({ arr: [], sum: null, b: false });
     const [isH317_1, setIsH317_1] = useState({ arr: '', sum: null, b: false });
-    const [isH317_1A, setIsH317_1A] = useState({ arr: [], sum: null, b: false });
+    const [isH317_1A, setIsH317_1A] = useState({ arr: '', sum: null, b: false });
     const [isH317_1B, setIsH317_1B] = useState({ arr: '', sum: null, b: false });
     const [isH410, setIsH410] = useState({ arr: '', sum: null, b: false });
     const [isH411, setIsH411] = useState({ arr: '', sum: null, b: false });
@@ -59,11 +60,11 @@ const ComponentToPrint = forwardRef((props, ref) => {
     // function to filter by risks the mol of the recipe
     const FilterByMolRisk = (risk) => {
         let newArr = [];
-        // ? Filter specifique risks
+        //  Filter specifique risks
         const fsr = _.filter(mixRisk, function (i, k) {
             return i.Clas_ID === risk;
         });
-        // ? add the molecule mod_retenuAdd
+        //  add the molecule mod_retenuAdd
         fsr.map((i, k) => {
             const mm = _.filter(sanitizeList, { Molecule_ID: i.Molecule_ID });
             newArr = [mm[0], ...newArr];
@@ -76,7 +77,9 @@ const ComponentToPrint = forwardRef((props, ref) => {
     const findRisk = async (risk) => {
         // console.log(`get the risks ${risk}`);
         const [allmol, sum] = await Promise.all([
+            // get the risks
             FilterByMolRisk(risk),
+            // sorting them
             FilterByMolRisk(risk).reduce((acc, curr) => acc + curr.mod_retenuAdd, 0),
         ]);
         return { allmol, sum };
@@ -207,7 +210,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
     // ! ALL FINAL CHECK IF GROUPS GOT HAZARDS MUST BE SYNC WITH CONTAINERSECTION OF FDS FOLDER
 
     useEffect(() => {
-        isH317_1A.b >= 0.01 &&
+        isH317_1A.sum >= 0.01 &&
             setIsEUH208A({
                 arr: isH317_1A.arr,
                 b: true,
@@ -236,16 +239,17 @@ const ComponentToPrint = forwardRef((props, ref) => {
     // * final check for is H317
     useEffect(() => {
         //  condion H317 si une molecule H317_1A a une retenu sup a 0.1%  (0.001)
-        const h3171A = isH317_1A.arr.map((i, k) => (i.mod_retenuAdd > 0.1 ? true : false)).includes(true);
+        const mergedArr = [...new Set([isH317_1A.arr, isH317_1.arr].flat())];
+        const h3171A = mergedArr.map((i, k) => (i.mod_retenuAdd > 0.1 ? true : false)).includes(true);
         //  condion H317 si une molecule H317_1B et H317_1 a une retenu sup a 1% (0.01)
         // H317_1B and H317_1 have same condition so merged the arr
         const mergedArrs = [...new Set([isH317_1B.arr, isH317_1.arr].flat())];
         const h317_1B_h317_1 = mergedArrs.map((i, k) => (i.mod_retenuAdd > 1 ? true : false)).includes(true);
 
-        console.log('ARR H317 1A', isH317_1A.arr);
-        console.log('ARR H317 1B et 1', mergedArrs);
-        console.log('h317 1A', h3171A);
-        console.log('h317 1B or 1', h317_1B_h317_1);
+        // console.log('ARR H317 1A', isH317_1A.arr);
+        // console.log('ARR H317 1B et 1', mergedArrs);
+        // console.log('h317 1A', h3171A);
+        // console.log('h317 1B or 1', h317_1B_h317_1);
 
         h3171A === true || h317_1B_h317_1 === true
             ? setIsH317({
@@ -289,6 +293,10 @@ const ComponentToPrint = forwardRef((props, ref) => {
         }
     }, [isH412.sum]);
 
+    // console.log('H317 1B', isH317_1B);
+    // console.log('H317 1A', isH317_1A);
+    // console.log('EUH208', isEUH208A, isEUH208B, isEUH208C);
+
     return (
         <LabelContainer ref={ref}>
             <Center>
@@ -315,42 +323,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
                                 Végétale, Arômes alimentaires
                             </p>
                             {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
-                                <>
-                                    <span>
-                                        <b>Contient: </b>
-                                    </span>
-                                    <div style={{ fontSize: '11px' }}>
-                                        {isEUH208A.arr.length > 0 &&
-                                            isEUH208A.arr.map((i, k) => {
-                                                return (
-                                                    <div key={k}>
-                                                        <span>{i.Molecule} | </span>
-                                                        <span>{i.Molecule_ID}</span>
-                                                    </div>
-                                                );
-                                            })}
-                                        {isEUH208B.arr.length > 0 &&
-                                            isEUH208B.arr.map((i, k) => {
-                                                return (
-                                                    <div key={k}>
-                                                        <span>{i.Molecule} | </span>
-                                                        <span>{i.Molecule_ID}</span>
-                                                    </div>
-                                                );
-                                            })}
-                                        {isEUH208C.arr.length > 0 &&
-                                            isEUH208C.arr.map((i, k) => {
-                                                return (
-                                                    <div key={k}>
-                                                        <span>{i.Molecule} | </span>
-                                                        <span>{i.Molecule_ID}</span>
-                                                    </div>
-                                                );
-                                            })}
-                                    </div>
-
-                                    <span>Peut produire une réaction allergique.</span>
-                                </>
+                                <GotMol isEUH208A={isEUH208A} isEUH208B={isEUH208B} isEUH208C={isEUH208C} />
                             ) : null}
                             <p>
                                 <span style={{ fontWeight: '600' }}>DDM: </span>

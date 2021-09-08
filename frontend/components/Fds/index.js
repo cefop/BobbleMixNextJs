@@ -49,6 +49,7 @@ const FDSStack = (props) => {
         }
         return newArr;
     });
+
     console.log('sanitizeList', sanitizeList);
     console.log('Mix Risks', recipe.risks);
     // console.log('Sum of all mol retenu', recipe.molsum);

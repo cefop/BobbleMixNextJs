@@ -301,6 +301,7 @@ export const saveur_molecule = [
         retenu: 0.15,
     },
     {
+        Saveur_ID: 15,
         Saveur: 'Exotica',
         Molecule_ID: '141-25-3',
         Molecule: '3,7-dimethyloct-7-en-1-ol',
@@ -391,6 +392,7 @@ export const saveur_molecule = [
         retenu: 1.4,
     },
     {
+        Saveur_ID: 16,
         Saveur: 'Fruit de la Passion',
         Molecule_ID: '14901-07-6',
         Molecule: '4-(2,6,6-trimethylcyclohex-1-ene-1-yl)-but-3-ene-2-one',

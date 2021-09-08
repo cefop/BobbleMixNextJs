@@ -69,7 +69,7 @@ const Section3 = (props) => {
                                                     {i.Molecule_ID === '56-81-5' ? (
                                                         <span>40-50%</span>
                                                     ) : (
-                                                        <span>&#x2264; ${i.mod_retenuAdd.toFixed(4)}%</span>
+                                                        <span>&#x2264; {i.mod_retenuAdd.toFixed(4)}%</span>
                                                     )}
                                                 </TdData>
                                                 <TdData>
