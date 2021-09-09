@@ -70,7 +70,7 @@ const ContainerSection = (props) => {
         // check all molecules with this condition and if so push them into an array
         let newArr = [];
         const molsTriggered = mergedArr.map((i) => {
-            if (i.mod_retenuAdd > trigger) newArr = [i, ...newArr];
+            if (i.mod_retenuAdd >= trigger) newArr = [i, ...newArr];
             return newArr;
         });
         return { b: bool, arr: molsTriggered };
