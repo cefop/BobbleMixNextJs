@@ -61,13 +61,29 @@ const ContainerSection = (props) => {
         return { allmol, sum };
     };
 
+    // return bool and arr of data of mols that meet a trigger condition
+    const sortedTiggeredMols = (array, trigger) => {
+        // format or merged array of mol with this risks
+        const mergedArr = [...new Set(array.allmol.flat())];
+        // check if condition is meet
+        const bool = mergedArr.map((i) => (i.mod_retenuAdd > trigger ? true : false)).includes(true);
+        // check all molecules with this condition and if so push them into an array
+        let newArr = [];
+        const molsTriggered = mergedArr.map((i) => {
+            if (i.mod_retenuAdd > trigger) newArr = [i, ...newArr];
+            return newArr;
+        });
+        return { b: bool, arr: molsTriggered };
+    };
+
     //  ! FIND ALL RISKS OF MOLECULES MUST BE SYNC WITH CONTAINLABEL OF LABEL FOLDER
     useEffect(() => {
         findRisk('H317-1A').then(
             (result) => {
+                const x = sortedTiggeredMols(result, 0.1);
                 setIsH317_1A({
-                    arr: result.allmol,
-                    b: result.sum >= 0.1,
+                    arr: x.arr !== undefined && [...new Set(x.arr.flat())],
+                    b: x.b,
                     sum: result.sum,
                 });
             },
@@ -78,9 +94,10 @@ const ContainerSection = (props) => {
 
         findRisk('H317-1').then(
             (result) => {
+                const x = sortedTiggeredMols(result, 1);
                 setIsH317_1({
-                    arr: result.allmol,
-                    b: result.sum >= 1,
+                    arr: x.arr !== undefined && [...new Set(x.arr.flat())],
+                    b: x.b,
                     sum: result.sum,
                 });
             },
@@ -91,9 +108,10 @@ const ContainerSection = (props) => {
 
         findRisk('H317-1B').then(
             (result) => {
+                const x = sortedTiggeredMols(result, 1);
                 setIsH317_1B({
-                    arr: result.allmol,
-                    b: result.sum >= 1,
+                    arr: x.arr !== undefined && [...new Set(x.arr.flat())],
+                    b: x.b,
                     sum: result.sum,
                 });
             },
@@ -185,30 +203,51 @@ const ContainerSection = (props) => {
     // ! ALL FINAL CHECK IF GROUPS GOT HAZARDS MUST BE SYNC WITH CONTAINLABEL OF LABEL FOLDER
 
     useEffect(() => {
-        isH317_1A.b >= 0.01 &&
-            setIsEUH208A({
-                arr: isH317_1A.arr,
-                b: true,
-                sum: isH317_1A,
-            });
+        findRisk('H317-1A').then(
+            (result) => {
+                const x = sortedTiggeredMols(result, 0.01);
+                setIsEUH208A({
+                    arr: x.arr !== undefined && [...new Set(x.arr.flat())],
+                    b: x.b,
+                    sum: result.sum,
+                });
+            },
+            (error) => {
+                console.log({ error });
+            }
+        );
     }, [isH317_1A]);
 
     useEffect(() => {
-        isH317_1B.b >= 0.1 &&
-            setIsEUH208B({
-                arr: isH317_1B.arr,
-                b: true,
-                sum: isH317_1B,
-            });
+        findRisk('H317-1B').then(
+            (result) => {
+                const x = sortedTiggeredMols(result, 0.1);
+                setIsEUH208B({
+                    arr: x.arr !== undefined && [...new Set(x.arr.flat())],
+                    b: x.b,
+                    sum: result.sum,
+                });
+            },
+            (error) => {
+                console.log({ error });
+            }
+        );
     }, [isH317_1B]);
 
     useEffect(() => {
-        isH317_1.b >= 0.1 &&
-            setIsEUH208C({
-                arr: isH317_1.arr,
-                b: true,
-                sum: isH317_1,
-            });
+        findRisk('H317-1').then(
+            (result) => {
+                const x = sortedTiggeredMols(result, 0.1);
+                setIsEUH208C({
+                    arr: x.arr !== undefined && [...new Set(x.arr.flat())],
+                    b: x.b,
+                    sum: result.sum,
+                });
+            },
+            (error) => {
+                console.log({ error });
+            }
+        );
     }, [isH317_1]);
 
     // * final check for is H317
@@ -221,11 +260,6 @@ const ContainerSection = (props) => {
         const mergedArrs = [...new Set([isH317_1B.arr, isH317_1.arr].flat())];
         const h317_1B_h317_1 = mergedArrs.map((i, k) => (i.mod_retenuAdd > 1 ? true : false)).includes(true);
 
-        // console.log('ARR H317 1A', isH317_1A.arr);
-        // console.log('ARR H317 1B et 1', mergedArrs);
-        // console.log('h317 1A', h3171A);
-        // console.log('h317 1B or 1', h317_1B_h317_1);
-
         h3171A === true || h317_1B_h317_1 === true
             ? setIsH317({
                   arr: null,
@@ -237,12 +271,6 @@ const ContainerSection = (props) => {
                   b: false,
                   sum: null,
               });
-        // (isH317_1A.b === true || isH317_1B.b === true || isH317_1.b === true) &&
-        //     setIsH317({
-        //         arr: null,
-        //         b: true,
-        //         sum: null,
-        //     });
     }, [isH317_1A, isH317_1B, isH317_1]);
 
     //  * final check for is H412
@@ -267,11 +295,6 @@ const ContainerSection = (props) => {
             });
         }
     }, [isH412.sum]);
-
-    // console.log('MIX is H412', isH412);
-    // console.log('MIX is H413', isH413);
-    // console.log('H317 1A', isH317_1A);
-    // console.log('EUH208', isEUH208A, isEUH208B, isEUH208C);
 
     return (
         <VStack paddingTop="40px" spacing="2" alignItems="flex-start">

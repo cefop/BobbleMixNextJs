@@ -11,9 +11,9 @@ import MentionDangerH412_413 from './Mentions/DangerH412_413';
 
 const Section2 = (props) => {
     const { isH317, isH317_1, isH317_1A, isH317_1B, isH412, isH413, isH226, isEUH208A, isEUH208B, isEUH208C } = props;
-    // console.log('MIX is H412', isH412, 'MIX is H413', isH413);
-    // console.log('H317_1A', isH317_1A, 'H317_1B', isH317_1B, 'H317_1', isH317_1);
-    // console.log('H317', isH317);
+
+    // console.log('H317', isH317, 'isH317 1A', isH317_1A, 'isH317 1B', isH317_1B, 'isH317 1', isH317_1);
+    // console.log(isEUH208A, isEUH208B, isEUH208C);
 
     return (
         <>
@@ -306,7 +306,7 @@ const Section2 = (props) => {
                                             </Tr>
                                         </Thead>
                                         <Tbody>
-                                            {isEUH208A.arr.length > 0 &&
+                                            {isEUH208A.b &&
                                                 isEUH208A.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
