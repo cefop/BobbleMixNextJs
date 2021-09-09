@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, forwardRef } from 'react';
 import _ from 'lodash';
 import styled from '@emotion/styled';
 import { add, format } from 'date-fns';
-import { Button, Image, Center, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Button, Image, Center, Grid, GridItem } from '@chakra-ui/react';
 import { FaRegFilePdf } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
 import GotMol from './GotMol';
@@ -85,7 +85,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
         return { allmol, sum };
     };
 
-    // return bool and arr of data of mols that meet a trigger condition
+    // return bool and array of data of mols that meet a trigger condition
     const sortedTiggeredMols = (array, trigger) => {
         // format or merged array of mol with this risks
         const mergedArr = [...new Set(array.allmol.flat())];
