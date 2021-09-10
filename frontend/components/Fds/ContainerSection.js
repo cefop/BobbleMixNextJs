@@ -66,7 +66,7 @@ const ContainerSection = (props) => {
         // format or merged array of mol with this risks
         const mergedArr = [...new Set(array.allmol.flat())];
         // check if condition is meet
-        const bool = mergedArr.map((i) => (i.mod_retenuAdd > trigger ? true : false)).includes(true);
+        const bool = mergedArr.map((i) => (i.mod_retenuAdd >= trigger ? true : false)).includes(true);
         // check all molecules with this condition and if so push them into an array
         let newArr = [];
         const molsTriggered = mergedArr.map((i) => {

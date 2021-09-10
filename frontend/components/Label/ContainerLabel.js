@@ -10,8 +10,8 @@ import GotMol from './GotMol';
 const LabelContainer = styled.div`
     padding: 0 10px;
     margin: 0;
-    /* height: 234.4px; */
-    /* width: 340px; */
+    /* width: 234.4px; // is 62 mm to pixel
+    height: 340px; // is 90 mm to pixel */
     color: #000;
     border: 1px dashed lightgray;
     /* text-align: center; */
@@ -90,7 +90,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
         // format or merged array of mol with this risks
         const mergedArr = [...new Set(array.allmol.flat())];
         // check if condition is meet
-        const bool = mergedArr.map((i) => (i.mod_retenuAdd > trigger ? true : false)).includes(true);
+        const bool = mergedArr.map((i) => (i.mod_retenuAdd >= trigger ? true : false)).includes(true);
         // check all molecules with this condition and if so push them into an array
         let newArr = [];
         const molsTriggered = mergedArr.map((i) => {
@@ -462,22 +462,21 @@ const ComponentToPrint = forwardRef((props, ref) => {
 const ContainerLabel = (props) => {
     const { mixRisk, sanitizeList, name, rid } = props;
 
-    // console.log('MIX is H412', isH412);
-    // console.log('MIX is H413', isH413);
-    // dimension 62mmx90hmm || 234.4x340.2
-    // 234.33070866X340.15748031 pixel
+    // choisir "privilégier la qualité à la vitesse d'impression ". dans les parametres
 
     const componentRef = useRef();
     const params = {
         fileName: `BobbleMix ${name.replace('/', '-')}.pdf`,
+        // width: 234.4px; // is 62 mm to pixel
+        // height: 340px; // is 90 mm to pixel
         pdfOptions: {
-            w: 62,
-            h: 90,
-            x: 0,
-            y: 0,
-            unit: 'mm',
-            orientation: 'p',
-            // pdfFormat: 'c9',
+            w: 234.4, // (Width in pixels - defaults to the width of the element)
+            h: 340, // (Height in pixels - defaults to the height of the element)
+            x: 0, // (X Coordinate in pixels against left edge of the page - defaults to 0)
+            y: 0, // (Y Coordinate in pixels against left edge of the page - defaults to 0)
+            unit: 'px',
+            orientation: 'p', // 'p' (portrait) OR 'l' (landscape)
+            // pdfFormat: [340, 234.4],
         },
         html2CanvasOptions: {
             scrollX: -window.scrollX,
