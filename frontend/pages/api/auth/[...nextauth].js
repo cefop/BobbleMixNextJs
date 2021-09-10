@@ -20,6 +20,18 @@ export default NextAuth({
             clientSecret: process.env.GITHUB_SECRET,
             scope: 'user:email',
         }),
+        Providers.Email({
+            server: {
+                host: process.env.EMAIL_SERVER_HOST,
+                port: process.env.EMAIL_SERVER_PORT,
+                auth: {
+                    user: process.env.EMAIL_SERVER_USER,
+                    pass: process.env.EMAIL_SERVER_PASSWORD,
+                },
+            },
+            from: process.env.EMAIL_FROM,
+            // TODO https://next-auth.js.org/providers/email#customizing-emails
+        }),
         // ...add more providers here
     ],
 
@@ -132,4 +144,5 @@ export default NextAuth({
             return Promise.resolve(token);
         },
     },
+    // debug: true,
 });
