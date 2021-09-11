@@ -7,21 +7,45 @@ import { FaRegFilePdf } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
 import GotMol from './GotMol';
 
+const GridLayout = styled.div`
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-row-gap: 1rem;
+    justify-content: center;
+    align-content: top;
+    color: black;
+    border: 3px dashed skyblue;
+    height: fit-content;
+`;
+
+// ? Params imprimante
+// ? - 89.8 mm hauteur X 62 mm largeur { marge de 3 mm } || 300x300 dpi "priorité a la vitess d'impression"
+// ? impression Taille ajuster, Orientation en mod protrait
+
 const LabelContainer = styled.div`
-    padding: 0 10px;
+    display: grid;
+    padding: 16px;
     margin: 0;
-    /* width: 234.4px; // is 62 mm to pixel
-    height: 340px; // is 90 mm to pixel */
-    color: #000;
-    border: 1px dashed lightgray;
-    /* text-align: center; */
+    /* height: 234px; // is 62 mm to pixel 234
+    width: 340px; // is 90 mm to pixel 340 */
+    /* height: 468.8px; // is 62 mm to pixel 234 */
+    width: 680px; // is 90 mm to pixel 340
+    border: 1px solid fuchsia;
+`;
+
+const BtnContainer = styled.div`
+    display: grid;
+    border: 1px dashed greenyellow;
+    padding: 2px 20%;
 `;
 
 const RecipeName = styled.div`
-    padding-bottom: 8px;
+    /* padding-bottom: 8px; */
     text-align: center;
     font-size: 0.95rem;
     font-weight: 600;
+    padding: 0;
+    margin: 0;
 `;
 
 // component to print
@@ -322,7 +346,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
 
     return (
         <LabelContainer ref={ref}>
-            <Center>
+            {/* <Center>
                 <Image
                     src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630931038/BobbleMix_Logos/logo_header_h75px_qnfipg.png"
                     alt="booble mix"
@@ -330,10 +354,10 @@ const ComponentToPrint = forwardRef((props, ref) => {
                     pt="8px"
                     pb="16px"
                 />
-            </Center>
-            <Center>
-                <RecipeName> {name}</RecipeName>
-            </Center>
+            </Center> */}
+            {/* <Center> */}
+            <RecipeName>BOBBLEMIX</RecipeName>
+            <RecipeName>{name}</RecipeName>
             <ul style={{ listStyle: 'none' }}>
                 <li style={{ color: 'black' }}>
                     <b>Ratio PG/VG:</b> 50/50 <b>Volume:</b> 40ml
@@ -469,14 +493,16 @@ const ContainerLabel = (props) => {
         fileName: `BobbleMix ${name.replace('/', '-')}.pdf`,
         // width: 234.4px; // is 62 mm to pixel
         // height: 340px; // is 90 mm to pixel
+        // height: 468px; // is 62 mm to pixel 234
+        // width: 680px; // is 90 mm to pixel 340
         pdfOptions: {
-            w: 234.4, // (Width in pixels - defaults to the width of the element)
-            h: 340, // (Height in pixels - defaults to the height of the element)
+            w: 468, // (Width in pixels - defaults to the width of the element)
+            h: 680, // (Height in pixels - defaults to the height of the element)
             x: 0, // (X Coordinate in pixels against left edge of the page - defaults to 0)
             y: 0, // (Y Coordinate in pixels against left edge of the page - defaults to 0)
             unit: 'px',
-            orientation: 'p', // 'p' (portrait) OR 'l' (landscape)
-            // pdfFormat: [340, 234.4],
+            // orientation: 'p', // 'p' (portrait) OR 'l' (landscape)
+            // pdfFormat: [234.4, 340],
         },
         html2CanvasOptions: {
             scrollX: -window.scrollX,
@@ -487,21 +513,23 @@ const ContainerLabel = (props) => {
     };
 
     return (
-        <>
+        <GridLayout>
             <ComponentToPrint ref={componentRef} name={name} mixRisk={mixRisk} sanitizeList={sanitizeList} rid={rid} />
-            <Button
-                colorScheme="orange"
-                style={{ boxShadow: 'none' }}
-                leftIcon={<FaRegFilePdf />}
-                onClick={async () => {
-                    await import('react-component-export-image').then((module) => {
-                        module.exportComponentAsPDF(componentRef, params);
-                    });
-                }}
-            >
-                format PDF
-            </Button>
-        </>
+            <BtnContainer>
+                <Button
+                    colorScheme="orange"
+                    style={{ boxShadow: 'none' }}
+                    leftIcon={<FaRegFilePdf />}
+                    onClick={async () => {
+                        await import('react-component-export-image').then((module) => {
+                            module.exportComponentAsPDF(componentRef, params);
+                        });
+                    }}
+                >
+                    Télécharger le PDF
+                </Button>
+            </BtnContainer>
+        </GridLayout>
     );
 };
 export default ContainerLabel;

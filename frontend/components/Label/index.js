@@ -44,27 +44,20 @@ const LabelStack = (props) => {
     console.log('Mix Risks', recipe.risks);
     // console.log('Sum of all mol retenu', recipe.molsum);
 
-    const LabelContainer = styled.div`
+    const InnerContainer = styled.div`
         margin-top: 2rem;
         display: grid;
+        grid-template-rows: auto;
         justify-content: center;
         align-content: top;
-        color: black;
-    `;
-
-    const InnerContainer = styled.div`
-        width: 470px;
-        display: grid;
-        grid-template-rows: auto auto;
+        color: #000;
         /* border: 1px solid cyan; */
     `;
 
     return (
-        <LabelContainer>
-            <InnerContainer>
-                <ContainerLabel sanitizeList={sanitizeList} mixRisk={recipe.risks} name={recipe.name} rid={recipe.id} />
-            </InnerContainer>
-        </LabelContainer>
+        <InnerContainer>
+            <ContainerLabel sanitizeList={sanitizeList} mixRisk={recipe.risks} name={recipe.name} rid={recipe.id} />
+        </InnerContainer>
     );
 };
 export default LabelStack;
