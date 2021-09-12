@@ -2,10 +2,11 @@ import { useEffect, useState, useRef, forwardRef } from 'react';
 import _ from 'lodash';
 import styled from '@emotion/styled';
 import { add, format } from 'date-fns';
-import { Button, Image, Center, Grid, GridItem } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { FaRegFilePdf } from 'react-icons/fa';
 import { useUser } from '../hooks/useUser';
 import GotMol from './GotMol';
+import Pictograms from './Pictograms';
 
 const GridLayout = styled.div`
     display: grid;
@@ -15,21 +16,24 @@ const GridLayout = styled.div`
     align-content: top;
     color: black;
     border: 3px dashed skyblue;
-    height: fit-content;
+    /* height: fit-content; */
 `;
 
 // ? Params imprimante
-// ? - 89.8 mm hauteur X 62 mm largeur { marge de 3 mm } || 300x300 dpi "priorité a la vitess d'impression"
-// ? impression Taille ajuster, Orientation en mod protrait
+// ? - 89.8 mm (339.7px) hauteur X 62 mm (234.3px) largeur { marge de 3 mm } || 300x300 dpi "priorité a la vitess d'impression"
+// ? impression Taille ajuster, Orientation en mod protrait si monochrome
 
 const LabelContainer = styled.div`
     display: grid;
-    padding: 16px;
     margin: 0;
-    /* height: 234px; // is 62 mm to pixel 234
-    width: 340px; // is 90 mm to pixel 340 */
-    /* height: 468.8px; // is 62 mm to pixel 234 */
-    width: 680px; // is 90 mm to pixel 340
+    /* padding: 1px; */
+    padding-top: 12.3px;
+    /* 
+        w: 446, // (Width in pixels - defaults to the width of the element)
+        h: 632, // (Height in pixels - defaults to the height of the element) 
+        */
+    width: 446.4px;
+    height: 632px;
     border: 1px solid fuchsia;
 `;
 
@@ -39,13 +43,47 @@ const BtnContainer = styled.div`
     padding: 2px 20%;
 `;
 
-const RecipeName = styled.div`
-    /* padding-bottom: 8px; */
+const BrandName = styled.div`
+    padding-bottom: 1em;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 1.25em;
     font-weight: 600;
     padding: 0;
     margin: 0;
+`;
+
+const RecipeName = styled.div`
+    padding-bottom: 1em;
+    text-align: center;
+    font-size: 0.825em;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+`;
+
+const Infos = styled.div`
+    padding: 0;
+    margin: 0;
+    font-size: 0.775em;
+    span {
+        font-weight: 600;
+    }
+`;
+
+const PrecautionText = styled.div`
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 0.775em;
+`;
+
+const ContactInfos = styled.div`
+    margin: 0;
+    padding: 0;
+    padding-top: 0.64em;
+    text-align: center;
+    font-size: 0.8em;
 `;
 
 // component to print
@@ -355,130 +393,94 @@ const ComponentToPrint = forwardRef((props, ref) => {
                     pb="16px"
                 />
             </Center> */}
-            {/* <Center> */}
-            <RecipeName>BOBBLEMIX</RecipeName>
+            <BrandName>BOBBLEMIX</BrandName>
             <RecipeName>{name}</RecipeName>
-            <ul style={{ listStyle: 'none' }}>
-                <li style={{ color: 'black' }}>
-                    <b>Ratio PG/VG:</b> 50/50 <b>Volume:</b> 40ml
-                </li>
-                <li>
-                    <Grid h="" w="" templateColumns="repeat(6, 1fr)" gap={1}>
-                        <GridItem colSpan={5}>
-                            <p>
-                                <span style={{ fontWeight: '600' }}>Ingrédients: </span>Propylène Glycol, Glycérine
-                                Végétale, Arômes alimentaires
-                            </p>
-                            {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
-                                <GotMol isEUH208A={isEUH208A} isEUH208B={isEUH208B} isEUH208C={isEUH208C} />
-                            ) : null}
-                            <p>
-                                <span style={{ fontWeight: '600' }}>DDM: </span>
-                                {format(nowadd6month, 'dd.MM.yyyy', {})}
-                            </p>
-                            <p>
-                                <span style={{ fontWeight: '600' }}>N° de lot: </span>
-                                {format(now, 'yyyyMMddHHmmss', {})}_{uid}
-                            </p>
-                        </GridItem>
-                        <GridItem colSpan={1}>
-                            <Image
-                                src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630925429/icone_bobble_mix/-18_xt2qpo.png"
-                                alt="pregnant"
-                                width="27"
-                                height="27"
-                            />
-                            <Image
-                                src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630925429/icone_bobble_mix/femme_enceinte_d9a5iy.png"
-                                alt="pregnant"
-                                width="27"
-                                height="27"
-                            />
-                            <Image
-                                src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630925429/icone_bobble_mix/recycle_f617gc.png"
-                                alt="recycling"
-                                width="27"
-                                height="27"
-                            />
-                            {isH317.b && (
-                                <>
-                                    <Image
-                                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630926475/icone_bobble_mix/attention_hyp4mu.png"
-                                        alt="attention"
-                                        width="42"
-                                        height="42"
-                                    />
-                                </>
-                            )}
-                        </GridItem>
-                    </Grid>
-                </li>
+            <Infos>
+                <span>Volume:</span> 40ml / <span>Ratio PG/VG:</span> 50/50
+            </Infos>
 
-                <li>
-                    <div style={{ fontSize: '11px' }}>
-                        <p style={{ fontSize: '1rem', fontWeight: '600' }}>Précautions d'emploi:</p>
-                        {/* Cas1, mélange non classé: */}
-                        {!isH317.b && !isH226.b && !isH412.b && !isH413.b && (
-                            <div style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-                                En cas de consultation d'un médecin, garder à disposition le récipient ou l'étiquette
-                                Tenir hors de portée des enfants. Se laver les mains soigneusement après manipulation
-                            </div>
-                        )}
-                        {/* ci dessous on suprime la conditon `|| (Hxxx et H226):` */}
-                        {/* Cas2, mélange classé que H317  */}
-                        {isH317.b && !isH412.b && !isH413.b && (
-                            <div style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-                                Peut provoquer une allergie cutanée. En cas de consultation d’un médecin, garder à
-                                disposition le récipient ou l’étiquette. Tenir hors de portée des enfants. Ne pas
-                                manger, boire ou fumer en manipulant ce produit. En cas de contact avec la peau : laver
-                                abondamment à l’eau et au savon. Éliminer le contenu dans un centre de traitement agréé.
-                            </div>
-                        )}
-                        {/* Cas4, mélange classé que H412: */}
-                        {isH412.b && !isH317.b && (
-                            <div style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-                                Nocif pour les organismes aquatiques. entraîne des effets néfastes à long terme. En cas
-                                de consultation d’un médecin, garder à disposition le récipient ou l’étiquette. Tenir
-                                hors de portée des enfants. Ne pas manger, boire, ou fumer en manipulant ce produit. Se
-                                laver les mains soigneusement après manipulation. Éliminer le contenu dans un centre de
-                                traitement agréé.
-                            </div>
-                        )}
-                        {/* Cas5, mélange classé H413: */}
-                        {isH413.b && !isH317 && (
-                            <div style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-                                Peut être nocif à long terme pour les organismes aquatiques. En cas de consultation d’un
-                                médecin, garder à disposition le récipient ou l’étiquette. Tenir hors de portée des
-                                enfants. Ne pas manger, boire, ou fumer en manipulant ce produit. Se laver les mains
-                                soigneusement après manipulation.
-                            </div>
-                        )}
-                        {/* Cas6, mélange classé H317 + H412: */}
-                        {isH317.b && isH412.b && (
-                            <div style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-                                Peut provoquer une allergie cutanée. Nocif pour les organismes aquatiques. En cas de
-                                consultation d’un médecin, garder à disposition le récipient ou l’étiquette. Tenir hors
-                                de portée des enfants. Ne pas manger, boire ou fumer en manipulant ce produit. En cas de
-                                contact avec la peau : laver abondamment à l’eau et au savon. Éliminer le contenu dans
-                                un centre de traitement agréé.
-                            </div>
-                        )}
-                        {/* Cas7, mélange classé H317 + H413 : */}
-                        {isH317.b && isH413.b && (
-                            <div style={{ textAlign: 'justify', textJustify: 'inter-word' }}>
-                                Peut provoquer une allergie cutanée. Peut être nocif à long terme pour les organismes
-                                aquatiques. En cas de consultation d’un médecin, garder à disposition le récipient ou
-                                l’étiquette. Tenir hors de portée des enfants. Ne pas manger, boire ou fumer en
-                                manipulant ce produit. En cas de contact avec la peau : laver abondamment à l’eau et au
-                                savon. Éliminer le contenu dans un centre de traitement agréé.
-                            </div>
-                        )}
-                    </div>
-                </li>
-                <div style={{ textAlign: 'center', paddingTop: '10px', fontSize: '14px' }}>
-                    Fabriqué en France par {company.name} {company.address} Tel : {company.tel} {company.web}
-                </div>
-            </ul>
+            <Infos>
+                <span>Ingrédients: </span>Propylène Glycol, Glycérine Végétale, Arômes alimentaires
+            </Infos>
+
+            {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
+                <GotMol isEUH208A={isEUH208A} isEUH208B={isEUH208B} isEUH208C={isEUH208C} />
+            ) : null}
+
+            <Pictograms isH317={isH317} />
+
+            <Infos>
+                <span>DDM: </span>
+                {format(nowadd6month, 'dd.MM.yyyy', {})}
+            </Infos>
+
+            <Infos>
+                <span>N° de lot: </span>
+                {format(now, 'yyyyMMddHHmmss', {})}_{uid}
+            </Infos>
+
+            <div>
+                <p style={{ fontSize: '1rem', fontWeight: '600' }}>Précautions d'emploi:</p>
+                {/* Cas1, mélange non classé: */}
+                {!isH317.b && !isH226.b && !isH412.b && !isH413.b && (
+                    <PrecautionText>
+                        En cas de consultation d'un médecin, garder à disposition le récipient ou l'étiquette Tenir hors
+                        de portée des enfants. Se laver les mains soigneusement après manipulation
+                    </PrecautionText>
+                )}
+                {/* ci dessous on suprime la conditon `|| (Hxxx et H226):` */}
+                {/* Cas2, mélange classé que H317  */}
+                {isH317.b && !isH412.b && !isH413.b && (
+                    <PrecautionText>
+                        Peut provoquer une allergie cutanée. En cas de consultation d’un médecin, garder à disposition
+                        le récipient ou l’étiquette. Tenir hors de portée des enfants. Ne pas manger, boire ou fumer en
+                        manipulant ce produit. En cas de contact avec la peau : laver abondamment à l’eau et au savon.
+                        Éliminer le contenu dans un centre de traitement agréé.
+                    </PrecautionText>
+                )}
+                {/* Cas4, mélange classé que H412: */}
+                {isH412.b && !isH317.b && (
+                    <PrecautionText>
+                        Nocif pour les organismes aquatiques. entraîne des effets néfastes à long terme. En cas de
+                        consultation d’un médecin, garder à disposition le récipient ou l’étiquette. Tenir hors de
+                        portée des enfants. Ne pas manger, boire, ou fumer en manipulant ce produit. Se laver les mains
+                        soigneusement après manipulation. Éliminer le contenu dans un centre de traitement agréé.
+                    </PrecautionText>
+                )}
+                {/* Cas5, mélange classé H413: */}
+                {isH413.b && !isH317 && (
+                    <PrecautionText>
+                        Peut être nocif à long terme pour les organismes aquatiques. En cas de consultation d’un
+                        médecin, garder à disposition le récipient ou l’étiquette. Tenir hors de portée des enfants. Ne
+                        pas manger, boire, ou fumer en manipulant ce produit. Se laver les mains soigneusement après
+                        manipulation.
+                    </PrecautionText>
+                )}
+                {/* Cas6, mélange classé H317 + H412: */}
+                {isH317.b && isH412.b && (
+                    <PrecautionText>
+                        Peut provoquer une allergie cutanée. Nocif pour les organismes aquatiques. En cas de
+                        consultation d’un médecin, garder à disposition le récipient ou l’étiquette. Tenir hors de
+                        portée des enfants. Ne pas manger, boire ou fumer en manipulant ce produit. En cas de contact
+                        avec la peau : laver abondamment à l’eau et au savon. Éliminer le contenu dans un centre de
+                        traitement agréé.
+                    </PrecautionText>
+                )}
+                {/* Cas7, mélange classé H317 + H413 : */}
+                {isH317.b && isH413.b && (
+                    <PrecautionText>
+                        Peut provoquer une allergie cutanée. Peut être nocif à long terme pour les organismes
+                        aquatiques. En cas de consultation d’un médecin, garder à disposition le récipient ou
+                        l’étiquette. Tenir hors de portée des enfants. Ne pas manger, boire ou fumer en manipulant ce
+                        produit. En cas de contact avec la peau : laver abondamment à l’eau et au savon. Éliminer le
+                        contenu dans un centre de traitement agréé.
+                    </PrecautionText>
+                )}
+            </div>
+
+            <ContactInfos>
+                Fabriqué en France par {company.name} {company.address} Tel : {company.tel} {company.web}
+            </ContactInfos>
         </LabelContainer>
     );
 });
@@ -496,8 +498,11 @@ const ContainerLabel = (props) => {
         // height: 468px; // is 62 mm to pixel 234
         // width: 680px; // is 90 mm to pixel 340
         pdfOptions: {
-            w: 468, // (Width in pixels - defaults to the width of the element)
-            h: 680, // (Height in pixels - defaults to the height of the element)
+            // w: 446, // (Width in pixels - defaults to the width of the element)
+            // h: 632, // (Height in pixels - defaults to the height of the element)
+
+            w: 446, // (Width in pixels - defaults to the width of the element)
+            h: 632, // (Height in pixels - defaults to the height of the element)
             x: 0, // (X Coordinate in pixels against left edge of the page - defaults to 0)
             y: 0, // (Y Coordinate in pixels against left edge of the page - defaults to 0)
             unit: 'px',
