@@ -38,7 +38,7 @@ const UserRecipe = (props) => {
                             })
                         }
                     >
-                        voire l'etiquette de cette recette
+                        visualisez l'etiquette de cette recette
                     </ActionCard>
 
                     <ActionCard
@@ -49,7 +49,7 @@ const UserRecipe = (props) => {
                             })
                         }
                     >
-                        voire la fiche de securité de la recette
+                        visualisez la fiche de securité de la recette
                     </ActionCard>
 
                     {/* <ActionCard onClick={onOpen}>voire l'etiquette de cette recette</ActionCard> */}
