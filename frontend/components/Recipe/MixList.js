@@ -5,7 +5,7 @@ import { Bobble1L, ImageBottle, ImageBox, LabelBottle } from '../Mixeur/StyleMix
 
 const MixList = (props) => {
     const { tma, tm } = props;
-    const massEliquide = 1.15; // per milliliter
+    const massEliquide = 1.15; // (aver. PG/VG mass in grammes per milliliter)
     const GroupFlavor = (array, key) => {
         let occurenceArray = [];
         array.forEach((x) => {
