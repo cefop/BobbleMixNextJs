@@ -260,7 +260,7 @@ export const saveur_molecule = [
     },
     {
         Saveur_ID: 7,
-        Saveur: 'Classic RY5',
+        Saveur: 'Classic RY4',
         Molecule_ID: '64-17-5',
         Molecule: 'éthanol, alcool éthylique',
         retenu: 1.4,
@@ -680,14 +680,14 @@ export const saveur_molecule = [
         retenu: 0.25,
     },
     {
-        Saveur_ID: 0,
+        Saveur_ID: 51,
         Saveur: 'Pampelmo',
         Molecule_ID: '56-81-5',
         Molecule: 'glycerol',
         retenu: 45,
     },
     {
-        Saveur_ID: 0,
+        Saveur_ID: 51,
         Saveur: 'Pampelmo',
         Molecule_ID: '77-83-8',
         Molecule: 'ethyl 2,3-epoxy-3-phenylbutyrate',

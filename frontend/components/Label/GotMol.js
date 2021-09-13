@@ -45,7 +45,7 @@ const GotMol = (props) => {
                     })}
             </div>
 
-            <span>Peut produire une réaction allergique.</span>
+            <>Peut produire une réaction allergique.</>
         </Infos>
     );
 };

@@ -92,7 +92,7 @@ export const molecule_risk = [
     {
         Molecule_ID: '119-84-6',
         Molecule: '3,4-dihydrocoumarin',
-        Clas_ID: 'H317',
+        Clas_ID: 'H317-1',
         Clas: 'Skin Sens. 1',
     },
     {
@@ -512,7 +512,7 @@ export const molecule_risk = [
     {
         Molecule_ID: '8007-00-9',
         Molecule: 'Balsams, Peru',
-        Clas_ID: 'H317',
+        Clas_ID: 'H317-1',
         Clas: 'Skin Sens. 1',
     },
     {
@@ -710,7 +710,7 @@ export const molecule_risk = [
     {
         Molecule_ID: '5989-27-5',
         Molecule: 'd-limonène',
-        Clas_ID: 'H317',
+        Clas_ID: 'H317-1',
         Clas: 'Skin Sens. 1',
     },
     {
