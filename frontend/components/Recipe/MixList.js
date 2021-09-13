@@ -36,6 +36,7 @@ const MixList = (props) => {
                     <Tr>
                         <Th>Arômes</Th>
                         <Th>Millilitres</Th>
+                        <Th>Grammes</Th>
                         <Th isNumeric>Pourcentages</Th>
                     </Tr>
                 </Thead>
@@ -44,8 +45,9 @@ const MixList = (props) => {
                         return (
                             <Tr key={m.id}>
                                 <Td>{m.name}</Td>
-                                <Td>{((40 / tma.length) * m.rating).toFixed(2)} ml</Td>
-                                <Td isNumeric>{((((40 / tma.length) * 100) / 40) * m.rating).toFixed(2)} %</Td>
+                                <Td>{(40 / tma.length) * m.rating}ml</Td>
+                                <Td>{(40 / tma.length) * m.rating}g</Td>
+                                <Td isNumeric>{(((40 / tma.length) * 100) / 40) * m.rating}%</Td>
                             </Tr>
                         );
                     })}

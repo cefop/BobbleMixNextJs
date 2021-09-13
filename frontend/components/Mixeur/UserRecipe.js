@@ -16,15 +16,18 @@ const UserRecipe = () => {
             {gso.length >= 1 ? (
                 // Filter item by ID to stack items quantites
                 <MyRecipe>
-                    {gso.map((r, i) => (
-                        <Box key={i} my={7}>
-                            <UserRecipeRender list={r} />
-                        </Box>
-                    ))}
+                    {gso.map((r, i) => {
+                        // console.log('context list', r);
+                        return (
+                            <Box key={i} my={7}>
+                                <UserRecipeRender list={r} />
+                            </Box>
+                        );
+                    })}
                 </MyRecipe>
             ) : (
                 <MyRecipe>
-                    <Box my={7}>TODO Design</Box>
+                    <Box my={7}></Box>
                 </MyRecipe>
             )}
         </RecipeContainer>

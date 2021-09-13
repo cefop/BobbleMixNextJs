@@ -58,7 +58,7 @@ const ContainerMix = (props) => {
                 <UserRecipe />
                 <StepTitle>Choisisez votre dosage de nicotine</StepTitle>
                 <NicoLevel />
-                <StepTitle>Sauvegarder votre recette</StepTitle>
+                <StepTitle>Sauvegardez votre recette</StepTitle>
                 <SaveRecipe />
             </RecipePanel>
             <FlavorPanel>

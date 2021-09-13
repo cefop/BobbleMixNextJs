@@ -14,6 +14,8 @@ const UserRecipeRender = (props) => {
     const gso = results.sort(GetSortOrder('id'));
     const VolMax = 40;
 
+    // console.log('compute', `(${VolMax} / ${bobbleMix.length}) * ${list.volume} / 10`);
+
     return (
         <Tooltip
             label={getObjectByValue(bobbleMix, 'id', list.id)[0].name}
@@ -31,15 +33,15 @@ const UserRecipeRender = (props) => {
                 </ImageBox>
                 <LabelBottle>
                     <Icon as={MdOpacity} color="orange.200" />
-                    <span>
+                    {/* <span>
                         {gso.length !== 2 && bobbleMix.length === 2
                             ? `${new Intl.NumberFormat('fr-FR', {
                                   maximumFractionDigits: 2,
                               }).format(list.volume)} ml`
                             : `${new Intl.NumberFormat('fr-FR', {
-                                  maximumFractionDigits: 2,
+                                  maximumFractionDigits: 0,
                               }).format(((VolMax / bobbleMix.length) * list.volume) / 10)}  ml`}
-                    </span>
+                    </span> */}
                     <Text isTruncated>{getObjectByValue(bobbleMix, 'id', list.id)[0].name}</Text>
                 </LabelBottle>
             </Bobble1L>

@@ -12,7 +12,6 @@ const NicoLevel = () => {
         { id: 2, nicotine: '3mg' },
         { id: 3, nicotine: '6mg' },
         { id: 4, nicotine: '9mg' },
-        { id: 5, nicotine: '12mg' },
     ];
 
     return (

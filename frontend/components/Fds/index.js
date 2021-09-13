@@ -19,7 +19,14 @@ const FDSStack = (props) => {
     const molList = recipe.molecules;
     const adjustedRetenu = molList.map((m) => {
         const finder = aromesRatio.find((v) => v.arome === m.Saveur);
-        const res = Object.assign({ mod_retenu: (m.retenu * finder.percent) / 100 }, m);
+        // console.log('finder', finder);
+
+        //TODO check if that's ok without decimals
+        const fixPercent = `${new Intl.NumberFormat('fr-FR', {
+            maximumFractionDigits: 0,
+        }).format(finder.percent)}`;
+
+        const res = Object.assign({ mod_retenu: (m.retenu * fixPercent) / 100 }, m); // remove finder.percent
         return res;
     });
 
