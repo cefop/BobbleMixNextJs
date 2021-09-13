@@ -5,6 +5,7 @@ import { Bobble1L, ImageBottle, ImageBox, LabelBottle } from '../Mixeur/StyleMix
 
 const MixList = (props) => {
     const { tma, tm } = props;
+    const massEliquide = 1.15; // per milliliter
     const GroupFlavor = (array, key) => {
         let occurenceArray = [];
         array.forEach((x) => {
@@ -46,7 +47,7 @@ const MixList = (props) => {
                             <Tr key={m.id}>
                                 <Td>{m.name}</Td>
                                 <Td>{((40 / tma.length) * m.rating).toFixed(0)}ml</Td>
-                                <Td>{((40 / tma.length) * m.rating).toFixed(0)}g</Td>
+                                <Td>{((40 / tma.length) * m.rating * massEliquide).toFixed(1)}g</Td>
                                 <Td isNumeric>{((((40 / tma.length) * 100) / 40) * m.rating).toFixed(0)}%</Td>
                             </Tr>
                         );
