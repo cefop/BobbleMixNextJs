@@ -68,7 +68,7 @@ const Section2 = (props) => {
                                     {!isH317.b && !isH412.b && !isH413.b && !isH226.b && (
                                         <Tr>
                                             <UnorderedList>
-                                                <ListItem>Not classified</ListItem>
+                                                <ListItem>Non classé</ListItem>
                                             </UnorderedList>
                                         </Tr>
                                     )}

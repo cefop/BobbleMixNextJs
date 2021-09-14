@@ -38,7 +38,8 @@ const SaveRecipe = () => {
     const gso = results.sort(SortOrder('id'));
     const MixName = (arr) => {
         const x = arr.map((i, k) => {
-            const q = ((i.quantity * 100) / bobbleMix.length).toFixed(2);
+            //  we accept this margin error of no decimals to fixe the issue with 33.3333
+            const q = ((i.quantity * 100) / bobbleMix.length).toFixed(0);
             const n = getObjectByValue(bobbleMix, 'id', i.id)[0].name;
             const nFormated = n.replace(/ /g, '-');
             return `${q}% ${nFormated}`;
