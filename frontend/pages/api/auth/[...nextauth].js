@@ -48,11 +48,6 @@ export default NextAuth({
         // entityPrefix: 'nextauth_',
         ssl: process.env.NODE_ENV !== 'development',
         extra: process.env.NODE_ENV !== 'development' && { ssl: { rejectUnauthorized: false } },
-        // extra: {
-        //     ssl: {
-        //         rejectUnauthorized: false,
-        //     },
-        // },
     },
 
     secret: process.env.SECRET,
