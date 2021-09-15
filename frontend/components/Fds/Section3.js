@@ -3,7 +3,7 @@ import { HeadingBox, Separate, TdData } from './FDSStyle';
 
 const Section3 = (props) => {
     const { mixRisk, sanitizeList } = props;
-
+    const prod = process.env.NODE_ENV !== 'development';
     // find all risks per mol
     const FilterFromMolID = (arrOG, arrLook, objKey) => {
         const arr = arrOG.map((i, k) => {
@@ -50,7 +50,7 @@ const Section3 = (props) => {
                     </Separate>
                     <Tr>
                         <Td colSpan={2}>
-                            <Table size="sm" style={{ color: 'green' }}>
+                            <Table size="sm" style={{ color: prod ? 'black' : 'green' }}>
                                 <Tbody>
                                     <Tr>
                                         <TdData>Nom chimique</TdData>

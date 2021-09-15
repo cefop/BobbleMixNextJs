@@ -10,8 +10,6 @@ const LabelStack = (props) => {
     const adjustedRetenu = molList.map((m) => {
         const finder = aromesRatio.find((v) => v.arome === m.Saveur);
 
-        //TODO check if that's ok without decimals
-        // https://code-boxx.com/javascript-round-up-down-decimal-places/
         const fixPercent = `${new Intl.NumberFormat('fr-FR', {
             maximumFractionDigits: 0,
         }).format(finder.percent)}`;

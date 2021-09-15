@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
-// import { Modal, useDisclosure } from '@chakra-ui/react';
 import { useUser } from '../hooks/useUser';
 import { QUERY_USER_RECIPES } from '../gql/graphql';
 import { MixContainer, MixInfos, RecipeContainer, ActionCard } from './StyleRecipe';
 import MixList from './MixList';
-// import ModalFrame from './ModalFrame';
 import UserAddRmRecipe from './userAddRmRecipe';
 
 const UserRecipe = (props) => {
@@ -13,8 +11,6 @@ const UserRecipe = (props) => {
     const router = useRouter();
     const { user, session } = useUser();
     const uid = session && session.id ? parseInt(session.id) : null;
-    // console.log('THE RECIPE!: ', recipe);
-    // const { isOpen, onOpen, onClose } = useDisclosure();
 
     const { data } = useQuery(QUERY_USER_RECIPES, { variables: { uid: uid } });
 
@@ -51,20 +47,8 @@ const UserRecipe = (props) => {
                     >
                         visualisez la fiche de securité de la recette
                     </ActionCard>
-
-                    {/* <ActionCard onClick={onOpen}>voire l'etiquette de cette recette</ActionCard> */}
-                    {/* <Modal
-                        size="3xl"
-                        isOpen={isOpen}
-                        onClose={onClose}
-                        motionPreset="slideInBottom"
-                        scrollBehavior="inside"
-                    >
-                        <ModalFrame name={recipe.name} fingerprint={recipe.id} />
-                    </Modal> */}
                 </MixInfos>
-
-                <MixList tma={recipe.aromes} tm={recipe} />
+                <MixList recipe={recipe} />
             </MixContainer>
         </RecipeContainer>
     );

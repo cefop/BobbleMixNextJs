@@ -6,6 +6,7 @@ import { HeadingBox, Separate, TdData, ThData } from './FDSStyle';
 
 const Section14 = (props) => {
     const { sanitizeList, mixRisk } = props;
+    const prod = process.env.NODE_ENV !== 'development';
     const now = new Date();
     const recapArr = [];
 
@@ -88,7 +89,7 @@ const Section14 = (props) => {
                         <Td>Textes des phrases réglementaires</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'green' }}>
+                                <Tbody style={{ color: prod ? 'black' : 'green' }}>
                                     {getUniqueArray(recapArr, ['Clas']).map((i, k) => {
                                         return (
                                             <Tr key={k}>

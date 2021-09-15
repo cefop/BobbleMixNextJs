@@ -2,33 +2,14 @@ import { Table, TableCaption, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import { base, boosterNico } from '../lib/ProductsDIY';
 import { Fieldset, MixLists, OptionContainer, OptionsList } from './StyleRecipe';
 import { Bobble1L, ImageBottle, ImageBox, LabelBottle } from '../Mixeur/StyleMixeur';
+import { infosFromFingerprint } from '../lib/infosFromFingerprint';
 
 const MixList = (props) => {
-    const { tma, tm } = props;
+    const { recipe } = props;
     const massEliquide = 1.15; // (aver. PG/VG mass in grammes per milliliter)
-    const GroupFlavor = (array, key) => {
-        let occurenceArray = [];
-        array.forEach((x) => {
-            if (
-                occurenceArray.some((val) => {
-                    return val[key] === x[key];
-                })
-            ) {
-                occurenceArray.forEach((y) => {
-                    if (y[key] === x[key]) {
-                        y.rating++;
-                    }
-                });
-            } else {
-                const a = {};
-                a[key] = x[key];
-                a.name = x.name;
-                a.rating = 1;
-                occurenceArray = [...occurenceArray, a];
-            }
-        });
-        return occurenceArray;
-    };
+    // get an arr of all arome and their ratio in the mix
+    const aromesRatio = infosFromFingerprint(recipe.fingerprint);
+
     return (
         <MixLists>
             <Table size="sm" colorScheme="orange" variant="striped">
@@ -42,16 +23,14 @@ const MixList = (props) => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {GroupFlavor(tma, 'id').map((m) => {
-                        return (
-                            <Tr key={m.id}>
-                                <Td>{m.name}</Td>
-                                <Td>{((40 / tma.length) * m.rating).toFixed(0)}ml</Td>
-                                <Td>{((40 / tma.length) * m.rating * massEliquide).toFixed(1)}g</Td>
-                                <Td isNumeric>{((((40 / tma.length) * 100) / 40) * m.rating).toFixed(0)}%</Td>
-                            </Tr>
-                        );
-                    })}
+                    {aromesRatio.map((a) => (
+                        <Tr key={a.arome}>
+                            <Td>{a.arome}</Td>
+                            <Td>{((a.percent * 40) / 100).toFixed(1)}ml</Td>
+                            <Td>{(((a.percent * 40) / 100) * massEliquide).toFixed(1)}g</Td>
+                            <Td isNumeric>{a.percent}%</Td>
+                        </Tr>
+                    ))}
                 </Tbody>
             </Table>
             <OptionContainer>
@@ -64,15 +43,15 @@ const MixList = (props) => {
                             </ImageBox>
                             <LabelBottle>{base[0].name}</LabelBottle>
                         </Bobble1L>
-                        {tm.nicotine !== 0 && (
+                        {recipe.nicotine !== 0 && (
                             <Bobble1L>
                                 <ImageBox>
                                     <ImageBottle
-                                        alt={boosterNico[tm.nicotine].name}
-                                        src={boosterNico[tm.nicotine].image}
+                                        alt={boosterNico[recipe.nicotine].name}
+                                        src={boosterNico[recipe.nicotine].image}
                                     />
                                 </ImageBox>
-                                <LabelBottle>{boosterNico[tm.nicotine].name}</LabelBottle>
+                                <LabelBottle>{boosterNico[recipe.nicotine].name}</LabelBottle>
                             </Bobble1L>
                         )}
                     </OptionsList>

@@ -44,7 +44,15 @@ const SaveRecipe = () => {
             const nFormated = n.replace(/ /g, '-');
             return `${q}% ${nFormated}`;
         });
-        return x.join(' / ');
+        // add 1 to first aroma if 3x 33.333
+        // console.log('q aromas', bobbleMix.length);
+        const nameRecipe = x.join(' / ');
+        if (nameRecipe.match('^33%') && bobbleMix.length === 3) {
+            const modName = nameRecipe.replace('33%', '34%');
+            return modName;
+        } else {
+            return nameRecipe;
+        }
     };
     // Find all molecules of flavors inside Juice
     const mixMolecules = saveur_molecule.filter(({ Saveur_ID }) => bobbleMix.map((s) => s.id).includes(Saveur_ID));

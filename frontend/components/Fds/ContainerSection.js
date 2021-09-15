@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { VStack } from '@chakra-ui/react';
+import Section0 from './Section0';
 import Section1 from './Section1';
 import Section2 from './Section2';
 import Section3 from './Section3';
@@ -297,7 +298,8 @@ const ContainerSection = (props) => {
     }, [isH412.sum]);
 
     return (
-        <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+        <VStack spacing="2" alignItems="flex-start">
+            <Section0 name={name} />
             <Section1 name={name} company={company} />
             <Section2
                 isH317={isH317}

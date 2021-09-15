@@ -47,6 +47,7 @@ export default NextAuth({
         database: process.env.POSTGRES_DB,
         // entityPrefix: 'nextauth_',
         ssl: process.env.NODE_ENV !== 'development',
+        extra: process.env.NODE_ENV !== 'development' && { ssl: { rejectUnauthorized: false } },
         // extra: {
         //     ssl: {
         //         rejectUnauthorized: false,

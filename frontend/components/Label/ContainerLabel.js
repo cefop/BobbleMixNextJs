@@ -15,7 +15,7 @@ const GridLayout = styled.div`
     justify-content: center;
     align-content: top;
     color: black;
-    border: 3px dashed skyblue;
+    /* border: 3px dashed skyblue; */
     /* height: fit-content; */
 `;
 
@@ -34,12 +34,12 @@ const LabelContainer = styled.div`
         */
     width: 446.4px;
     height: 632px;
-    border: 1px solid fuchsia;
+    border: 1px dashed lightgray;
 `;
 
 const BtnContainer = styled.div`
     display: grid;
-    border: 1px dashed greenyellow;
+    /* border: 1px dashed greenyellow; */
     padding: 2px 20%;
 `;
 
@@ -384,15 +384,6 @@ const ComponentToPrint = forwardRef((props, ref) => {
 
     return (
         <LabelContainer ref={ref}>
-            {/* <Center>
-                <Image
-                    src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630931038/BobbleMix_Logos/logo_header_h75px_qnfipg.png"
-                    alt="booble mix"
-                    w="124px"
-                    pt="8px"
-                    pb="16px"
-                />
-            </Center> */}
             <BrandName>BOBBLEMIX</BrandName>
             <RecipeName>{name}</RecipeName>
             <Infos>
@@ -488,19 +479,10 @@ const ComponentToPrint = forwardRef((props, ref) => {
 const ContainerLabel = (props) => {
     const { mixRisk, sanitizeList, name, rid } = props;
 
-    // choisir "privilégier la qualité à la vitesse d'impression ". dans les parametres
-
     const componentRef = useRef();
     const params = {
         fileName: `BobbleMix ${name.replace('/', '-')}.pdf`,
-        // width: 234.4px; // is 62 mm to pixel
-        // height: 340px; // is 90 mm to pixel
-        // height: 468px; // is 62 mm to pixel 234
-        // width: 680px; // is 90 mm to pixel 340
         pdfOptions: {
-            // w: 446, // (Width in pixels - defaults to the width of the element)
-            // h: 632, // (Height in pixels - defaults to the height of the element)
-
             w: 446, // (Width in pixels - defaults to the width of the element)
             h: 632, // (Height in pixels - defaults to the height of the element)
             x: 0, // (X Coordinate in pixels against left edge of the page - defaults to 0)

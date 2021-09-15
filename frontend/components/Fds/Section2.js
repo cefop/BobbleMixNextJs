@@ -15,6 +15,8 @@ const Section2 = (props) => {
     // console.log('H317', isH317, 'isH317 1A', isH317_1A, 'isH317 1B', isH317_1B, 'isH317 1', isH317_1);
     // console.log(isEUH208A, isEUH208B, isEUH208C);
 
+    const prod = process.env.NODE_ENV !== 'development';
+
     return (
         <>
             <HeadingBox>
@@ -40,7 +42,7 @@ const Section2 = (props) => {
                                 <Thead>
                                     <Tr></Tr>
                                 </Thead>
-                                <Tbody style={{ color: 'green' }}>
+                                <Tbody style={{ color: prod ? 'black' : 'green' }}>
                                     {isH317.b && (
                                         <Tr>
                                             <TdData>Skin Sens. 1</TdData>
@@ -101,7 +103,7 @@ const Section2 = (props) => {
                                                 <ThData>N°CAS</ThData>
                                             </Tr>
                                         </Thead>
-                                        <Tbody style={{ color: 'green' }}>
+                                        <Tbody style={{ color: prod ? 'black' : 'green' }}>
                                             {isH317_1A.arr.length > 0 &&
                                                 isH317_1A.arr.map(
                                                     (i, k) =>
@@ -145,13 +147,13 @@ const Section2 = (props) => {
                         <Td>Mention d’avertissement :</Td>
 
                         {isH317.b === true || isH226.b === true ? (
-                            <Td style={{ color: 'green' }}>
+                            <Td style={{ color: prod ? 'black' : 'green' }}>
                                 <UnorderedList>
                                     <ListItem>Attention</ListItem>
                                 </UnorderedList>
                             </Td>
                         ) : (
-                            <Td style={{ color: 'green' }}>
+                            <Td style={{ color: prod ? 'black' : 'green' }}>
                                 <UnorderedList>
                                     <ListItem>Aucun</ListItem>
                                 </UnorderedList>
@@ -183,7 +185,7 @@ const Section2 = (props) => {
                                 )}
                             </HStack>
                             {!isH317.b && !isH226.b && (
-                                <UnorderedList style={{ color: 'green' }}>
+                                <UnorderedList style={{ color: prod ? 'black' : 'green' }}>
                                     <ListItem>Aucun</ListItem>
                                 </UnorderedList>
                             )}
@@ -196,7 +198,7 @@ const Section2 = (props) => {
                         <Td>Mentions de danger :</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'green' }}>
+                                <Tbody style={{ color: prod ? 'black' : 'green' }}>
                                     {isH317.b && (
                                         <Tr>
                                             <TdData>H317</TdData>
@@ -240,7 +242,7 @@ const Section2 = (props) => {
                         <Td>Conseils de prudence :</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'green' }}>
+                                <Tbody style={{ color: prod ? 'black' : 'green' }}>
                                     {/* Only if H317 */}
                                     {isH317.b && !isH226.b && !isH412.b && !isH413.b && <MentionDangerH317 />}
                                     {/* Only if H317 and H226  */}
@@ -270,7 +272,7 @@ const Section2 = (props) => {
                         <Td>Phrases EUH :</Td>
                         <Td>
                             <Table size="sm">
-                                <Tbody style={{ color: 'green' }}>
+                                <Tbody style={{ color: prod ? 'black' : 'green' }}>
                                     {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
                                         <Tr>
                                             {/* <span>Contient: </span> */}
@@ -310,7 +312,7 @@ const Section2 = (props) => {
                                                 isEUH208A.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
-                                                        <Tr style={{ color: 'green' }} key={k}>
+                                                        <Tr style={{ color: prod ? 'black' : 'green' }} key={k}>
                                                             <TdData>{i.Molecule}</TdData>
                                                             <TdData>{i.Molecule_ID}</TdData>
                                                             <TdData>Peut produire une réaction allergique</TdData>
@@ -321,7 +323,7 @@ const Section2 = (props) => {
                                                 isEUH208B.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
-                                                        <Tr style={{ color: 'green' }} key={k}>
+                                                        <Tr style={{ color: prod ? 'black' : 'green' }} key={k}>
                                                             <TdData>{i.Molecule}</TdData>
                                                             <TdData>{i.Molecule_ID}</TdData>
                                                             <TdData>Peut produire une réaction allergique</TdData>
@@ -332,7 +334,7 @@ const Section2 = (props) => {
                                                 isEUH208C.arr.map((i, k) => {
                                                     // console.log(i);
                                                     return (
-                                                        <Tr style={{ color: 'green' }} key={k}>
+                                                        <Tr style={{ color: prod ? 'black' : 'green' }} key={k}>
                                                             <TdData>{i.Molecule}</TdData>
                                                             <TdData>{i.Molecule_ID}</TdData>
                                                             <TdData>Peut produire une réaction allergique</TdData>
@@ -343,7 +345,7 @@ const Section2 = (props) => {
                                     </>
                                 ) : (
                                     <>
-                                        <Thead style={{ color: 'green' }}>
+                                        <Thead style={{ color: prod ? 'black' : 'green' }}>
                                             <Tr></Tr>
                                         </Thead>
                                         <Tbody></Tbody>

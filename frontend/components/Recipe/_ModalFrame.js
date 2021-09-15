@@ -1,5 +1,5 @@
 import { ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
-import ModalLabel from './ModalLabel';
+import ModalLabel from './_ModalLabel';
 
 const ModalFrame = (props) => {
     const { name, fingerprint } = props;

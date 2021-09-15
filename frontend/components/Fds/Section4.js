@@ -3,6 +3,7 @@ import { HeadingBox, Separate } from './FDSStyle';
 
 const Section4 = (props) => {
     const { isH317 } = props;
+    const prod = process.env.NODE_ENV !== 'development';
     return (
         <>
             <HeadingBox>
@@ -93,7 +94,7 @@ const Section4 = (props) => {
                     </Separate>
                     <Tr>
                         <Td>Symptômes et effets - Après contact avec la peau</Td>
-                        <Td style={{ color: 'green' }}>
+                        <Td style={{ color: prod ? 'black' : 'green' }}>
                             <UnorderedList>
                                 {isH317.b ? (
                                     <ListItem>peut provoquer une irritation cutanée</ListItem>

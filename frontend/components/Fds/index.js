@@ -1,11 +1,9 @@
-import { format } from 'date-fns';
 import _ from 'lodash';
-import { Heading, Center, Container, Table, Thead, Tr, Th } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import ContainerSection from './ContainerSection';
 
 const FDSStack = (props) => {
     const { recipe, aromesRatio } = props;
-    const now = new Date();
     const company = {
         name: 'CEFOP',
         address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE France',
@@ -63,28 +61,7 @@ const FDSStack = (props) => {
     // console.log('Sum of all mol retenu', recipe.molsum);
 
     return (
-        <Container maxW={'7xl'} p="5" mt="15" backgroundColor="white" color="black">
-            <Table variant="simple">
-                <Thead>
-                    <Tr>
-                        <Th>
-                            Fiche de données de sécurité
-                            <br />
-                            Conforme Règlement (CE) n° 2015/830
-                        </Th>
-                        <Th textAlign="left">
-                            Version: 1<br />
-                            Date d'émission : {format(now, 'dd.MM.yyyy', {})}
-                        </Th>
-                    </Tr>
-                </Thead>
-            </Table>
-
-            <Center>
-                <Heading as="h2" mb={8} mt={5}>
-                    {recipe.name}
-                </Heading>
-            </Center>
+        <Container maxW={'8xl'} p="5" mt="15" backgroundColor="white" color="black">
             <ContainerSection sanitizeList={sanitizeList} mixRisk={recipe.risks} company={company} name={recipe.name} />
         </Container>
     );

@@ -3,6 +3,7 @@ import { HeadingBox, Separate, TdData } from './FDSStyle';
 
 const Section11 = (props) => {
     const { isH317 } = props;
+    const prod = process.env.NODE_ENV !== 'development';
     return (
         <>
             <HeadingBox>
@@ -100,7 +101,7 @@ const Section11 = (props) => {
                     <Tr>
                         <Td>Sensibilisation respiratoire ou cutanée</Td>
                         <Td>
-                            <UnorderedList style={{ color: 'green' }}>
+                            <UnorderedList style={{ color: prod ? 'black' : 'green' }}>
                                 {isH317.b ? (
                                     <ListItem>
                                         Sensibilisation cutanée - Catégorie 1 - Peut provoquer une allergie cutanée

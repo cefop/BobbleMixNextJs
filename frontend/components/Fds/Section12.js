@@ -3,7 +3,7 @@ import { HeadingBox, Separate, TdData } from './FDSStyle';
 
 const Section12 = (props) => {
     const { isH412, isH413 } = props;
-
+    const prod = process.env.NODE_ENV !== 'development';
     return (
         <>
             <HeadingBox>
@@ -60,7 +60,7 @@ const Section12 = (props) => {
                                     </Tr>
                                 </Tbody>
                             </Table>
-                            <UnorderedList style={{ color: 'green' }}>
+                            <UnorderedList style={{ color: prod ? 'black' : 'green' }}>
                                 <ListItem>
                                     {!isH412.b && !isH413.b && (
                                         <>
