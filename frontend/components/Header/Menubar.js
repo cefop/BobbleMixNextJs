@@ -14,7 +14,7 @@ const Menubar = () => {
     console.log('session', session);
 
     return (
-        <MenubarContainer>
+        <MenubarContainer id="bobble_head">
             <MenuLogo>
                 <Link href="/">
                     <a>

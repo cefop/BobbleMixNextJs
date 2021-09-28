@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Provider } from 'next-auth/client';
+import NextNprogress from 'nextjs-progressbar';
 import styled from '@emotion/styled';
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -46,6 +47,14 @@ export default function App({ Component, pageProps }) {
                         <NicoContext.Provider value={providerNicoMix}>
                             <AppGrid>
                                 <AppHeader />
+                                <NextNprogress
+                                    color="#F29100"
+                                    startPosition={0.33}
+                                    stopDelayMs={200}
+                                    height={2}
+                                    showOnShallow={true}
+                                    options={{ easing: 'ease', speed: 500, showSpinner: false }}
+                                />
                                 <Background>
                                     <Component {...pageProps} />
                                 </Background>
