@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client';
 
+// Home page
+export const QUERY_ACTIVE_AROME = gql`
+    query activeItems {
+        item(where: { active: { _eq: true } }) {
+            id
+        }
+    }
+`;
+
 // page/mixeur.js
 export const FETCH_ITEMS = gql`
     query fetchItems {
@@ -103,6 +112,19 @@ export const QUERY_ALL_RECIPES = gql`
             name
             aromes
             created_at
+            users_recipes_aggregate {
+                aggregate {
+                    count(columns: user_id)
+                }
+                nodes {
+                    user {
+                        id
+                        image
+                        name
+                        email
+                    }
+                }
+            }
         }
     }
 `;

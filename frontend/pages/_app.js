@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Provider } from 'next-auth/client';
+import NextNprogress from 'nextjs-progressbar';
 import styled from '@emotion/styled';
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -16,12 +17,24 @@ export const AppGrid = styled.div`
     height: 100vh;
 `;
 
+const Background = styled.div`
+    position: absolute;
+    top: 75px;
+    right: 0;
+    left: 0;
+    height: calc(100% - 75px);
+    background-color: #1d1d1b;
+    background-image: url('https://res.cloudinary.com/dagmffgu0/image/upload/v1632387481/bobble_mix_assets/Fioles%20%2B%20fond/background_pbozuo.jpg');
+    background-size: cover;
+    background-position: center;
+`;
+
 export default function App({ Component, pageProps }) {
     const isProduction = process.env.NODE_ENV === 'pproduction';
     const client = useApollo(pageProps.initialApolloProps);
     const [bobbleMix, setBobbleMix] = useState([]);
     const providerBobbleMix = useMemo(() => ({ bobbleMix, setBobbleMix }), [bobbleMix, setBobbleMix]);
-    const [nicoMix, setNicoMix] = useState(null);
+    const [nicoMix, setNicoMix] = useState([]);
     const providerNicoMix = useMemo(() => ({ nicoMix, setNicoMix }), [nicoMix, setNicoMix]);
 
     if (isProduction) usePageView();
@@ -34,7 +47,17 @@ export default function App({ Component, pageProps }) {
                         <NicoContext.Provider value={providerNicoMix}>
                             <AppGrid>
                                 <AppHeader />
-                                <Component {...pageProps} />
+                                <NextNprogress
+                                    color="#F29100"
+                                    startPosition={0.33}
+                                    stopDelayMs={200}
+                                    height={2}
+                                    showOnShallow={true}
+                                    options={{ easing: 'ease', speed: 500, showSpinner: false }}
+                                />
+                                <Background>
+                                    <Component {...pageProps} />
+                                </Background>
                             </AppGrid>
                         </NicoContext.Provider>
                     </BobbleMixContext.Provider>

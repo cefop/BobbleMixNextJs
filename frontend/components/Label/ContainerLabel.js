@@ -24,6 +24,8 @@ const GridLayout = styled.div`
 // ? impression Taille ajuster, Orientation en mod protrait si monochrome
 
 const LabelContainer = styled.div`
+    background-color: white;
+    font-family: 'sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue';
     display: grid;
     margin: 0;
     /* padding: 1px; */

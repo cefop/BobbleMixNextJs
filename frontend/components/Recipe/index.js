@@ -1,56 +1,100 @@
-import { useRouter } from 'next/router';
-import { useQuery } from '@apollo/client';
-import { useUser } from '../hooks/useUser';
-import { QUERY_USER_RECIPES } from '../gql/graphql';
-import { MixContainer, MixInfos, RecipeContainer, ActionCard } from './StyleRecipe';
-import MixList from './MixList';
-import UserAddRmRecipe from './userAddRmRecipe';
+import styled from '@emotion/styled';
+import ActionsBar from './ActionsBar';
+import RecipeInfos from './RecipeInfos';
+import OptionsInfo from './OptionsInfo';
+
+const MainLayout = styled.div`
+    /* border: 1px solid teal; */
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    align-self: top;
+    justify-self: center;
+    /* background-image: url('https://res.cloudinary.com/dagmffgu0/image/upload/v1632386190/bobble_mix_assets/Fioles%20%2B%20fond/fiole_recette_mixeur_lkeyns.png');
+    background-size: 38%;
+    background-position: -110px 220px;
+    background-repeat: no-repeat; */
+    z-index: 1;
+`;
+
+const CenterContainer = styled.div`
+    /* border: 1px solid red; */
+`;
+
+const RecipeTitle = styled.div`
+    /* border: 1px solid darkblue; */
+    padding-top: 2rem;
+    padding-left: 2rem;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 4rem;
+    font-weight: 700;
+`;
+
+const RecipePanel = styled.div`
+    /* border: 1px solid violet; */
+    display: grid;
+    align-self: top;
+    justify-self: center;
+    justify-items: center;
+`;
+
+const RecipeView = styled.div`
+    /* border: 4px solid green; */
+    display: grid;
+    grid-template-rows: 9rem auto 1fr;
+    border-top-right-radius: 34px;
+    border-top-left-radius: 34px;
+    background: white;
+    color: #1d1d1b;
+    width: 55%;
+    height: calc(85.7vh - 75px); // minus header (75px) and all margins bottom
+    overflow: auto;
+    position: relative;
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-track-piece {
+    }
+`;
+
+const RecipeName = styled.div`
+    /* border: 4px solid tan; */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+`;
 
 const UserRecipe = (props) => {
     const { recipe } = props;
-    const router = useRouter();
-    const { user, session } = useUser();
-    const uid = session && session.id ? parseInt(session.id) : null;
-
-    const { data } = useQuery(QUERY_USER_RECIPES, { variables: { uid: uid } });
 
     return (
-        <RecipeContainer>
-            <MixContainer>
-                <MixInfos>
-                    <h3>{recipe.name}</h3>
-                    {user && data ? (
-                        <div className="isConnected">
-                            <UserAddRmRecipe recipe={recipe} ownRecipe={data} uid={uid} />
-                        </div>
-                    ) : (
-                        <div className="isConnected">connectez vous pour enregistrer cette recette</div>
+        <MainLayout>
+            <CenterContainer>
+                <RecipeTitle>Recette.</RecipeTitle>
+                <RecipePanel>
+                    {recipe[0] && (
+                        <RecipeView>
+                            <RecipeName>{recipe[0].name}</RecipeName>
+                            <ActionsBar recipe={recipe[0]} />
+                            <RecipeInfos recipe={recipe[0]} />
+                            <OptionsInfo fingerprint={recipe[0].fingerprint} />
+                        </RecipeView>
                     )}
-                    <ActionCard
-                        onClick={() =>
-                            router.push({
-                                pathname: '/label',
-                                query: { fingerprint: recipe.fingerprint },
-                            })
-                        }
-                    >
-                        visualisez l'etiquette de cette recette
-                    </ActionCard>
-
-                    <ActionCard
-                        onClick={() =>
-                            router.push({
-                                pathname: '/fds',
-                                query: { fingerprint: recipe.fingerprint },
-                            })
-                        }
-                    >
-                        visualisez la fiche de securité de la recette
-                    </ActionCard>
-                </MixInfos>
-                <MixList recipe={recipe} />
-            </MixContainer>
-        </RecipeContainer>
+                </RecipePanel>
+            </CenterContainer>
+        </MainLayout>
     );
 };
+
 export default UserRecipe;

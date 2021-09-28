@@ -1,5 +1,6 @@
 .vercel
 .next
+**/old*
 node_modules
 .env
 .env.production

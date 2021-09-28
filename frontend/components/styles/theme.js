@@ -1,21 +1,25 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, theme } from '@chakra-ui/react';
 
 const customTheme = extendTheme({
+    ...theme,
     colors: {
-        bbmSea: {
-            100: 'rgba(33,113,116,1)',
-            200: 'rgba(6,47,65,1)',
-        },
-        bbmNavy: {
-            100: '#324650',
-            200: '#142128',
-            300: '#0d161b',
-        },
-        bbmSun: {
-            100: '#ffc755',
+        ...theme.colors,
+        brand: {
+            100: '#1D1D1B',
+            200: '#F29100',
+            300: '#FAB752',
         },
         orange: {
-            200: '#ed9500',
+            50: '#f5e9ff',
+            100: '#dac1f3',
+            200: '#c098e7',
+            300: '#a571dc',
+            400: '#8c48d0',
+            500: '#F29100', // btn color
+            600: '#FAB752', //  btn color on hover
+            700: '#E0921D', // btn active
+            800: '#260f40',
+            900: '#10031a',
         },
         gray: '#0E161B40',
     },
@@ -23,11 +27,12 @@ const customTheme = extendTheme({
         global: {
             // styles for the `body`
             body: {
+                background: '#1d1d1b',
                 color: '#FEFEFE',
                 padding: 0,
                 margin: 0,
                 fontFamily:
-                    '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
+                    'Rubik, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue',
             },
             // styles for the `a`
             a: {

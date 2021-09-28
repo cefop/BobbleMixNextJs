@@ -1,22 +1,20 @@
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import { Button, Tag, Avatar, TagLabel, ButtonGroup } from '@chakra-ui/react';
+import { Tag, Avatar, ButtonGroup, IconButton, Tooltip } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/image';
-import { MenubarContainer, MenuLogo, MenuLinks, MenuProfile } from './StyledHeader';
+import { BiLogInCircle } from 'react-icons/bi';
+import { MenubarContainer, MenuLogo, MenuLogo2, MenuLinks, MenuProfile } from './StyledHeader';
 
 const Menubar = () => {
-    // const router = useRouter();
-    // console.log(router.route);
     const [session] = useSession();
-
     const links = [
         { id: 1, link: '/mixeur', name: 'mixeur' },
         { id: 2, link: '/toprecipe', name: 'top recettes' },
     ];
+    console.log('session', session);
 
     return (
-        <MenubarContainer>
+        <MenubarContainer id="bobble_head">
             <MenuLogo>
                 <Link href="/">
                     <a>
@@ -29,13 +27,13 @@ const Menubar = () => {
             </MenuLogo>
 
             <MenuLinks>
-                <ButtonGroup spacing="6">
-                    {links.map((l) => (
+                {links.map((l, k) => (
+                    <div key={k} className="itemLink">
                         <Link href={l.link} key={l.id}>
                             <a>{l.name}</a>
                         </Link>
-                    ))}
-                </ButtonGroup>
+                    </div>
+                ))}
             </MenuLinks>
 
             <MenuProfile>
@@ -45,31 +43,51 @@ const Menubar = () => {
                         <Link href="/profile">
                             <a>
                                 <Tag mt={2}>
-                                    <Avatar
-                                        size="sm"
-                                        src={session.user.image}
-                                        name={session.user.email ? session.user.email : session.user.name}
-                                        mr={2}
-                                    />
-                                    <TagLabel fontWeight="600" fontSize="1.1rem">
-                                        {session.user.email
-                                            ? session.user.email
-                                            : session.user.name.toLocaleLowerCase()}
-                                    </TagLabel>
+                                    <Tooltip
+                                        label={
+                                            session.user.email
+                                                ? session.user.email
+                                                : session.user.name.toLocaleLowerCase()
+                                        }
+                                        fontSize="md"
+                                        bg="black"
+                                    >
+                                        <Avatar
+                                            size="sm"
+                                            name={session.user.email ? session.user.email : session.user.name}
+                                            src={String(session.user.image)}
+                                            mr={2}
+                                        />
+                                    </Tooltip>
                                 </Tag>
                             </a>
                         </Link>
 
-                        <Link href="/">
-                            <a onClick={() => signOut()}>
-                                <Button mt={1} fontSize="1.1rem">
-                                    se déconnecter
-                                </Button>
-                            </a>
-                        </Link>
+                        <div>
+                            <Tooltip label="Se déconnecter" fontSize="md" bg="black">
+                                <IconButton
+                                    mt={2}
+                                    mr={2}
+                                    size="sm"
+                                    aria-label="logout"
+                                    icon={<BiLogInCircle size={39} color="rgb(121, 121, 121)" />}
+                                    onClick={() => signOut()}
+                                />
+                            </Tooltip>
+                        </div>
                     </ButtonGroup>
                 )}
             </MenuProfile>
+            <MenuLogo2>
+                <Link href="https://www.bobbleliquide.com/">
+                    <a>
+                        <Image
+                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1632390513/bobble_mix_assets/logos/logo_bobble_liquide_128px_kxhmkv.png"
+                            alt="booble mix"
+                        />
+                    </a>
+                </Link>
+            </MenuLogo2>
         </MenubarContainer>
     );
 };

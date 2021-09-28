@@ -15,12 +15,13 @@ export default function Label() {
 
     // console.log('RECIPE: ', loading, error, data);
     // console.log('AROMES: ', aromesRatio);
+    // console.log('data', data.recipes[0]);
 
     return (
         <>
             {loading && <Loading />}
             {error && <Error tips="erreur de changement de l'étiquette" />}
-            {data && data.recipes ? <LabelLayout recipe={data.recipes[0]} aromesRatio={aromesRatio} /> : null}
+            {data && data.recipes && <LabelLayout recipe={data.recipes[0]} aromesRatio={aromesRatio} />}
         </>
     );
 }

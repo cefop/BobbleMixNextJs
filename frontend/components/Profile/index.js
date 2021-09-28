@@ -2,38 +2,12 @@ import { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { FrenchDate, MixCategories } from '../TopRecipe/CellFunctions';
 import UserRecipeTb from './UserRecipeTb';
+import CenterGridLayout from '../styles/CenterGridLayout';
 
 const ProfileContainer = (props) => {
     const { recipes } = props;
-    console.log('USER RECIPE: ', recipes);
 
-    const GroupByOccurence = (array, key) => {
-        let occurenceArray = [];
-        array.forEach((x) => {
-            if (
-                occurenceArray.some((val) => {
-                    return val[key] === x[key];
-                })
-            ) {
-                occurenceArray.forEach((y) => {
-                    if (y[key] === x[key]) {
-                        y.rating++;
-                    }
-                });
-            } else {
-                const a = {};
-                a[key] = x[key];
-                a.created_at = x.created_at;
-                a.name = x.name;
-                a.aromes = x.aromes;
-                a.rating = 1;
-                occurenceArray = [...occurenceArray, a];
-            }
-        });
-        return occurenceArray;
-    };
-
-    const data = useMemo(() => GroupByOccurence(recipes, 'fingerprint'), []);
+    const data = useMemo(() => recipes, []);
     const columns = useMemo(
         () => [
             {
@@ -50,21 +24,25 @@ const ProfileContainer = (props) => {
                 accessor: 'aromes',
                 Cell: MixCategories,
             },
-            // {
-            // Header: 'Fiche de Sécurité',
-            // accessor: 'rating',
-            // Cell: StarsCell,
-            // Filter: false,
-            // filter: false,
-            // isNumeric: true,
-            // },
         ],
         []
     );
+
     return (
-        <Box color="grey" mx={200} my={55} p={0}>
-            <UserRecipeTb columns={columns} data={data} />
-        </Box>
+        <>
+            {recipes.length > 0 && (
+                <CenterGridLayout
+                    title="Votre profile."
+                    subtitle="retrouvez vos recettes"
+                    data={recipes}
+                    // background="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472246/bobble_mix_assets/Fioles%20%2B%20fond/fiole_top_recette_rralb3.png"
+                >
+                    <Box mx={20} my={55} p={0}>
+                        <UserRecipeTb columns={columns} data={data} />
+                    </Box>
+                </CenterGridLayout>
+            )}
+        </>
     );
 };
 export default ProfileContainer;
