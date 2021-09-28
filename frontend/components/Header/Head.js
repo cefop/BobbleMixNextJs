@@ -19,6 +19,10 @@ const BobbleMixHead = (props) => {
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta name="google-site-verification" content="2q8vyCQU6A_jfatOUJpbW0nX00L1OHAYp76SeTMyHDg" />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,700;0,800;1,300&display=optional"
+                rel="stylesheet"
+            />
         </Head>
     );
 };

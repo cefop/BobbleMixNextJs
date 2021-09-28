@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
-import { Box, Tag, TagLabel } from '@chakra-ui/react';
+import { Box, Tag, TagLabel, Avatar, AvatarGroup } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
 export function FrenchDate({ value }) {
@@ -29,6 +29,23 @@ export function NotationCell(arr, value) {
     );
 }
 
+export function PopularOnes({ value }) {
+    return (
+        <AvatarGroup size="sm" spacing={-3} max={4}>
+            {value.nodes.map((i, k) => (
+                <Avatar
+                    key={k}
+                    name={i.user.name ? String(i.user.name).substring(-1, 1) : String(i.user.email).substring(-1, 1)}
+                    src={String(i.user.image)}
+                    color={'white'}
+                    bg={'orange'}
+                    border="3px solid white"
+                />
+            ))}
+        </AvatarGroup>
+    );
+}
+
 export function MixCategories({ value }) {
     const og = value.map((c) => {
         const cat = c.categories[0];
@@ -43,7 +60,7 @@ export function MixCategories({ value }) {
             return ucat.includes(item[0].name) ? ucat : [...ucat, item[0].name];
         }, [])
         .map((cs, i) => (
-            <Tag key={i} size={'sm'} variant="outline" colorScheme="blue">
+            <Tag key={i} size={'sm'} variant="solid" color={'white'} bg={'orange'} mx="3px">
                 <TagLabel>{cs}</TagLabel>
             </Tag>
         ));

@@ -1,54 +1,79 @@
+import { useQuery } from '@apollo/client';
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from '@emotion/styled';
-import { Image } from '@chakra-ui/image';
-import { Button, Center } from '@chakra-ui/react';
-import PageLayout from '../components/styles/PageLayout';
+import { motion } from 'framer-motion';
+import { Button } from '@chakra-ui/react';
+import { QUERY_ACTIVE_AROME } from '../components/gql/graphql';
+import combinations from '../components/lib/maxPossibilities';
 
-const TextIntro = styled.div`
+const MainLayout = styled.div`
+    /* border: 1px solid teal; */
     display: grid;
-    grid-template-rows: auto;
-    background: white;
-    margin: 1rem 5rem;
-    padding: 1rem 5rem;
-    padding-bottom: 3rem;
-    justify-content: center;
-    align-content: center;
-    color: black;
-    img {
-        text-align: center;
-        margin: 0 auto;
-        width: 324px;
+    grid-template-columns: 54% 1fr;
+    width: 100%;
+    height: fit-content;
+    align-self: top;
+    justify-self: center;
+`;
+
+const HomeText = styled.div`
+    /* border: 1px solid gainsboro; */
+    padding-top: 16.18%;
+    padding-left: 5rem;
+    p {
+        text-transform: uppercase;
+        line-height: 3.78rem;
+        font-size: 3.36rem;
+        font-weight: 800;
+    }
+    .teaser {
+        padding-top: 2.33rem;
+        white-space: pre-line;
+        font-size: 1.236rem;
+        font-weight: 400;
     }
 `;
 
+const HomeImg = styled.div`
+    padding: 4rem;
+    padding-left: 12rem;
+`;
+
 export default function Home() {
-    // TODO get the actual number of activated item to render the number
+    const { loading, error, data } = useQuery(QUERY_ACTIVE_AROME);
+    const xyz = data && new Intl.NumberFormat('fr-FR').format(combinations(data.item.length, 5, 1000));
+    console.log('MAX combinations: ', xyz);
+
     return (
-        <PageLayout title="">
-            <TextIntro>
-                <Image
-                    src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630931407/BobbleMix_Logos/logo_home_h300px_xb1om1.png"
-                    alt="booble mix"
-                />
-                <div>
-                    51 liquides, une infinité de possibilités. Laissez parler votre créativité et mixez jusqu'à 5 de nos
-                    arômes afin de créer une recette unique selon vos envies!
+        <MainLayout>
+            <HomeText>
+                <p>
+                    {!loading && !error && data ? `${data.item.length} ` : <i style={{ color: 'orange' }}>vos </i>}
+                    liquides,
+                </p>
+                <p>une infinité de possibilités.</p>
+                <div className="teaser">
+                    Laissez parler votre créativité et mixez jusqu'à 5 de nos arômes afin de créer une recette unique
+                    selon vos envies!
                 </div>
-                <Center>
-                    <Link href="/mixeur">
-                        <Button
-                            size="lg"
-                            border="2px"
-                            variant="outline"
-                            colorScheme="orange"
-                            style={{ boxShadow: 'none' }}
-                            mt={18}
-                        >
-                            Mixer
-                        </Button>
-                    </Link>
-                </Center>
-            </TextIntro>
-        </PageLayout>
+                <Link href="/mixeur">
+                    <Button size="lg" variant="solid" colorScheme="orange" style={{ boxShadow: 'none' }} mt="55px">
+                        Mixer
+                    </Button>
+                </Link>
+            </HomeText>
+            <HomeImg>
+                <motion.div whileHover={{ scale: 1.04, rotate: 3 }}>
+                    <Image
+                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472401/bobble_mix_assets/Fioles%20%2B%20fond/fiole_homepage_cy5vdv.png"
+                        layout="fixed"
+                        quality={100}
+                        width={294}
+                        height={628}
+                    />
+                </motion.div>
+            </HomeImg>
+        </MainLayout>
     );
 }

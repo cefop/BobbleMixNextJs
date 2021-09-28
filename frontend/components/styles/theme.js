@@ -23,11 +23,12 @@ const customTheme = extendTheme({
         global: {
             // styles for the `body`
             body: {
+                background: '#1d1d1b',
                 color: '#FEFEFE',
                 padding: 0,
                 margin: 0,
                 fontFamily:
-                    '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
+                    'Rubik, sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue',
             },
             // styles for the `a`
             a: {

@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
-import { TopRecipeList } from '../components/TopRecipe';
+import TopRecipeList from '../components/TopRecipe';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import { QUERY_ALL_RECIPES } from '../components/gql/graphql';
 import PageLayout from '../components/styles/PageLayout';
 
-export default function TopRecipe() {
+const TopRecipe = () => {
     const { loading, error, data } = useQuery(QUERY_ALL_RECIPES);
 
     return (
@@ -18,4 +18,5 @@ export default function TopRecipe() {
             ) : null}
         </>
     );
-}
+};
+export default TopRecipe;

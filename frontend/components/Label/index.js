@@ -5,7 +5,7 @@ import ContainerLabel from './ContainerLabel';
 const LabelStack = (props) => {
     const { recipe, aromesRatio } = props;
 
-    // Find all molecules of flavors inside the mix with their retenu ratio
+    // ? Find all molecules of flavors inside the mix with their retenu ratio
     const molList = recipe.molecules;
     const adjustedRetenu = molList.map((m) => {
         const finder = aromesRatio.find((v) => v.arome === m.Saveur);
@@ -18,10 +18,10 @@ const LabelStack = (props) => {
         return res;
     });
 
-    // sort the list in descending order
+    // ? sort the list in descending order
     adjustedRetenu.sort((a, b) => (a.mod_retenu > b.mod_retenu && -1) || 1);
 
-    // remove duplicate from molecule name
+    // ? groupBy and remove duplicate from molecule name
     const result = _.groupBy(adjustedRetenu, 'Molecule_ID');
     const res = _.values(result).map((group) => ({ ...group[0], times: group.length }));
 
@@ -45,8 +45,8 @@ const LabelStack = (props) => {
         return newArr;
     });
 
-    console.log('sanitizeList', sanitizeList);
-    console.log('Mix Risks', recipe.risks);
+    // console.log('sanitizeList', sanitizeList);
+    // console.log('Mix Risks', recipe.risks);
     // console.log('Sum of all mol retenu', recipe.molsum);
 
     const InnerContainer = styled.div`

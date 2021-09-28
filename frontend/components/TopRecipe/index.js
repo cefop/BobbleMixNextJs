@@ -1,44 +1,13 @@
+import { Box } from '@chakra-ui/layout';
 import { useMemo } from 'react';
-import { Box } from '@chakra-ui/react';
-import { FrenchDate, NotationCell, MixCategories } from './CellFunctions';
+import CenterGridLayout from '../styles/CenterGridLayout';
+import { FrenchDate, MixCategories, PopularOnes } from './CellFunctions';
 import TopRecipeTb from './TopRecipeTb';
-// import { RDate } from './rdate';
 
-export const TopRecipeList = (props) => {
+const TopRecipeList = (props) => {
     const { recipes } = props;
-    console.log('All recipes: ', recipes);
 
-    function StarsCell({ value }) {
-        return NotationCell(data, value);
-    }
-
-    const GroupByOccurence = (array, key) => {
-        let occurenceArray = [];
-        array.forEach((x) => {
-            if (
-                occurenceArray.some((val) => {
-                    return val[key] === x[key];
-                })
-            ) {
-                occurenceArray.forEach((y) => {
-                    if (y[key] === x[key]) {
-                        y.rating++;
-                    }
-                });
-            } else {
-                const a = {};
-                a[key] = x[key];
-                a.created_at = x.created_at;
-                a.name = x.name;
-                a.aromes = x.aromes;
-                a.rating = 1;
-                occurenceArray = [...occurenceArray, a];
-            }
-        });
-        return occurenceArray;
-    };
-
-    const data = useMemo(() => GroupByOccurence(recipes, 'fingerprint'), []);
+    const data = useMemo(() => recipes, []);
     const columns = useMemo(
         () => [
             {
@@ -57,8 +26,8 @@ export const TopRecipeList = (props) => {
             },
             {
                 Header: 'Popularité',
-                accessor: 'rating',
-                Cell: StarsCell,
+                accessor: 'users_recipes_aggregate',
+                Cell: PopularOnes,
                 Filter: false,
                 filter: false,
                 isNumeric: true,
@@ -68,9 +37,21 @@ export const TopRecipeList = (props) => {
     );
 
     return (
-        <Box color="grey" mx={200} my={55} p={0}>
-            {/* <RDate /> component RDate got problemes ... TODO fix  */}
-            <TopRecipeTb columns={columns} data={data} />
-        </Box>
+        <>
+            {recipes.length > 0 && (
+                <CenterGridLayout
+                    title="Le top du top."
+                    subtitle="Crées par vous, reconnues par tous."
+                    // background="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472246/bobble_mix_assets/Fioles%20%2B%20fond/fiole_top_recette_rralb3.png"
+                    data={recipes}
+                >
+                    <Box mx={20} my={55} p={0}>
+                        <TopRecipeTb columns={columns} data={data} />
+                    </Box>
+                </CenterGridLayout>
+            )}
+        </>
     );
 };
+
+export default TopRecipeList;

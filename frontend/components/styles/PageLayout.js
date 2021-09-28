@@ -9,7 +9,7 @@ export default function PageLayout(props) {
 
     const UserLayout = styled.div`
         display: grid;
-        background: white;
+        /* background: white; */
         border: 1px solid grey;
         border-radius: 5px;
         margin: 3rem 5rem;
@@ -17,7 +17,7 @@ export default function PageLayout(props) {
         padding-bottom: 9rem;
         justify-content: center;
         align-content: center;
-        color: black;
+        /* color: black; */
     `;
 
     return (

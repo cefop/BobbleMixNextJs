@@ -1,7 +1,25 @@
 import { useRouter } from 'next/router';
 import { useTable, useFilters, useSortBy } from 'react-table';
-import { Table, Thead, Tbody, Tr, Th, Td, Tfoot } from '@chakra-ui/react';
-import { TableContainer } from '../styles/globalStyled';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+
+const TableContainer = styled.div`
+    tr {
+        cursor: pointer;
+        &:hover {
+            /* background: #fef9ec; */
+        }
+    }
+    thead tr th {
+        font-size: 1.1rem;
+        font-weight: 800;
+        /* text-align: center; */
+        /* cursor: default; */
+        &:hover {
+            background: none;
+        }
+    }
+`;
 
 const TopRecipeTb = ({ columns, data }) => {
     const router = useRouter();
@@ -43,17 +61,6 @@ const TopRecipeTb = ({ columns, data }) => {
                         );
                     })}
                 </Tbody>
-                <Tfoot>
-                    {headerGroups.map((headerGroup) => (
-                        <Tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                                    {column.render('Header')}
-                                </Th>
-                            ))}
-                        </Tr>
-                    ))}
-                </Tfoot>
             </Table>
         </TableContainer>
     );
