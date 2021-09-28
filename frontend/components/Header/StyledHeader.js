@@ -6,19 +6,19 @@ export const MenubarContainer = styled.div`
     border-bottom: 3px solid #000;
     box-shadow: '0 0 1px 2px rgba(0, 0, 0, .15) 0 1px 1px rgba(0, 0, 0, .15)';
     background: white;
-    color: black;
+    color: #1d1d1b;
     button:focus {
         box-shadow: none;
     }
     a {
-        color: black;
+        color: #1d1d1b;
         font-weight: 600;
         font-size: 1.1rem;
         &:hover,
         &:focus,
         &:active {
             cursor: pointer;
-            color: #ed9500;
+            color: #f29100;
         }
     }
 `;

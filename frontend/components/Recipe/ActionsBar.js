@@ -14,7 +14,7 @@ const ActionsBarContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     .btn_actionbar {
-        background-color: rgb(242, 145, 0);
+        background-color: orange;
         color: white;
         height: 3.5em;
         width: 11em;

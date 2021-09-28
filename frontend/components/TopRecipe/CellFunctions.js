@@ -23,7 +23,7 @@ export function NotationCell(arr, value) {
             {Array(5)
                 .fill('')
                 .map((_, i) => (
-                    <StarIcon key={i} color={i < value ? 'orange.500' : 'gray.300'} />
+                    <StarIcon key={i} color={i < value ? 'orange' : 'gray'} />
                 ))}
         </Box>
     );
