@@ -9,6 +9,12 @@ const TableContainer = styled.div`
         &:hover {
             /* background: #fef9ec; */
         }
+        :nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    }
+    td {
+        border: none;
     }
     thead tr th {
         font-size: 1.1rem;
