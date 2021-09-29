@@ -11,9 +11,9 @@ const BobbleMixHead = (props) => {
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"></link>
             <link rel="manifest" href="/manifest.json"></link>
-            {/* // !60 characters */}
+            {/* // ? 60 characters */}
             <title>{defaultTitle}</title>
-            {/* //! 155 - 160 characters */}
+            {/* // ? 155 - 160 characters */}
             <meta name="description" content={props.description || process.env.DESCRIPTION} />
             {/* <!-- Twitter Meta Tags --> */}
             <meta name="twitter:domain" content={props.url || process.env.DOMAIN_NAME} />
