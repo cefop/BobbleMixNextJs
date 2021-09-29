@@ -3,6 +3,19 @@ import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);
 
+export const UserCookiesToast = MySwal.mixin({
+    toast: true,
+    icon: 'warning',
+    position: 'bottom-end',
+    showConfirmButton: true,
+    background: '#1D1D1B',
+    confirmButtonText: 'Autoriser',
+    confirmButtonColor: 'orange',
+    showDenyButton: true,
+    denyButtonColor: 'orangered',
+    denyButtonText: `Décliner`,
+});
+
 export const Toast = MySwal.mixin({
     toast: true,
     position: 'top-end',

@@ -10,6 +10,7 @@ import { usePageView } from '../components/hooks/usePageView';
 import { BobbleMixContext } from '../components/hooks/BobbleMixContext';
 import { NicoContext } from '../components/hooks/NicoContext';
 import { useApollo } from '../components/lib/apollo';
+import Consent from '../components/Consent';
 
 export const AppGrid = styled.div`
     display: grid;
@@ -58,6 +59,7 @@ export default function App({ Component, pageProps }) {
                                 <Background>
                                     <Component {...pageProps} />
                                 </Background>
+                                <Consent />
                             </AppGrid>
                         </NicoContext.Provider>
                     </BobbleMixContext.Provider>
