@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import CookieConsent from 'react-cookie-consent';
 import { UserCookiesToast } from './styles/AlertAndToast';
@@ -21,14 +20,21 @@ const Consent = () => {
             }}
             declineButtonStyle={{ background: 'red', color: 'black', fontSize: '1em' }}
             flipButtons={true}
-            overlay={true}
+            overlay={!process.env.NODE_ENV !== 'development'}
             cookieName="bobblemixCookie"
             expires={365}
-            debug={true}
+            debug={process.env.NODE_ENV !== 'development'}
             onAccept={(acceptedByScrolling) => {
                 if (acceptedByScrolling) {
                     UserCookiesToast.fire({
                         html: cc,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            console.log('CONFIRMED');
+                        }
+                        if (result.isDenied) {
+                            console.log('DENIED');
+                        }
                     });
                 } else {
                     UserCookiesToast.fire({
