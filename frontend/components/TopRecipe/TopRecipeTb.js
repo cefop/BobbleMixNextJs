@@ -9,7 +9,7 @@ const TableContainer = styled.div`
         &:hover {
             /* background: #fef9ec; */
         }
-        :nth-child(even) {
+        :nth-of-type(even) {
             background-color: #f2f2f2;
         }
     }

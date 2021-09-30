@@ -20,10 +20,10 @@ const Consent = () => {
             }}
             declineButtonStyle={{ background: 'red', color: 'black', fontSize: '1em' }}
             flipButtons={true}
-            overlay={!process.env.NODE_ENV !== 'development'}
+            overlay={process.env.NODE_ENV === 'production'}
             cookieName="bobblemixCookie"
             expires={365}
-            debug={process.env.NODE_ENV !== 'development'}
+            debug={process.env.NODE_ENV === 'development'}
             onAccept={(acceptedByScrolling) => {
                 if (acceptedByScrolling) {
                     UserCookiesToast.fire({

@@ -32,16 +32,30 @@ export function NotationCell(arr, value) {
 export function PopularOnes({ value }) {
     return (
         <AvatarGroup size="sm" spacing={-3} max={4}>
-            {value.nodes.map((i, k) => (
-                <Avatar
-                    key={k}
-                    name={i.user.name ? String(i.user.name).substring(-1, 1) : String(i.user.email).substring(-1, 1)}
-                    src={String(i.user.image)}
-                    color={'white'}
-                    bg={'orange'}
-                    border="3px solid white"
-                />
-            ))}
+            {value.nodes.map((i, k) =>
+                i.user.image !== null ? (
+                    <Avatar
+                        key={k}
+                        name={
+                            i.user.name ? String(i.user.name).substring(-1, 2) : String(i.user.email).substring(-1, 2)
+                        }
+                        src={String(i.user.image)}
+                        color={'white'}
+                        bg={'orange'}
+                        border="3px solid white"
+                    />
+                ) : (
+                    <Avatar
+                        key={k}
+                        name={
+                            i.user.name ? String(i.user.name).substring(-1, 2) : String(i.user.email).substring(-1, 2)
+                        }
+                        color={'white'}
+                        bg={'orange'}
+                        border="3px solid white"
+                    />
+                )
+            )}
         </AvatarGroup>
     );
 }

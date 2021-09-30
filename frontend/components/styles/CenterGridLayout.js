@@ -12,7 +12,7 @@ export default function CenterGridLayout(props) {
         text-align: center;
         align-self: top;
         justify-self: center;
-        background-image: ${background !== null && `url(${background})`};
+        background-image: ${background !== undefined && `url(${background})`};
         background-size: 38%;
         background-position: -110px 220px;
         background-repeat: no-repeat;

@@ -11,7 +11,8 @@ const Menubar = () => {
         { id: 1, link: '/mixeur', name: 'mixeur' },
         { id: 2, link: '/toprecipe', name: 'top recettes' },
     ];
-    console.log('session', session);
+    // console.log('session', session && session.user);
+    // TODO call USER QUERY from db to get user saved info
 
     return (
         <MenubarContainer id="bobble_head">
@@ -52,12 +53,28 @@ const Menubar = () => {
                                         fontSize="md"
                                         bg="black"
                                     >
-                                        <Avatar
-                                            size="sm"
-                                            name={session.user.email ? session.user.email : session.user.name}
-                                            src={String(session.user.image)}
-                                            mr={2}
-                                        />
+                                        {session.user.image ? (
+                                            <Avatar
+                                                size="sm"
+                                                name={
+                                                    session.user.name
+                                                        ? String(session.user.name)
+                                                        : String(session.user.email)
+                                                }
+                                                src={String(session.user.image)}
+                                                mr={2}
+                                            />
+                                        ) : (
+                                            <Avatar
+                                                size="sm"
+                                                name={
+                                                    session.user.name
+                                                        ? String(session.user.name)
+                                                        : String(session.user.email)
+                                                }
+                                                mr={2}
+                                            />
+                                        )}
                                     </Tooltip>
                                 </Tag>
                             </a>
