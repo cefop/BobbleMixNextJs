@@ -16,7 +16,6 @@ Opening an issue is as easy as following [this link][issues] and filling out the
 - What did you try, step by step?
 - What did you expect?
 - What did happen instead?
-- What is the version of the Cozy Drive?
 
 ## Pull Requests
 
@@ -24,7 +23,6 @@ Please keep in mind that:
 
 - Pull-Requests point to the `master` branch
 - You need to cover your code and feature by tests
-- We recommend to use [task lists][checkbox] to explain steps / features in your Pull-Request description
 
 ### Workflow
 
@@ -54,7 +52,7 @@ Well, we think you know how to do that. Just be sure to follow the coding guidel
 
 #### Step 5: Commit
 
-Writing [good commit messages][commitmsg] is important. A commit message should describe what changed and why.
+Writing [good commit messages][commitmsg] is important. A commit message should describe what changed and why. Include the prefix [Fix, Fixed, Close, Closed] #IssueNumber related.
 
 #### Step 6: Rebase
 
@@ -93,5 +91,3 @@ Documentation improvements are very welcome. We try to keep a good documentation
 [stdjs]: http://standardjs.com/
 [commitmsg]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [hub]: https://hub.github.com/
-
-{"mode":"full","isActive":false}

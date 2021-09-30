@@ -2,21 +2,22 @@
 
 ![WIP](https://img.shields.io/badge/status-wip-red)
 
-> A way to make simple recipes with your e-liquide
+> An app that eases mixing e-liquids together and gets MSDS and molecules hazard information put together
 
 ## Highlights
 
 - Make some eliquide recipe with many aroma and see yours on your profile
-- See all recipe of all users
+- See all recipes of all users
 - Eatch recipe got its generated MSDS (FDS french formated)
 - Eatch recipe got its generated label to stick on the bottle (french formated)
 
 ## Prerequisite
 
-To be able to launch the hasura backend on your local machine and build the metadata backup you need to have hasura CLI and Docker installed on your machine.
+To launch the hasura backend on your local machine and build the metadata you need to have hasura CLI and Docker installed.
 
-- [Installing the Hasura CLI](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
 - [Intalling Docker](https://docs.docker.com/get-started/overview/)
+- [Installing the Hasura CLI](https://hasura.io/docs/latest/graphql/core/hasura-cli/install-hasura-cli.html)
+
 - check the .env files and adjust them if needed:
   - `/frontend` copie `.env.example` to `.env.development`
   - `/hasura` copie `.env.example` to `.env`
@@ -40,6 +41,22 @@ docker-compose up -a # will launch the docker compose in background
 make console # will launch the admin hasura panel and keep tracking your changes
 # Or for Windows OS without "make" tool
 npx hasura console --admin-secret "hasuraadminpassword"
+```
+
+> Resolve docker-compose up error postgres PID already in use
+
+```sh
+docker stop $(docker ps -a -q)
+docker ps  #to make sure containers is off
+sudo lsof -i tcp:5432 # now you get and list of process running and using 5432 port find and copy PID
+sudo kill -9 yout_PID
+```
+
+> Launch NextJs frontend
+
+```sh
+cd frontend
+yarn dev
 ```
 
 > hasura squash migrations
@@ -124,28 +141,30 @@ yarn dev
 
 ## 🚀 Deployment
 
-**pipeline: use github production branch to push on vercel with updated .env**
-
 > Update frontend to production
 
-**Uncomment this paragraph inside `frontend/pages/api/auth/[...nextauth].js` file**
-
-```js
-        extra: {
-            ssl: {
-                rejectUnauthorized: false,
-            },
-        },
-```
-
 ```sh
+# udate your /frontend/.env.production if needed
 cd frontend
 vercel --prod
+```
+
+> Update the backend Hasura
+
+Use the Hasura CLI or go directly on hasura Cloud to update it
+
+```sh
+cd hasura
+npx hasura metadata apply --endpoint "https://hasura.mywebsite.com"  --admin-secret "hasuraadminpassword"
 ```
 
 ## 👏🏽 Contributing Guidelines
 
 See CONTRIBUTING.md
+
+Thanks to them 🤝
+
+## Maintainers
 
 **Gatekeepers**:
 
@@ -153,10 +172,4 @@ Only the following people have merge access for the master branch.
 
 - [rmsrob][me]
 
-## Maintainers
-
-- [rmsrob][me]
-- [dzoukou][dz]
-
 [me]: https://github.com/rmsrob
-[dz]: https://github.com/dzoukou
