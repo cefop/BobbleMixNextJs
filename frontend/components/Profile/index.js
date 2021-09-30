@@ -32,7 +32,7 @@ const ProfileContainer = (props) => {
         <>
             {recipes.length > 0 && (
                 <CenterGridLayout
-                    title="Votre profile."
+                    title="Votre profile"
                     subtitle="retrouvez vos recettes"
                     data={recipes}
                     // background="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472246/bobble_mix_assets/Fioles%20%2B%20fond/fiole_top_recette_rralb3.png"

@@ -211,7 +211,7 @@ const UserBobbleMix = () => {
     return (
         <>
             <MixerHeader>
-                <h3>votre recette.</h3>
+                <h3>votre recette</h3>
             </MixerHeader>
 
             <MixerTitle>

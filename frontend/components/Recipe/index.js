@@ -81,7 +81,7 @@ const UserRecipe = (props) => {
     return (
         <MainLayout>
             <CenterContainer>
-                <RecipeTitle>Recette.</RecipeTitle>
+                <RecipeTitle>Recette</RecipeTitle>
                 <RecipePanel>
                     {recipe[0] && (
                         <RecipeView>
