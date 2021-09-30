@@ -312,7 +312,8 @@ const UserBobbleMix = () => {
                 {bobbleMix.length > 1 && (
                     <UserMixInfo>
                         <MlChecker>
-                            il vous reste <span>{maxVol - sumAllJuices}ML</span> à répartir
+                            il vous reste{' '}
+                            {sumAllJuices < 40 ? <span>{maxVol - sumAllJuices}ML</span> : <span>0ML</span>} à répartir
                             {recipeIsValide ? `, recette complette ! ` : '.'}
                             {recipeIsValide && <Icon rotate={90} style={{}} color="green" as={FaCheck} />}
                         </MlChecker>
@@ -336,7 +337,7 @@ const UserBobbleMix = () => {
                                     nicoMix[0].map((x) => x.volume).reduce((acc, item) => acc + item, 0) > 40 && (
                                         <p className="recipe_error">
                                             <CloseIcon color="red" w={3} h={3} />
-                                            &nbsp; vous avez dépassé la quantité maximal !!!
+                                            &nbsp; vous avez dépassé la quantité maximal de {sumAllJuices - maxVol}ML
                                         </p>
                                     )}
 
