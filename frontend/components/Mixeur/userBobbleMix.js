@@ -151,6 +151,10 @@ const UserBobbleMix = () => {
         // console.log("i'm next handle change", e.keyCode);
         // ? don't allow negative value
         if (e.key === '+' || e.keyCode === 190 || e.key === ',' || e.key === '-') return (e.target.value = null);
+        // ? remove leading 0
+        e.target.value !== null && e.target.value.replace(/^0+/, '');
+        // ? remove space
+        e.target.value !== null && +e.target.value;
 
         const juice = await e.target.id;
         // ? store: ID, name, volume the user enter on user inputs
