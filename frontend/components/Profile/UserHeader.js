@@ -1,5 +1,7 @@
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
+import { animate } from 'framer-motion';
 import { Avatar, Tooltip, IconButton } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { FaUserSlash } from 'react-icons/fa';
@@ -77,6 +79,25 @@ const WhitchIsIt = styled.div`
     }
 `;
 
+function Counter({ from, to }) {
+    const nodeRef = useRef();
+
+    useEffect(() => {
+        const node = nodeRef.current;
+
+        const controls = animate(from, to, {
+            duration: 1,
+            onUpdate(value) {
+                node.textContent = value.toFixed(0);
+            },
+        });
+
+        return () => controls.stop();
+    }, [from, to]);
+
+    return <p ref={nodeRef} />;
+}
+
 const UserHeader = (props) => {
     const { user } = props;
     const PopularOne = user && user.users_recipes && user.users_recipes[0] && user.users_recipes[0].recipe;
@@ -99,6 +120,20 @@ const UserHeader = (props) => {
     Array.prototype.random = function () {
         return this[Math.floor(Math.random() * this.length)];
     };
+
+    const [from, setFrom] = useState(0);
+    const [to, setTo] = useState(user.users_recipes.length);
+
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //         setFrom(to);
+    //         setTo(Math.floor(Math.random() * 100));
+    //     }, 2000);
+
+    //     return () => {
+    //         clearInterval(intervalId);
+    //     };
+    // }, [to]);
 
     return (
         <UserGrid>
@@ -133,7 +168,10 @@ const UserHeader = (props) => {
             <UserRecipesData>
                 <BlockInfo>
                     <h4>recettes crées</h4>
-                    <div className="totRecipes number">{user.users_recipes.length}</div>
+                    {/* <div className="totRecipes number">{user.users_recipes.length}</div> */}
+                    <div className="totRecipes number">
+                        <Counter from={from} to={to} />
+                    </div>
                 </BlockInfo>
                 <BlockInfo>
                     <h4>recette la plus populaire</h4>
