@@ -33,7 +33,7 @@ export default function CenterGridLayout(props) {
 
         .title {
             /* border: 1px solid pink; */
-            width: 30%;
+            width: 34%;
             align-self: flex-end;
             justify-self: start;
             text-align: end;
@@ -43,7 +43,7 @@ export default function CenterGridLayout(props) {
         }
         .subtitle {
             /* border: 1px solid pink; */
-            width: 30%;
+            width: 34%;
             align-self: flex-start;
             justify-self: start;
             text-align: end;

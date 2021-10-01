@@ -58,7 +58,7 @@ const BlockCenter = styled.div`
 export default function Tos() {
     return (
         <CenterGridLayout
-            title="Légales"
+            title="Mentions Légales"
             subtitle={'et C.G.U'}
             data={[]}
             // background="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472246/bobble_mix_assets/Fioles%20%2B%20fond/fiole_top_recette_rralb3.png"
