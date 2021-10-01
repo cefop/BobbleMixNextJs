@@ -79,7 +79,7 @@ const WhitchIsIt = styled.div`
 
 const UserHeader = (props) => {
     const { user } = props;
-    const PopularOne = user.users_recipe && user.users_recipes[0].recipe;
+    const PopularOne = user && user.users_recipes && user.users_recipes[0] && user.users_recipes[0].recipe;
     const router = useRouter();
     const today = new Date();
     const hour = format(today, 'HH', { locale: frenchLocale });
@@ -138,7 +138,7 @@ const UserHeader = (props) => {
                 <BlockInfo>
                     <h4>recette la plus populaire</h4>
                     <div className="totRecipes">
-                        {user.users_recipe ? (
+                        {user && user.users_recipes && user.users_recipes[0] && user.users_recipes[0].recipe ? (
                             <WhitchIsIt
                                 onClick={() =>
                                     router.push({
