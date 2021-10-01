@@ -155,7 +155,7 @@ export const QUERY_ALL_RECIPE_RATINGS = gql`
     }
 `;
 
-// page/profile.js
+// page/recipe
 export const QUERY_USER_RECIPES = gql`
     query fetchUserRecipes($uid: Int) {
         users_recipes(where: { user_id: { _eq: $uid } }, order_by: { recipe: { updated_at: desc } }) {
@@ -166,6 +166,30 @@ export const QUERY_USER_RECIPES = gql`
                 aromes
                 created_at
                 updated_at
+            }
+        }
+    }
+`;
+
+// page/profile.js
+export const QUERY_USER_PROFILE = gql`
+    query fetchUserProfile($uid: Int) {
+        users(where: { id: { _eq: $uid } }) {
+            id
+            name
+            image
+            email
+            users_recipes(order_by: { recipe: { updated_at: desc, users_recipes_aggregate: { count: desc } } }) {
+                recipe {
+                    name
+                    fingerprint
+                    created_at
+                    users_recipes_aggregate {
+                        aggregate {
+                            count
+                        }
+                    }
+                }
             }
         }
     }

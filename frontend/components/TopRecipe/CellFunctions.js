@@ -1,13 +1,22 @@
-import { format } from 'date-fns';
+import { format, formatRelative, subDays } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
 import { Box, Tag, TagLabel, Avatar, AvatarGroup } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
+import { fr } from 'date-fns/locale';
 
 export function FrenchDate({ value }) {
     const frdate = format(new Date(value), 'dd MMM yyyy', {
         locale: frenchLocale,
     });
     return frdate;
+}
+
+export function FrenchFromDate({ value }) {
+    const when = format(new Date(value), 'dd MMMM', {
+        locale: frenchLocale,
+    });
+    const frdate = formatRelative(subDays(new Date(value), 2), new Date(), { locale: fr });
+    return `${frdate} le ${when} `;
 }
 
 export function NotationCell(arr, value) {

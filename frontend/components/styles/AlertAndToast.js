@@ -46,3 +46,17 @@ export const ConfimThis = MySwal.mixin({
         toast.addEventListener('mouseleave', Swal.resumeTimer);
     },
 });
+
+export const UserRGPD = MySwal.mixin({
+    // title: 'Vous voulez gérer vos données..?',
+    imageUrl: '/assets/gif/judge-dont-judge-me.gif',
+    imageWidth: 320,
+    imageHeight: 192,
+    imageAlt: 'rgpg check',
+    // text: 'My test here....',
+    // html: 'You can use <b>bold text</b>, ' + '<a href="//sweetalert2.github.io">links</a> ' + 'and other HTML tags',
+
+    background: '#ffffff',
+    confirmButtonText: 'action',
+    confirmButtonColor: 'orange',
+});

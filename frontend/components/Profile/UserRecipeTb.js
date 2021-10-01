@@ -1,28 +1,34 @@
+import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useTable, useFilters, useSortBy } from 'react-table';
-import { Table, Thead, Tbody, Tr, Th, Td, Tfoot } from '@chakra-ui/react';
-import { TableContainer } from '../styles/globalStyled';
+import { Table, Tbody, Tr, Td } from '@chakra-ui/react';
+
+const TableContainer = styled.div`
+    padding: 0px;
+    color: gray;
+    tr {
+        cursor: pointer;
+        &:hover {
+            /* background: #fef9ec; */
+        }
+        :nth-of-type(even) {
+            background-color: #f2f2f2;
+        }
+    }
+    td {
+        border: none;
+    }
+`;
 
 const UserRecipeTb = ({ columns, data }) => {
     const router = useRouter();
     const tableInstance = useTable({ columns, data }, useFilters, useSortBy);
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
+    const { getTableProps, getTableBodyProps, rows, prepareRow } = tableInstance;
     const firstPageRows = rows.slice(0, 25);
 
     return (
         <TableContainer>
             <Table {...getTableProps()}>
-                <Thead>
-                    {headerGroups.map((headerGroup) => (
-                        <Tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                                    {column.render('Header')}
-                                </Th>
-                            ))}
-                        </Tr>
-                    ))}
-                </Thead>
                 <Tbody {...getTableBodyProps()}>
                     {firstPageRows.map((row) => {
                         prepareRow(row);
@@ -43,17 +49,6 @@ const UserRecipeTb = ({ columns, data }) => {
                         );
                     })}
                 </Tbody>
-                <Tfoot>
-                    {headerGroups.map((headerGroup) => (
-                        <Tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                                    {column.render('Header')}
-                                </Th>
-                            ))}
-                        </Tr>
-                    ))}
-                </Tfoot>
             </Table>
         </TableContainer>
     );

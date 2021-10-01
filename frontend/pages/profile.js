@@ -4,13 +4,12 @@ import NotAuth from '../components/NotAuth';
 import ProfileContainer from '../components/Profile';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
-import { QUERY_USER_RECIPES } from '../components/gql/graphql';
-import PageLayout from '../components/styles/PageLayout';
+import { QUERY_USER_PROFILE } from '../components/gql/graphql';
 
 export default function Profile() {
     const { user, session } = useUser();
     const uid = session && session.id ? parseInt(session.id) : null;
-    const { loading, error, data } = useQuery(QUERY_USER_RECIPES, { variables: { uid: uid } });
+    const { loading, error, data } = useQuery(QUERY_USER_PROFILE, { variables: { uid: uid } });
 
     return (
         <>
@@ -19,13 +18,12 @@ export default function Profile() {
             ) : (
                 <>
                     {loading && <Loading />}
-                    {error && <Error tips="erreur de changement de vos recettes" />}
-                    {data && data.users_recipes.length !== 0 ? (
-                        <ProfileContainer recipes={data.users_recipes.map((i) => i.recipe)} />
-                    ) : null}
-                    {!loading && data && data.users_recipes.length === 0 ? (
+                    {error && <Error tips="erreur de changement de votre profil" />}
+                    {data && <ProfileContainer user={data.users} />}
+                    {/* // TODO */}
+                    {/* {!loading && data && data.users[0].users_recipes.length === 0 ? (
                         <PageLayout title="vous n'avez aucune recette de sauvegardé" />
-                    ) : null}
+                    ) : null} */}
                 </>
             )}
         </>
