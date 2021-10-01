@@ -104,18 +104,7 @@ const UserHeader = (props) => {
     const router = useRouter();
     const today = new Date();
     const hour = format(today, 'HH', { locale: frenchLocale });
-    const greatings = [
-        'Hello',
-        'Алло!',
-        'أهلا',
-        'Dzień dobry',
-        'Xin chào',
-        'שלום',
-        'bonjour',
-        'こんにちは',
-        'bonjour',
-        'bonjour',
-    ];
+    const greatings = ['hello', 'salut', 'bonjour', 'bonjour', 'bonjour'];
 
     Array.prototype.random = function () {
         return this[Math.floor(Math.random() * this.length)];

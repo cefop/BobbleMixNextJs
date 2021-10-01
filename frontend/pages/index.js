@@ -12,9 +12,14 @@ const MainLayout = styled.div`
     display: grid;
     grid-template-columns: 54% 1fr;
     width: 100%;
-    height: fit-content;
+    /* height: fit-content; */
+    height: calc(100vh - 77px);
     align-self: top;
     justify-self: center;
+    background-image: url('https://res.cloudinary.com/dagmffgu0/image/upload/v1632923871/bobble_mix_assets/Fioles%20%2B%20fond/fiole_splash_homepage_pcxzw9.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 120% 0%;
 `;
 
 const HomeText = styled.div`
@@ -36,8 +41,7 @@ const HomeText = styled.div`
 `;
 
 const HomeImg = styled.div`
-    padding: 4rem;
-    padding-left: 12rem;
+    /* border: 1px solid red; */
 `;
 
 export default function Home() {
@@ -63,17 +67,7 @@ export default function Home() {
                     </Button>
                 </Link>
             </HomeText>
-            <HomeImg>
-                <motion.div whileHover={{ scale: 1.04, rotate: 3 }}>
-                    <Image
-                        src="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472401/bobble_mix_assets/Fioles%20%2B%20fond/fiole_homepage_cy5vdv.png"
-                        layout="fixed"
-                        quality={100}
-                        width={294}
-                        height={628}
-                    />
-                </motion.div>
-            </HomeImg>
+            <HomeImg></HomeImg>
         </MainLayout>
     );
 }

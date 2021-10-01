@@ -1,5 +1,5 @@
-import PageLayout from '../components/styles/PageLayout';
+import styled from '@emotion/styled';
 
 export default function Custom404() {
-    return <PageLayout title="Page 404">TODO!</PageLayout>;
+    return <div title="Page 404">TODO!</div>;
 }

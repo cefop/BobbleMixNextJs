@@ -25,7 +25,7 @@ export default function CenterGridLayout(props) {
 
     const RecipeTitle = styled.div`
         /* border: 1px solid cyan; */
-        /* height: 150px; */
+        height: 147px;
         padding-top: 1rem;
         padding-bottom: 1rem;
         display: grid;
