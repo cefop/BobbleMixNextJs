@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import { Button } from '@chakra-ui/react';
 import { QUERY_ACTIVE_AROME } from '../components/gql/graphql';
 import combinations from '../components/lib/maxPossibilities';

@@ -180,7 +180,13 @@ const UserSaveRecipe = () => {
     return (
         <>
             {!user ? (
-                <Button size="md" colorScheme="red" variant="solid" onClick={() => signIn()}>
+                <Button
+                    size="md"
+                    colorScheme="red"
+                    style={{ boxShadow: 'none' }}
+                    variant="solid"
+                    onClick={() => signIn()}
+                >
                     connectez-vous pour enregister votre recette
                 </Button>
             ) : (
@@ -189,6 +195,7 @@ const UserSaveRecipe = () => {
                     bg={!recipeIsValide ? 'darkgray' : 'orange'}
                     color={'white'}
                     variant="solid"
+                    style={{ boxShadow: 'none' }}
                     isLoading={posting}
                     loadingText="ENREGISTREMENT..."
                     isDisabled={!recipeIsValide}
