@@ -79,7 +79,7 @@ const WhitchIsIt = styled.div`
 
 const UserHeader = (props) => {
     const { user } = props;
-    const PopularOne = user.users_recipes[0].recipe;
+    const PopularOne = user.users_recipe && user.users_recipes[0].recipe;
     const router = useRouter();
     const today = new Date();
     const hour = format(today, 'HH', { locale: frenchLocale });
@@ -138,33 +138,37 @@ const UserHeader = (props) => {
                 <BlockInfo>
                     <h4>recette la plus populaire</h4>
                     <div className="totRecipes">
-                        <WhitchIsIt
-                            onClick={() =>
-                                router.push({
-                                    pathname: '/recipe',
-                                    query: { fingerprint: PopularOne.fingerprint },
-                                })
-                            }
-                        >
-                            <div>
-                                <Tooltip
-                                    label={`${PopularOne.users_recipes_aggregate.aggregate.count} personnes en sont fan!`}
-                                    fontSize="md"
-                                    bg="black"
-                                >
-                                    <IconButton
-                                        style={{ boxShadow: 'none' }}
-                                        aria-label={'Voir la recette'}
-                                        icon={<StarIcon w={16} h={16} color="orange" />}
-                                    />
-                                </Tooltip>
-                            </div>
-                            <h5>
-                                <Tooltip label={`voir cette recette!`} fontSize="md" bg="black">
-                                    {PopularOne.name}
-                                </Tooltip>
-                            </h5>
-                        </WhitchIsIt>
+                        {user.users_recipe ? (
+                            <WhitchIsIt
+                                onClick={() =>
+                                    router.push({
+                                        pathname: '/recipe',
+                                        query: { fingerprint: PopularOne.fingerprint },
+                                    })
+                                }
+                            >
+                                <div>
+                                    <Tooltip
+                                        label={`${PopularOne.users_recipes_aggregate.aggregate.count} personnes en sont fan!`}
+                                        fontSize="md"
+                                        bg="black"
+                                    >
+                                        <IconButton
+                                            style={{ boxShadow: 'none' }}
+                                            aria-label={'Voir la recette'}
+                                            icon={<StarIcon w={16} h={16} color="orange" />}
+                                        />
+                                    </Tooltip>
+                                </div>
+                                <h5>
+                                    <Tooltip label={`voir cette recette!`} fontSize="md" bg="black">
+                                        {PopularOne.name}
+                                    </Tooltip>
+                                </h5>
+                            </WhitchIsIt>
+                        ) : (
+                            <div>👋⚗️💨💨</div>
+                        )}
                     </div>
                 </BlockInfo>
             </UserRecipesData>

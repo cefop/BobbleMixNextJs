@@ -9,7 +9,7 @@ import frenchLocale from 'date-fns/locale/fr';
 
 const ProfileContainer = (props) => {
     const { user } = props;
-    const recipes = user[0].users_recipes.map((i, k) => i.recipe);
+    const recipes = user[0].users_recipes && user[0].users_recipes.map((i, k) => i.recipe);
 
     const data = useMemo(() => recipes, []);
     const columns = useMemo(
@@ -44,7 +44,11 @@ const ProfileContainer = (props) => {
                 >
                     <Box mx={20} my={55} p={0}>
                         <UserHeader user={user && user[0]} />
-                        <UserRecipeTb columns={columns} data={data} />
+                        {recipes.length > 1 ? (
+                            <UserRecipeTb columns={columns} data={data} />
+                        ) : (
+                            <center>vous n'avez encore aucune recettes</center>
+                        )}
                     </Box>
                 </CenterGridLayout>
             )}
