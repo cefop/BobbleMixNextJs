@@ -15,6 +15,7 @@ const MixerLayout = styled.div`
     grid-template-columns: 4fr 8fr;
     grid-column-gap: 2rem;
     width: 100%;
+    height: calc(100vh - 75px);
     background-image: url('https://res.cloudinary.com/dagmffgu0/image/upload/v1632386190/bobble_mix_assets/Fioles%20%2B%20fond/fiole_recette_mixeur_lkeyns.png');
     background-size: 38%;
     background-position: 96px 350px;
@@ -38,13 +39,12 @@ const RecipePanel = styled.div`
 
 const FlavorContainer = styled.div`
     /* border: 1px solid greenyellow; */
-    margin: 1rem;
     margin-bottom: 0;
     margin-top: 6.9rem;
     padding-left: 1rem;
     padding-right: 4rem;
     display: grid;
-    height: calc(87.4vh - 75px); // minus header (75px) and all margins bottom
+    max-height: calc(100vh - 77px - 6.9rem);
 `;
 
 const FlavorPanel = styled.div`
