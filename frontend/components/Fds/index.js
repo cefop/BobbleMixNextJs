@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { Container } from '@chakra-ui/react';
 import ContainerSection from './ContainerSection';
+import Back from '../Back';
 
 const FDSStack = (props) => {
     const { recipe, aromesRatio } = props;
@@ -61,9 +62,17 @@ const FDSStack = (props) => {
     // console.log('Sum of all mol retenu', recipe.molsum);
 
     return (
-        <Container maxW={'8xl'} p="5" mt="15" backgroundColor="white" color="black">
-            <ContainerSection sanitizeList={sanitizeList} mixRisk={recipe.risks} company={company} name={recipe.name} />
-        </Container>
+        <>
+            <Back fixed={true} />
+            <Container maxW={'8xl'} p="5" mt="15" backgroundColor="white" color="black">
+                <ContainerSection
+                    sanitizeList={sanitizeList}
+                    mixRisk={recipe.risks}
+                    company={company}
+                    name={recipe.name}
+                />
+            </Container>
+        </>
     );
 };
 export default FDSStack;

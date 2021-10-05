@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import styled from '@emotion/styled';
 import ContainerLabel from './ContainerLabel';
+import Back from '../Back';
 
 const LabelStack = (props) => {
     const { recipe, aromesRatio } = props;
@@ -61,6 +62,7 @@ const LabelStack = (props) => {
 
     return (
         <InnerContainer>
+            <Back fixed={true} />
             <ContainerLabel sanitizeList={sanitizeList} mixRisk={recipe.risks} name={recipe.name} rid={recipe.id} />
         </InnerContainer>
     );

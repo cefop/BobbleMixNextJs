@@ -49,7 +49,8 @@
         "react-palette": "^1.0.2",
         "react-table": "^7.7.0",
         "sweetalert2": "^11.1.7",
-        "sweetalert2-react-content": "^4.1.1"
+        "sweetalert2-react-content": "^4.1.1",
+        "ua-parser-js": "^0.7.28"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",

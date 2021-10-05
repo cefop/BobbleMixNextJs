@@ -11,13 +11,18 @@ const C4Grid = styled.div`
 
 const C4Intro = styled.div`
     /* border: 1px solid forestgreen; */
-    height: 100%;
-    padding-top: 28%;
-    justify-self: end;
     align-self: center;
-    text-transform: uppercase;
-    font-size: 6rem;
-    font-weight: 700;
+    padding-bottom: 18%;
+    padding-left: 2rem;
+    padding-right: 3rem;
+    span {
+        height: 100%;
+        padding-top: 28%;
+        justify-self: end;
+        text-transform: uppercase;
+        font-size: 6rem;
+        font-weight: 700;
+    }
 `;
 
 const C4Logo = styled.div`
@@ -43,7 +48,12 @@ export default function Custom404() {
     return (
         <C4Grid>
             <C4Intro>
-                <div>Le bobble Mix</div>
+                <Image
+                    src="https://res.cloudinary.com/dagmffgu0/image/upload/v1633437025/bobble_mix_assets/le_bobble_mix_cduiq3.png"
+                    layout="responsive"
+                    width="455"
+                    height="67"
+                />
             </C4Intro>
             <C4Logo>
                 <Image
