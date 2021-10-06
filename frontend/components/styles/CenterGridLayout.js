@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 export default function CenterGridLayout(props) {
     const { title, subtitle, background, data } = props;
+    const { width } = useWindowSize();
 
     const MainLayout = styled.div`
         /* border: 1px solid teal; */
@@ -33,7 +35,7 @@ export default function CenterGridLayout(props) {
 
         .title {
             /* border: 1px solid pink; */
-            width: 34%;
+            width: ${width <= 1232 ? '55%' : '34%'};
             align-self: flex-end;
             justify-self: start;
             text-align: end;
@@ -43,7 +45,7 @@ export default function CenterGridLayout(props) {
         }
         .subtitle {
             /* border: 1px solid pink; */
-            width: 34%;
+            width: ${width <= 1232 ? '55%' : '34%'};
             align-self: flex-start;
             justify-self: start;
             text-align: end;
@@ -69,7 +71,7 @@ export default function CenterGridLayout(props) {
         border-top-left-radius: 34px;
         background: white;
         color: #1d1d1b;
-        width: 78%;
+        width: ${width <= 1232 ? '95%' : '78%'};
         height: calc(100vh - 75px - 147px);
         overflow: auto;
         position: relative;

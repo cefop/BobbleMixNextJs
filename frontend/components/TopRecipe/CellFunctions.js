@@ -1,6 +1,6 @@
-import { format, formatRelative, subDays } from 'date-fns';
+import { format, formatDistance } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
-import { Box, Tag, TagLabel, Avatar, AvatarGroup } from '@chakra-ui/react';
+import { Box, Tag, TagLabel, Avatar, AvatarGroup, Tooltip } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { fr } from 'date-fns/locale';
 
@@ -12,11 +12,20 @@ export function FrenchDate({ value }) {
 }
 
 export function FrenchFromDate({ value }) {
-    const when = format(new Date(value), 'dd MMMM', {
+    const now = new Date();
+    const since = new Date(value);
+    const sinceFR = format(since, 'dd MMM yyyy à HH:mm', {
         locale: frenchLocale,
     });
-    const frdate = formatRelative(subDays(new Date(value), 2), new Date(), { locale: fr });
-    return `${frdate} le ${when} `;
+
+    const fromNow = formatDistance(now, since, { locale: fr });
+    return (
+        <div>
+            <Tooltip label={`Le ${sinceFR}`} fontSize="md" bg="black">
+                <span>il y a {fromNow}</span>
+            </Tooltip>
+        </div>
+    );
 }
 
 export function NotationCell(arr, value) {
@@ -83,7 +92,7 @@ export function MixCategories({ value }) {
             return ucat.includes(item[0].name) ? ucat : [...ucat, item[0].name];
         }, [])
         .map((cs, i) => (
-            <Tag key={i} size={'sm'} variant="solid" color={'white'} bg={'orange'} mx="3px">
+            <Tag key={i} size={'sm'} variant="solid" color={'white'} bg={'orange'} mx="3px" my="3px">
                 <TagLabel>{cs}</TagLabel>
             </Tag>
         ));

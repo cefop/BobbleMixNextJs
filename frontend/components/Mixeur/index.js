@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useWindowSize } from '../hooks/useWindowSize';
 import ChooseFlavor from './ChooseFlavor';
 import UserBobbleMix from './userBobbleMix';
 
@@ -12,7 +13,8 @@ import UserBobbleMix from './userBobbleMix';
 const MixerLayout = styled.div`
     /* border: 1px solid teal; */
     display: grid;
-    grid-template-columns: 4fr 8fr;
+    /* grid-template-columns: 4fr 8fr; */
+    grid-template-columns: ${(props) => (props.lowres === true ? '1fr 1fr' : '4fr 8fr')};
     grid-column-gap: 2rem;
     width: 100%;
     height: calc(100vh - 75px);
@@ -41,8 +43,8 @@ const FlavorContainer = styled.div`
     /* border: 1px solid greenyellow; */
     margin-bottom: 0;
     margin-top: 6.9rem;
-    padding-left: 1rem;
-    padding-right: 4rem;
+    padding-left: ${(props) => (props.lowres === true ? '5px' : '1rem')};
+    padding-right: ${(props) => (props.lowres === true ? '5px' : '4rem')};
     display: grid;
     max-height: calc(100vh - 77px - 6.9rem);
 `;
@@ -71,13 +73,14 @@ const FlavorPanel = styled.div`
 
 const ContainerMix = (props) => {
     const { items } = props;
-    // console.log('USER MIXEUR PROPS: ', items);
+    const { width } = useWindowSize();
+    // TODO under resolutions 1133
     return (
-        <MixerLayout>
+        <MixerLayout lowres={width <= 1690}>
             <RecipePanel>
                 <UserBobbleMix />
             </RecipePanel>
-            <FlavorContainer>
+            <FlavorContainer lowres={width <= 1690}>
                 <FlavorPanel>
                     <ChooseFlavor items={items} />
                 </FlavorPanel>

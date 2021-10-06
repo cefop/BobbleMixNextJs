@@ -113,23 +113,13 @@ const UserHeader = (props) => {
     const [from, setFrom] = useState(0);
     const [to, setTo] = useState(user.users_recipes.length);
 
-    // useEffect(() => {
-    //     const intervalId = setInterval(() => {
-    //         setFrom(to);
-    //         setTo(Math.floor(Math.random() * 100));
-    //     }, 2000);
-
-    //     return () => {
-    //         clearInterval(intervalId);
-    //     };
-    // }, [to]);
-
     return (
         <UserGrid>
             <UserInfos>
                 <Avatar size="xl" name={user.name} src={user.image} />
                 <UserName id={user.id}>
-                    {hour >= 19 && hour <= 23 ? 'bonsoir' : greatings.random()} <span>{user.name}</span>&nbsp;!
+                    {(hour >= 19 && hour <= 23) || (hour >= 0 && hour <= 3) ? 'bonsoir' : greatings.random()}{' '}
+                    <span>{user.name}</span>&nbsp;!
                 </UserName>
                 <>
                     <Tooltip
@@ -157,7 +147,6 @@ const UserHeader = (props) => {
             <UserRecipesData>
                 <BlockInfo>
                     <h4>recettes crées</h4>
-                    {/* <div className="totRecipes number">{user.users_recipes.length}</div> */}
                     <div className="totRecipes number">
                         <Counter from={from} to={to} />
                     </div>
