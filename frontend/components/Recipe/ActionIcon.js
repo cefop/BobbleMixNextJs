@@ -9,7 +9,17 @@ import { Toast } from '../styles/AlertAndToast';
 
 const ActionIcon = (props) => {
     const { recipe, ownedRecipe, uid } = props;
-    const [gotit, setGotit] = useState(ownedRecipe);
+
+    // verify if user have current recipe saved
+    const ifHaveRecipe = (array, key, value) => {
+        if (array.find((object) => object.recipe[key] === value)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    const [gotit, setGotit] = useState(ifHaveRecipe(ownedRecipe.users_recipes, 'id', recipe.id));
 
     const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE, {
         refetchQueries: [{ query: QUERY_USER_RECIPES, variables: { uid: uid } }],
