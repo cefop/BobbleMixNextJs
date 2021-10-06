@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import { Button } from '@chakra-ui/react';
 import { QUERY_ACTIVE_AROME } from '../components/gql/graphql';
 import combinations from '../components/lib/maxPossibilities';
+import { useWindowSize } from '../components/hooks/useWindowSize';
 
 const MainLayout = styled.div`
     /* border: 1px solid teal; */
@@ -46,8 +47,10 @@ const HomeImg = styled.div`
 
 export default function Home() {
     const { loading, error, data } = useQuery(QUERY_ACTIVE_AROME);
-    const xyz = data && new Intl.NumberFormat('fr-FR').format(combinations(data.item.length, 5, 1000));
+    const xyz = data && new Intl.NumberFormat('fr-FR').format(combinations(data.item.length * 40, 5, 1000));
+    const { width, height } = useWindowSize();
     console.log('MAX combinations: ', xyz);
+    console.log(`Votre resolution est de: ${width} X ${height}`);
 
     return (
         <MainLayout>
