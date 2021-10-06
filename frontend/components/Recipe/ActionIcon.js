@@ -3,7 +3,7 @@ import { signIn } from 'next-auth/client';
 import { IconButton, Tooltip } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { FaTrashAlt } from 'react-icons/fa';
-import { AiOutlineVerticalAlignBottom } from 'react-icons/ai';
+import { BiArrowToBottom } from 'react-icons/bi';
 import { MUTATION_ADD_USER_RECIPE, MUTATION_DELET_USER_RECIPE, QUERY_USER_RECIPES } from '../gql/graphql';
 import { Toast } from '../styles/AlertAndToast';
 
@@ -69,20 +69,20 @@ const ActionIcon = (props) => {
     return (
         <div>
             <Tooltip
-                label={gotit ? `Suprimer cette recette de votre profil` : 'Ajouter cette recette dans votre profil'}
+                label={gotit ? `Supprimer cette recette de votre profil` : 'Ajouter cette recette dans votre profil'}
                 fontSize="md"
                 bg="black"
             >
                 <IconButton
                     style={{ boxShadow: 'none' }}
                     aria-label={
-                        gotit ? `Suprimer cette recette de votre profil` : 'Ajouter cette recette dans votre profil'
+                        gotit ? `Supprimer cette recette de votre profil` : 'Ajouter cette recette dans votre profil'
                     }
                     icon={
                         gotit ? (
                             <FaTrashAlt size={'2em'} color="rgb(121, 121, 121)" />
                         ) : (
-                            <AiOutlineVerticalAlignBottom size={'2em'} color="rgb(121, 121, 121)" />
+                            <BiArrowToBottom size={'2em'} color="rgb(121, 121, 121)" />
                         )
                     }
                     onClick={() => (gotit ? deleteHandler() : addHandler())}
@@ -100,7 +100,7 @@ export function NoUser() {
                 <IconButton
                     style={{ boxShadow: 'none' }}
                     aria-label="Enregistrer cette recette dans votre profile"
-                    icon={<AiOutlineVerticalAlignBottom size={'2em'} color="rgb(121, 121, 121)" />}
+                    icon={<BiArrowToBottom size={'2em'} color="rgb(121, 121, 121)" />}
                     onClick={() => signIn()}
                 />
             </Tooltip>

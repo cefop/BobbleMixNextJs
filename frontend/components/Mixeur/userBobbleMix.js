@@ -322,7 +322,7 @@ const UserBobbleMix = () => {
                                 {nicoMix.length > 1 && bobbleMix.length !== nicoMix[0].length && (
                                     <p className="recipe_error">
                                         <CloseIcon color="red" w={3} h={3} />
-                                        &nbsp; Il y a {bobbleMix.length - nicoMix[0].length} arome
+                                        &nbsp; Il y a {bobbleMix.length - nicoMix[0].length} arômes
                                         {bobbleMix.length - nicoMix[0].length > 1 && 's'} sans volume !
                                     </p>
                                 )}
