@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import ActionsBar from './ActionsBar';
 import RecipeInfos from './RecipeInfos';
 import OptionsInfo from './OptionsInfo';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 const MainLayout = styled.div`
     /* border: 1px solid teal; */
@@ -41,31 +42,6 @@ const RecipePanel = styled.div`
     justify-items: center;
 `;
 
-const RecipeView = styled.div`
-    /* border: 4px solid green; */
-    display: grid;
-    grid-template-rows: 9rem auto 1fr;
-    border-top-right-radius: 34px;
-    border-top-left-radius: 34px;
-    background: white;
-    color: #1d1d1b;
-    width: 55%;
-    height: calc(85.7vh - 75px); // minus header (75px) and all margins bottom
-    overflow: auto;
-    position: relative;
-    ::-webkit-scrollbar {
-        width: 0px;
-    }
-    ::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: transparent;
-    }
-    ::-webkit-scrollbar-track-piece {
-    }
-`;
-
 const RecipeName = styled.div`
     /* border: 4px solid tan; */
     display: grid;
@@ -77,6 +53,33 @@ const RecipeName = styled.div`
 
 const UserRecipe = (props) => {
     const { recipe } = props;
+
+    const { width } = useWindowSize();
+
+    const RecipeView = styled.div`
+        /* border: 4px solid green; */
+        display: grid;
+        grid-template-rows: 9rem auto 1fr;
+        border-top-right-radius: 34px;
+        border-top-left-radius: 34px;
+        background: white;
+        color: #1d1d1b;
+        width: ${width >= 1660 ? '55%' : '88%'};
+        height: calc(85.7vh - 75px);
+        overflow: auto;
+        position: relative;
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-track-piece {
+        }
+    `;
 
     return (
         <MainLayout>

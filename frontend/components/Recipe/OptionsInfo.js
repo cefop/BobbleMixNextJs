@@ -4,6 +4,7 @@ import { IconButton, Tooltip } from '@chakra-ui/react';
 import QRCode from 'qrcode.react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { AiOutlineFacebook } from 'react-icons/ai';
+import Boosters from './Boosters';
 
 const RecipeInfosContainer = styled.div`
     /* border: 4px solid navy; */
@@ -24,16 +25,19 @@ const RecipeInfosContainer = styled.div`
 `;
 
 const OptionsBox = styled.div`
-    /* border: 1px solid red; */
+    /* border: 1px solid palevioletred; */
+    height: 100%;
 `;
 
 const ShareContainer = styled.div`
     /* border: 1px solid cyan; */
+    /* height: 100%; */
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: auto 4fr;
     align-self: top;
     justify-self: center;
     justify-items: start;
+    align-items: flex-end;
     padding-left: 0rem;
 `;
 
@@ -41,7 +45,6 @@ const SocialBox = styled.div`
     /* border: 1px solid greenyellow; */
     span {
         /* border: 1px solid khaki; */
-        height: 100%;
         display: grid;
         align-items: flex-end;
         padding-bottom: 5px;
@@ -77,6 +80,7 @@ const OptionsInfo = (props) => {
         <RecipeInfosContainer>
             <OptionsBox>
                 <h5>options :</h5>
+                <Boosters />
             </OptionsBox>
             <OptionsBox>
                 <h5>partagez cette recette :</h5>
@@ -107,7 +111,7 @@ const OptionsInfo = (props) => {
                             >
                                 <QRCode
                                     value={`https://bobblemixfrontend.vercel.app/recipe?fingerprint=${fingerprint}`}
-                                    size={128}
+                                    size={144}
                                     bgColor={'#ffffff'}
                                     fgColor={copied === true ? 'orange' : '#000000'}
                                     level={'L'}
