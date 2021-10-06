@@ -11,11 +11,11 @@ import { UserRGPD } from '../styles/AlertAndToast';
 import { formatName } from '../lib/infosFromFingerprint';
 
 const UserGrid = styled.div`
-    border: 1px solid greenyellow;
+    /* border: 1px solid greenyellow; */
 `;
 
 const UserInfos = styled.div`
-    border: 1px solid orangered;
+    /* border: 1px solid orangered; */
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-column-gap: 3rem;
@@ -33,7 +33,7 @@ const UserName = styled.h3`
 `;
 
 const UserRecipesData = styled.div`
-    border: 1px solid cyan;
+    /* border: 1px solid cyan; */
     display: grid;
     height: 28vh;
     grid-template-columns: 1fr 1fr;
@@ -42,17 +42,17 @@ const UserRecipesData = styled.div`
 `;
 
 const BlockInfo = styled.div`
-    border: 1px solid rebeccapurple;
+    /* border: 1px solid rebeccapurple; */
     width: 100%;
     h4 {
-        border: 1px solid yellow;
+        /* border: 1px solid yellow; */
         text-align: start;
         text-transform: uppercase;
         font-size: 1.8rem;
         font-weight: 700;
     }
     .totRecipes {
-        border: 1px solid red;
+        /* border: 1px solid red; */
         width: 100%;
         text-align: left;
         font-size: 4.3rem;
@@ -72,7 +72,7 @@ const WhitchIsIt = styled.div`
         cursor: pointer;
     }
     h5 {
-        border: 1px solid red;
+        /* border: 1px solid red; */
         padding: 0;
         margin: 0;
         padding-top: 0.9em;
@@ -176,7 +176,7 @@ const UserHeader = (props) => {
                                         bg="black"
                                     >
                                         <IconButton
-                                            style={{ boxShadow: 'none', border: '1px solid red' }}
+                                            style={{ boxShadow: 'none' }}
                                             aria-label={'Voir la recette'}
                                             icon={<StarIcon w={16} h={16} color="orange" />}
                                         />
