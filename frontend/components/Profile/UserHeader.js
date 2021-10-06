@@ -8,6 +8,7 @@ import { FaUserSlash } from 'react-icons/fa';
 import { format } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
 import { UserRGPD } from '../styles/AlertAndToast';
+import { formatName } from '../lib/infosFromFingerprint';
 
 const UserGrid = styled.div`
     /* border: 1px solid greenyellow; */
@@ -179,7 +180,7 @@ const UserHeader = (props) => {
                                 </div>
                                 <h5>
                                     <Tooltip label={`voir cette recette!`} fontSize="md" bg="black">
-                                        {PopularOne.name}
+                                        {formatName(PopularOne.name)}
                                     </Tooltip>
                                 </h5>
                             </WhitchIsIt>
