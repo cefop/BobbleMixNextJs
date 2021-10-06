@@ -234,8 +234,8 @@ const UserBobbleMix = () => {
 
             <ErrorInfo>
                 {bobbleMix.length < 5 ? (
-                    <span>{`Encore ${MaxMix - bobbleMix.length} arôme${bobbleMix.length <= 3 && 's'} possible${
-                        bobbleMix.length <= 3 && 's'
+                    <span>{`Encore ${MaxMix - bobbleMix.length} arôme${bobbleMix.length <= 3 ? 's' : ''} possible${
+                        bobbleMix.length <= 3 ? 's' : ''
                     } !`}</span>
                 ) : (
                     <span>Vous avez atteint le maximum d'arômes.</span>
@@ -322,7 +322,7 @@ const UserBobbleMix = () => {
                                 {nicoMix.length > 1 && bobbleMix.length !== nicoMix[0].length && (
                                     <p className="recipe_error">
                                         <CloseIcon color="red" w={3} h={3} />
-                                        &nbsp; Il y a {bobbleMix.length - nicoMix[0].length} arômes
+                                        &nbsp; Il y a {bobbleMix.length - nicoMix[0].length} arôme
                                         {bobbleMix.length - nicoMix[0].length > 1 && 's'} sans volume !
                                     </p>
                                 )}
