@@ -219,7 +219,7 @@ const UserBobbleMix = () => {
             </MixerHeader>
 
             <MixerTitle>
-                <span>Choisissez vos âromes</span>
+                <span>Choisissez vos arômes</span>
                 <Tooltip label="recommencer votre recette" bg="red" color="withe">
                     <IconButton
                         style={{ paddingLeft: '1.7rem', paddingBottom: '4px' }}
@@ -312,9 +312,9 @@ const UserBobbleMix = () => {
                 {bobbleMix.length > 1 && (
                     <UserMixInfo>
                         <MlChecker>
-                            il vous reste{' '}
+                            Il vous reste{' '}
                             {sumAllJuices < 40 ? <span>{maxVol - sumAllJuices}ML</span> : <span>0ML</span>} à répartir
-                            {recipeIsValide ? `, recette complette ! ` : '.'}
+                            {recipeIsValide ? `, recette complète ! ` : '.'}
                             {recipeIsValide && <Icon rotate={90} style={{}} color="green" as={FaCheck} />}
                         </MlChecker>
                         <MlError>
@@ -322,14 +322,14 @@ const UserBobbleMix = () => {
                                 {nicoMix.length > 1 && bobbleMix.length !== nicoMix[0].length && (
                                     <p className="recipe_error">
                                         <CloseIcon color="red" w={3} h={3} />
-                                        &nbsp; il y a {bobbleMix.length - nicoMix[0].length} arome
+                                        &nbsp; Il y a {bobbleMix.length - nicoMix[0].length} arome
                                         {bobbleMix.length - nicoMix[0].length > 1 && 's'} sans volume !
                                     </p>
                                 )}
                                 {nicoMix.length > 1 && !!nicoMix[0].find((x) => x.volume === 0) && (
                                     <p className="recipe_error">
                                         <CloseIcon color="red" w={3} h={3} />
-                                        &nbsp; il y a un ou plusieurs aromes avec 0ML !
+                                        &nbsp; Il y a un ou plusieurs aromes avec 0ML !
                                     </p>
                                 )}
                                 {nicoMix.length > 1 &&
@@ -337,7 +337,7 @@ const UserBobbleMix = () => {
                                     nicoMix[0].map((x) => x.volume).reduce((acc, item) => acc + item, 0) > 40 && (
                                         <p className="recipe_error">
                                             <CloseIcon color="red" w={3} h={3} />
-                                            &nbsp; vous avez dépassé la quantité maximal de {sumAllJuices - maxVol}ML
+                                            &nbsp; Vous avez dépassé la quantité maximale de {sumAllJuices - maxVol}ML
                                         </p>
                                     )}
 

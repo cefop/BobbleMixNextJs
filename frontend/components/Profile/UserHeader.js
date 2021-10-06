@@ -70,6 +70,7 @@ const WhitchIsIt = styled.div`
         cursor: pointer;
     }
     h5 {
+        /* border: 1px solid red; */
         text-align: left;
         font-size: 1.2rem;
         font-weight: 300;

@@ -32,17 +32,17 @@ const ActionIcon = (props) => {
     const deleteHandler = async () => {
         try {
             const { data } = await delRecipe({ variables: { rid: recipe.id, uid: uid } });
-            console.log('recipe deleted!...', data);
+            // console.log('recipe deleted!...', data);
             setGotit(false);
             Toast.fire({
                 icon: 'success',
-                title: 'recette retiré de votre profile!',
+                title: 'Recette retirée de votre profile!',
             });
         } catch (e) {
             console.log('error', e);
             Toast.fire({
                 icon: 'error',
-                title: 'une erreur est survenue!',
+                title: 'Une erreur est survenue!',
             });
         }
     };
@@ -51,17 +51,17 @@ const ActionIcon = (props) => {
     const addHandler = async () => {
         try {
             const { data } = await fixRecipe({ variables: { rid: recipe.id, uid: uid } });
-            console.log('recipe attached!...', data);
+            // console.log('recipe attached!...', data);
             setGotit(true);
             Toast.fire({
                 icon: 'success',
-                title: 'recette ajouté à votre profile!',
+                title: 'Recette ajoutée à votre profil!',
             });
         } catch (e) {
             console.log('error', e);
             Toast.fire({
                 icon: 'error',
-                title: 'une erreur est survenue!',
+                title: 'Une erreur est survenue!',
             });
         }
     };
@@ -69,14 +69,14 @@ const ActionIcon = (props) => {
     return (
         <div>
             <Tooltip
-                label={gotit ? `Suprimer cette recette de votre profile` : 'Ajouter cette recette dans votre profie'}
+                label={gotit ? `Suprimer cette recette de votre profil` : 'Ajouter cette recette dans votre profil'}
                 fontSize="md"
                 bg="black"
             >
                 <IconButton
                     style={{ boxShadow: 'none' }}
                     aria-label={
-                        gotit ? `Suprimer cette recette de votre profile` : 'Ajouter cette recette dans votre profie'
+                        gotit ? `Suprimer cette recette de votre profil` : 'Ajouter cette recette dans votre profil'
                     }
                     icon={
                         gotit ? (

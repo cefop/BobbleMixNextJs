@@ -43,20 +43,26 @@ const Boosters = () => {
 
     const OptionGrid = styled.div`
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 0.25fr);
+        grid-column-gap: 1rem;
         /* padding-left: 1rem; */
-        padding-right: 1rem;
+        /* padding-right: 1rem; */
     `;
     const OptionsCard = styled.div`
         /* border: 1px solid red; */
-        display: grid;
+        /* display: grid; */
         justify-content: center;
         align-items: center;
+        justify-items: center;
+        img {
+            /* border: 1px solid violet; */
+        }
         h6 {
+            /* border: 1px solid violet; */
             text-transform: uppercase;
             text-align: center;
             color: orange;
-            font-size: 1.1rem;
+            font-size: 0.75rem;
             font-weight: 700;
             padding-bottom: 0rem;
         }

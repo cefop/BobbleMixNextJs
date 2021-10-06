@@ -62,7 +62,7 @@ const UserSaveRecipe = () => {
             await fixRecipe({ variables: { rid: recipeID, uid: uid } });
             console.log(`[${now}] SUCCESS user ${uid} attached the recipe ${rfinger}`);
             ConfimThis.fire({
-                title: 'Recette ajuté à votre profile',
+                title: 'Recette ajoutée à votre profil',
             }).then((result) => {
                 if (result.isConfirmed) {
                     console.log('CONFIRMED: voir la recette', rfinger);
@@ -84,7 +84,7 @@ const UserSaveRecipe = () => {
             });
         } catch (err) {
             ConfimThis.fire({
-                title: 'vous avez déjà cette recette!',
+                title: 'Vous avez déjà cette recette!',
             }).then((result) => {
                 console.log(`[${now}] NOPE user ${uid} already have the recipe ${rfinger}`);
                 Reset();
@@ -155,7 +155,7 @@ const UserSaveRecipe = () => {
         console.log(`4/4 SUCCESS user ${uid} recipe ${rid}`);
         // ? redirect the user
         ConfimThis.fire({
-            title: 'Recette ajuté à votre profile',
+            title: 'Recette ajoutée à votre profil',
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log('CONFIRMED: voir la recette', rfinger);
