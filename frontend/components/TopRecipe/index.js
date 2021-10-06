@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/layout';
 import { useMemo } from 'react';
 import CenterGridLayout from '../styles/CenterGridLayout';
-import { FrenchDate, MixCategories, PopularOnes } from './CellFunctions';
+import { Format2Name, FrenchDate, MixCategories, PopularOnes } from './CellFunctions';
 import TopRecipeTb from './TopRecipeTb';
 
 const TopRecipeList = (props) => {
@@ -18,6 +18,7 @@ const TopRecipeList = (props) => {
             {
                 Header: 'Mix',
                 accessor: 'name',
+                Cell: Format2Name,
             },
             {
                 Header: 'Catégories',

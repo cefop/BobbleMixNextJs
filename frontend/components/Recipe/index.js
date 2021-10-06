@@ -3,6 +3,7 @@ import ActionsBar from './ActionsBar';
 import RecipeInfos from './RecipeInfos';
 import OptionsInfo from './OptionsInfo';
 import { useWindowSize } from '../hooks/useWindowSize';
+import { formatName } from '../lib/infosFromFingerprint';
 
 const MainLayout = styled.div`
     /* border: 1px solid teal; */
@@ -88,7 +89,7 @@ const UserRecipe = (props) => {
                 <RecipePanel>
                     {recipe[0] && (
                         <RecipeView>
-                            <RecipeName>{recipe[0].name}</RecipeName>
+                            <RecipeName>{formatName(recipe[0].name)}</RecipeName>
                             <ActionsBar recipe={recipe[0]} />
                             <RecipeInfos recipe={recipe[0]} />
                             <OptionsInfo fingerprint={recipe[0].fingerprint} />

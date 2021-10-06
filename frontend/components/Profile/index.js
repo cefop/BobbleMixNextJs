@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
-import { FrenchFromDate } from '../TopRecipe/CellFunctions';
+import { FrenchFromDate, Format2Name } from '../TopRecipe/CellFunctions';
 import UserRecipeTb from './UserRecipeTb';
 import CenterGridLayout from '../styles/CenterGridLayout';
 import UserHeader from './UserHeader';
@@ -22,6 +22,7 @@ const ProfileContainer = (props) => {
             {
                 Header: 'Mix',
                 accessor: 'name',
+                Cell: Format2Name,
             },
         ],
         []

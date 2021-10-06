@@ -12,3 +12,10 @@ export const infosFromFingerprint = (f) => {
     });
     return array;
 };
+
+export const formatName = (recipeName) => {
+    const splited = recipeName.split('/');
+    const checked = splited.map((i, k) => i.replace('-', 'ml ').replace(/-/g, ' '));
+    const fname = checked.join(' / ');
+    return fname;
+};

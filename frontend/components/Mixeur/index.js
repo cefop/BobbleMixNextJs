@@ -3,17 +3,9 @@ import { useWindowSize } from '../hooks/useWindowSize';
 import ChooseFlavor from './ChooseFlavor';
 import UserBobbleMix from './userBobbleMix';
 
-// import { StepHeader, StepTitle } from './StyleMixeur';
-// import UserRecipe from './UserRecipe';
-// import UserLevel from './UserLevel';
-// import NicoLevel from './NicoLevel';
-// import SaveRecipe from './SaveRecipe';
-// import TipsMix from './TipsMix';
-
 const MixerLayout = styled.div`
     /* border: 1px solid teal; */
     display: grid;
-    /* grid-template-columns: 4fr 8fr; */
     grid-template-columns: ${(props) => (props.lowres === true ? '1fr 1fr' : '4fr 8fr')};
     grid-column-gap: 2rem;
     width: 100%;

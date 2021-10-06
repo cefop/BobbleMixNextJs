@@ -3,6 +3,7 @@ import frenchLocale from 'date-fns/locale/fr';
 import { Box, Tag, TagLabel, Avatar, AvatarGroup, Tooltip } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { fr } from 'date-fns/locale';
+import { formatName } from '../lib/infosFromFingerprint';
 
 export function FrenchDate({ value }) {
     const frdate = format(new Date(value), 'dd MMM yyyy', {
@@ -26,6 +27,10 @@ export function FrenchFromDate({ value }) {
             </Tooltip>
         </div>
     );
+}
+
+export function Format2Name({ value }) {
+    return formatName(value);
 }
 
 export function NotationCell(arr, value) {
