@@ -50,6 +50,8 @@ const RecipeName = styled.div`
     align-items: center;
     font-size: 1.5rem;
     font-weight: 700;
+    padding-left: 4rem;
+    padding-right: 4rem;
 `;
 
 const UserRecipe = (props) => {

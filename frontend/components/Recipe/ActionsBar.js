@@ -9,8 +9,8 @@ import ActionIcon, { NoUser } from './ActionIcon';
 const ActionsBarContainer = styled.div`
     /* border: 4px solid pink; */
     background-color: #f2f2f2;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     .btn_actionbar {
@@ -18,7 +18,7 @@ const ActionsBarContainer = styled.div`
         color: white;
         height: 3.5em;
         width: 11em;
-        font-size: 1.1em;
+        font-size: 0.9em;
         font-weight: 600;
         /* padding: 0.3em 0.5em; */
         white-space: pre-line;
