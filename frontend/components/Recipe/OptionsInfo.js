@@ -11,10 +11,12 @@ const RecipeInfosContainer = styled.div`
     text-align: left;
     padding-left: 5rem;
     padding-right: 5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 5rem;
+    /* padding-top: 1.5rem; */
+    /* padding-bottom: 5rem; */
+    margin-bottom: 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
     h5 {
         padding-bottom: 2.32rem;
         color: #1d1d1b;
@@ -25,7 +27,7 @@ const RecipeInfosContainer = styled.div`
 `;
 
 const OptionsBox = styled.div`
-    /* border: 1px solid palevioletred; */
+    /* border: 0.5px solid palevioletred; */
     height: 100%;
 `;
 
@@ -43,6 +45,7 @@ const ShareContainer = styled.div`
 
 const SocialBox = styled.div`
     /* border: 1px solid greenyellow; */
+    margin-right: 1rem;
     span {
         /* border: 1px solid khaki; */
         display: grid;
@@ -95,7 +98,7 @@ const OptionsInfo = (props) => {
                                     <IconButton
                                         style={{ boxShadow: 'none' }}
                                         aria-label="Partagez sur facebook!"
-                                        icon={<AiOutlineFacebook size={64} color="#3b5998" />}
+                                        icon={<AiOutlineFacebook size={64} color="orange" />}
                                         // onClick={() => }
                                     />
                                 </Tooltip>
@@ -118,7 +121,7 @@ const OptionsInfo = (props) => {
                                     includeMargin={false}
                                     renderAs={'svg'}
                                     imageSettings={{
-                                        src: '/favicon/favicon-96x96.png',
+                                        src: '/favicon/logo_bobble_orange_54px_600dpi.png',
                                         x: null,
                                         y: null,
                                         height: 24,

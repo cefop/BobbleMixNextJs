@@ -60,7 +60,7 @@ const UserRecipe = (props) => {
     const RecipeView = styled.div`
         /* border: 4px solid green; */
         display: grid;
-        grid-template-rows: 9rem auto 1fr;
+        grid-template-rows: 9rem auto 1fr auto;
         border-top-right-radius: 34px;
         border-top-left-radius: 34px;
         background: white;

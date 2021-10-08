@@ -20,7 +20,7 @@ const Menubar = () => {
                 <Link href="/">
                     <a>
                         <Image
-                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1630931038/BobbleMix_Logos/logo_header_h75px_qnfipg.png"
+                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1633687238/bobble_mix_assets/logos/logo_bobble_mix_130px_bhsqjq.png"
                             alt="booble mix"
                         />
                     </a>
@@ -99,8 +99,8 @@ const Menubar = () => {
                 <Link href="https://www.bobbleliquide.com/">
                     <a>
                         <Image
-                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1632390513/bobble_mix_assets/logos/logo_bobble_liquide_128px_kxhmkv.png"
-                            alt="booble mix"
+                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1633687238/bobble_mix_assets/logos/logo_bobble_liquide_130px_sc6dty.png"
+                            alt="booble liquide"
                         />
                     </a>
                 </Link>

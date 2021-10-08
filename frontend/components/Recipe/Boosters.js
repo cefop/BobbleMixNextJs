@@ -5,13 +5,13 @@ const Boosters = () => {
     const booster = [
         {
             id: 1,
-            name: 'Base 50/50',
+            name: 'Base',
             image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1633090984/bobble_mix_assets/boosters_base/base_roegp4.png',
             desscription: 'lorem',
         },
         {
             id: 2,
-            name: 'Boster B3',
+            name: 'Booster',
             image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1633090984/bobble_mix_assets/boosters_base/boost_b3_mdrsxv.png',
             desscription: 'lorem',
         },
@@ -33,17 +33,17 @@ const Boosters = () => {
         //     image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1633090984/bobble_mix_assets/boosters_base/nico_cool_voey9j.png',
         //     desscription: 'lorem',
         // },
-        {
-            id: 6,
-            name: 'Nico Freeze',
-            image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1633090984/bobble_mix_assets/boosters_base/nico_freez_bqpcxx.png',
-            desscription: 'lorem',
-        },
+        // {
+        //     id: 6,
+        //     name: 'Nico Freeze',
+        //     image: 'https://res.cloudinary.com/dagmffgu0/image/upload/v1633090984/bobble_mix_assets/boosters_base/nico_freez_bqpcxx.png',
+        //     desscription: 'lorem',
+        // },
     ];
 
     const OptionGrid = styled.div`
         display: grid;
-        grid-template-columns: repeat(3, 0.25fr);
+        grid-template-columns: repeat(2, 88px);
         grid-column-gap: 1rem;
         /* padding-left: 1rem; */
         /* padding-right: 1rem; */
@@ -63,7 +63,9 @@ const Boosters = () => {
             text-align: center;
             color: orange;
             font-size: 0.75rem;
+            line-height: 100%;
             font-weight: 700;
+            padding-top: 6px; // TODO check WTF i need to do that to be flat
             padding-bottom: 0rem;
         }
     `;
