@@ -186,7 +186,9 @@ export default NextAuth({
     // pages is not specified for that route.
     // https://next-auth.js.org/configuration/pages
     pages: {
-        // signIn: '/api/auth/signin',  // Displays signin buttons
+        signIn: '/auth/signin',
+        verifyRequest: '/auth/verify-request',
+        // signIn: '/api/auth/signin', // Displays signin buttons
         // signOut: '/api/auth/signout', // Displays form with sign out button
         // error: '/api/auth/error', // Error code passed in query string as ?error=
         // verifyRequest: '/api/auth/verify-request', // Used for check email page
