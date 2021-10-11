@@ -16,7 +16,6 @@ import { FaUndo, FaCheck } from 'react-icons/fa';
 import { CloseIcon } from '@chakra-ui/icons';
 import { BobbleMixContext } from '../hooks/BobbleMixContext';
 import { NicoContext } from '../hooks/NicoContext';
-import CustomReduceFilter from '../lib/CustomReduceFilter';
 import getObjectByValue from '../lib/ObjectByValue';
 import UserSaveRecipe from './UserSaveRecipe';
 import { ContextRecipeName } from '../lib/RecipeNames';
@@ -141,7 +140,7 @@ const TipsError = styled.div`
 const UserBobbleMix = () => {
     const { bobbleMix, setBobbleMix } = useContext(BobbleMixContext);
     const { nicoMix, setNicoMix } = useContext(NicoContext);
-    const results = CustomReduceFilter(bobbleMix);
+    const results = bobbleMix; //! do not sort the array here // const results = CustomReduceFilter(bobbleMix);
     const [inputData, setInputData] = useState([]);
     const [sumAllJuices, setSumAllJuices] = useState(0);
     const maxVol = 40;
@@ -191,7 +190,7 @@ const UserBobbleMix = () => {
 
         // ? update state for sum of bobblemix volume
         setSumAllJuices(sum);
-    }, [inputData]);
+    }, [inputData, bobbleMix, sumAllJuices]); //!
 
     // ? be able to save the recipe only if inpute of recipe are valide
     const recipeIsValide = nicoMix.length !== 0 && nicoMix[1];
@@ -340,7 +339,6 @@ const UserBobbleMix = () => {
                                             &nbsp; Vous avez dépassé la quantité maximale de {sumAllJuices - maxVol}ML
                                         </p>
                                     )}
-
                                 {recipeIsValide && <p className="recipe_name">{ContextRecipeName(nicoMix, 'n')}</p>}
                                 {/* // ! EasterEggs */}
                                 {/* {ContextRecipeName(nicoMix, 'n')=== '6-Banane / 9-Pêche-Blanche' && 'okay!!'} */}

@@ -11,6 +11,7 @@ import {
     QUERY_FINGERPRINT,
     MUTATION_ADD_USER_RECIPE,
     QUERY_ALL_RECIPES,
+    QUERY_USER_PROFILE,
 } from '../gql/graphql';
 import { useUser } from '../hooks/useUser';
 import { ContextRecipeName } from '../lib/RecipeNames';
@@ -37,12 +38,57 @@ const UserSaveRecipe = () => {
         console.log('context cleaned');
     };
 
+    const updateCache = async (cache, { data }) => {
+        const xxx = encodeb64(ContextRecipeName(nicoMix, 'p'));
+
+        const existingRecipe = cache.readQuery({
+            query: QUERY_FINGERPRINT,
+            variables: {
+                fingerprint: xxx,
+            },
+        });
+
+        // console.log('cache', existingRecipe);
+        // console.log('cache update with : ', data.insert_users_recipes_one);
+
+        // ? Add the new recipe to the cache to dodge error recipe freshly created and trying to re write it
+        const newRecipe = data.insert_users_recipes_one;
+        cache.writeQuery({
+            query: QUERY_FINGERPRINT,
+            variables: {
+                fingerprint: xxx,
+            },
+            data: { recipes: newRecipe },
+        });
+    };
+
     // TODO better update cache with update and not refetchQueries
     const [addRecipe] = useMutation(MUTATION_INSERT_ONE_RECIPE, {
-        onCompleted: Reset,
-        refetchQueries: [{ query: QUERY_ALL_RECIPES }],
+        update: updateCache,
+        // onCompleted: Reset,
+        refetchQueries: [
+            { query: QUERY_ALL_RECIPES },
+            {
+                query: QUERY_USER_PROFILE,
+                variables: {
+                    uid,
+                },
+            },
+        ],
     });
-    const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE, { onCompleted: Reset });
+    const [fixRecipe] = useMutation(MUTATION_ADD_USER_RECIPE, {
+        update: updateCache,
+        // onCompleted: Reset,
+        refetchQueries: [
+            { query: QUERY_ALL_RECIPES },
+            {
+                query: QUERY_USER_PROFILE,
+                variables: {
+                    uid,
+                },
+            },
+        ],
+    });
 
     // ? be able to save the recipe only if inpute of recipe are valide
     const recipeIsValide = nicoMix.length !== 0 && nicoMix[1];
@@ -66,6 +112,7 @@ const UserSaveRecipe = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     console.log('CONFIRMED: voir la recette', rfinger);
+                    Reset();
                     router.push({
                         pathname: '/recipe',
                         query: { fingerprint: rfinger },
@@ -73,12 +120,14 @@ const UserSaveRecipe = () => {
                 }
                 if (result.dismiss === Swal.DismissReason.timer) {
                     console.log('TIMED: voir la recette');
+                    Reset();
                     router.push({
                         pathname: '/recipe',
                         query: { fingerprint: rfinger },
                     });
                 }
                 if (result.isDenied) {
+                    Reset();
                     console.log('DENIED: rester sur mixeur');
                 }
             });
@@ -132,7 +181,7 @@ const UserSaveRecipe = () => {
         // ? write new recipe mutation
         const variables = {
             fingerprint: rfinger,
-            name: ContextRecipeName(nicoMix, 'n'),
+            name: ContextRecipeName(nicoMix, 'n'), //! check is same kind of recipe existe
             nicotine: 0,
             volume: await nicoMix[0].map((x) => x.volume).reduce((acc, item) => acc + item, 0),
             aromes: await allAaromas,
@@ -159,6 +208,7 @@ const UserSaveRecipe = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log('CONFIRMED: voir la recette', rfinger);
+                Reset();
                 router.push({
                     pathname: '/recipe',
                     query: { fingerprint: encodeURIComponent(rfinger) },
@@ -166,12 +216,14 @@ const UserSaveRecipe = () => {
             }
             if (result.dismiss === Swal.DismissReason.timer) {
                 console.log('TIMED: voir la recette');
+                Reset();
                 router.push({
                     pathname: '/recipe',
                     query: { fingerprint: encodeURIComponent(rfinger) },
                 });
             }
             if (result.isDenied) {
+                Reset();
                 console.log('DENIED: rester sur mixeur');
             }
         });
@@ -206,6 +258,7 @@ const UserSaveRecipe = () => {
                             query: QUERY_FINGERPRINT,
                             variables: { fingerprint: encodeb64(ContextRecipeName(nicoMix, 'p')) },
                         });
+                        console.log('RECIPE?', data);
                         // ? if recipe already existe
                         data.recipes.length > 0 &&
                             attacheRecipe(data.recipes[0].id, encodeb64(ContextRecipeName(nicoMix, 'p')));

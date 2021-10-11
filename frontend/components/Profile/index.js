@@ -45,7 +45,7 @@ const ProfileContainer = (props) => {
                 >
                     <Box mx={20} my={55} p={0}>
                         <UserHeader user={user && user[0]} />
-                        {recipes.length > 1 ? (
+                        {recipes.length >= 1 ? (
                             <UserRecipeTb columns={columns} data={data} />
                         ) : (
                             <center>vous n'avez encore aucune recettes</center>
