@@ -1,5 +1,6 @@
 import { format, formatDistance } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
+import styled from '@emotion/styled';
 import { Box, Tag, TagLabel, Avatar, AvatarGroup, Tooltip } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { fr } from 'date-fns/locale';
@@ -53,33 +54,44 @@ export function NotationCell(arr, value) {
 }
 
 export function PopularOnes({ value }) {
+    const CusomAG = styled.div`
+        .chakra-avatar__excess {
+            padding-left: 1.2rem;
+        }
+    `;
     return (
-        <AvatarGroup size="sm" spacing={-3} max={4}>
-            {value.nodes.map((i, k) =>
-                i.user.image !== null ? (
-                    <Avatar
-                        key={k}
-                        name={
-                            i.user.name ? String(i.user.name).substring(-1, 2) : String(i.user.email).substring(-1, 2)
-                        }
-                        src={String(i.user.image)}
-                        color={'white'}
-                        bg={'orange'}
-                        border="3px solid white"
-                    />
-                ) : (
-                    <Avatar
-                        key={k}
-                        name={
-                            i.user.name ? String(i.user.name).substring(-1, 2) : String(i.user.email).substring(-1, 2)
-                        }
-                        color={'white'}
-                        bg={'orange'}
-                        border="3px solid white"
-                    />
-                )
-            )}
-        </AvatarGroup>
+        <CusomAG>
+            <AvatarGroup size="sm" spacing={-3} max={4} style={{ color: 'orange', fontSize: '1.1rem' }}>
+                {value.nodes.map((i, k) =>
+                    i.user.image !== null ? (
+                        <Avatar
+                            key={k}
+                            name={
+                                i.user.name
+                                    ? String(i.user.name).substring(-1, 2)
+                                    : String(i.user.email).substring(-1, 2)
+                            }
+                            src={String(i.user.image)}
+                            color={'white'}
+                            bg={'orange'}
+                            border="3px solid white"
+                        />
+                    ) : (
+                        <Avatar
+                            key={k}
+                            name={
+                                i.user.name
+                                    ? String(i.user.name).substring(-1, 2)
+                                    : String(i.user.email).substring(-1, 2)
+                            }
+                            color={'white'}
+                            bg={'orange'}
+                            border="3px solid white"
+                        />
+                    )
+                )}
+            </AvatarGroup>
+        </CusomAG>
     );
 }
 
