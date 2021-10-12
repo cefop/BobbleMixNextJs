@@ -259,7 +259,7 @@ const UserBobbleMix = () => {
                                 <Box mt="0.75rem">
                                     <InputGroup size="sm">
                                         <NumberInput
-                                            defaultValue={0}
+                                            // defaultValue={0}
                                             precision={0}
                                             step={1}
                                             allowMouseWheel

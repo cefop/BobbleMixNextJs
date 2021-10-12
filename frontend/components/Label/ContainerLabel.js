@@ -98,9 +98,9 @@ const ComponentToPrint = forwardRef((props, ref) => {
 
     const company = {
         name: 'CEFOP',
-        address: '8 avenue du bouton d’or 94370 SUCY-EN-BRIE',
-        tel: '0184690030',
-        web: 'www.bobbleliquide.com',
+        address: '',
+        tel: '',
+        web: '',
         emergencytel: '+33 (0)1 45 42 59 59',
     };
 
@@ -472,7 +472,9 @@ const ComponentToPrint = forwardRef((props, ref) => {
             </div>
 
             <ContactInfos>
-                Fabriqué en France par {company.name} {company.address} Tel : {company.tel} {company.web}
+                Fabriqué en France par {company.name} {company.address && company.address}{' '}
+                {company.tel && `Tel: ${company.tel}`} {company.web && company.web}
+                {/* Fabriqué en France par {company.name} {company.address} Tel : {company.tel} {company.web} */}
             </ContactInfos>
         </LabelContainer>
     );
