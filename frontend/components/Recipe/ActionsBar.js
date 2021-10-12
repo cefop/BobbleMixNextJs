@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Button } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import styled from '@emotion/styled';
@@ -74,19 +75,29 @@ const ActionsBar = (props) => {
                 </Button>
             </div>
             <div className="action_right">
-                <Button
-                    variant="solid"
-                    className="btn_actionbar"
-                    style={{ boxShadow: 'none' }}
-                    onClick={() =>
-                        router.push({
-                            pathname: '/fds',
-                            query: { fingerprint: recipe.fingerprint },
-                        })
-                    }
+                <Link
+                    href={{
+                        pathname: '/fds',
+                        query: { fingerprint: recipe.fingerprint },
+                    }}
                 >
-                    Fiche de sécurité de la recette
-                </Button>
+                    <a target="_blank">
+                        <Button
+                            variant="solid"
+                            className="btn_actionbar"
+                            style={{ boxShadow: 'none' }}
+                            // onClick={() =>
+                            //     router.push({
+                            //         pathname: '/fds',
+                            //         query: { fingerprint: recipe.fingerprint },
+                            //     })
+                            // }
+                        >
+                            Fiche de sécurité de la recette
+                        </Button>
+                    </a>
+                </Link>
+
                 {user && data ? <ActionIcon recipe={recipe} ownedRecipe={data} uid={uid} /> : <NoUser />}
             </div>
         </ActionsBarContainer>

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { Container } from '@chakra-ui/react';
 import ContainerSection from './ContainerSection';
-import Back from '../Back';
+// import Back from '../Back';
 
 const FDSStack = (props) => {
     const { recipe, aromesRatio } = props;
@@ -63,7 +63,7 @@ const FDSStack = (props) => {
 
     return (
         <>
-            <Back fixed={true} />
+            {/* <Back fixed={true} /> */}
             <Container maxW={'8xl'} p="5" mt="15" backgroundColor="white" color="black">
                 <ContainerSection
                     sanitizeList={sanitizeList}
