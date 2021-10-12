@@ -29,7 +29,7 @@ const SeparatorChoice = styled.div`
 `;
 
 export default function SignIn({ providers, csrfToken }) {
-    console.log('prov', providers);
+    // console.log('prov', providers);
 
     return (
         <>
