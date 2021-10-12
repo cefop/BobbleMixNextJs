@@ -29,6 +29,8 @@ const SeparatorChoice = styled.div`
 `;
 
 export default function SignIn({ providers, csrfToken }) {
+    console.log('prov', providers);
+
     return (
         <>
             <CenterGridLayout
@@ -38,21 +40,28 @@ export default function SignIn({ providers, csrfToken }) {
             >
                 <Box mx={20} my={55} p={0}>
                     <SignLayer>
-                        {Object.values(providers).map(
-                            (provider) =>
-                                provider.id !== 'email' && (
-                                    <BlockBTN key={provider.name}>
-                                        <Button
-                                            variant="solid"
-                                            colorScheme="orange"
-                                            style={{ boxShadow: 'none' }}
-                                            onClick={() => signIn(provider.id)}
-                                        >
-                                            Se connecter avec {provider.name}
-                                        </Button>
-                                    </BlockBTN>
-                                )
-                        )}
+                        <BlockBTN key={providers.google.name}>
+                            <Button
+                                variant="solid"
+                                colorScheme="orange"
+                                style={{ boxShadow: 'none' }}
+                                onClick={() => signIn(providers.google.id)}
+                            >
+                                Se connecter avec {providers.google.name}
+                            </Button>
+                        </BlockBTN>
+
+                        <BlockBTN key={providers.facebook.name}>
+                            <Button
+                                variant="solid"
+                                colorScheme="orange"
+                                style={{ boxShadow: 'none' }}
+                                onClick={() => signIn(providers.facebook.id)}
+                            >
+                                Se connecter avec {providers.facebook.name}
+                            </Button>
+                        </BlockBTN>
+
                         <SeparatorChoice>ou par email</SeparatorChoice>
                         <BlockBTN>
                             <form method="post" action="/api/auth/signin/email">
