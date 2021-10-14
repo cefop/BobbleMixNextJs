@@ -5,8 +5,8 @@ const BobbleLiquideLogo = (props) => {
         <Icon viewBox="0 0 353.21 134.86" {...props}>
             <g id="Layer_2" data-name="Layer 2">
                 <g id="Calque_1" data-name="Calque 1">
-                    <path class="cls-1" d="M106.81,124.4v5.73H91.89V105.32h7v19.47Z" />
-                    <path class="cls-1" d="M116.05,105.32h7v24.81h-7Z" />
+                    <path class="cls-1" style={{ fill: '#1d1d1b' }} d="M106.81,124.4v5.73H91.89V105.32h7v19.47Z" />
+                    <path class="cls-1" style={{ fill: '#1d1d1b' }} d="M116.05,105.32h7v24.81h-7Z" />
                     <path
                         class="cls-1"
                         style={{ fill: '#1d1d1b' }}
@@ -17,7 +17,7 @@ const BobbleLiquideLogo = (props) => {
                         style={{ fill: '#1d1d1b' }}
                         d="M174.92,105.32v16a3.22,3.22,0,1,0,6.41,0v-16h7v16c0,6-4.45,9.79-10.18,9.79S168,127.32,168,121.3v-16Z"
                     />
-                    <path class="cls-1" d="M198.65,105.32h7v24.81h-7Z" />
+                    <path class="cls-1" style={{ fill: '#1d1d1b' }} d="M198.65,105.32h7v24.81h-7Z" />
                     <path
                         class="cls-1"
                         style={{ fill: '#1d1d1b' }}
