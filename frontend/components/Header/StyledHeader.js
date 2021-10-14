@@ -38,7 +38,8 @@ export const MenuLogo = styled.div`
 
 export const MenuLogo2 = styled.div`
     /* border: 1px solid paleturquoise; */
-    padding-right: 6%;
+    margin-left: 2rem;
+    /* padding-right: 6%; */
     display: grid;
     align-items: center;
     justify-content: right;

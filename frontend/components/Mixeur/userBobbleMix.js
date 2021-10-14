@@ -63,7 +63,7 @@ const ErrorInfo = styled.div`
     display: grid;
     justify-content: right;
     align-content: top;
-    padding-right: 3.2rem;
+    /* padding-right: 3.2rem; */
     color: orange;
 `;
 
@@ -219,7 +219,7 @@ const UserBobbleMix = () => {
 
             <MixerTitle>
                 <span>Choisissez vos arômes</span>
-                <Tooltip label="recommencer votre recette" bg="red" color="withe">
+                {/* <Tooltip label="recommencer votre recette" bg="red" color="withe">
                     <IconButton
                         style={{ paddingLeft: '1.7rem', paddingBottom: '4px' }}
                         variant="ghost"
@@ -228,7 +228,7 @@ const UserBobbleMix = () => {
                         onClick={() => Reset()}
                         icon={<FaUndo />}
                     />
-                </Tooltip>
+                </Tooltip> */}
             </MixerTitle>
 
             <ErrorInfo>

@@ -49,7 +49,7 @@ export default function CenterGridLayout(props) {
             align-self: flex-start;
             justify-self: start;
             text-align: end;
-            text-transform: lowercase;
+            /* text-transform: lowercase; */
             font-size: 1.25em;
             font-weight: 400;
         }

@@ -203,30 +203,37 @@ const UserSaveRecipe = () => {
         console.log(`3/4 [${now}] [${uid}] attached the recipe ${rfinger}`);
         console.log(`4/4 SUCCESS user ${uid} recipe ${rid}`);
         // ? redirect the user
-        ConfimThis.fire({
-            title: 'Recette ajoutée à votre profil',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                console.log('CONFIRMED: voir la recette', rfinger);
-                Reset();
-                router.push({
-                    pathname: '/recipe',
-                    query: { fingerprint: encodeURIComponent(rfinger) },
-                });
-            }
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log('TIMED: voir la recette');
-                Reset();
-                router.push({
-                    pathname: '/recipe',
-                    query: { fingerprint: encodeURIComponent(rfinger) },
-                });
-            }
-            if (result.isDenied) {
-                Reset();
-                console.log('DENIED: rester sur mixeur');
-            }
+        console.log('CONFIRMED: voir la recette', rfinger);
+        Reset();
+        router.push({
+            pathname: '/recipe',
+            query: { fingerprint: encodeURIComponent(rfinger) },
         });
+
+        // ConfimThis.fire({
+        //     title: 'Recette ajoutée à votre profil',
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         console.log('CONFIRMED: voir la recette', rfinger);
+        //         Reset();
+        //         router.push({
+        //             pathname: '/recipe',
+        //             query: { fingerprint: encodeURIComponent(rfinger) },
+        //         });
+        //     }
+        //     if (result.dismiss === Swal.DismissReason.timer) {
+        //         console.log('TIMED: voir la recette');
+        //         Reset();
+        //         router.push({
+        //             pathname: '/recipe',
+        //             query: { fingerprint: encodeURIComponent(rfinger) },
+        //         });
+        //     }
+        //     if (result.isDenied) {
+        //         Reset();
+        //         console.log('DENIED: rester sur mixeur');
+        //     }
+        // });
     };
 
     return (
@@ -237,9 +244,11 @@ const UserSaveRecipe = () => {
                     colorScheme="red"
                     style={{ boxShadow: 'none' }}
                     variant="solid"
+                    py={'1.5rem'}
                     onClick={() => signIn()}
                 >
-                    connectez-vous pour enregister votre recette
+                    connectez-vous pour
+                    <br /> enregister votre recette
                 </Button>
             ) : (
                 <Button
@@ -248,6 +257,7 @@ const UserSaveRecipe = () => {
                     color={'white'}
                     variant="solid"
                     style={{ boxShadow: 'none' }}
+                    py={'1.5rem'}
                     isLoading={posting}
                     loadingText="ENREGISTREMENT..."
                     isDisabled={!recipeIsValide}
@@ -266,9 +276,23 @@ const UserSaveRecipe = () => {
                         data.recipes.length === 0 && writeRecipe(encodeb64(ContextRecipeName(nicoMix, 'p')));
                     }}
                 >
-                    SAUVEGARDER
+                    Sauvegarder la recette
                 </Button>
             )}
+            {/* {!user && ( */}
+            <Button
+                size="md"
+                colorScheme="orange"
+                ml={3}
+                py={'1.5rem'}
+                style={{ boxShadow: 'none' }}
+                variant="solid"
+                isDisabled={bobbleMix.length < 2}
+                onClick={() => Reset()}
+            >
+                Refaire une recette
+            </Button>
+            {/* )} */}
         </>
     );
 };

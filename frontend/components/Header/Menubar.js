@@ -1,15 +1,17 @@
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { Tag, Avatar, ButtonGroup, IconButton, Tooltip } from '@chakra-ui/react';
-import { Image } from '@chakra-ui/image';
 import { BiLogInCircle } from 'react-icons/bi';
 import { MenubarContainer, MenuLogo, MenuLogo2, MenuLinks, MenuProfile } from './StyledHeader';
+import BobbleMixLogo from '../styles/BobbleMixLogo';
+import BobbleLiquideLogo from '../styles/BobbleLiquideLogo';
 
 const Menubar = () => {
     const [session] = useSession();
     const links = [
         { id: 1, link: '/mixeur', name: 'mixeur' },
         { id: 2, link: '/toprecipe', name: 'top recettes' },
+        { id: 3, link: '/user_recipe', name: 'mes recettes' },
     ];
     // console.log('session', session && session.user);
     // TODO call USER QUERY from db to get user saved info
@@ -19,10 +21,7 @@ const Menubar = () => {
             <MenuLogo>
                 <Link href="/">
                     <a>
-                        <Image
-                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1633687238/bobble_mix_assets/logos/logo_bobble_mix_130px_bhsqjq.png"
-                            alt="booble mix"
-                        />
+                        <BobbleMixLogo boxSize={'50%'} />
                     </a>
                 </Link>
             </MenuLogo>
@@ -98,10 +97,7 @@ const Menubar = () => {
             <MenuLogo2>
                 <Link href="https://www.bobbleliquide.com/">
                     <a>
-                        <Image
-                            src="https://res.cloudinary.com/dagmffgu0/image/upload/v1633687238/bobble_mix_assets/logos/logo_bobble_liquide_130px_sc6dty.png"
-                            alt="booble liquide"
-                        />
+                        <BobbleLiquideLogo boxSize={'50%'} />
                     </a>
                 </Link>
             </MenuLogo2>

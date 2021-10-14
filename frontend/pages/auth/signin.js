@@ -51,7 +51,7 @@ export default function SignIn({ providers, csrfToken }) {
                             </Button>
                         </BlockBTN>
 
-                        <BlockBTN key={providers.facebook.name}>
+                        {/* <BlockBTN key={providers.facebook.name}>
                             <Button
                                 variant="solid"
                                 colorScheme="orange"
@@ -60,7 +60,7 @@ export default function SignIn({ providers, csrfToken }) {
                             >
                                 Se connecter avec {providers.facebook.name}
                             </Button>
-                        </BlockBTN>
+                        </BlockBTN> */}
 
                         <SeparatorChoice>ou par email</SeparatorChoice>
                         <BlockBTN>

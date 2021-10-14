@@ -70,7 +70,7 @@ npx hasura migrate squash --admin-secret "hasuraadminpassword" --name "name-upda
 
 ```sh
 cd hasura
-npx hasura metadata apply --endpoint "https://hasura.mywebsite.com"  --admin-secret "hasuraadminpassword"
+npx hasura migrate apply
 ```
 
 **TODO: build a script to auto import all data to tables with an option to fetch new data from website** `/fetch2import/index.js`
