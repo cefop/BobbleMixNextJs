@@ -10,7 +10,7 @@ import UserMRecipeTb from './UserMRecipeTb';
 const ProfileContainer = (props) => {
     const { user } = props;
     const recipes = user[0].users_recipes && user[0].users_recipes.map((i, k) => i.recipe);
-    console.log(recipes);
+    // console.log(recipes);
     const data = useMemo(() => recipes, []);
     const columns = useMemo(
         () => [
