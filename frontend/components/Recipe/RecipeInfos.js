@@ -111,7 +111,7 @@ const RecipeInfos = (props) => {
                                         className="progress"
                                         style={{
                                             width: `${i.percent}%`,
-                                            backgroundColor: `${data.lightVibrant}`,
+                                            backgroundColor: `${data.darkVibrant}`,
                                             // background: `rgb(${bb})`,
                                             // background: `linear-gradient(90deg, rgba(${bb}, 1) 0%, rgba(${bb}, 0.6264880952380952) 52%, rgba(${bb}, 0.4332107843137255) 100%
                                             // )`,
