@@ -53,7 +53,7 @@ const ItemsList = styled.div`
 `;
 const ProBar = styled.div`
     .progress-div {
-        background-color: rgb(233, 233, 233);
+        /* background-color: rgb(233, 233, 233); */
         border-radius: 0.4rem;
     }
     .progress {
@@ -77,6 +77,7 @@ const RecipeInfos = (props) => {
                 <h5>arômes :</h5>
                 <AromasGrid>
                     {orderByRecipe.map((i, k) => {
+                        // console.log('infos: ', i);
                         const { data, loading, error } = usePalette(i.image);
                         const bb = data && hex2rgb(String(data.lightVibrant));
                         // darkMuted: "#2a324b" darkVibrant: "#0e7a4b"  lightMuted: "#9cceb7" lightVibrant: "#a4d4bc" muted: "#64aa8a" vibrant: "#b4d43c"
@@ -97,14 +98,23 @@ const RecipeInfos = (props) => {
                                     <span>gr</span>
                                 </h5>
 
-                                <ProBar className="progress-div" style={{ width: '100px' }}>
+                                <ProBar
+                                    className="progress-div"
+                                    style={{
+                                        width: '100px',
+                                        // border: `1px solid ${data.lightMuted}`,
+                                        borderRadius: '0.4rem',
+                                        backgroundColor: '#E5E5E5',
+                                    }}
+                                >
                                     <div
-                                        style={{ width: `${i.percent}px` }}
                                         className="progress"
                                         style={{
-                                            background: `rgb(${bb})`,
-                                            background: `linear-gradient(90deg, rgba(${bb}, 1) 0%, rgba(${bb}, 0.6264880952380952) 52%, rgba(${bb}, 0.4332107843137255) 100%
-                                        )`,
+                                            width: `${i.percent}%`,
+                                            backgroundColor: `${data.lightVibrant}`,
+                                            // background: `rgb(${bb})`,
+                                            // background: `linear-gradient(90deg, rgba(${bb}, 1) 0%, rgba(${bb}, 0.6264880952380952) 52%, rgba(${bb}, 0.4332107843137255) 100%
+                                            // )`,
                                         }}
                                     />
                                 </ProBar>
