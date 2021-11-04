@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { Box, Input, Button, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
-import { getProviders, signIn, getCsrfToken } from 'next-auth/client';
+import { Box, Button, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+import { getCsrfToken, getProviders, signIn } from 'next-auth/client';
 import CenterGridLayout from '../../components/styles/CenterGridLayout';
 
 const SignLayer = styled.div`
@@ -35,7 +35,7 @@ export default function SignIn({ providers, csrfToken }) {
         <>
             <CenterGridLayout
                 title="Connexion"
-                subtitle={"d'un simple clique!"}
+                subtitle={"d'un simple clic!"}
                 data={[]} // don't really need it!
             >
                 <Box mx={20} my={55} p={0}>

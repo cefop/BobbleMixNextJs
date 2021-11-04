@@ -725,4 +725,34 @@ export const molecule_risk = [
         Clas_ID: 'H302',
         Clas: 'Acute Tox. 4 Oral',
     },
+    {
+        Molecule_ID: "78-93-3",
+        Molecule: "butanone",
+        Clas_ID: "H225",
+        Clas: "Flam. Liq. 2"
+    },
+    {
+        Molecule_ID: "78-93-3",
+        Molecule: "butanone",
+        Clas_ID: "H319",
+        Clas: "Eye Irrit. 2"
+    },
+    {
+        Molecule_ID: "78-93-3",
+        Molecule: "butanone",
+        Clas_ID: "H336",
+        Clas: "STOT SE 3 (H336)"
+    },
+    {
+        Molecule_ID: "513-86-0",
+        Molecule: "acetoin",
+        Clas_ID: "H226",
+        Clas: "Flam. Liq. 3"
+    },
+    {
+        Molecule_ID: "513-86-0",
+        Molecule: "acetoin",
+        Clas_ID: "H318",
+        Clas: "Eye Dam. 1"
+    },
 ];

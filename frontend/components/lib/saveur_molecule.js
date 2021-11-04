@@ -79,9 +79,23 @@ export const saveur_molecule = [
     {
         Saveur_ID: 11,
         Saveur: 'Banane',
-        Molecule_ID: '628-63-7',
-        Molecule: 'Amyl acetate common',
-        retenu: 0.1,
+        Molecule_ID: '141-78-6',
+        Molecule: "acétate d'éthyle",
+        retenu: 0.01
+    },
+    {
+        Saveur_ID: 11,
+        Saveur: 'Banane',
+        Molecule_ID: '123-92-2',
+        Molecule: "acétate d'isopentyle",
+        retenu: 0.06
+    },
+    {
+        Saveur_ID: 11,
+        Saveur: 'Banane',
+        Molecule_ID: '78-93-3',
+        Molecule: 'butanone',
+        retenu: 0.001
     },
     {
         Saveur_ID: 36,
@@ -874,5 +888,54 @@ export const saveur_molecule = [
         Molecule_ID: '5989-27-5',
         Molecule: 'd-limonène',
         retenu: 0.25,
+    },
+    {
+        Saveur_ID: 50,
+        Saveur: "Grenade Fleur de Lys",
+        Molecule_ID: "56-81-5",
+        Molecule: "glycerol",
+        retenu: 45
+    },
+    {
+        Saveur_ID: 50,
+        Saveur: "Grenade Fleur de Lys",
+        Molecule_ID: "64-19-7",
+        Molecule: "acide acétique",
+        retenu: 0.6
+    },
+    {
+        Saveur_ID: 50,
+        Saveur: "Grenade Fleur de Lys",
+        Molecule_ID: "78-70-6",
+        Molecule: "linalool",
+        retenu: 0.2
+    },
+    {
+        Saveur_ID: 47,
+        Saveur: "Whisky",
+        Molecule_ID: "56-81-5",
+        Molecule: "glycerol",
+        retenu: 45
+    },
+    {
+        Saveur_ID: 47,
+        Saveur: "Whisky",
+        Molecule_ID: "3658-77-3",
+        Molecule: "4-hydroxy-2,5-dimethylfuran-2 (3H)-one",
+        retenu: 0.1
+    },
+    {
+        Saveur_ID: 48,
+        Saveur: "Rhum Blanc",
+        Molecule_ID: "56-81-5",
+        Molecule: "glycerol",
+        retenu: 45
+    },
+    {
+        Saveur_ID: 48,
+        Saveur: "Rhum Blanc",
+        Molecule_ID: "23696-85-7",
+        Molecule: "1-(2,6,6-trimethyl-1,3-cyclohe xadien-1-yl)-2-buten-1-one",
+        retenu: 0.2
     },
 ];

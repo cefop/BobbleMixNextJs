@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { signIn } from 'next-auth/client';
-import { IconButton, Tooltip } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
-import { FaTrashAlt } from 'react-icons/fa';
+import { IconButton, Tooltip } from '@chakra-ui/react';
+import { signIn } from 'next-auth/client';
+import { useState } from 'react';
 import { BiArrowToBottom } from 'react-icons/bi';
+import { FaTrashAlt } from 'react-icons/fa';
 import { MUTATION_ADD_USER_RECIPE, MUTATION_DELET_USER_RECIPE, QUERY_USER_RECIPES } from '../gql/graphql';
 import { Toast } from '../styles/AlertAndToast';
 
@@ -36,7 +36,7 @@ const ActionIcon = (props) => {
             setGotit(false);
             Toast.fire({
                 icon: 'success',
-                title: 'Recette retirée de votre profile!',
+                title: 'Recette retirée de votre profil!',
             });
         } catch (e) {
             console.log('error', e);
@@ -96,10 +96,10 @@ export default ActionIcon;
 export function NoUser() {
     return (
         <div>
-            <Tooltip label="Enregistrer cette recette dans votre profile" fontSize="md" bg="black">
+            <Tooltip label="Enregistrer cette recette dans votre profil" fontSize="md" bg="black">
                 <IconButton
                     style={{ boxShadow: 'none' }}
-                    aria-label="Enregistrer cette recette dans votre profile"
+                    aria-label="Enregistrer cette recette dans votre profil"
                     icon={<BiArrowToBottom size={'2em'} color="rgb(121, 121, 121)" />}
                     onClick={() => signIn()}
                 />
