@@ -7,5 +7,5 @@ console:
 #
 
 # hasura migration
-# npx hasura metadata apply --endpoint "http://localhost:8080/v1/graphql"  --admin-secret "hasuraadminpassword"
+# npx hasura metadata apply --endpoint "http://localhost:8080"  --admin-secret "hasuraadminpassword"
 #

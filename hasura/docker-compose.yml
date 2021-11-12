@@ -4,8 +4,8 @@ services:
   postgres:
     image: postgres:12
     container_name: ${PGSQL_HOST}
-    ports:
-      - '${PGSQL_PORT}:5432'
+#    ports:
+#      - '${PGSQL_PORT}:5432'
     networks:
       - external-app-proxy
     restart: always
@@ -17,7 +17,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   graphql-engine:
-    image: hasura/graphql-engine:v2.0.1
+    # image: hasura/graphql-engine:v2.1.0-beta.2
+    image: fedormelexin/graphql-engine-arm64:latest
     container_name: app_hasura
     ports:
       - 8080:8080
