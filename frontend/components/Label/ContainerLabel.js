@@ -393,7 +393,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
             </Infos>
 
             <Infos>
-                <span>Ingrédients: </span>Propylène Glycol, Glycérine Végétale, Arômes alimentaires
+                <span>Ingrédients: </span>Propylène Glycol, Glycérine Végétale, Arômes
             </Infos>
 
             {isEUH208A.b || isEUH208B.b || isEUH208C.b ? (
@@ -409,7 +409,7 @@ const ComponentToPrint = forwardRef((props, ref) => {
 
             <Infos>
                 <span>N° de lot: </span>
-                {format(now, 'yyyyMMddHHmmss', {})}_{uid}
+                {format(now, 'yyyyMMddHHmmss', {})}
             </Infos>
 
             <div>
