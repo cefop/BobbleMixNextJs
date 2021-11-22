@@ -4,8 +4,8 @@ services:
   postgres:
     image: postgres:12
     container_name: ${PGSQL_HOST}
-#    ports:
-#      - '${PGSQL_PORT}:5432'
+    ports:
+      - '${PGSQL_PORT}:5432'
     networks:
       - external-app-proxy
     restart: always
