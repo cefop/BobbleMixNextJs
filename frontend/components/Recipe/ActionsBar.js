@@ -60,19 +60,22 @@ const ActionsBar = (props) => {
     return (
         <ActionsBarContainer>
             <div className="action_left">
-                <Button
-                    variant="solid"
-                    className="btn_actionbar"
-                    style={{ boxShadow: 'none' }}
-                    onClick={() =>
-                        router.push({
-                            pathname: '/label',
-                            query: { fingerprint: recipe.fingerprint },
-                        })
-                    }
-                >
-                    Étiquette de la recette
-                </Button>
+                <a target="_blank" href={`https://react-etiquette.vercel.app/?fingerprint=${recipe.fingerprint}`}>
+                    <Button
+                        variant="solid"
+                        className="btn_actionbar"
+                        style={{ boxShadow: 'none' }}
+                        onClick={() => console.log(`redirect to: /?fingerprint=${recipe.fingerprint}`)}
+                        // onClick={() =>
+                        //     router.push({
+                        //         pathname: '/label',
+                        //         query: { fingerprint: recipe.fingerprint },
+                        //     })
+                        // }
+                    >
+                        Étiquette de la recette
+                    </Button>
+                </a>
             </div>
             <div className="action_right">
                 <Link

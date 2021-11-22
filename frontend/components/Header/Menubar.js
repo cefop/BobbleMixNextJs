@@ -11,7 +11,9 @@ const Menubar = () => {
     const links = [
         { id: 1, link: '/mixeur', name: 'mixeur' },
         { id: 2, link: '/toprecipe', name: 'top recettes' },
-        { id: 3, link: '/user_recipe', name: 'mes recettes' },
+        // { id: 3, link: '/user_recipe', name: 'mes recettes' },
+        // user_recipes_page,
+        { id: 3, link: '/profile#user_recipes_page', name: 'mes recettes' },
     ];
     // console.log('session', session && session.user);
     // TODO call USER QUERY from db to get user saved info

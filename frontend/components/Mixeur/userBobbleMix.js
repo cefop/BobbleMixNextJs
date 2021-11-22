@@ -148,8 +148,19 @@ const UserBobbleMix = () => {
 
     const nextHandleChange = async (e) => {
         // console.log("i'm next handle change", e.keyCode);
+        // console.log('target :', e.target.value, 'which: ', e.which, 'keycode:', e.keyCode, 'chars:', e.charCode);
         // ? don't allow negative value
-        if (e.key === '+' || e.keyCode === 190 || e.key === ',' || e.key === '-') return (e.target.value = null);
+        if (
+            e.key === '+' ||
+            e.keyCode === 190 ||
+            e.keyCode === 186 ||
+            e.charCode == 46 ||
+            e.key === ',' ||
+            e.key === '-' ||
+            e.key === '.'
+        )
+            return e.preventDefault();
+
         // ? remove leading 0
         e.target.value !== null && e.target.value.replace(/^0+/, '');
         // ? remove space
@@ -268,6 +279,7 @@ const UserBobbleMix = () => {
                                             keepWithinRange={true}
                                             clampValueOnBlur={false}
                                             onKeyUp={nextHandleChange}
+                                            onKeyPress={nextHandleChange}
                                             errorBorderColor="none"
                                             // onError={console.log('error')}
                                             style={{
@@ -312,7 +324,8 @@ const UserBobbleMix = () => {
                     <UserMixInfo>
                         <MlChecker>
                             Il vous reste{' '}
-                            {sumAllJuices < 40 ? <span>{maxVol - sumAllJuices}ML</span> : <span>0ML</span>} à répartir
+                            {sumAllJuices < 40 ? <span>{(maxVol - sumAllJuices).toFixed(0)}ML</span> : <span>0ML</span>}{' '}
+                            à répartir
                             {recipeIsValide ? `, recette complète ! ` : '.'}
                             {recipeIsValide && <Icon rotate={90} style={{}} color="green" as={FaCheck} />}
                         </MlChecker>

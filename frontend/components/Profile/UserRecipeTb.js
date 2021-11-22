@@ -27,7 +27,7 @@ const UserRecipeTb = ({ columns, data }) => {
     const firstPageRows = rows.slice(0, 25);
 
     return (
-        <TableContainer>
+        <TableContainer id="user_recipes_page">
             <Table {...getTableProps()}>
                 <Tbody {...getTableBodyProps()}>
                     {firstPageRows.map((row) => {
