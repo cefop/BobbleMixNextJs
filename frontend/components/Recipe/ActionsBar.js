@@ -60,7 +60,7 @@ const ActionsBar = (props) => {
     return (
         <ActionsBarContainer>
             <div className="action_left">
-                <a target="_blank" href={`https://react-etiquette.vercel.app/?fingerprint=${recipe.fingerprint}`}>
+                <a target="_blank" href={`https://app.bobblemix.com/?fingerprint=${recipe.fingerprint}`}>
                     <Button
                         variant="solid"
                         className="btn_actionbar"
