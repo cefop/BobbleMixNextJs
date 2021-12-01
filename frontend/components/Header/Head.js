@@ -9,7 +9,8 @@ const BobbleMixHead = (props) => {
         <Head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"></link>
+            <link rel="icon" href="/favicon/favicon_bobble.ico" />
+            {/* <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon_bobble.ico"></link> */}
             <link rel="manifest" href="/manifest.json"></link>
             {/* // ? 60 characters */}
             <title>{defaultTitle}</title>
