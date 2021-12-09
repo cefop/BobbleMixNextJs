@@ -16,6 +16,8 @@ const Menubar = () => {
         { id: 3, link: '/profile#user_recipes_page', name: 'mes recettes' },
     ];
     // console.log('session', session && session.user);
+    const baseurl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.bobblemix.com';
+
     // TODO call USER QUERY from db to get user saved info
 
     return (
@@ -89,7 +91,11 @@ const Menubar = () => {
                                     size="sm"
                                     aria-label="logout"
                                     icon={<BiLogInCircle size={39} color="rgb(121, 121, 121)" />}
-                                    onClick={() => signOut()}
+                                    onClick={() =>
+                                        signOut({
+                                            callbackUrl: baseurl,
+                                        })
+                                    }
                                 />
                             </Tooltip>
                         </div>

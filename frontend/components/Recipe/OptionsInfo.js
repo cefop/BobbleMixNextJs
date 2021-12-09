@@ -92,7 +92,7 @@ const OptionsInfo = (props) => {
                         <span>
                             <a
                                 target="_blank"
-                                href={`https://www.facebook.com/sharer/sharer.php?u=https://bobblemixfrontend.vercel.app/recipe?fingerprint=${fingerprint}`}
+                                href={`https://www.facebook.com/sharer/sharer.php?u=https://www.bobblemix.com/recipe?fingerprint=${fingerprint}`}
                             >
                                 <Tooltip label="Partagez sur facebook!" fontSize="md" bg="black">
                                     <IconButton
@@ -110,10 +110,10 @@ const OptionsInfo = (props) => {
                         <QrContainer>
                             <CopyToClipboard
                                 onCopy={() => onCopy()}
-                                text={`https://bobblemixfrontend.vercel.app/recipe?fingerprint=${fingerprint}`}
+                                text={`https://www.bobblemix.com/recipe?fingerprint=${fingerprint}`}
                             >
                                 <QRCode
-                                    value={`https://bobblemixfrontend.vercel.app/recipe?fingerprint=${fingerprint}`}
+                                    value={`https://www.bobblemix.com/recipe?fingerprint=${fingerprint}`}
                                     size={144}
                                     bgColor={'#ffffff'}
                                     fgColor={copied === true ? 'orange' : '#000000'}

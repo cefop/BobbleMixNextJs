@@ -30,6 +30,7 @@ const SeparatorChoice = styled.div`
 
 export default function SignIn({ providers, csrfToken }) {
     // console.log('prov', providers);
+    const baseurl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.bobblemix.com';
 
     return (
         <>
@@ -45,7 +46,11 @@ export default function SignIn({ providers, csrfToken }) {
                                 variant="solid"
                                 colorScheme="orange"
                                 style={{ boxShadow: 'none' }}
-                                onClick={() => signIn(providers.google.id)}
+                                onClick={() =>
+                                    signIn(providers.google.id, {
+                                        callbackUrl: `${baseurl}/profile`,
+                                    })
+                                }
                             >
                                 Se connecter avec {providers.google.name}
                             </Button>
