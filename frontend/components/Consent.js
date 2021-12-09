@@ -22,7 +22,7 @@ const Consent = () => {
             flipButtons={true}
             overlay={process.env.NODE_ENV === 'production'}
             cookieName="bobblemixCookie"
-            expires={365}
+            expires={1}
             debug={process.env.NODE_ENV === 'development'}
             onAccept={(acceptedByScrolling) => {
                 if (acceptedByScrolling) {
