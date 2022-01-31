@@ -1,1 +1,30 @@
-[]
+- name: allowed-queries
+  definition:
+    queries:
+    - name: label
+      query: |-
+        query fetchRecipeFingerprint($fingerprint: String) {
+          recipes(where: {fingerprint: {_eq: $fingerprint}}) {
+            id
+            fingerprint
+            name
+            nicotine
+            volume
+            molsum
+            aromes
+            molecules
+            risks
+            created_at
+          }
+        }
+    - name: validate shop
+      query: |-
+        mutation MyMutation($id: uuid) {
+          update_shops(where: {id: {_eq: $id}}, _set: {isValid: true}) {
+            returning {
+              id
+              email
+            }
+            affected_rows
+          }
+        }

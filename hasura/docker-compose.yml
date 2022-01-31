@@ -17,8 +17,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   graphql-engine:
-    # image: hasura/graphql-engine:v2.1.0-beta.2
-    image: fedormelexin/graphql-engine-arm64:latest
+    image: hasura/graphql-engine:v2.1.1
     container_name: app_hasura
     ports:
       - 8080:8080
@@ -28,6 +27,10 @@ services:
       - postgres
     restart: always
     environment:
+      ## postgres database to store Hasura metadata
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${PGSQL_HOST}:5432/${POSTGRES_DB}
+      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      PG_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${PGSQL_HOST}:5432/${POSTGRES_DB}
       # HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
       HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${PGSQL_HOST}:5432/${POSTGRES_DB}
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console

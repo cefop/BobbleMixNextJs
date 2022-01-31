@@ -4,6 +4,8 @@
 - "!include public_item_category.yaml"
 - "!include public_recipes.yaml"
 - "!include public_sessions.yaml"
+- "!include public_shops.yaml"
+- "!include public_transactions.yaml"
 - "!include public_users.yaml"
 - "!include public_users_recipes.yaml"
 - "!include public_verification_requests.yaml"

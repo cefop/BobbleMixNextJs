@@ -1,1 +1,18 @@
-[]
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: label
+  url: label/:fingerprint
+  methods:
+  - GET
+  name: label
+  comment: get label from rest
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: validate shop
+  url: verifshop/:id
+  methods:
+  - POST
+  name: validate shop
+  comment: null
