@@ -6,7 +6,6 @@ import { useWindowSize } from '../hooks/useWindowSize';
 import { formatName } from '../lib/infosFromFingerprint';
 
 const MainLayout = styled.div`
-    /* border: 1px solid teal; */
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
@@ -14,19 +13,12 @@ const MainLayout = styled.div`
     text-align: center;
     align-self: top;
     justify-self: center;
-    /* background-image: url('https://res.cloudinary.com/dagmffgu0/image/upload/v1632386190/bobble_mix_assets/Fioles%20%2B%20fond/fiole_recette_mixeur_lkeyns.png');
-    background-size: 38%;
-    background-position: -110px 220px;
-    background-repeat: no-repeat; */
     z-index: 1;
 `;
 
-const CenterContainer = styled.div`
-    /* border: 1px solid red; */
-`;
+const CenterContainer = styled.div``;
 
 const RecipeTitle = styled.div`
-    /* border: 1px solid darkblue; */
     padding-top: 2rem;
     padding-left: 2rem;
     text-transform: uppercase;
@@ -36,7 +28,6 @@ const RecipeTitle = styled.div`
 `;
 
 const RecipePanel = styled.div`
-    /* border: 1px solid violet; */
     display: grid;
     align-self: top;
     justify-self: center;
@@ -44,7 +35,6 @@ const RecipePanel = styled.div`
 `;
 
 const RecipeName = styled.div`
-    /* border: 4px solid tan; */
     display: grid;
     justify-content: center;
     align-items: center;
@@ -55,12 +45,13 @@ const RecipeName = styled.div`
 `;
 
 const UserRecipe = (props) => {
-    const { recipe } = props;
+    const { recipe, user } = props;
+    // console.log('is user >', user);
+    // console.log('recipe >', recipe);
 
     const { width } = useWindowSize();
 
     const RecipeView = styled.div`
-        /* border: 4px solid green; */
         display: grid;
         grid-template-rows: 9rem auto 1fr auto;
         border-top-right-radius: 34px;
@@ -89,12 +80,12 @@ const UserRecipe = (props) => {
             <CenterContainer>
                 <RecipeTitle>Recette</RecipeTitle>
                 <RecipePanel>
-                    {recipe[0] && (
+                    {recipe && (
                         <RecipeView>
-                            <RecipeName>{formatName(recipe[0].name)}</RecipeName>
-                            <ActionsBar recipe={recipe[0]} />
-                            <RecipeInfos recipe={recipe[0]} />
-                            <OptionsInfo fingerprint={recipe[0].fingerprint} />
+                            <RecipeName>{formatName(recipe?.name)}</RecipeName>
+                            <ActionsBar recipe={recipe} shop={user} />
+                            <RecipeInfos recipe={recipe} />
+                            <OptionsInfo fingerprint={recipe.fingerprint} />
                         </RecipeView>
                     )}
                 </RecipePanel>

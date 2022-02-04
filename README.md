@@ -37,7 +37,16 @@ yarn install
 
 ```sh
 cd hasura
-docker-compose up -a # will launch the docker compose in background
+make jwt
+# it will copy .env.example to .env and create JWT token inside your .env
+docker network create app-netrunner_bbm
+# create docker network
+```
+
+
+```sh
+cd hasura
+docker-compose up -d # will launch the docker compose in background
 make console # will launch the admin hasura panel and keep tracking your changes
 # Or for Windows OS without "make" tool
 npx hasura console --admin-secret "hasuraadminpassword"

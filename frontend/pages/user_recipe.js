@@ -20,10 +20,6 @@ export default function Profile() {
                     {loading && <Loading />}
                     {error && <Error tips="erreur de changement de votre profil" />}
                     {data && <ProfileContainer user={data.users} />}
-                    {/* // TODO */}
-                    {/* {!loading && data && data.users[0].users_recipes.length === 0 ? (
-                        <PageLayout title="vous n'avez aucune recette de sauvegardé" />
-                    ) : null} */}
                 </>
             )}
         </>

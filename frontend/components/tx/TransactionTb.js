@@ -1,7 +1,10 @@
 import { useRouter } from 'next/router';
-import { useTable, useFilters, useSortBy } from 'react-table';
+import { useTable, useFilters, useSortBy, useGlobalFilter, useAsyncDebounce } from 'react-table';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
 import styled from '@emotion/styled';
+import { name2Fingerprint } from '../lib/infosFromFingerprint';
+
+// https://react-table.tanstack.com/docs/examples/filtering
 
 const TableContainer = styled.div`
     tr {
@@ -18,19 +21,17 @@ const TableContainer = styled.div`
     thead tr th {
         font-size: 1.1rem;
         font-weight: 800;
-        /* text-align: center; */
-        /* cursor: default; */
         &:hover {
             background: none;
         }
     }
 `;
 
-const TopRecipeTb = ({ columns, data }) => {
+const TransactionTb = ({ columns, data }) => {
     const router = useRouter();
     const tableInstance = useTable({ columns, data }, useFilters, useSortBy);
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
-    const firstPageRows = rows.slice(0, 25);
+    const firstPageRows = rows.slice(0, 50);
 
     return (
         <TableContainer>
@@ -48,13 +49,15 @@ const TopRecipeTb = ({ columns, data }) => {
                 </Thead>
                 <Tbody {...getTableBodyProps()}>
                     {firstPageRows.map((row) => {
+                        // console.log('row', row);
+                        // console.log('row finger :', name2Fingerprint(row.original.recipe.name));
                         prepareRow(row);
                         return (
                             <Tr
                                 onClick={() => {
                                     router.push({
                                         pathname: '/recipe',
-                                        query: { fingerprint: row.original.fingerprint },
+                                        query: { fingerprint: name2Fingerprint(row.original.recipe.name) },
                                     });
                                 }}
                                 {...row.getRowProps()}
@@ -70,4 +73,4 @@ const TopRecipeTb = ({ columns, data }) => {
         </TableContainer>
     );
 };
-export default TopRecipeTb;
+export default TransactionTb;

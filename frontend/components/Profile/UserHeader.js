@@ -2,22 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { animate } from 'framer-motion';
-import { Avatar, Tooltip, IconButton } from '@chakra-ui/react';
+import { Avatar, Tooltip, IconButton, Button } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
-import { FaUserSlash } from 'react-icons/fa';
 import { format } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
-import { UserRGPD } from '../styles/AlertAndToast';
+// import { UserRGPD } from '../styles/AlertAndToast';
 import { formatName } from '../lib/infosFromFingerprint';
 
-const UserGrid = styled.div`
-    /* border: 1px solid greenyellow; */
-`;
+const UserGrid = styled.div``;
 
 const UserInfos = styled.div`
-    /* border: 1px solid orangered; */
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     grid-column-gap: 3rem;
     align-items: center;
 `;
@@ -33,7 +29,6 @@ const UserName = styled.h3`
 `;
 
 const UserRecipesData = styled.div`
-    /* border: 1px solid cyan; */
     display: grid;
     height: 28vh;
     grid-template-columns: 1fr 1fr;
@@ -42,17 +37,14 @@ const UserRecipesData = styled.div`
 `;
 
 const BlockInfo = styled.div`
-    /* border: 1px solid rebeccapurple; */
     width: 100%;
     h4 {
-        /* border: 1px solid yellow; */
         text-align: start;
         text-transform: uppercase;
         font-size: 1.8rem;
         font-weight: 700;
     }
     .totRecipes {
-        /* border: 1px solid red; */
         width: 100%;
         text-align: left;
         font-size: 4.3rem;
@@ -67,12 +59,10 @@ const BlockInfo = styled.div`
 const WhitchIsIt = styled.div`
     display: grid;
     grid-template-columns: 1fr 4fr;
-    /* align-items: center; */
     &:hover {
         cursor: pointer;
     }
     h5 {
-        /* border: 1px solid red; */
         padding: 0;
         margin: 0;
         padding-top: 0.9em;
@@ -105,12 +95,13 @@ function Counter({ from, to }) {
 }
 
 const UserHeader = (props) => {
-    const { user } = props;
+    const { user, shop } = props;
     const PopularOne = user && user.users_recipes && user.users_recipes[0] && user.users_recipes[0].recipe;
     const router = useRouter();
     const today = new Date();
     const hour = format(today, 'HH', { locale: frenchLocale });
     const greatings = ['hello', 'salut', 'bonjour', 'bonjour', 'bonjour'];
+    // console.log('header shop', shop);
 
     Array.prototype.random = function () {
         return this[Math.floor(Math.random() * this.length)];
@@ -128,7 +119,8 @@ const UserHeader = (props) => {
                     <span>{user.name}</span>&nbsp;!
                 </UserName>
                 <>
-                    <Tooltip
+                    {/* popup RGPD  */}
+                    {/* <Tooltip
                         label={`Gérer votre compte ${user.email ? user.email : user.name}`}
                         fontSize="md"
                         bg="black"
@@ -147,7 +139,36 @@ const UserHeader = (props) => {
                                 }
                             />
                         </div>
-                    </Tooltip>
+                    </Tooltip> */}
+                    <div>
+                        {shop ? (
+                            <Button
+                                colorScheme="orange"
+                                variant="solid"
+                                style={{ boxShadow: 'none' }}
+                                onClick={() =>
+                                    router.push({
+                                        pathname: '/tx',
+                                    })
+                                }
+                            >
+                                Vos transaction client
+                            </Button>
+                        ) : (
+                            <Button
+                                colorScheme="orange"
+                                variant="solid"
+                                style={{ boxShadow: 'none' }}
+                                onClick={() =>
+                                    router.push({
+                                        pathname: '/vapeshop',
+                                    })
+                                }
+                            >
+                                Enregistrer votre shop
+                            </Button>
+                        )}
+                    </div>
                 </>
             </UserInfos>
             <UserRecipesData>

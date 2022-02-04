@@ -1,19 +1,15 @@
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
-// import Image from 'next/image';
 import styled from '@emotion/styled';
-// import { motion } from 'framer-motion';
 import { Button } from '@chakra-ui/react';
 import { QUERY_ACTIVE_AROME } from '../components/gql/graphql';
 import combinations from '../components/lib/maxPossibilities';
 import { useWindowSize } from '../components/hooks/useWindowSize';
 
 const MainLayout = styled.div`
-    /* border: 1px solid teal; */
     display: grid;
     grid-template-columns: 54% 1fr;
     width: 100%;
-    /* height: fit-content; */
     height: calc(100vh - 77px);
     align-self: top;
     justify-self: center;
@@ -24,7 +20,6 @@ const MainLayout = styled.div`
 `;
 
 const HomeText = styled.div`
-    /* border: 1px solid gainsboro; */
     padding-top: 16.18%;
     padding-left: 5rem;
     p {
@@ -41,9 +36,7 @@ const HomeText = styled.div`
     }
 `;
 
-const HomeImg = styled.div`
-    /* border: 1px solid red; */
-`;
+const HomeImg = styled.div``;
 
 export default function Home() {
     const { loading, error, data } = useQuery(QUERY_ACTIVE_AROME);

@@ -2,20 +2,17 @@ import styled from '@emotion/styled';
 import CenterGridLayout from '../components/styles/CenterGridLayout';
 
 const TosLayout = styled.div`
-    /* border: 1px solid lime; */
     display: grid;
     grid-template-rows: 1fr;
     grid-row-gap: 3rem;
 `;
 
 const Mentions = styled.div`
-    /* border: 1px solid khaki; */
     display: grid;
     padding-top: 1rem;
 `;
 
 const TosSubtitle = styled.div`
-    /* border: 1px solid red; */
     background-color: lightgrey;
     text-align: left;
     text-transform: capitalize;
@@ -27,7 +24,6 @@ const TosSubtitle = styled.div`
 `;
 
 const Blocks = styled.div`
-    /* border: 1px solid paleturquoise; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;

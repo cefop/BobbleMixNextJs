@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { FrenchFromDate, Format2Name } from '../TopRecipe/CellFunctions';
 import UserRecipeTb from './UserRecipeTb';
@@ -6,9 +6,13 @@ import CenterGridLayout from '../styles/CenterGridLayout';
 import UserHeader from './UserHeader';
 import { format } from 'date-fns';
 import frenchLocale from 'date-fns/locale/fr';
+import { BobbleUserContext } from '../hooks/BobbleUserContext';
 
 const ProfileContainer = (props) => {
+    const { bobbleUser } = useContext(BobbleUserContext);
+    // console.log('BOBBLE USER: ', bobbleUser?.users?.[0]);
     const { user } = props;
+    const isShop = user[0].shops;
     const recipes = user[0].users_recipes && user[0].users_recipes.map((i, k) => i.recipe);
 
     const data = useMemo(() => recipes, []);
@@ -28,8 +32,8 @@ const ProfileContainer = (props) => {
         []
     );
 
-    const now = new Date();
-    console.log(now);
+    // const now = new Date();
+    // console.log(now);
     const today = format(new Date(), "'🗓️' eeee dd MMMM", {
         locale: frenchLocale,
     });
@@ -38,13 +42,12 @@ const ProfileContainer = (props) => {
         <>
             {user.length > 0 && (
                 <CenterGridLayout
-                    title="Votre profil"
+                    title={isShop.length > 0 ? isShop[0].name : 'Votre profil'}
                     subtitle={today}
                     data={[]} // don't really need it!
-                    // background="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472246/bobble_mix_assets/Fioles%20%2B%20fond/fiole_top_recette_rralb3.png"
                 >
                     <Box mx={20} my={55} p={0}>
-                        <UserHeader user={user && user[0]} />
+                        <UserHeader user={user && user[0]} shop={!!isShop.length > 0} />
                         {recipes.length >= 1 ? (
                             <UserRecipeTb columns={columns} data={data} />
                         ) : (

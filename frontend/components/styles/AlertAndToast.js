@@ -56,3 +56,11 @@ export const UserRGPD = MySwal.mixin({
     confirmButtonText: 'action',
     confirmButtonColor: 'orange',
 });
+
+export const ShopSaved = MySwal.mixin({
+    toast: true,
+    title: 'Votre shop a été créé et sera validé sous peu!',
+    showConfirmButton: false,
+    timer: 1800,
+    timerProgressBar: true,
+});

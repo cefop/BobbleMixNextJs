@@ -40,12 +40,7 @@ const TopRecipeList = (props) => {
     return (
         <>
             {recipes.length > 0 && (
-                <CenterGridLayout
-                    title="Le top du top"
-                    subtitle="Crées par vous, reconnues par tous"
-                    // background="https://res.cloudinary.com/dagmffgu0/image/upload/v1632472246/bobble_mix_assets/Fioles%20%2B%20fond/fiole_top_recette_rralb3.png"
-                    data={recipes}
-                >
+                <CenterGridLayout title="Le top du top" subtitle="Crées par vous, reconnues par tous" data={recipes}>
                     <Box mx={20} my={55} p={0}>
                         <TopRecipeTb columns={columns} data={data} />
                     </Box>

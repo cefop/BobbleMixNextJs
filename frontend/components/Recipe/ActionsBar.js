@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
@@ -8,7 +7,6 @@ import { QUERY_USER_RECIPES } from '../gql/graphql';
 import ActionIcon, { NoUser } from './ActionIcon';
 
 const ActionsBarContainer = styled.div`
-    /* border: 4px solid pink; */
     background-color: #f2f2f2;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -21,7 +19,6 @@ const ActionsBarContainer = styled.div`
         width: 11em;
         font-size: 0.9em;
         font-weight: 600;
-        /* padding: 0.3em 0.5em; */
         white-space: pre-line;
         box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
         outline: none;
@@ -34,13 +31,11 @@ const ActionsBarContainer = styled.div`
         }
     }
     .action_left {
-        /* border: 1px solid salmon; */
         display: grid;
         justify-content: end;
         padding-right: 3em;
     }
     .action_right {
-        /* border: 1px solid chartreuse; */
         display: grid;
         grid-template-columns: auto 140px;
         justify-content: start;
@@ -50,33 +45,42 @@ const ActionsBarContainer = styled.div`
 `;
 
 const ActionsBar = (props) => {
-    const { recipe } = props;
-    const router = useRouter();
+    const { recipe, shop } = props;
     const { user, session } = useUser();
     const uid = session && session.id ? parseInt(session.id) : null;
-
     const { data } = useQuery(QUERY_USER_RECIPES, { variables: { uid: uid } });
+    // console.log('info shop', shop);
+    console.log(recipe);
 
     return (
         <ActionsBarContainer>
-            <div className="action_left">
-                <a target="_blank" href={`https://app.bobblemix.com/?fingerprint=${recipe.fingerprint}`}>
-                    <Button
-                        variant="solid"
-                        className="btn_actionbar"
-                        style={{ boxShadow: 'none' }}
-                        onClick={() => console.log(`redirect to: /?fingerprint=${recipe.fingerprint}`)}
-                        // onClick={() =>
-                        //     router.push({
-                        //         pathname: '/label',
-                        //         query: { fingerprint: recipe.fingerprint },
-                        //     })
-                        // }
+            {shop?.shops.length > 0 ? (
+                <div className="action_left">
+                    <a
+                        target="_blank"
+                        href={`${process.env.NEXT_PUBLIC_ETIQUETT_APP}/?fingerprint=${recipe.fingerprint}&rid=${recipe.id}&shop=${shop.shops[0].name}&shopid=${shop.shops[0].id}`}
                     >
-                        Étiquette de la recette
-                    </Button>
-                </a>
-            </div>
+                        <Button variant="solid" className="btn_actionbar" style={{ boxShadow: 'none' }}>
+                            Étiquette de la recette
+                        </Button>
+                    </a>
+                </div>
+            ) : (
+                <div className="action_left">
+                    <Link
+                        href={{
+                            pathname: '/profile',
+                        }}
+                    >
+                        <a>
+                            <Button variant="solid" className="btn_actionbar" style={{ boxShadow: 'none' }}>
+                                login shop
+                            </Button>
+                        </a>
+                    </Link>
+                </div>
+            )}
+
             <div className="action_right">
                 <Link
                     href={{
@@ -85,17 +89,7 @@ const ActionsBar = (props) => {
                     }}
                 >
                     <a target="_blank">
-                        <Button
-                            variant="solid"
-                            className="btn_actionbar"
-                            style={{ boxShadow: 'none' }}
-                            // onClick={() =>
-                            //     router.push({
-                            //         pathname: '/fds',
-                            //         query: { fingerprint: recipe.fingerprint },
-                            //     })
-                            // }
-                        >
+                        <Button variant="solid" className="btn_actionbar" style={{ boxShadow: 'none' }}>
                             Fiche de sécurité de la recette
                         </Button>
                     </a>

@@ -179,6 +179,10 @@ export const QUERY_USER_PROFILE = gql`
             name
             image
             email
+            shops(where: { isValid: { _eq: true } }) {
+                id
+                name
+            }
             users_recipes(order_by: { recipe: { updated_at: desc, users_recipes_aggregate: { count: desc } } }) {
                 recipe {
                     name
@@ -195,6 +199,25 @@ export const QUERY_USER_PROFILE = gql`
     }
 `;
 
+export const QUERY_USER_IS_SHOP = gql`
+    query fetchUserProfile($email: String!) {
+        users(where: { email: { _eq: $email } }) {
+            id
+            name
+            image
+            email
+            shops(where: { isValid: { _eq: true } }) {
+                id
+                name
+                phone
+                email
+                address
+                isValid
+            }
+        }
+    }
+`;
+
 // WIP toprecipe
 export const SEARCH_RECIPE_BY_FLAVOR = gql`
     query searchRecipeAromes($search: String) {
@@ -204,6 +227,43 @@ export const SEARCH_RECIPE_BY_FLAVOR = gql`
             name
             aromes
             created_at
+        }
+    }
+`;
+
+// Create a Shop
+export const CREATE_USER_SHOP = gql`
+    mutation CREATE_SHOP($name: String, $address: String, $phone: String, $email: String, $userId: Int) {
+        insert_shops_one(object: { name: $name, address: $address, phone: $phone, email: $email, userId: $userId }) {
+            id
+        }
+    }
+`;
+
+// Create a unique transaction for a shop user
+// should happend inside the etiquette app to validate the TX and phone number
+export const CREATE_USER_TX_FOR_SHOP = gql`
+    mutation CreateUserTxForShop($recipe_id: uuid, $shop_id: uuid, $user_phone: String, $validated: Boolean) {
+        insert_transactions_one(
+            object: { recipe_id: $recipe_id, shop_id: $shop_id, user_phone: $user_phone, validated: $validated }
+        ) {
+            id
+        }
+    }
+`;
+
+// For a Shop Find his user transactions
+export const SHOP_FIND_USER_TX = gql`
+    query ShopFindUserTx($shop_id: uuid) {
+        transactions(where: { shop_id: { _eq: $shop_id } }, order_by: { created_at: desc }) {
+            id
+            created_at
+            validated
+            user_phone
+            recipe {
+                name
+                id
+            }
         }
     }
 `;

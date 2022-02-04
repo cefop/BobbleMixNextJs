@@ -9,6 +9,7 @@ import AppHeader from '../components/Header';
 import { usePageView } from '../components/hooks/usePageView';
 import { BobbleMixContext } from '../components/hooks/BobbleMixContext';
 import { NicoContext } from '../components/hooks/NicoContext';
+import { BobbleUserContext } from '../components/hooks/BobbleUserContext';
 import { useApollo } from '../components/lib/apollo';
 import Consent from '../components/Consent';
 
@@ -37,6 +38,8 @@ export default function App({ Component, pageProps }) {
     const providerBobbleMix = useMemo(() => ({ bobbleMix, setBobbleMix }), [bobbleMix, setBobbleMix]);
     const [nicoMix, setNicoMix] = useState([]);
     const providerNicoMix = useMemo(() => ({ nicoMix, setNicoMix }), [nicoMix, setNicoMix]);
+    const [bobbleUser, setBobbleUser] = useState([]);
+    const providerUser = useMemo(() => ({ bobbleUser, setBobbleUser }), [bobbleUser, setBobbleUser]);
 
     if (isProduction) usePageView();
 
@@ -46,21 +49,23 @@ export default function App({ Component, pageProps }) {
                 <ChakraProvider theme={customTheme}>
                     <BobbleMixContext.Provider value={providerBobbleMix}>
                         <NicoContext.Provider value={providerNicoMix}>
-                            <AppGrid>
-                                <AppHeader />
-                                <NextNprogress
-                                    color="#F29100"
-                                    startPosition={0.33}
-                                    stopDelayMs={200}
-                                    height={2}
-                                    showOnShallow={true}
-                                    options={{ easing: 'ease', speed: 500, showSpinner: false }}
-                                />
-                                <Background>
-                                    <Component {...pageProps} />
-                                </Background>
-                                <Consent />
-                            </AppGrid>
+                            <BobbleUserContext.Provider value={providerUser}>
+                                <AppGrid>
+                                    <AppHeader />
+                                    <NextNprogress
+                                        color="#F29100"
+                                        startPosition={0.33}
+                                        stopDelayMs={200}
+                                        height={2}
+                                        showOnShallow={true}
+                                        options={{ easing: 'ease', speed: 500, showSpinner: false }}
+                                    />
+                                    <Background>
+                                        <Component {...pageProps} />
+                                    </Background>
+                                    <Consent />
+                                </AppGrid>
+                            </BobbleUserContext.Provider>
                         </NicoContext.Provider>
                     </BobbleMixContext.Provider>
                 </ChakraProvider>

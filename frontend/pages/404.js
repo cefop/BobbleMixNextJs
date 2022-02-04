@@ -10,7 +10,6 @@ const C4Grid = styled.div`
 `;
 
 const C4Intro = styled.div`
-    /* border: 1px solid forestgreen; */
     align-self: center;
     padding-bottom: 18%;
     padding-left: 2rem;
